@@ -5,20 +5,22 @@ const morgan = require("morgan");
 //In the production systems, we should not hardcode the sensitive data like API Keys, 
 //Secret Tokens, etc directly within the codebase (based on the Twelve factor App method). 
 // We will pass them as environment variables. This module helps us to load environment variables from a .env file into process.env
-//require("dotenv").config();   // Require the dotenv
+require("dotenv").config();   // Require the dotenv
 
 const app = express();  //Create new instance
 
-
+//'mongodb+srv://tb19:PHUy4ooqWYfkJw46@4339gta.enbdh.mongodb.net/4339gta?retryWrites=true&w=majority'
 // import the student model schema from another file
-let p_info_Model = require('./models/p_info');
-
+let client_model = require('./models/client');
+let employee_model = require('./models/employee');
+let volunteer_model = require('./models/volunteer');
+let service_model = require('./models/services');
+let event_model = require('./models/events');
 // import grades model
 //let GradeModel = require('./models/grade');
-//'mongodb+srv://43gta39:Z8iILnXZ8g3d8m8V@4339gta.enbdh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
 // setting up mongoose DB connection
 mongoose
-  .connect('mongodb+srv://43gta39:Z8iILnXZ8g3d8m8V@4339gta.enbdh.mongodb.net/db4339?retryWrites=true&w=majority')   // read environment varibale from .env
+  .connect(process.env.DATABASE_URL, { useNewUrlParser: true})   // read environment varibale from .env
   .then(() => {
     console.log("Database connection Success!");
   })
