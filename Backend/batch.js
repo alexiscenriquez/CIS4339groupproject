@@ -11,16 +11,24 @@ const app = express();  //Create new instance
 
 //'mongodb+srv://tb19:PHUy4ooqWYfkJw46@4339gta.enbdh.mongodb.net/4339gta?retryWrites=true&w=majority'
 // import the student model schema from another file
+let db4339 = process.env.DATABASE_URL
 let client_model = require('./models/client');
-let employee_model = require('./models/employee');
-let volunteer_model = require('./models/volunteer');
-let service_model = require('./models/services');
-let event_model = require('./models/events');
+
+//let employee_model = require('./models/employee');
+
+//let volunteer_model = require('/models/volunteer')
+
+//let service_model = require('/models/services')
+
+//let event_model = require('/models/events')
+
+
+
 // import grades model
 //let GradeModel = require('./models/grade');
 // setting up mongoose DB connection
 mongoose
-  .connect(process.env.DATABASE_URL, { useNewUrlParser: true})   // read environment varibale from .env
+  .connect(db4339)   // read environment varibale from .env
   .then(() => {
     console.log("Database connection Success!");
   })
@@ -34,9 +42,9 @@ app.use(express.json()); //allows us to access request body as req.body
 app.use(morgan("dev"));  //enable incoming request logging in dev mode
  
 //create an endpoint to get all students from the API
-app.get('/personal', (req, res, next) => {
+app.get('/client', (req, res, next) => {
     //very plain way to get all the data from the collection through the mongoose schema
-    p_info_Model.find((error, data) => {
+    client_model.find((error, data) => {
         if (error) {
           //here we are using a call to next() to send an error message back
           return next(error)
@@ -48,7 +56,7 @@ app.get('/personal', (req, res, next) => {
 
 app.post('/clients', (req, res, next)=>{
     console.log(req.body)
-    p_info_Model.create(req.body, (error, data)=>{
+    client_model.create(req.body, (error, data)=>{
         if(error){
             return next(error)
         }else{
@@ -57,6 +65,20 @@ app.post('/clients', (req, res, next)=>{
     })
 
 })
+
+//delete a student by id
+app.delete('/client/:id', (req, res) => {
+  // Reading id from the URL
+  const id = parseInt(req.params.id);
+
+  // Remove item student ID
+  db4339.collection('client_model').deleteOne(
+      { pid: id },
+      function () {
+          res.send('Successfully deleted!')
+      }
+  )
+});
 
 app.listen(PORT, () => {
     console.log("Server started listening on port : ", PORT);
