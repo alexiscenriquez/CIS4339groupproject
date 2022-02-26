@@ -1,52 +1,58 @@
-const mongoose = require('mongoose');
+const uuid = require("uuid");
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-let eventSchema = new Schema({
-  evid: {
-    type: Number,
-    required: true,
-    unique: true
-  },
-    ev_name: {
+let employeesSchema = new Schema(
+  {
+    _id: {
       type: String,
-      required: true
+      default: uuid.v1,
     },
-    ev_host:{
-      type:Number,
+    employeeID: {
+      type: Number,
       required: true,
-      unique: true
+      unique: true,
     },
-    ev_date: {
-        type: Date,
-        required: true
-    },
-    addr:{
+    firstName: {
       type: String,
-      required: true
+      required: true,
     },
-    city:{
+    lastName: {
       type: String,
-      required: true
+      required: true,
     },
-    st:{
+    birthday: {
+      type: Date,
+      required: true,
+    },
+    SSN: {
       type: String,
-      required: true
+      required: true,
     },
-    country:{
+    dLicense: {
       type: String,
-      required: true
     },
-    zip:{
-        type:String,
-        required: true
-    }
-  }, {
-    collection: 'event'
-});
-
-module.exports = mongoose.model('events', eventSchema)
-
-//versionKey: false 
-
-
-
+    gender: {
+      type: String,
+    },
+    race: {
+      type: String,
+    },
+    hispanic: {
+      type: Boolean,
+    },
+    address: {
+      type: String,
+    },
+    city: {
+      type: String,
+    },
+    state: {
+      type: String,
+    },
+  },
+  {
+    collection: "employees",
+  }
+);
+module.exports = mongoose.model("employee", employeesSchema);
