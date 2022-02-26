@@ -24,14 +24,10 @@ router.post("/newemp", (req, res, next) => {
     }
   });
 });
-router.get("/", (req, res, next) => {
-  console.log("hello");
-  res.send("hello there");
-});
 
 router.get("/:employeeID", (req, res, next) => {
   // Finding document based on workID
-  empModel.findOne({ employeeID: req.params.id }, (error, data) => {
+  empModel.find({ employeeID: req.params.employeeID }, (error, data) => {
     if (error) {
       return next(error);
     } else if (data === null) {
@@ -43,8 +39,8 @@ router.get("/:employeeID", (req, res, next) => {
 });
 
 router.put("/:employeeID", (req, res, next) => {
-  empModel.findOneAndUpdate(
-    { employeeID: req.params.id },
+  empModel.updateOne(
+    { employeeID: req.params.employeeID },
     { $set: req.body },
     (error, data) => {
       if (error) {
@@ -59,7 +55,7 @@ router.put("/:employeeID", (req, res, next) => {
 
 router.get("/:employeeID", (req, res, next) => {
   // Finding document based on workID
-  empModel.findOne({ employeeID: req.params.id }, (error, data) => {
+  empModel.findOne({ employeeID: req.params.employeeID }, (error, data) => {
     if (error) {
       return next(error);
     } else if (data === null) {
@@ -69,8 +65,8 @@ router.get("/:employeeID", (req, res, next) => {
     }
   });
 
-  router.delete("/:employeeID", (req, res, next) => {
-    empModel.findOneAndRemove({ employeeID: req.params.id }, (error, data) => {
+  router.delete("/delete/:employeeID", (req, res, next) => {
+    empModel.delete({ employeeID: req.params.employeeID }, (error, data) => {
       if (error) {
         return next(error);
       } else {
