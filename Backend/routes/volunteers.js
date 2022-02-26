@@ -95,10 +95,10 @@ router.get('/ext-clients', async(req, res) => {
 })
 //get one
 router.get('/ext-client', async(req, res) => {
-    let first_name = ''
-    let last_name = ''
-    let phone_number = ''
-    let ex_api = "https://cis-4339.herokuapp.com/api/v1/data/{{first_name}}/{{last_name}}/{{phone_number}}"
+    let first_name = req.body.first_name
+    let last_name = req.body.last_name
+    let phone_number = req.body.phone_number
+    let ex_api = `https://cis-4339.herokuapp.com/api/v1/data/${first_name}/${last_name}/${phone_number}`
     axios.get(ex_api).then(response => {
         res.status(200).json(response.data);
     })
