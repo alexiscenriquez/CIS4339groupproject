@@ -8,7 +8,7 @@ const morgan = require("morgan");
 require("dotenv").config();   // Require the dotenv
 const cors = require('cors')
 const app = express();  //Create new instance
-
+const employeeRouter=require('.routes/employees')
 const volunteerRouter = require('./routes/volunteers')
 const eventRouter = require('./routes/events')
 const servicesRouter = require('./routes/services')
@@ -27,7 +27,7 @@ mongoose
 app.use(cors());
 app.use(express.json()); //allows us to access request body as req.body
 app.use(morgan("dev"));  //enable incoming request logging in dev mode
-
+app.use('/employees',employeeRouter)
 app.use('/volunteers', volunteerRouter) 
 app.use('/events', eventRouter)
 app.use('/services', servicesRouter)
