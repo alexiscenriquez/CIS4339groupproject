@@ -41,6 +41,24 @@ let employeesSchema = new Schema(
     hispanic: {
       type: Boolean,
     },
+    phone: {
+      type: String,
+    },
+    home: {
+      type: String,
+    },
+    eContact: {
+      type: String,
+    },
+    pEmail: {
+      type: String,
+    },
+    sEmail: {
+      type: String,
+    },
+    language: {
+      type: String,
+    },
     address: {
       type: String,
     },
@@ -48,6 +66,27 @@ let employeesSchema = new Schema(
       type: String,
     },
     state: {
+      type: String,
+    },
+    county: {
+      type: String,
+    },
+    zip: {
+      type: String,
+    },
+    lEmployment: {
+      type: String,
+    },
+    employer: {
+      type: String,
+    },
+    jDesc: {
+      type: String,
+    },
+    hGrade: {
+      type: String,
+    },
+    degree: {
       type: String,
     },
   },
