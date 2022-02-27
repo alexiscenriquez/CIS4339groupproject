@@ -1,10 +1,10 @@
 const express = require("express");
 const morgan = require("morgan");
 const router = express.Router();
-const empModel = require("../models/employee");
+const empModel = require("../models/employees");
 
 router.get("/", (req, res, next) => {
-  empModel.find((error, data) => {
+  empModel.find({}, (error, data) => {
     if (error) {
       return next(error);
     } else {
@@ -16,16 +16,15 @@ router.get("/", (req, res, next) => {
 router.post("/newemp", (req, res, next) => {
   empModel.create(req.body, (error, data) => {
     if (error) {
-      console.log("nope");
       return next(error);
     } else {
       res.send("Employee is added to the database.");
-      res.json(data);
+      console.log(data)
     }
   });
 });
 
-router.get("/:employeeID", (req, res, next) => {
+router.get("/find/:employeeID", (req, res, next) => {
   // Finding document based on workID
   empModel.find({ employeeID: req.params.employeeID }, (error, data) => {
     if (error) {
@@ -38,7 +37,7 @@ router.get("/:employeeID", (req, res, next) => {
   });
 });
 
-router.put("/:employeeID", (req, res, next) => {
+router.put("/update/:employeeID", (req, res, next) => {
   empModel.updateOne(
     { employeeID: req.params.employeeID },
     { $set: req.body },
@@ -63,18 +62,22 @@ router.get("/:employeeID", (req, res, next) => {
     } else {
       res.json(data);
     }
+    })
   });
 
-  router.delete("/delete/:employeeID", (req, res, next) => {
-    empModel.delete({ employeeID: req.params.employeeID }, (error, data) => {
-      if (error) {
-        return next(error);
-      } else {
-        res.status(200).json({
-          msg: data,
-        });
+router.delete("/del/:employeeID", (req, res, next) => {
+  console.log(req.params)
+  empModel.deleteOne({ employeeID: req.params.employeeID }, (error, data) => {
+    if (error) {
+      return next(error);
+    }else{
+      res.send('deleted from db')
+      console.log('deleted from db')
+      // res.status(200).json({
+      //   //msg: data,
+      //   });
       }
     });
   });
-});
+
 module.exports = router;

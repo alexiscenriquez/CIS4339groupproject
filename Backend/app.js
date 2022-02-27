@@ -28,6 +28,7 @@ mongoose
 app.use(cors());
 app.use(express.json()); //allows us to access request body as req.body
 app.use(morgan("dev"));  //enable incoming request logging in dev mode
+
 app.use('/clients', clientRouter)
 app.use('/employees',employeeRouter)
 app.use('/volunteers', volunteerRouter) 
