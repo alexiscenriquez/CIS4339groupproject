@@ -73,9 +73,6 @@ router.delete("/del/:employeeID", (req, res, next) => {
     }else{
       res.send('deleted from db')
       console.log('deleted from db')
-      // res.status(200).json({
-      //   //msg: data,
-      //   });
       }
     });
   });

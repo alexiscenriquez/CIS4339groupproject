@@ -85,6 +85,15 @@ let employeesSchema = new Schema(
     degree: {
       type: String,
     },
+    event: {
+      eventID: Number,
+      eventName: String,
+    },
+    clients: {
+      clientID: Number,
+      firstName: String,
+      lastName: String,
+    },
   },
   {
     collection: "employees",
