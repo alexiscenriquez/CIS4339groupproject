@@ -40,7 +40,15 @@ let eventSchema = new Schema({
     zip:{
         type:String,
         required: true
-    }
+    },
+    applicants:[{
+      type:String,
+      ref: 'volunteers'
+    },
+    {
+      type:String,
+      ref:'employees'
+    }]
   }, {
     collection: 'events'
 });

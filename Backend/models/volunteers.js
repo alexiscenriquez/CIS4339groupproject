@@ -5,7 +5,6 @@ const Schema = mongoose.Schema;
 let volunteerSchema = new Schema({
   vid: {
     type: Number,
-    required: true,
     unique: true
   },
     first_name: {
