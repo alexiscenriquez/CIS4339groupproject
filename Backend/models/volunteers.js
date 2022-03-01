@@ -72,10 +72,10 @@ let volunteerSchema = new Schema({
         required: true
     }
   }, {
-    collection: 'volunteer'
+    collection: 'volunteers'
 });
 
-module.exports = mongoose.model('volunteers', volunteerSchema)
+module.exports = mongoose.model('volunteer', volunteerSchema)
 
 //versionKey: false 
 

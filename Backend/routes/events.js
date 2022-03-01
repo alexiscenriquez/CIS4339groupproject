@@ -16,7 +16,7 @@ router.post('/new-event', (req, res, next)=>{
         return next(error);
     }else{
         console.log(data)
-        res.send('New Volunteer added');
+        res.send('New Event added');
     }
     });
 });
@@ -52,8 +52,8 @@ router.put('/update/:vid', (req, res)=>{
         if(error){
             return next(error);
         }else{
-            res.send('Volunteer information updated.')
-            console.log('Volunteer information updated.')
+            res.send('Event information updated.')
+            console.log('Event information updated.')
         }
     });
 });
