@@ -1,6 +1,10 @@
 const express = require('express');
 const router = express.Router()
 const eventsModel = require('../models/events');
+const employersModel = require('../models/employees');
+const volunteersModel = require('../models/volunteers');
+const clientsModel = require('../models/clients')
+
 
 //home page
 router.get('/', (req, res, next)=>{
@@ -21,8 +25,56 @@ router.post('/new-event', (req, res, next)=>{
     });
 });
 
+//{READ} find data by object id
+router.get('/objfind', (req, res, next)=>{
+    var docs = new Array(employersModel, volunteersModel, clientsModel);
+    let x = []
+    //console.log(eventsModel)
+    
+    // for(let i=0; i<docs.length;i++){
+    //     docs[i].findById(req.body), (error, results) => {
+    //         if(error){
+    //             return next(error);
+    //         }else{
+    //             x.push(results);
+    //         }
+    //         }
+    //     }
+    // console.log(x)
+
+    clientsModel.findById(req.body, (error, results)=>{
+        
+        if(error){
+            return next(error);
+        }else{
+            x.push(res.json(results));
+        }
+    });
+
+    volunteersModel.findById(req.body, (error, results)=>{
+        
+        if(error){
+            return next(error);
+        }else{
+            x.push(res.json(results));
+        }
+    });
+    
+    employersModel.findById(req.body, (error, results)=>{
+         
+        if(error){
+             return next(error);
+         }else{
+             x.push(res.json(results));
+         }
+     });
+     
+
+});
+
+
 //{READ} find one event
-router.get('/find/:vid', (req, res, next)=>{
+router.get('/find/:evid', (req, res, next)=>{
     eventsModel.find({vid : req.params.vid}, (error, results)=>{
         if(error){
             return next(error);
@@ -31,6 +83,7 @@ router.get('/find/:vid', (req, res, next)=>{
         }
     });
 });
+
 
 //{CREATE} get all info from events
 router.get('/all', (req, res, next) =>{
@@ -44,9 +97,27 @@ router.get('/all', (req, res, next) =>{
     })
 });
 
+
+
+//{ADD} new attendees to events
+router.put('/attendee/:evid', (req, res)=>{
+    console.log(req.body)
+    eventsModel.findOneAndUpdate({evid : req.params.evid},{
+        $push:{attendees:{$each:[req.body]}}}, 
+        (error, results) => {
+        if(error){
+            return next(error);
+        }else{
+            res.send('Added new attendee to event.')
+            console.log('Added new attendee to event.')
+        }
+    });
+});
+
+
 //{UPDATE} event data
-router.put('/update/:vid', (req, res)=>{
-    eventsModel.findOneAndUpdate({vid : req.params.vid},{
+router.put('/update/:evid', (req, res)=>{
+    eventsModel.findOneAndUpdate({vid : req.params.evid},{
         $set:req.body
         }, (error, results) => {
         if(error){
@@ -70,9 +141,6 @@ router.delete('/del/:vid', (req, res, next)=> {
         }
     })
 })
-
-
-
 
 
 

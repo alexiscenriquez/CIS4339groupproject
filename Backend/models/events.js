@@ -1,61 +1,70 @@
 const uuid = require('uuid');
 const mongoose = require('mongoose');
+//const volunteers = require('./volunteers');
 const Schema = mongoose.Schema;
 
-let eventSchema = new Schema({
-  evid: {
-    type: Number,
-    required: true,
-    unique: true
-  },
-    ev_name: {
-      type: String,
-      required: true
-    },
-    ev_host:{
-      type:Number,
+let eventSchema = new Schema(
+  {
+  evid: 
+    {
+      type: Number,
       required: true,
       unique: true
     },
-    ev_date: {
+  ev_name: 
+    {
+      type: String,
+      required: true
+    },
+  ev_host:
+    {
+      type:Number,
+      required: true
+    },
+  ev_date: 
+    {
         type: Date,
         required: true
     },
-    addr:{
+  addr:
+    {
       type: String,
       required: true
     },
-    city:{
+  city:
+    {
       type: String,
       required: true
     },
-    st:{
+  st:
+    {
       type: String,
       required: true
     },
-    country:{
+  country:
+    {
       type: String,
       required: true
     },
-    zip:{
+  zip:
+    {
         type:String,
         required: true
-    },
-    applicants:[{
-      type:String,
-      ref: 'volunteers'
-    },
-    {
-      type:String,
-      ref:'employees'
-    }]
-  }, {
-    collection: 'events'
+    }
+  ,
+  attendees:
+  [{
+      type:Schema.Types.ObjectId,
+      unique:true
+  }]
+  
+},
+{
+     
+  collection: 'events'
 });
 
 module.exports = mongoose.model('event', eventSchema)
-
-//versionKey: false 
 
 
 
