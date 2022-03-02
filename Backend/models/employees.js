@@ -44,7 +44,9 @@ let employeesSchema = new Schema(
       type: String,
     },
     eContact: {
-      type: String,
+      fName: String,
+      lName: String,
+      phone: String,
     },
     pEmail: {
       type: String,
@@ -53,7 +55,7 @@ let employeesSchema = new Schema(
       type: String,
     },
     language: {
-      type: String,
+      type: [String],
     },
     address: {
       type: String,
@@ -73,7 +75,7 @@ let employeesSchema = new Schema(
     lEmployment: {
       type: String,
     },
-    employer: {
+    dept: {
       type: String,
     },
     jDesc: {
@@ -85,7 +87,7 @@ let employeesSchema = new Schema(
     degree: {
       type: String,
     },
-    event: {
+    events: {
       eventID: Number,
       eventName: String,
     },
