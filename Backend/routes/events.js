@@ -28,46 +28,35 @@ router.post('/new-event', (req, res, next)=>{
 //{READ} find data by object id
 router.get('/objfind', (req, res, next)=>{
     var docs = new Array(employersModel, volunteersModel, clientsModel);
-    let x = []
-    //console.log(eventsModel)
+    if(mod == 'employee'){
+        employersModel.find({employeeID:req.body.id}, (error, results)=>{
+            if(error){
+                return  next(error)
+            }else{
+                res.json(results)
+            }
+        })
+    }
     
-    // for(let i=0; i<docs.length;i++){
-    //     docs[i].findById(req.body), (error, results) => {
-    //         if(error){
-    //             return next(error);
-    //         }else{
-    //             x.push(results);
-    //         }
-    //         }
-    //     }
-    // console.log(x)
+    if(mod == 'volunteer'){
+        volunteersModel.find({vid:req.body.id}, (error, results)=>{
+            if(error){
+                return  next(error)
+            }else{
+                res.json(results)
+            }
+        })
+    }
 
-    clientsModel.findById(req.body, (error, results)=>{
-        
-        if(error){
-            return next(error);
-        }else{
-            x.push(res.json(results));
-        }
-    });
-
-    volunteersModel.findById(req.body, (error, results)=>{
-        
-        if(error){
-            return next(error);
-        }else{
-            x.push(res.json(results));
-        }
-    });
-    
-    employersModel.findById(req.body, (error, results)=>{
-         
-        if(error){
-             return next(error);
-         }else{
-             x.push(res.json(results));
-         }
-     });
+    if(mod == 'client'){
+        clientsModel.find({cid:req.body.id}, (error, results)=>{
+            if(error){
+                return  next(error)
+            }else{
+                res.json(results)
+            }
+        })
+    }
      
 
 });
@@ -75,7 +64,7 @@ router.get('/objfind', (req, res, next)=>{
 
 //{READ} find one event
 router.get('/find/:evid', (req, res, next)=>{
-    eventsModel.find({vid : req.params.vid}, (error, results)=>{
+    eventsModel.find({evid : req.params.vid}, (error, results)=>{
         if(error){
             return next(error);
         }else{

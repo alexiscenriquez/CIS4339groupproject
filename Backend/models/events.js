@@ -53,10 +53,26 @@ let eventSchema = new Schema(
     }
   ,
   attendees:
-  [{
-      type:Schema.Types.ObjectId,
-      unique:true
-  }]
+  [
+    {
+      vid:
+      [
+        {
+          type:Number
+        }
+      ],
+      cid:[
+        {
+          type:Number
+        }
+      ],
+      employeeID:[
+        {
+          type:Number
+        }
+      ]
+    }
+  ]
   
 },
 {

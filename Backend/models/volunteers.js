@@ -70,7 +70,15 @@ let volunteerSchema = new Schema({
     zip:{
         type:String,
         required: true
-    }
+    },
+    events:[
+      {
+        evid:{
+          type:String,
+          required:true
+        }
+      }
+    ]
   }, {
     collection: 'volunteers'
 });
