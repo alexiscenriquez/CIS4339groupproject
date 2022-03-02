@@ -5,8 +5,8 @@ const Schema = mongoose.Schema;
 let volunteerSchema = new Schema({
   vid: {
     type: Number,
-    required: true,
-    unique: true
+    unique: true,
+    required:true
   },
     first_name: {
       type: String,
@@ -72,10 +72,10 @@ let volunteerSchema = new Schema({
         required: true
     }
   }, {
-    collection: 'volunteer'
+    collection: 'volunteers'
 });
 
-module.exports = mongoose.model('volunteers', volunteerSchema)
+module.exports = mongoose.model('volunteer', volunteerSchema)
 
 //versionKey: false 
 

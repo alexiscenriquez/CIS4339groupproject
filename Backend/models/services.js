@@ -8,13 +8,20 @@ let servicesSchema = new Schema({
     required: true,
     unique: true
   },
-    type: {
+    name: {
       type: String,
       required: true
     },
     duration:{
       type:String,
-    }
+    },
+    notes:{
+      type:String
+    },
+    applicants:[{
+      type:String,
+      ref:'Clients'
+    }]
   }, {
     collection: 'services'
 });
