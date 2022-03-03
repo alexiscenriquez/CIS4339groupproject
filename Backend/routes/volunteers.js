@@ -3,15 +3,20 @@ const router = express.Router()
 const volunteerModel = require('../models/volunteers');
 const axios = require("axios")
 
-//home page
-router.get('/', (req, res, next)=>{
-    console.log('hello')
-    res.send('hello there2')
-})
+//get all data for volunteers
+router.get('/', (req, res, next) =>{
+    volunteerModel.find({},(err, data)=>{
+        if(err) {
+            console.log(err)
+        }else{
+            console.log(data)
+            res.json(data)
+        }
+    })
+});
 
 //{CREATE}create new volunteer
 router.post('/new-user', (req, res, next)=>{
-    console.log(req.body)
     volunteerModel.create(req.body, (error, data)=>{
     if(error){
         return next(error);
@@ -50,6 +55,7 @@ router.put('/attendee/:vid', (req, res, next)=>{
 
 //get volunteer-event attendees
 router.get('/event-attendees', (req, res, next)=>{
+    //join documents to get events data
     volunteerModel.aggregate([
         {
             $lookup:{
@@ -60,6 +66,7 @@ router.get('/event-attendees', (req, res, next)=>{
         }
 
         },{
+            //get only specific fields
         $project:{
             'vid':1,
             'first_name':1,
@@ -84,17 +91,7 @@ router.get('/event-attendees', (req, res, next)=>{
     });
 });
 
-//{CREATE} get all info from volunteers
-router.get('/all', (req, res, next) =>{
-    volunteerModel.find({},(err, data)=>{
-        if(err) {
-            console.log(err)
-        }else{
-            console.log(data)
-            res.json(data)
-        }
-    })
-});
+
 
 //{UPDATE} volunteer data
 router.put('/update/:vid', (req, res)=>{
@@ -110,7 +107,7 @@ router.put('/update/:vid', (req, res)=>{
     });
 });
 
-//{DELETE} user
+//{DELETE} volunteer from database
 router.delete('/del/:vid', (req, res, next)=> {
     volunteerModel.deleteOne({vid : req.params.vid}, (error, data)=>{
         if(error){

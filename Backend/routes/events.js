@@ -6,11 +6,17 @@ const volunteersModel = require('../models/volunteers');
 const clientsModel = require('../models/clients')
 
 
-//home page
-router.get('/', (req, res, next)=>{
-    console.log('hello')
-    res.send('hello there2')
-})
+//{CREATE} get all info from events
+router.get('/', (req, res, next) =>{
+    eventsModel.find({},(err, data)=>{
+        if(err) {
+            console.log(err)
+        }else{
+            console.log(data)
+            res.json(data)
+        }
+    })
+});
 
 //{CREATE}create new event
 router.post('/new-event', (req, res, next)=>{
@@ -25,18 +31,6 @@ router.post('/new-event', (req, res, next)=>{
     });
 });
 
-//{CREATE} get all info from events
-router.get('/all', (req, res, next) =>{
-    eventsModel.find({},(err, data)=>{
-        if(err) {
-            console.log(err)
-        }else{
-            console.log(data)
-            res.json(data)
-        }
-    })
-});
-
 //{READ} find one event
 router.get('/find/:evid', (req, res, next)=>{
     eventsModel.find({evid : req.params.evid}, (error, results)=>{
@@ -48,7 +42,7 @@ router.get('/find/:evid', (req, res, next)=>{
     });
 });
 
-//{UPDATE} Add new attendees to events
+//{UPDATE} Add attendees to events
 router.put('/attendee/:evid', (req, res, next)=>{
     var id_type = req.body.type
     var id_num = req.body.id
@@ -99,7 +93,7 @@ router.put('/attendee/:evid', (req, res, next)=>{
 
 //
 router.get('/event-attendees', (req, res, next)=>{
-    
+    //join documents to get volunteers, clients, employees data
     eventsModel.aggregate([
         {
             $lookup:{
@@ -125,6 +119,7 @@ router.get('/event-attendees', (req, res, next)=>{
                 as:'employees'
             }
         },
+            //only get back specifi fields
             {
                 $project:{
                     '_id':0,
