@@ -2,67 +2,52 @@ POST http://localhost:3000/employees/newemp
 Content-Type: application/json
 
 {
-    
+     
     "eContact": {
-      "fName": "Leslie",
-      "lName": "Ouzts",
-      "phone": "713-558-8849"
+      "fName": "Simon",
+      "lName": "Franklin",
+      "phone": "832-389-7539"
     },
-    "clients": {
-      "clientID": 1,
-      "firstName": "Steven",
-      "lastName": "Spielberg"
-    },
-    "employeeID": 5,
-    "firstName": "Timothy",
-    "lastName": "Delp",
-    "birthday": "06-14-1986 ",
-    "SSN": "449-86-4894",
-    "dLicense": "38834058",
-    "gender": "Male",
-    "race": "White",
-    "hispanic": false,
-    "phone": "832-205-4477",
-    "home": "281-734-1385",
-    "pEmail": "timdelp@gmail.com",
+    "employeeID": 11,
+    "firstName": "Rose",
+    "lastName": "Robinson",
+    "birthday": "05/29/1991",
+    "SSN": "455-88-3298",
+    "dLicense": "32326638 ",
+    "gender": "Female",
+    "race": "Black",
+    "hispanic": true,
+    "phone": "832-212-2003",
+    "home": "832-355-5946",
+    "pEmail": "rrobinson@gmail.com",
     "language": [
-      "English"
+      "English","Spanish"
     ],
-    "address": "3292 Gambler Lane",
+    "address": "1542 Wines Lane",
     "city": "Houston",
     "state": "Texas",
     "county": "Harris",
-    "zip": "77063",
-    "lEmployment": "6mo",
-    "dept": "Advising",
-    "degree":"Bachelor's"
+    "zip": "77030",
+    "lEmployment": "8mo",
+    "dept":"Events",
+    "jDesc":"Event Moderator",
+    "degree":"Bachelor's",
+    "events": {
+      "eventID": 1,
+      "eventName": "Town Fair 2020"
+    }
   }   
-}
+
+
     
- GET http://localhost:3000/employees/
+ GET http://localhost:3000/employees/find/2
 
  DELETE http://localhost:3000/employees/del/1
 
- PUT  http://localhost:3000/employees/update/12
+ PUT  http://localhost:3000/employees/update/7
  Content-Type: application/json
 
 {
-"employeeID":2,    
-"phone":"706-576-6829",
-"home": "706-392-6425",
-"pEmail":"lbrown@gmail.com",
-"language":["English"],
-"address":"3006 Hart Country Lane",
-"city":"Columbus",
-"state":"Georgia",
-"zip":"31901",
-"county":"Waukesha",
-"eContact":{
-    "fName":"Thomas",
-    "lName":"Johnson",
-    "phone":"919-924-0851"
-},
-"lEmployment":"1mo",
-"dept":"Accounting",
-"jDesc":"Accountant"
+
+"pEmail":"rachelhernandez@outlook.com"
 }
