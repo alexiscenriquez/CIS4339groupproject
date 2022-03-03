@@ -134,7 +134,7 @@ Content-Length: 833
   } 
   ````
   
-  ### 2.3 Clients
+  ### 2.4 Clients
   
   #### Getting a volunteer's details
   Returns details stored in collection about a volunteer
