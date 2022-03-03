@@ -18,10 +18,15 @@ let servicesSchema = new Schema({
     notes:{
       type:String
     },
-    applicants:[{
-      type:String,
-      ref:'Clients'
-    }]
+    applicants:
+    {
+      cid:
+        [
+          {
+            type:Number
+          }
+        ]
+    }
   }, {
     collection: 'services'
 });

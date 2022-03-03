@@ -73,10 +73,13 @@ let volunteerSchema = new Schema({
     },
     events:
       {
-        evid:{
-          type:String,
-          unique:true
-        }
+        evid:
+          [
+            {
+              type:String,
+              unique:true
+            }
+          ]
       }
     
   }, {
