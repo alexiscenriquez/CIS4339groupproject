@@ -5,8 +5,8 @@
 - [Resources](#2-resources)
   - [Volunteers](#21-volunteers)
   - [Employees](#22-employees)
-  - [Posts](#23-posts)
-  - [Clients](#24-clients)
+  - [Clients](#23-clients)
+  - [Posts](#24-posts)
  - [Testing](#3-testing)
 
 ## 1. Overview
@@ -19,9 +19,13 @@ Our group's API is JSON-based. All requests are made to endpoints beginning: `ht
 #### Getting a volunteer's details
 Returns details stored in collection about a volunteer
 
+The request to fetch a volunteer's information looks like this:
+
 ````
-GET http://localhost:3000/volunteers/find/1
+GET http://localhost:3000/volunteers/find/{vid}
 ````
+Where vid is the volunteer id
+
 Example request:
 
 ````
@@ -92,12 +96,87 @@ Where a volunteer object is:
 | zip       | string    | The zip code of the area the volunteer resides      |
 | events    | array     | List of IDs for events volunteer is apart of        |
 
+Possible errors:
 
+| Error code    | Description                   |
+| --------------| ------------------------------|
+| 404 Not Found | The requested resource could not be found buy may be available again in the future. Subsequent requests by the cleints are permissible. |
 
 
 ### 2.2 Employees
 
-### 2.3 Posts
+#### Retrieving an employee collection by employee id
+
+Returns a single collection of an employee with specified id 
+
+The request to fetch an employee's information looks like this:
+
+````
+Get http://localhost:3000/employees/find/{employeeid}
+````
+Where employeeid is the ID for requested employee.
+
+Example Request:
+
+````
+GET http://localhost:3000/employees/find/2
+````
+Example Response:
+
+`````
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 540
+ETag: W/"21c-nL6vzX3eShbBCZp1hR6EpkDSyNM"
+Date: Thu, 03 Mar 2022 21:23:49 GMT
+Connection: close
+
+[
+  {
+    "eContact": {
+      "fName": "John",
+      "lName": "Paul",
+      "phone": "836-212-7382"
+    },
+    "employeeID": 2,
+    "firstName": "Kim",
+    "lastName": "Brown",
+    "birthday": "2002-12-09T00:00:00.000Z",
+    "SSN": "323-23-5534",
+    "dLicense": "5050377",
+    "gender": "Female",
+    "race": "White",
+    "hispanic": true,
+    "address": "1597 D Street",
+    "city": "New Berlin",
+    "state": "Wisconsin",
+    "__v": 0,
+    "county": "Waukesha",
+    "degree": "Bachelor's",
+    "dept": "Accounting",
+    "home": "586-470-2971",
+    "jDesc": "Accountant",
+    "lEmployment": "1yr 3mo",
+    "language": [
+      "English"
+    ],
+    "pEmail": "acox@hotmail.com",
+    "phone": "810-343-2078",
+    "zip": "53151"
+  }
+]
+
+`````
+Where an employee object is:
+
+| Field			|	Type			|	Description																				  |
+|-----------|-----------|-----------------------------------------------------|
+| eContact  | object    | An object that houses the name and phone number of the employee's emergency contact|
+| fName     | string    | The first name of the employee's emergency contact  |
+| lName     | string    | The last name of the employee's emergency contact   |
+| phone     | string    | The phone number of the employee's emergency contact|
 
 #### Creating a post
 Creates a new employee
@@ -155,7 +234,7 @@ Content-Length: 833
   } 
   ````
   
-  ### 2.4 Clients
+  ### 2.3 Clients
   
   #### Getting a volunteer's details
   Returns details stored in collection about a volunteer
@@ -243,6 +322,9 @@ Content-Length: 833
   | id				|	string		| A randomly generated identifier for the client.	|
   |	cid				|	number		| A Non-random primary identifier for client.			|
   |first_name	| string		|	The client's first name													|
+  
+  
+### 2.4 Posts
 
   
 ## 3. Testing
