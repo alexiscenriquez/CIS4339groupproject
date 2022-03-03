@@ -38,7 +38,7 @@ router.get('/find/:evid', (req, res, next)=>{
     });
 });
 
-//{UPDATE} Add attendees to events
+//{UPDATE} Add/remove attendees from events
 router.put('/attendee/:evid', (req, res, next)=>{
     var id_type = req.body.type
     var id_num = req.body.id
