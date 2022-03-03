@@ -148,7 +148,7 @@ Content-Length: 833
   Host: localhost:3000
   ````
   
-  The response is a volunteer object within a data envelope.
+  The response is a client object within a data envelope.
 
   Example response:
   
