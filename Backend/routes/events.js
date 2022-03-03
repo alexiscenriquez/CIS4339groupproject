@@ -1,16 +1,18 @@
 const express = require('express');
 const router = express.Router()
 const eventsModel = require('../models/events');
-const employersModel = require('../models/employees');
-const volunteersModel = require('../models/volunteers');
-const clientsModel = require('../models/clients')
 
-
-//home page
-router.get('/', (req, res, next)=>{
-    console.log('hello')
-    res.send('hello there2')
-})
+//{CREATE} get all info from events
+router.get('/', (req, res, next) =>{
+    eventsModel.find({},(err, data)=>{
+        if(err) {
+            console.log(err)
+        }else{
+            console.log(data)
+            res.json(data)
+        }
+    })
+});
 
 //{CREATE}create new event
 router.post('/new-event', (req, res, next)=>{
@@ -25,18 +27,6 @@ router.post('/new-event', (req, res, next)=>{
     });
 });
 
-//{CREATE} get all info from events
-router.get('/all', (req, res, next) =>{
-    eventsModel.find({},(err, data)=>{
-        if(err) {
-            console.log(err)
-        }else{
-            console.log(data)
-            res.json(data)
-        }
-    })
-});
-
 //{READ} find one event
 router.get('/find/:evid', (req, res, next)=>{
     eventsModel.find({evid : req.params.evid}, (error, results)=>{
@@ -48,91 +38,163 @@ router.get('/find/:evid', (req, res, next)=>{
     });
 });
 
-//{UPDATE} Add new attendees to events
+//{UPDATE} Add attendees to events
 router.put('/attendee/:evid', (req, res, next)=>{
     var id_type = req.body.type
     var id_num = req.body.id
+    var action = req.body.action
     
-    if (id_type == 'volunteer'){
-        eventsModel.findOneAndUpdate({evid : parseInt(req.params.evid)},{
-            $push:{'attendees.vid':id_num}
-        }, 
-            (error, results) => {
-                if(error){
-                    return next(error);
-                }else{
-                res.send('Added new volunteer attendee to event.')
-                console.log('Added new volunteer attendee to event.')
-            }
-        });
-    }
+    if(action == 'add'){
+        if (id_type == 'volunteer'){
+            eventsModel.findOneAndUpdate({evid : parseInt(req.params.evid)},{
+                $push:{'attendees.vid':id_num}
+            }, 
+                (error, results) => {
+                    if(error){
+                        return next(error);
+                    }else{
+                    res.send('Added new volunteer attendee to event.')
+                    console.log('Added new volunteer attendee to event.')
+                }
+            });
+        }
 
-    if (id_type == 'employee'){
-        eventsModel.findOneAndUpdate({evid : parseInt(req.params.evid)},{
-            $push:{'attendees.employeeID':id_num}
-        }, 
-            (error, results) => {
-                if(error){
-                    return next(error);
-                }else{
-                res.send('Added new employee attendee to event.')
-                console.log('Added new employee attendee to event.')
-            }
-        });
-    }
+        if (id_type == 'employee'){
+            eventsModel.findOneAndUpdate({evid : parseInt(req.params.evid)},{
+                $push:{'attendees.employeeID':id_num}
+            }, 
+                (error, results) => {
+                    if(error){
+                        return next(error);
+                    }else{
+                    res.send('Added new employee attendee to event.')
+                    console.log('Added new employee attendee to event.')
+                }
+            });
+        }
 
-    if (id_type == 'client'){
-        eventsModel.findOneAndUpdate({evid : parseInt(req.params.evid)},{
-            $push:{'attendees.cid':id_num}
-        }, 
-            (error, results) => {
-                if(error){
-                    return next(error);
-                }else{
-                res.send('Added new client attendee to event.')
-                console.log('Added new client attendee to event.')
-            }
-        });
+        if (id_type == 'client'){
+            eventsModel.findOneAndUpdate({evid : parseInt(req.params.evid)},{
+                $push:{'attendees.cid':id_num}
+            }, 
+                (error, results) => {
+                    if(error){
+                        return next(error);
+                    }else{
+                    res.send('Added new client attendee to event.')
+                    console.log('Added new client attendee to event.')
+                }
+            });
+        }
+    }
+    if(action == 'del'){
+        if (id_type == 'volunteer'){
+            eventsModel.findOneAndUpdate({evid : parseInt(req.params.evid)},{
+                $pull:{'attendees.vid':id_num}
+            }, 
+                (error, results) => {
+                    if(error){
+                        return next(error);
+                    }else{
+                    res.send('Added new volunteer attendee to event.')
+                    console.log('Added new volunteer attendee to event.')
+                }
+            });
+        }
+
+        if (id_type == 'employee'){
+            eventsModel.findOneAndUpdate({evid : parseInt(req.params.evid)},{
+                $pull:{'attendees.employeeID':id_num}
+            }, 
+                (error, results) => {
+                    if(error){
+                        return next(error);
+                    }else{
+                    res.send('Added new employee attendee to event.')
+                    console.log('Added new employee attendee to event.')
+                }
+            });
+        }
+
+        if (id_type == 'client'){
+            eventsModel.findOneAndUpdate({evid : parseInt(req.params.evid)},{
+                $pull:{'attendees.cid':id_num}
+            }, 
+                (error, results) => {
+                    if(error){
+                        return next(error);
+                    }else{
+                    res.send('Added new client attendee to event.')
+                    console.log('Added new client attendee to event.')
+                }
+            });
+        }
     }
 
 });
 
 //
 router.get('/event-attendees', (req, res, next)=>{
+    //join documents to get volunteers, clients, employees data
     eventsModel.aggregate([
         {
-            $lookup:
-                {
+            $lookup:{
                 from:'volunteers',
                 localField:'attendees.vid',
                 foreignField:'vid',
-                as:"volunteer",
-                pipeline:[
-                    {$project:{
-                        _id:0,
-                        vid:1,
-                        first_name:1,
-                        last_name:1
-                    }}
-            ],
-                },
-        
-             
-        },
-        
-        {
-            $project:{
-                _id:0,
-                attendees:0
+                as: 'volunteers'
             }
-        } 
+        },
+        {
+            $lookup:{
+                from:"clients",
+                localField:'attendees.cid',
+                foreignField:'cid',
+                as:'clients'
+            }
+        },
+        {
+            $lookup:{
+                from:'employees',
+                localField:'attendees.employeeID',
+                foreignField:'employeeID',
+                as:'employees'
+            }
+        },
+            //only get back specifi fields
+            {
+                $project:{
+                    '_id':0,
+                    'evid':1,
+                    'ev_name':1,
+                    'ev_host':1,
+                    'ev_date':1,
+                    'city':1,
+                    'st':1,
+                    'zip':1,
+                    'volunteers.vid':1,
+                    'volunteers.first_name':1,
+                    'volunteers.last_name':1,
+                    'volunteers.phone_num':1,
+                    'clients.cid':1,
+                    'clients.first_name':1,
+                    'clients.last_name':1,
+                    'clients.phone_number':1,
+                    'employees.employeeID':1,
+                    'employees.firstName':1,
+                    'employees.lastName':1,
+                    'employees.phone':1
+                }
+            }
     ],(error, results)=>{
         if(error){
             return next(error)
         }else{
+            console.log(results)
             res.json(results)
         }
-    });
+    })
+
 });
 
 

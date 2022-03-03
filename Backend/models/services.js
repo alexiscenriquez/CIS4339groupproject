@@ -12,7 +12,7 @@ let servicesSchema = new Schema({
       type: String,
       required: true
     },
-    duration:{
+    renewal:{
       type:String,
     },
     notes:{

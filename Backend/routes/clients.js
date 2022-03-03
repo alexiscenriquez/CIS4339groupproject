@@ -46,6 +46,59 @@ router.get('/all', (req, res, next)=>{
     });
 });
 
+
+
+// get all of clients employee history and service hitsory
+router.get('/client-history', (req, res, next)=>{
+    clientsModel.aggregate([
+        {
+            $lookup:
+                {
+                from:'employees',
+                localField:'employees.employeeID',
+                foreignField:'employeeID',
+                as:"employees",
+                }
+        
+             
+        },
+        {
+            $lookup:
+                {
+                from:'services',
+                localField:'services.sid',
+                foreignField:'sid',
+                as:"services",
+                }
+
+
+             },
+             {
+            $project:{
+                'employeedID':1,
+                'first_name':1,
+                'mid_name':1,
+                'last_name':1,
+                'employees.employeeID':1,
+                'employees.firstName':1,
+                'employees.lastName':1,
+                'employees.phone':1,
+                'employees.pEmail':1,
+                'services.sid':1,
+                'services.name':1,
+                'services.renewal':1
+            }
+        } 
+    ],(error, results)=>{
+        if(error){
+            return next(error)
+        }else{
+            res.json(results)
+        }
+    });
+});
+
+
 //{UPDATE} Updates Client Data
 router.put('/update/:cid', (req, res)=>{
     clientsModel.updateOne({cid : req.params.cid},{
@@ -72,6 +125,66 @@ router.delete('/del/:cid', (req, res, next)=> {
         }
     })
 })
+
+//adding an employee to a client
+router.put('/adddelemp/:cid', (req, res, next)=>{
+    var action = req.body.action
+
+    if(action == 'add'){
+    clientsModel.findOneAndUpdate({cid:parseInt(req.params.cid)},{
+        $push:{'employees.employeeID':parseInt(req.body.employeeID)}
+    },(error, results)=>{
+        if(error){
+            return next(error);
+        }else{
+            res.send('added employee to client')
+            console.log('added employee to client')
+        }
+    });
+}
+    if(action == 'delete'){
+    clientsModel.findOneAndUpdate({cid:parseInt(req.params.cid)},{
+        $pull:{'employees.employeeID':parseInt(req.body.employeeID)}
+    },(error, results)=>{
+        if(error){
+            return next(error);
+        }else{
+            res.send('deleted employee linked to client')
+            console.log('added employee linked to client')
+        }
+    });
+    }
+});
+
+//adding a service to a client
+router.put('/adddelservice/:cid', (req, res, next)=>{
+    var action = req.body.action
+
+    if(action == 'add'){
+    clientsModel.findOneAndUpdate({cid:parseInt(req.params.cid)},{
+        $push:{'services.sid':parseInt(req.body.sid)}
+    },(error, results)=>{
+        if(error){
+            return next(error);
+        }else{
+            res.send('added service to client')
+            console.log('added service to client')
+        }
+    });
+}
+    if(action == 'delete'){
+    clientsModel.findOneAndUpdate({cid:parseInt(req.params.cid)},{
+        $pull:{'services.sid':parseInt(req.body.sid)}
+    },(error, results)=>{
+        if(error){
+            return next(error);
+        }else{
+            res.send('added service to client')
+            console.log('added service to client')
+        }
+    });
+    }
+});
 
 //simple get
 router.get('/ext', async(req, res) => {

@@ -3,15 +3,20 @@ const router = express.Router()
 const volunteerModel = require('../models/volunteers');
 const axios = require("axios")
 
-//home page
-router.get('/', (req, res, next)=>{
-    console.log('hello')
-    res.send('hello there2')
-})
+//get all data for volunteers
+router.get('/', (req, res, next) =>{
+    volunteerModel.find({},(err, data)=>{
+        if(err) {
+            console.log(err)
+        }else{
+            console.log(data)
+            res.json(data)
+        }
+    })
+});
 
 //{CREATE}create new volunteer
 router.post('/new-user', (req, res, next)=>{
-    console.log(req.body)
     volunteerModel.create(req.body, (error, data)=>{
     if(error){
         return next(error);
@@ -33,9 +38,12 @@ router.get('/find/:vid', (req, res, next)=>{
     });
 });
 
-//add event to volunteer
-router.put('/attendee/:vid', (req, res, next)=>{
-    
+
+//add/remove event to volunteer
+router.put('/events/:vid', (req, res, next)=>{
+    var action = req.body.action
+
+    if(action == 'add'){
     volunteerModel.findOneAndUpdate({vid:parseInt(req.params.vid)},{
         $push:{'events.evid':parseInt(req.body.evid)}
     },(error, results)=>{
@@ -46,35 +54,53 @@ router.put('/attendee/:vid', (req, res, next)=>{
             console.log('added event to volunteer')
         }
     });
+    }
+    if(action == 'del'){
+        volunteerModel.findOneAndUpdate({vid:parseInt(req.params.vid)},{
+            $pull:{'events.evid':parseInt(req.body.evid)}
+        },(error, results)=>{
+            if(error){
+                return next(error);
+            }else{
+                res.send('deleted event from volunteer')
+                console.log('deleted event from volunteer')
+            }
+        });
+        }
+
 });
+
+
 
 //get volunteer-event attendees
 router.get('/event-attendees', (req, res, next)=>{
+    //join documents to get events data
     volunteerModel.aggregate([
         {
-            $lookup:
-                {
+            $lookup:{
                 from:'events',
                 localField:'events.evid',
                 foreignField:'evid',
-                as:"events",
-                pipeline:[
-                    {$project:{
-                        _id:0,
-                        attendees:0
-                       
-                    }}
-            ],
-                },
-        
-             
-        },
-        {
-            $project:{
-                _id:0,
-            }
-        } 
-         
+                as:'events'
+        }
+
+        },{
+            //get only specific fields
+        $project:{
+            'vid':1,
+            'first_name':1,
+            'mid_name':1,
+            'last_name':1,
+            'phone_num':1,
+            'events.evid':1,
+            'events.ev_name':1,
+            'events.ev_date':1,
+            'events.city':1,
+            'events.st':1,
+            'events.zip':1
+
+        }
+    }
     ],(error, results)=>{
         if(error){
             return next(error)
@@ -84,17 +110,7 @@ router.get('/event-attendees', (req, res, next)=>{
     });
 });
 
-//{CREATE} get all info from volunteers
-router.get('/all', (req, res, next) =>{
-    volunteerModel.find({},(err, data)=>{
-        if(err) {
-            console.log(err)
-        }else{
-            console.log(data)
-            res.json(data)
-        }
-    })
-});
+
 
 //{UPDATE} volunteer data
 router.put('/update/:vid', (req, res)=>{
@@ -110,7 +126,7 @@ router.put('/update/:vid', (req, res)=>{
     });
 });
 
-//{DELETE} user
+//{DELETE} volunteer from database
 router.delete('/del/:vid', (req, res, next)=> {
     volunteerModel.deleteOne({vid : req.params.vid}, (error, data)=>{
         if(error){

@@ -213,6 +213,26 @@ let clientSchema = new Schema({
         type: Boolean,
         required: true
       },
+      employees:
+      {
+        employeeID:
+        [
+          {
+            type:Number,
+            unique:true
+          }
+        ]
+      },
+      services: 
+      {
+        sid:
+        [
+          {
+            type:Number,
+            unique:true
+          }
+        ]
+      }
     }, {
       //Client Health Information
     collection: 'clients'

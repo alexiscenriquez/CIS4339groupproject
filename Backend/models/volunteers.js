@@ -75,8 +75,7 @@ let volunteerSchema = new Schema({
         evid:
           [
             {
-              type:Number,
-              unique:true
+              type:Number
             }
           ]
       }
