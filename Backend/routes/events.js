@@ -99,40 +99,65 @@ router.put('/attendee/:evid', (req, res, next)=>{
 
 //
 router.get('/event-attendees', (req, res, next)=>{
+    
     eventsModel.aggregate([
         {
-            $lookup:
-                {
+            $lookup:{
                 from:'volunteers',
                 localField:'attendees.vid',
                 foreignField:'vid',
-                as:"volunteer",
-                pipeline:[
-                    {$project:{
-                        _id:0,
-                        vid:1,
-                        first_name:1,
-                        last_name:1
-                    }}
-            ],
-                },
-        
-             
-        },
-        
-        {
-            $project:{
-                _id:0,
-                attendees:0
+                as: 'volunteers'
             }
-        } 
+        },
+        {
+            $lookup:{
+                from:"clients",
+                localField:'attendees.cid',
+                foreignField:'cid',
+                as:'clients'
+            }
+        },
+        {
+            $lookup:{
+                from:'employees',
+                localField:'attendees.employeeID',
+                foreignField:'employeeID',
+                as:'employees'
+            }
+        },
+            {
+                $project:{
+                    '_id':0,
+                    'evid':1,
+                    'ev_name':1,
+                    'ev_host':1,
+                    'ev_date':1,
+                    'city':1,
+                    'st':1,
+                    'zip':1,
+                    'volunteers.vid':1,
+                    'volunteers.first_name':1,
+                    'volunteers.last_name':1,
+                    'volunteers.phone_num':1,
+                    'clients.cid':1,
+                    'clients.first_name':1,
+                    'clients.last_name':1,
+                    'clients.phone_number':1,
+                    'employees.employeeID':1,
+                    'employees.firstName':1,
+                    'employees.lastName':1,
+                    'employees.phone':1
+                }
+            }
     ],(error, results)=>{
         if(error){
             return next(error)
         }else{
+            console.log(results)
             res.json(results)
         }
-    });
+    })
+
 });
 
 

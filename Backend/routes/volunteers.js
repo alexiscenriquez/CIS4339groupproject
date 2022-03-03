@@ -52,29 +52,29 @@ router.put('/attendee/:vid', (req, res, next)=>{
 router.get('/event-attendees', (req, res, next)=>{
     volunteerModel.aggregate([
         {
-            $lookup:
-                {
+            $lookup:{
                 from:'events',
                 localField:'events.evid',
                 foreignField:'evid',
-                as:"events",
-                pipeline:[
-                    {$project:{
-                        _id:0,
-                        attendees:0
-                       
-                    }}
-            ],
-                },
-        
-             
-        },
-        {
-            $project:{
-                _id:0,
-            }
-        } 
-         
+                as:'events'
+        }
+
+        },{
+        $project:{
+            'vid':1,
+            'first_name':1,
+            'mid_name':1,
+            'last_name':1,
+            'phone_num':1,
+            'events.evid':1,
+            'events.ev_name':1,
+            'events.ev_date':1,
+            'events.city':1,
+            'events.st':1,
+            'events.zip':1
+
+        }
+    }
     ],(error, results)=>{
         if(error){
             return next(error)
