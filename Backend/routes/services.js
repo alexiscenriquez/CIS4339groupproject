@@ -132,8 +132,4 @@ router.delete('/del/:sid', (req, res, next)=> {
 })
 
 
-
-
-
-
 module.exports = router

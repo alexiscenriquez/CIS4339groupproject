@@ -2,19 +2,19 @@ const express = require("express");
 const mongoose = require("mongoose");  // Require mongoose library
 //Adding better logging functionality
 const morgan = require("morgan");
-//In the production systems, we should not hardcode the sensitive data like API Keys, 
-//Secret Tokens, etc directly within the codebase (based on the Twelve factor App method). 
-// We will pass them as environment variables. This module helps us to load environment variables from a .env file into process.env
+
+//uses .env file to avoid uploaded sensitive data
 require("dotenv").config();   // Require the dotenv
 const cors = require('cors')
 const app = express();  //Create new instance
+//point to files required
 const clientRouter = require('./routes/clients')
-const employeeRouter=require('./routes/employees')
+const employeeRouter =require('./routes/employees')
 const volunteerRouter = require('./routes/volunteers')
 const eventRouter = require('./routes/events')
 const servicesRouter = require('./routes/services')
 
-// setting up mongoose DB connection
+// set up connection to mongodb with atlas
 mongoose
   .connect(process.env.DATABASE_URL)   // read environment varibale from .env
   .then(() => {
@@ -26,17 +26,18 @@ mongoose
 
 
 app.use(cors());
-app.use(express.json()); //allows us to access request body as req.body
+app.use(express.json()); //access request body as req.body
 app.use(morgan("dev"));  //enable incoming request logging in dev mode
 
+//sets up middleware
 app.use('/clients', clientRouter)
 app.use('/employees',employeeRouter)
 app.use('/volunteers', volunteerRouter) 
 app.use('/events', eventRouter)
 app.use('/services', servicesRouter)
 
-
-const PORT = process.env.PORT || 3000; //Declare the port number
+//Declare the port number
+const PORT = process.env.PORT || 3000; 
 app.listen(PORT, () => {
     console.log("Server started listening on port : ", PORT);
   });
