@@ -72,7 +72,28 @@ Where a volunteer object is:
 |-----------|-----------|-----------------------------------------------------|
 | id				|	string		| A randomly generated identifier for the volunteer.	|
 |	vid				|	number		| A Non-random primary identifier for volunteer.			|
-|first_name	| string		|	The volunteer's first name													|
+| first_name| string		|	The volunteer's first name													|
+| mid_name  | string    | The volunteer's middle name                         |     
+| last_name | string    | The volunteer's last name                           |
+| b_day     | string    | The volunteer's birthday                            |
+| ssn       | string    | The volunteer's social security number              |
+| dl        | string    | The volunteer's drivers license number              |
+| gender    | string    | The volunteer's gender                              |
+| ethnicity | string    | The volunteer's ethnicity                           |
+| phone_num | string    | The volunteer's phone number                        |
+| emer_num  | string    | Contact number of someone who should be contacted in case of a medical emergency  |
+| email     | string    | The volunteer's primary email address               |
+| email2    | string    | The volunteer's secondary email address             |
+| prim-language | string| The volunteer's primary language                    |
+| addr      | string    | The volunteer's street address                      |
+| city      | string    | The city the volunteer resides                      |
+| st        | string    | The state the volunteer resides                     |
+| country   | string    | The country the volunteer resides                   |
+| zip       | string    | The zip code of the area the volunteer resides      |
+| events    | array     | List of IDs for events volunteer is apart of        |
+
+
+
 
 ### 2.2 Employees
 
