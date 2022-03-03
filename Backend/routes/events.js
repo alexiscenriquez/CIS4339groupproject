@@ -27,7 +27,9 @@ router.post('/new-event', (req, res, next)=>{
 
 //{READ} find data by object id
 router.get('/objfind', (req, res, next)=>{
-    var docs = new Array(employersModel, volunteersModel, clientsModel);
+    var mod = req.body.type
+
+    //var docs = new Array(employersModel, volunteersModel, clientsModel);
     if(mod == 'employee'){
         employersModel.find({employeeID:req.body.id}, (error, results)=>{
             if(error){
@@ -62,6 +64,7 @@ router.get('/objfind', (req, res, next)=>{
 });
 
 
+
 //{READ} find one event
 router.get('/find/:evid', (req, res, next)=>{
     eventsModel.find({evid : req.params.vid}, (error, results)=>{
@@ -89,20 +92,38 @@ router.get('/all', (req, res, next) =>{
 
 
 //{ADD} new attendees to events
-router.put('/attendee/:evid', (req, res)=>{
-    console.log(req.body)
-    eventsModel.findOneAndUpdate({evid : req.params.evid},{
-        $push:{attendees:{$each:[req.body]}}}, 
-        (error, results) => {
-        if(error){
-            return next(error);
-        }else{
-            res.send('Added new attendee to event.')
-            console.log('Added new attendee to event.')
-        }
-    });
-});
+// router.put('/attendee/:evid', (req, res)=>{
+//     console.log(req.body)
+//     eventsModel.findOneAndUpdate({evid : req.params.evid},{
+//         $push:{attendees:{$each:[req.body]}}}, 
+//         (error, results) => {
+//         if(error){
+//             return next(error);
+//         }else{
+//             res.send('Added new attendee to event.')
+//             console.log('Added new attendee to event.')
+//         }
+//     });
+// });
 
+router.put('/attendee/:evid', (req, res)=>{
+    var id_type = req.body.type
+    var id_num = req.body.id
+    
+    if (id_type == 'volunteer'){
+        eventsModel.findOneAndUpdate({evid : parseInt(req.params.evid)},{
+            $push:{'attendees.vid':id_num}
+        }, 
+            (error, results) => {
+                if(error){
+                    return next(error);
+                }else{
+                res.send('Added new attendee to event.')
+                //console.log('Added new attendee to event.')
+            }
+        });
+    }
+});
 
 //{UPDATE} event data
 router.put('/update/:evid', (req, res)=>{

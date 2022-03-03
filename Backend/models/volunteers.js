@@ -71,14 +71,14 @@ let volunteerSchema = new Schema({
         type:String,
         required: true
     },
-    events:[
+    events:
       {
         evid:{
           type:String,
-          required:true
+          unique:true
         }
       }
-    ]
+    
   }, {
     collection: 'volunteers'
 });
