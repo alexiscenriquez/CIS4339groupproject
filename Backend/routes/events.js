@@ -1,10 +1,6 @@
 const express = require('express');
 const router = express.Router()
 const eventsModel = require('../models/events');
-const employersModel = require('../models/employees');
-const volunteersModel = require('../models/volunteers');
-const clientsModel = require('../models/clients')
-
 
 //{CREATE} get all info from events
 router.get('/', (req, res, next) =>{
@@ -46,47 +42,93 @@ router.get('/find/:evid', (req, res, next)=>{
 router.put('/attendee/:evid', (req, res, next)=>{
     var id_type = req.body.type
     var id_num = req.body.id
+    var action = req.body.action
     
-    if (id_type == 'volunteer'){
-        eventsModel.findOneAndUpdate({evid : parseInt(req.params.evid)},{
-            $push:{'attendees.vid':id_num}
-        }, 
-            (error, results) => {
-                if(error){
-                    return next(error);
-                }else{
-                res.send('Added new volunteer attendee to event.')
-                console.log('Added new volunteer attendee to event.')
-            }
-        });
-    }
+    if(action == 'add'){
+        if (id_type == 'volunteer'){
+            eventsModel.findOneAndUpdate({evid : parseInt(req.params.evid)},{
+                $push:{'attendees.vid':id_num}
+            }, 
+                (error, results) => {
+                    if(error){
+                        return next(error);
+                    }else{
+                    res.send('Added new volunteer attendee to event.')
+                    console.log('Added new volunteer attendee to event.')
+                }
+            });
+        }
 
-    if (id_type == 'employee'){
-        eventsModel.findOneAndUpdate({evid : parseInt(req.params.evid)},{
-            $push:{'attendees.employeeID':id_num}
-        }, 
-            (error, results) => {
-                if(error){
-                    return next(error);
-                }else{
-                res.send('Added new employee attendee to event.')
-                console.log('Added new employee attendee to event.')
-            }
-        });
-    }
+        if (id_type == 'employee'){
+            eventsModel.findOneAndUpdate({evid : parseInt(req.params.evid)},{
+                $push:{'attendees.employeeID':id_num}
+            }, 
+                (error, results) => {
+                    if(error){
+                        return next(error);
+                    }else{
+                    res.send('Added new employee attendee to event.')
+                    console.log('Added new employee attendee to event.')
+                }
+            });
+        }
 
-    if (id_type == 'client'){
-        eventsModel.findOneAndUpdate({evid : parseInt(req.params.evid)},{
-            $push:{'attendees.cid':id_num}
-        }, 
-            (error, results) => {
-                if(error){
-                    return next(error);
-                }else{
-                res.send('Added new client attendee to event.')
-                console.log('Added new client attendee to event.')
-            }
-        });
+        if (id_type == 'client'){
+            eventsModel.findOneAndUpdate({evid : parseInt(req.params.evid)},{
+                $push:{'attendees.cid':id_num}
+            }, 
+                (error, results) => {
+                    if(error){
+                        return next(error);
+                    }else{
+                    res.send('Added new client attendee to event.')
+                    console.log('Added new client attendee to event.')
+                }
+            });
+        }
+    }
+    if(action == 'del'){
+        if (id_type == 'volunteer'){
+            eventsModel.findOneAndUpdate({evid : parseInt(req.params.evid)},{
+                $pull:{'attendees.vid':id_num}
+            }, 
+                (error, results) => {
+                    if(error){
+                        return next(error);
+                    }else{
+                    res.send('Added new volunteer attendee to event.')
+                    console.log('Added new volunteer attendee to event.')
+                }
+            });
+        }
+
+        if (id_type == 'employee'){
+            eventsModel.findOneAndUpdate({evid : parseInt(req.params.evid)},{
+                $pull:{'attendees.employeeID':id_num}
+            }, 
+                (error, results) => {
+                    if(error){
+                        return next(error);
+                    }else{
+                    res.send('Added new employee attendee to event.')
+                    console.log('Added new employee attendee to event.')
+                }
+            });
+        }
+
+        if (id_type == 'client'){
+            eventsModel.findOneAndUpdate({evid : parseInt(req.params.evid)},{
+                $pull:{'attendees.cid':id_num}
+            }, 
+                (error, results) => {
+                    if(error){
+                        return next(error);
+                    }else{
+                    res.send('Added new client attendee to event.')
+                    console.log('Added new client attendee to event.')
+                }
+            });
+        }
     }
 
 });

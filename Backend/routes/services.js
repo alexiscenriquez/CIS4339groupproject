@@ -40,8 +40,10 @@ router.get('/find/:sid', (req, res, next)=>{
 
 
 
-//add applicant to service
+//add or remove applicant from services
 router.put('/new-applicant/:sid', (req, res, next)=>{
+    var action = req.body.action
+    if(action == 'add'){
     servicesModel.findOneAndUpdate({vid:parseInt(req.params.sid)},{
         $push:{'applicants.cid':parseInt(req.body.cid)}
     },(error, results)=>{
@@ -51,7 +53,20 @@ router.put('/new-applicant/:sid', (req, res, next)=>{
             res.send('added applicant to services')
             console.log('added applicant to services')
         }
-    });
+        });
+    }
+    if(action == 'del'){
+        servicesModel.findOneAndUpdate({vid:parseInt(req.params.sid)},{
+            $pull:{'applicants.cid':parseInt(req.body.cid)}
+        },(error, results)=>{
+            if(error){
+                return next(error);
+            }else{
+                res.send('removed applicant from services')
+                console.log('removed applicant from services')
+            }
+            });
+        }
 });
 
 //get all services with applicant basic info
