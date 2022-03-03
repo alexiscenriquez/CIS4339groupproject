@@ -46,6 +46,78 @@ router.get('/all', (req, res, next)=>{
     });
 });
 
+// get all of clients employee history that assisted them
+router.get('/client-employee-history', (req, res, next)=>{
+    clientsModel.aggregate([
+        {
+            $lookup:
+                {
+                from:'employees',
+                localField:'employees.employeeID',
+                foreignField:'employeeID',
+                as:"employees",
+                pipeline:[
+                    {$project:{
+                        _id:0,
+                        employeeID:1,
+                        firstName:1,
+                        lastName:1     
+                    }}
+            ],
+                },
+        
+             
+        },    
+        {
+            $project:{
+                _id:0,
+            }
+        } 
+    ],(error, results)=>{
+        if(error){
+            return next(error)
+        }else{
+            res.json(results)
+        }
+    });
+});
+
+// get all of clients service history
+router.get('/client-service-history', (req, res, next)=>{
+    clientsModel.aggregate([
+        {
+            $lookup:
+                {
+                from:'services',
+                localField:'services.sid',
+                foreignField:'sid',
+                as:"services",
+                pipeline:[
+                    {$project:{
+                        _id:0,
+                        attendees:0
+                       
+                    }}
+            ],
+                },
+        
+             
+        },
+        {
+            $project:{
+                _id:0,
+            }
+        } 
+         
+    ],(error, results)=>{
+        if(error){
+            return next(error)
+        }else{
+            res.json(results)
+        }
+    });
+});
+
 //{UPDATE} Updates Client Data
 router.put('/update/:cid', (req, res)=>{
     clientsModel.updateOne({cid : req.params.cid},{
@@ -72,6 +144,36 @@ router.delete('/del/:cid', (req, res, next)=> {
         }
     })
 })
+
+//adding an employee to a client
+router.put('/addemp/:cid', (req, res, next)=>{
+    
+    clientsModel.findOneAndUpdate({cid:parseInt(req.params.cid)},{
+        $push:{'employees.employeeID':parseInt(req.body.employeeID)}
+    },(error, results)=>{
+        if(error){
+            return next(error);
+        }else{
+            res.send('added employee to client')
+            console.log('added employee to client')
+        }
+    });
+});
+
+//adding a service to a client
+router.put('/addservice/:cid', (req, res, next)=>{
+    
+    clientsModel.findOneAndUpdate({cid:parseInt(req.params.cid)},{
+        $push:{'services.sid':parseInt(req.body.sid)}
+    },(error, results)=>{
+        if(error){
+            return next(error);
+        }else{
+            res.send('added service to client')
+            console.log('added service to client')
+        }
+    });
+});
 
 //simple get
 router.get('/ext', async(req, res) => {
