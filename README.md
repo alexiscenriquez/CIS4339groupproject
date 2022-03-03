@@ -151,6 +151,68 @@ Content-Length: 833
   The response is a client object within a data envelope.
 
   Example response:
+   
+  ````
+  HTTP/1.1 304 Not Modified
+  X-Powered-By: Express
+  Access-Control-Allow-Origin: *
+  ETag: W/"4ee-hW/VMs5pnpKlr1LO6qMapGaaM9E"
+  Date: Thu, 03 Mar 2022 17:25:18 GMT
+  Connection: keep-alive
+  Keep-Alive: timeout=5
   
+  {"_id": "6220f557b87e766fa5128410",
+   "cid": 1,
+   "first_name": "Steven",
+   "mid_name": "S",
+   "last_name": "Spielberg",
+   "b_day": "1993-08-22T00:00:00.000Z",
+   "DL": "",
+   "gender": "",
+   "ethnicity": "",
+   "address": "555 Peppermint Lane",
+   "city": "Austin",
+   "state": "TX",
+   "country": "Harris",
+   "zip_code": "77885",
+   "rent": "1,000",
+   "residency": "1 year",
+   "living_arrangements": "With Spouse",
+   "number_of_children": 1,
+   "number_of_adults_over_65": 0,
+   "phone_number": "222-545-5585",
+   "home_phone_number": "",
+   "emergency_contact_phone_number": "221-558-8995",
+   "primary_email": "SSberg@yahoo.com",
+   "secondary_email": "",
+   "marital_status": "Married",
+   "language": "English",
+   "priority_population": "HIGH",
+   "employment_status": "Employed",
+   "length_of_employment": "7 years",
+   "employer_name": "McDonalds",
+   "occupation": "Manager",
+   "highest_grade": "College",
+   "graduate": true,
+   "degree_name": "Business",
+   "head_of_household": "Steven Spielberg",
+   "monthly_income": 52124,
+   "spousal_income_support": "50000",
+   "worker_compensation": 0,
+   "veteran_status": "None",
+   "child_support": 0,
+   "tanf": 0,
+   "food_stamps": 0,
+   "ssi": 0,
+   "unemployment": 0,
+   "social_security": 740259875,
+   "other_income": null,
+   "health_insurance": true,
+   "health_insurance_desc": "General Heatlhcare",
+   "insurance_program": "United Healthcare",
+   "covid_status": true,
+   "__v": 0}
+  ````
+
   
 ## 3. Testing
