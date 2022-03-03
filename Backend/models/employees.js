@@ -43,11 +43,13 @@ let employeesSchema = new Schema(
     home: {
       type: String,
     },
-    eContact: {
-      fName: String,
-      lName: String,
-      phone: String,
-    },
+    eContact: [
+      {
+        fName: String,
+        lName: String,
+        phone: String,
+      },
+    ],
     pEmail: {
       type: String,
     },
@@ -87,15 +89,19 @@ let employeesSchema = new Schema(
     degree: {
       type: String,
     },
-    events: {
-      eventID: Number,
-      eventName: String,
-    },
-    clients: {
-      clientID: Number,
-      firstName: String,
-      lastName: String,
-    },
+    events: [
+      {
+        eventID: Number,
+        eventName: String,
+      },
+    ],
+    clients: [
+      {
+        clientID: Number,
+        firstName: String,
+        lastName: String,
+      },
+    ],
   },
   {
     collection: "employees",
