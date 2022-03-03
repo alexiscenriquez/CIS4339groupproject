@@ -132,4 +132,25 @@ Content-Length: 833
     }
   } 
   ````
+  
+  ### 2.3 Clients
+  
+  #### Getting a volunteer's details
+  Returns details stored in collection about a volunteer
+  
+  ````
+  GET http://127.0.0.1:3000/clients/find/1
+  ````
+  Example request:
+
+  ````
+  GET /clients/find/1 HTTP/1.1
+  Host: localhost:3000
+  ````
+  
+  The response is a volunteer object within a data envelope.
+
+  Example response:
+  
+  
 ## 3. Testing
