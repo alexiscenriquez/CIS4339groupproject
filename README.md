@@ -220,7 +220,7 @@ Content-Length: 833
   | Field			|	Type			|	Description																				  |
   |-----------|-----------|-----------------------------------------------------|
   | id				|	string		| A randomly generated identifier for the client.	|
-  |	vid				|	number		| A Non-random primary identifier for client.			|
+  |	cid				|	number		| A Non-random primary identifier for client.			|
   |first_name	| string		|	The client's first name													|
 
   
