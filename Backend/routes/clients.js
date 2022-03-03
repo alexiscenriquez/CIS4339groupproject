@@ -67,7 +67,9 @@ router.get('/client-employee-history', (req, res, next)=>{
                 'last_name':1,
                 'employees.employeeID':1,
                 'employees.firstName':1,
-                'employees.lastName':1
+                'employees.lastName':1,
+                'employees.phone':1,
+                'employees.pEmail':1
             }
         } 
     ],(error, results)=>{
@@ -89,31 +91,28 @@ router.get('/client-service-history', (req, res, next)=>{
                 localField:'services.sid',
                 foreignField:'sid',
                 as:"services",
-                pipeline:[
-                    {$project:{
-                        _id:0,
-                        attendees:0
-                       
-                    }}
-            ],
-                },
-        
-             
-        },
-        {
-            $project:{
-                _id:0,
+                }
+
+
+             }, {
+                $project:{
+                    'sid':1,
+                    'first_name':1,
+                    'mid_name':1,
+                    'last_name':1,
+                    'services.sid':1,
+                    'services.name':1,
+                    'services.renewal':1
+                }
+            } 
+        ],(error, results)=>{
+            if(error){
+                return next(error)
+            }else{
+                res.json(results)
             }
-        } 
-         
-    ],(error, results)=>{
-        if(error){
-            return next(error)
-        }else{
-            res.json(results)
-        }
+        });
     });
-});
 
 //{UPDATE} Updates Client Data
 router.put('/update/:cid', (req, res)=>{
