@@ -214,6 +214,14 @@ Content-Length: 833
    "covid_status": true,
    "__v": 0}
   ````
+  
+  Where a client object is:
+
+  | Field			|	Type			|	Description																				  |
+  |-----------|-----------|-----------------------------------------------------|
+  | id				|	string		| A randomly generated identifier for the client.	|
+  |	cid				|	number		| A Non-random primary identifier for client.			|
+  |first_name	| string		|	The client's first name													|
 
   
 ## 3. Testing

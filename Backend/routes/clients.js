@@ -56,21 +56,18 @@ router.get('/client-employee-history', (req, res, next)=>{
                 localField:'employees.employeeID',
                 foreignField:'employeeID',
                 as:"employees",
-                pipeline:[
-                    {$project:{
-                        _id:0,
-                        employeeID:1,
-                        firstName:1,
-                        lastName:1     
-                    }}
-            ],
-                },
+                }
         
              
-        },    
-        {
+        },{
             $project:{
-                _id:0,
+                'employeedID':1,
+                'first_name':1,
+                'mid_name':1,
+                'last_name':1,
+                'employees.employeeID':1,
+                'employees.firstName':1,
+                'employees.lastName':1
             }
         } 
     ],(error, results)=>{
