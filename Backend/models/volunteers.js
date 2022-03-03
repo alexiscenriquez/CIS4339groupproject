@@ -71,12 +71,11 @@ let volunteerSchema = new Schema({
         type:String,
         required: true
     },
-    events:
-      {
+    events:{
         evid:
           [
             {
-              type:String,
+              type:Number,
               unique:true
             }
           ]

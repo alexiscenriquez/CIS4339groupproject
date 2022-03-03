@@ -33,6 +33,57 @@ router.get('/find/:vid', (req, res, next)=>{
     });
 });
 
+//add event to volunteer
+router.put('/attendee/:vid', (req, res, next)=>{
+    
+    volunteerModel.findOneAndUpdate({vid:parseInt(req.params.vid)},{
+        $push:{'events.evid':parseInt(req.body.evid)}
+    },(error, results)=>{
+        if(error){
+            return next(error);
+        }else{
+            res.send('added event to volunteer')
+            console.log('added event to volunteer')
+        }
+    });
+});
+
+//get volunteer-event attendees
+router.get('/event-attendees', (req, res, next)=>{
+    volunteerModel.aggregate([
+        {
+            $lookup:
+                {
+                from:'events',
+                localField:'events.evid',
+                foreignField:'evid',
+                as:"events",
+                pipeline:[
+                    {$project:{
+                        _id:0,
+                        attendees:0
+                       
+                    }}
+            ],
+                },
+        
+             
+        },
+        {
+            $project:{
+                _id:0,
+            }
+        } 
+         
+    ],(error, results)=>{
+        if(error){
+            return next(error)
+        }else{
+            res.json(results)
+        }
+    });
+});
+
 //{CREATE} get all info from volunteers
 router.get('/all', (req, res, next) =>{
     volunteerModel.find({},(err, data)=>{

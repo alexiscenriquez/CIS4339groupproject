@@ -54,8 +54,7 @@ let eventSchema = new Schema(
   ,
   attendees:
     {
-      vid:
-      [
+      vid:[
         {
           type:Number
         }
@@ -67,8 +66,7 @@ let eventSchema = new Schema(
       ],
       employeeID:[
         {
-          type:Number,
-          ref:'employees'
+          type:Number
         }
       ]
     }

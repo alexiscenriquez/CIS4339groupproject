@@ -25,58 +25,6 @@ router.post('/new-event', (req, res, next)=>{
     });
 });
 
-//{READ} find data by object id
-router.get('/objfind', (req, res, next)=>{
-    var mod = req.body.type
-
-    //var docs = new Array(employersModel, volunteersModel, clientsModel);
-    if(mod == 'employee'){
-        employersModel.find({employeeID:req.body.id}, (error, results)=>{
-            if(error){
-                return  next(error)
-            }else{
-                res.json(results)
-            }
-        })
-    }
-    
-    if(mod == 'volunteer'){
-        volunteersModel.find({vid:req.body.id}, (error, results)=>{
-            if(error){
-                return  next(error)
-            }else{
-                res.json(results)
-            }
-        })
-    }
-
-    if(mod == 'client'){
-        clientsModel.find({cid:req.body.id}, (error, results)=>{
-            if(error){
-                return  next(error)
-            }else{
-                res.json(results)
-            }
-        })
-    }
-     
-
-});
-
-
-
-//{READ} find one event
-router.get('/find/:evid', (req, res, next)=>{
-    eventsModel.find({evid : req.params.vid}, (error, results)=>{
-        if(error){
-            return next(error);
-        }else{
-            res.json(results);
-        }
-    });
-});
-
-
 //{CREATE} get all info from events
 router.get('/all', (req, res, next) =>{
     eventsModel.find({},(err, data)=>{
@@ -89,24 +37,19 @@ router.get('/all', (req, res, next) =>{
     })
 });
 
+//{READ} find one event
+router.get('/find/:evid', (req, res, next)=>{
+    eventsModel.find({evid : req.params.evid}, (error, results)=>{
+        if(error){
+            return next(error);
+        }else{
+            res.json(results);
+        }
+    });
+});
 
-
-//{ADD} new attendees to events
-// router.put('/attendee/:evid', (req, res)=>{
-//     console.log(req.body)
-//     eventsModel.findOneAndUpdate({evid : req.params.evid},{
-//         $push:{attendees:{$each:[req.body]}}}, 
-//         (error, results) => {
-//         if(error){
-//             return next(error);
-//         }else{
-//             res.send('Added new attendee to event.')
-//             console.log('Added new attendee to event.')
-//         }
-//     });
-// });
-
-router.put('/attendee/:evid', (req, res)=>{
+//{UPDATE} Add new attendees to events
+router.put('/attendee/:evid', (req, res, next)=>{
     var id_type = req.body.type
     var id_num = req.body.id
     
@@ -118,16 +61,85 @@ router.put('/attendee/:evid', (req, res)=>{
                 if(error){
                     return next(error);
                 }else{
-                res.send('Added new attendee to event.')
-                //console.log('Added new attendee to event.')
+                res.send('Added new volunteer attendee to event.')
+                console.log('Added new volunteer attendee to event.')
             }
         });
     }
+
+    if (id_type == 'employee'){
+        eventsModel.findOneAndUpdate({evid : parseInt(req.params.evid)},{
+            $push:{'attendees.employeeID':id_num}
+        }, 
+            (error, results) => {
+                if(error){
+                    return next(error);
+                }else{
+                res.send('Added new employee attendee to event.')
+                console.log('Added new employee attendee to event.')
+            }
+        });
+    }
+
+    if (id_type == 'client'){
+        eventsModel.findOneAndUpdate({evid : parseInt(req.params.evid)},{
+            $push:{'attendees.cid':id_num}
+        }, 
+            (error, results) => {
+                if(error){
+                    return next(error);
+                }else{
+                res.send('Added new client attendee to event.')
+                console.log('Added new client attendee to event.')
+            }
+        });
+    }
+
 });
 
+//
+router.get('/event-attendees', (req, res, next)=>{
+    eventsModel.aggregate([
+        {
+            $lookup:
+                {
+                from:'volunteers',
+                localField:'attendees.vid',
+                foreignField:'vid',
+                as:"volunteer",
+                pipeline:[
+                    {$project:{
+                        _id:0,
+                        vid:1,
+                        first_name:1,
+                        last_name:1
+                    }}
+            ],
+                },
+        
+             
+        },
+        
+        {
+            $project:{
+                _id:0,
+                attendees:0
+            }
+        } 
+    ],(error, results)=>{
+        if(error){
+            return next(error)
+        }else{
+            res.json(results)
+        }
+    });
+});
+
+
+
 //{UPDATE} event data
-router.put('/update/:evid', (req, res)=>{
-    eventsModel.findOneAndUpdate({vid : req.params.evid},{
+router.put('/update/:evid', (req, res, next)=>{
+    eventsModel.findOneAndUpdate({evid : req.params.evid},{
         $set:req.body
         }, (error, results) => {
         if(error){
@@ -140,8 +152,8 @@ router.put('/update/:evid', (req, res)=>{
 });
 
 //{DELETE} event
-router.delete('/del/:vid', (req, res, next)=> {
-    eventsModel.deleteOne({vid : req.params.vid}, (error, data)=>{
+router.delete('/del/:evid', (req, res, next)=> {
+    eventsModel.deleteOne({evid : parseInt(req.params.evid)}, (error, data)=>{
         if(error){
             return next(error);
         }else {
