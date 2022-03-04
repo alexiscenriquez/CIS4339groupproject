@@ -50,6 +50,7 @@ router.get('/all', (req, res, next)=>{
 
 // get all of clients employee history and service hitsory
 router.get('/client-history', (req, res, next)=>{
+    //joining the data for employees and services
     clientsModel.aggregate([
         {
             $lookup:
@@ -74,12 +75,14 @@ router.get('/client-history', (req, res, next)=>{
 
              },
              {
+            //project allows for data retrieval specification (0 = no, 1= yes)
             $project:{
+                '_id':0, 
                 'employeedID':1,
                 'first_name':1,
                 'mid_name':1,
                 'last_name':1,
-                'employees.employeeID':1,
+                'employees.employeeID':1, 
                 'employees.firstName':1,
                 'employees.lastName':1,
                 'employees.phone':1,
@@ -126,10 +129,10 @@ router.delete('/del/:cid', (req, res, next)=> {
     })
 })
 
-//adding an employee to a client
+//{PUT} adding an employee to a client
 router.put('/adddelemp/:cid', (req, res, next)=>{
     var action = req.body.action
-
+    //While the 'action' field is 'add' then an employee can be added to a client
     if(action == 'add'){
     clientsModel.findOneAndUpdate({cid:parseInt(req.params.cid)},{
         $push:{'employees.employeeID':parseInt(req.body.employeeID)}
@@ -142,6 +145,7 @@ router.put('/adddelemp/:cid', (req, res, next)=>{
         }
     });
 }
+    //While the 'action' field is 'add' then an employee can be removed from a client
     if(action == 'delete'){
     clientsModel.findOneAndUpdate({cid:parseInt(req.params.cid)},{
         $pull:{'employees.employeeID':parseInt(req.body.employeeID)}
@@ -159,7 +163,7 @@ router.put('/adddelemp/:cid', (req, res, next)=>{
 //adding a service to a client
 router.put('/adddelservice/:cid', (req, res, next)=>{
     var action = req.body.action
-
+      //While the 'action' field is 'add' then a service can be added to a client
     if(action == 'add'){
     clientsModel.findOneAndUpdate({cid:parseInt(req.params.cid)},{
         $push:{'services.sid':parseInt(req.body.sid)}
@@ -172,6 +176,7 @@ router.put('/adddelservice/:cid', (req, res, next)=>{
         }
     });
 }
+    //While the 'action' field is 'add' then a service can be removed from a client
     if(action == 'delete'){
     clientsModel.findOneAndUpdate({cid:parseInt(req.params.cid)},{
         $pull:{'services.sid':parseInt(req.body.sid)}
