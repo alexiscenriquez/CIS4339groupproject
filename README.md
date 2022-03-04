@@ -881,6 +881,91 @@ Response Body
 Activity is edited via PUT.
 
 ````
+
+#### Adding a client to an employee collection
+
+The request to add an employee to a client looks like this:
+
+````
+PUT http://localhost:3000/employees/client/{employeeID}
+````
+Example Request 
+
+````
+PUT http://localhost:3000/employees/client/13
+
+Request Headers
+Content-Type: application/json
+User-Agent: PostmanRuntime/7.29.0
+Accept: */*
+Postman-Token: 51ba140c-6268-41f4-a4ac-b24c20ebbd8a
+Host: localhost:3000
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 45
+Request Body
+{
+    "action":"add",
+    "clientID":"4"
+}
+
+````
+Example Response
+
+Response Headers
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: text/html; charset=utf-8
+Content-Length: 24
+ETag: W/"18-pX0mww76oKvfiWtEGrMTyyTAdJM"
+Date: Fri, 04 Mar 2022 20:19:27 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Response Body
+added employee to client
+
+````
+
+#### Deleting a client from an Employee Collection
+
+The request to delete an employee to a client looks like this:
+
+Example Request:
+
+````
+Request Headers
+Content-Type: application/json
+User-Agent: PostmanRuntime/7.29.0
+Accept: */*
+Postman-Token: abdc4489-7cce-4afa-bd5d-0bad64b508dc
+Host: localhost:3000
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 45
+
+Request Body
+{
+    "action":"del",
+    "clientID":"3"
+}
+````
+Example Response
+
+````
+Response Headers
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: text/html; charset=utf-8
+Content-Length: 29
+ETag: W/"1d-u0XwGkRJ117Q5GyXFL1sQmgpiEY"
+Date: Fri, 04 Mar 2022 21:24:21 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+Response Body
+Removed client from employee.
+
+````
 ### 2.3 Clients
   
   #### Getting a volunteer's details
