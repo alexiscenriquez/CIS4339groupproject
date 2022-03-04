@@ -18,9 +18,9 @@ Our group's API is JSON-based. All requests are made to endpoints beginning: `ht
 ## 2. Connecting to the Backend
 
 ### 2.1 For Local Deployments 
-Insert data into the database
+ 1) Insert data into the database
 
-To gain access to the database, a .env file is required containing the DATABASE_URL
+ 2) To gain access to the database, a .env file is required containing the DATABASE_URL
 
 ### 2.2 How to Initialize the Backend
 
