@@ -153,13 +153,26 @@ if(action == 'add'){
  
 });
 
-router.put("/delevent/:employeeID", (req, res, next) => {
-  var action = req.body.action;
 
+router.put("/event/:employeeID", (req, res, next) => {
+  var action = req.body.action;
+//add clients to employees
+if(action == 'add'){
+  empModel.findOneAndUpdate({employeeID:parseInt(req.params.employeeID)},{
+    $push:{'events.eventID':req.body.eventID}
+  },(error, results)=>{
+      if(error){
+          return next(error);
+      }else{
+          res.send('added event to employee')
+          console.log('added event to employee')
+      }
+  });
+}
   //remove events from employees
-  if (action == "del") {
+else if (action == "del") {
     empModel.findOneAndUpdate(
-      { eventID: parseInt(req.params.eventID) },
+      { employeeID: parseInt(req.params.employeeID) },
       {
         $pull: { "events.eventID": req.body.eventID },
       },

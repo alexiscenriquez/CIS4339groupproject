@@ -31,18 +31,15 @@ Content-Type: application/json
     "lEmployment": "8mo",
     "dept":"Events",
     "jDesc":"Event Moderator",
-    "degree":"Bachelor's",
-    "events":[ {
-      "eventID": 1
-    }
-    ]
+    "degree":"Bachelor's"
+    
   }   
 
 
     
  GET http://localhost:3000/clients/all
 
- GET http://localhost:3000/employees/
+ GET http://localhost:3000/employees/find/13
 
  DELETE http://localhost:3000/employees/del/1
 

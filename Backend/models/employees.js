@@ -89,11 +89,13 @@ let employeesSchema = new Schema(
     degree: {
       type: String,
     },
-    events: [
+    events: 
       {
-        eventID: Number,
-      },
-    ],
+        eventID: [
+        {  type: Number,
+          unique: true,
+      }]}
+    ,
     clients: {
       clientID: [
         {
