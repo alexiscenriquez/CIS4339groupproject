@@ -172,11 +172,34 @@ Connection: close
 Where an employee object is:
 
 | Field			|	Type			|	Description																				  |
-|-----------|-----------|-----------------------------------------------------|
-| eContact  | object    | An object that houses the name and phone number of the employee's emergency contact|
-| fName     | string    | The first name of the employee's emergency contact  |
-| lName     | string    | The last name of the employee's emergency contact   |
-| phone     | string    | The phone number of the employee's emergency contact|
+|------------|-----------|-----------------------------------------------------|
+| eContact   | object    | An object that houses the name and phone number of the employee's emergency contact|
+| fName      | string    | The first name of the employee's emergency contact  |
+| lName      | string    | The last name of the employee's emergency contact   |
+| phone      | string    | The phone number of the employee's emergency contact|
+| employeeID | string    | The employee's unique ID                            |
+| firstName  | string    | The employee's first name                           |
+| lastName   | string    | The employee's last name                            |
+| birthday   | string    | The employee's birthday                             |
+| SSN        | string    | The employee's social security number               |
+| dLicense   | string    | The employee's driver's license number              |
+| gender     | string    | The employee's gender                               |
+| race       | string    | The employee's race                                 |
+| hispanic   | boolean   | Tells if the employee is hispanic                   |
+| address    | string    | The employees's street address                      |
+| city       | string    | The city the employee resides                       |
+| state      | string    | The state the employee resides                      |
+| county     | string    | The county the employee resides                     |
+| degree     | string    | The employee's academic degree qualification        |
+| dept       | string    | The department in which the employee works          |
+| home       | string    | The employee's home contact number                  |
+| jDesc      | string    | The employee's job description                      |
+| lEmployment| string    | The length of time the employee has been employed at the company |
+| language   | array     | The languages the employee is proficient in         |
+| pEmail     | string    | The employee's primary email                        |
+| phone      | string    | The employee's primary number                       |
+| zip        | string    | The zip code of the area the employee resides       |   
+
 
 #### Creating a post
 Creates a new employee
