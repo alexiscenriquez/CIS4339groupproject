@@ -25,7 +25,7 @@ router.post('/new-client', (req, res, next)=>{
 
 //{READ} Finds specified client
 router.get('/find/:cid', (req, res, next)=>{
-    clientsModel.find({cid : req.params.cid}, (error, results)=>{
+    clientsModel.find({cid : parseInt(req.params.cid)}, (error, results)=>{
         if(error){
             return next(error);
         }else{
@@ -104,7 +104,7 @@ router.get('/client-history', (req, res, next)=>{
 
 //{UPDATE} Updates Client Data
 router.put('/update/:cid', (req, res)=>{
-    clientsModel.updateOne({cid : req.params.cid},{
+    clientsModel.updateOne({cid : parseInt(req.params.cid)},{
         $set:req.body
         }, (error, results) => {
         if(error){
@@ -118,7 +118,7 @@ router.put('/update/:cid', (req, res)=>{
 
 //{DELETE} Delete client data
 router.delete('/del/:cid', (req, res, next)=> {
-    clientsModel.deleteOne({cid : req.params.cid}, (error, data)=>{
+    clientsModel.deleteOne({cid :parseInt(req.params.cid)}, (error, data)=>{
         if(error){
             return next(error);
         }else {
