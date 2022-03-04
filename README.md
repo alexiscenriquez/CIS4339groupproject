@@ -26,7 +26,7 @@ Request to fetch all information from the volunteers collection:
 GET http://localhost:3000/volunteers
 ````
 
-Example request:
+Request Example:
 
 ````
 User-Agent: PostmanRuntime/7.29.0
@@ -37,9 +37,7 @@ Accept-Encoding: gzip, deflate, br
 Connection: keep-alive
 ````
 
-The response is a volunteer object within a data envelope.
-
-Example response:
+Response Example:
 
 ````
 X-Powered-By: Express
@@ -93,7 +91,7 @@ Keep-Alive: timeout=5
 ````
 POST http://localhost:3000/volunteers/new-user
 ````
-Example Request 
+Request Example
 
 ````
 Content-Type: application/json
@@ -170,7 +168,7 @@ Accept-Encoding: gzip, deflate, br
 Connection: keep-alive
 ````
 
-Response
+Response Example
 
 ````
 X-Powered-By: Express
@@ -222,7 +220,7 @@ Keep-Alive: timeout=5
 PUT 127.0.0.1:3000/volunteers/events/{{vid}}
 ````
 
-Example request
+Request Example
 
 ````
 PUT http://127.0.0.1:3000/volunteers/events/1
@@ -249,7 +247,7 @@ Request Body Adding event
 
 ````
 
-Example Response
+Response Example
 
 ````
 X-Powered-By: Express
@@ -274,7 +272,7 @@ Request Body Deleting event
 
 ````
 
-Example Response
+Response Example
 
 ````
 X-Powered-By: Express
@@ -293,7 +291,7 @@ deleted event from volunteer
 
 #### GET ALL EVENTS THAT VOLUNTEERS ATTENDED
 
-Example request
+Request Example
 
 ````
 GET http://127.0.0.1:3000/volunteers/event-attendees
@@ -308,7 +306,7 @@ Accept-Encoding: gzip, deflate, br
 Connection: keep-alive
 ````
 
-Example Response
+Response Example
 
 ````
 X-Powered-By: Express
@@ -365,7 +363,7 @@ Keep-Alive: timeout=5
 PUT http://127.0.0.1:3000/volunteers/update/{{vid}}
 ````
 
-Example Request
+Request Example
 
 ````
 PUT http://127.0.0.1:3000/volunteers/update/1
@@ -392,7 +390,7 @@ Request Body
 ````
 
 
-Example Response
+Response Example
 
 ````
 X-Powered-By: Express
@@ -416,7 +414,7 @@ Volunteer information updated.
 DELETE http://127.0.0.1:3000/volunteers/del/{{vid}}
 ````
 
-Example Request
+Request Example
 
 ````
 DELETE http://127.0.0.1:3000/volunteers/del/6
@@ -433,7 +431,7 @@ Connection: keep-alive
 Content-Length: 67
 ````
 
-Example Response
+Response Example
 
 ````
 X-Powered-By: Express
@@ -453,7 +451,7 @@ deleted from db
 
 | Field			|	Type			|	Description																				  |
 |-----------|-----------|-----------------------------------------------------|
-| id				|	string		| A randomly generated identifier for the volunteer.	|
+| _id				|	string		| A randomly generated identifier for the volunteer.	|
 |	vid				|	number		| A Non-random primary identifier for volunteer.			|
 | first_name| string		|	The volunteer's first name													|
 | mid_name  | string    | The volunteer's middle name                         |     
