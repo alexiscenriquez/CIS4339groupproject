@@ -1,4 +1,4 @@
-  #### Getting clients's details
+  #### Getting client's details
   Deals with clients collection
   
   Request to fetch all information from the clients collection
