@@ -568,6 +568,13 @@ Content-Length: 833
   Example response:
   
   `````
+  Access-Control-Allow-Origin: *
+  Connection: keep-alive
+  Date: Fri, 04 Mar 2022 04:51:10 GMT
+  ETag: W/"511-3oarHIMqV9Xawjk30RMyqBT7QiM"
+  Keep-Alive: timeout=5
+  X-Powered-By: Express
+  
   {
         "first_name": "Steven",
         "mid_name": "S",
@@ -596,6 +603,71 @@ Content-Length: 833
     }
     
    `````
+   
+   #### Creating a post
+   Creates a new client
+
+  ````
+  POST http://127.0.0.1:3000/clients/new-client
+  ````
+  Example request:
+  
+  ````
+    {
+    "cid": 5,
+    "first_name": "Michael",
+    "mid_name": "J",
+    "last_name": "Jordan",
+    "b_day": "1963-02-17T00:00:00.000Z",
+    "DL": "",
+    "gender": "Male",
+    "ethnicity": "African American",
+    "address": "2700 Point Ln",
+    "city": "Highland Park",
+    "state": "IL",
+    "country": "United States",
+    "zip_code": "60035",
+    "rent": "0",
+    "residency": " 12 years",
+    "living_arrangements": "With Family",
+    "number_of_children": 5,
+    "number_of_adults_over_65": 0,
+    "phone_number": "281-854-3332",
+    "home_phone_number": "",
+    "emergency_contact_phone_number": "281-874-5512",
+    "primary_email": "HallofFamer@yahoo.com",
+    "secondary_email": "",
+    "marital_status": "Married",
+    "language": "English",
+    "priority_population": "HIGH",
+    "employment_status": "Unemployed",
+    "length_of_employment": " 16 years",
+    "employer_name": "None",
+    "occupation": "None",
+    "highest_grade": "College",
+    "graduate": true,
+    "degree_name": "Bachelors of Arts in Geography",
+    "head_of_household": "Michael Jordan",
+    "monthly_income": 3000000,
+    "spousal_income_support": "0",
+    "worker_compensation": 0,
+    "veteran_status": "None",
+    "child_support": 0,
+    "tanf": 0,
+    "food_stamps": 0,
+    "ssi": 0,
+    "unemployment": 0,
+    "social_security": 555555555,
+    "other_income": null,
+    "health_insurance": true,
+    "health_insurance_desc": "Full Coverage",
+    "insurance_program": "Jordan Family Program",
+    "covid_status": false
+    }
+   ````
+  
+  
+  
   
   
 ### 2.4 Posts
