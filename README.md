@@ -852,6 +852,8 @@ Example Request
 ````
 PUT http://localhost:3000/employees/update/7
 
+````
+````
 Request Headers
 Content-Type: text/plain
 User-Agent: PostmanRuntime/7.29.0
@@ -896,7 +898,8 @@ Example Request
 
 ````
 PUT http://localhost:3000/employees/client/13
-
+````
+````
 Request Headers
 Content-Type: application/json
 User-Agent: PostmanRuntime/7.29.0
@@ -941,6 +944,8 @@ Example Request:
 
 ````
 PUT http://localhost:3000/employees/client/13
+````
+````
 Request Headers
 Content-Type: application/json
 User-Agent: PostmanRuntime/7.29.0
@@ -984,7 +989,8 @@ Example Request
 
 ````
 PUT http://localhost:3000/employees/event/13
-
+````
+````
 Request Headers
 Content-Type: application/json
 User-Agent: PostmanRuntime/7.29.0
@@ -1028,7 +1034,9 @@ PUT http://localhost:3000/employees/event/{employeeID}
 Example Request:
 
 ````
-http://localhost:3000/employees/event/13
+PUT http://localhost:3000/employees/event/13
+````
+````
 Request Headers
 Content-Type: application/json
 User-Agent: PostmanRuntime/7.29.0
@@ -2384,6 +2392,6 @@ Possible errors:
 | 404 Not Found | The requested resource could not be found buy may be available again in the future. Subsequent requests by the cleints are permissible. |
 
 
-
-
 ## 4. Testing
+
+To test the backend, we use the software Postman. To test, use the request syntax given in the resources section and replace the contents within brackets with IDs from the database if necessary.
