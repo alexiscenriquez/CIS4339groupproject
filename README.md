@@ -6,7 +6,8 @@
   - [Volunteers](#21-volunteers)
   - [Employees](#22-employees)
   - [Clients](#23-clients)
-  - [Posts](#24-posts)
+  - [Services](#24-services)
+  - [Events](#25-events)
  - [Testing](#3-testing)
 
 ## 1. Overview
@@ -426,6 +427,12 @@ Employee is added to the database.
 
 #### Deleting an employee by Id
 
+The request to delete and employee collection looks like this:
+
+````
+DELETE http://localhost:3000/employees/del/{employeeid}
+````
+
 Example Request
 
 ````
@@ -449,6 +456,12 @@ deleted from db
 ````
 
 #### Updating an employee collection
+
+The request to delete and employee collection looks like this:
+
+````
+PUT http://localhost:3000/employees/update/{employeeid}
+````
 
 Example Request
 
@@ -898,11 +911,911 @@ Activity is edited via PUT.
     }
    ````
   
-  
-  
-  
-  
-### 2.4 Posts
+  ### 2.4 Services
 
   
+Deals with Services collection
+
+#### Request to fetch all services data
+
+Example Request
+````
+GET http://127.0.0.1:3000/services
+````
+
+````
+User-Agent: PostmanRuntime/7.29.0
+Accept: */*
+Postman-Token: d750af69-2afa-497d-8c56-b15897978d99
+Host: 127.0.0.1:3000
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+````
+
+Example Response
+
+````
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 703
+ETag: W/"2bf-/H0L013p83f8vNQ0aqbCJ1fb7x8"
+Date: Fri, 04 Mar 2022 06:33:53 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+[
+    {
+        "applicants": {
+            "cid": [
+                1,
+                4
+            ]
+        },
+        "_id": "6220fef38d9e861941326b06",
+        "sid": 1,
+        "name": "Early Childhood",
+        "renewal": "Court Order",
+        "__v": 0
+    },
+    {
+        "applicants": {
+            "cid": [
+                2
+            ]
+        },
+        "_id": "6220ff360158a16042d98f73",
+        "sid": 2,
+        "name": "Housing",
+        "renewal": "Monthly",
+        "__v": 0
+    },
+    {
+        "applicants": {
+            "cid": [
+                3
+            ]
+        },
+        "_id": "6220ff4e0158a16042d98f75",
+        "sid": 3,
+        "name": "Adult Education",
+        "renewal": "Monthly",
+        "__v": 0
+    },
+    {
+        "applicants": {
+            "cid": [
+                4
+            ]
+        }
+]
+````
+
+#### ADD NEW SERVICES TO SERVICES COLLECTION
+
+Example Request
+
+````
+POST http://127.0.0.1:services/new-service
+````
+
+````
+Content-Type: application/json
+User-Agent: PostmanRuntime/7.29.0
+Accept: */*
+Postman-Token: 5813163d-f2a8-48f7-a82e-4f2d519fb96b
+Host: 127.0.0.1:3000
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 70
+````
+
+Body
+
+````
+{
+    "sid":7,
+    "name":"New service",
+    "renewal":"Monthly"
+}
+````
+
+Example Response
+
+````
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: text/html; charset=utf-8
+Content-Length: 17
+ETag: W/"11-9Nz/7SiuvdxmpU04iFjLPWMRzyA"
+Date: Fri, 04 Mar 2022 06:38:10 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+````
+
+````
+New Service added
+````
+
+#### FIND SERVICE BY SID
+
+````
+GET http://127.0.0.1:3000/services/find/{{sid}}
+````
+
+Example Request
+
+````
+GET http://127.0.0.1:3000/services/find/1
+````
+
+````
+User-Agent: PostmanRuntime/7.29.0
+Accept: */*
+Postman-Token: 121fcf37-91aa-46ac-b9ac-388b11c119e8
+Host: 127.0.0.1:3000
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+````
+
+Example Response
+
+````
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 128
+ETag: W/"80-KAmFYBzIxKSCuZHHHcyAiXqI+8w"
+Date: Fri, 04 Mar 2022 06:39:27 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+[
+    {
+        "applicants": {
+            "cid": [
+                1,
+                4
+            ]
+        },
+        "_id": "6220fef38d9e861941326b06",
+        "sid": 1,
+        "name": "Early Childhood",
+        "renewal": "Court Order",
+        "__v": 0
+    }
+]
+````
+
+#### ADD OR DELETE APPLICANTS FROM SERVICES
+
+````
+PUT http://127.0.0.1:3000/services/new-applicant/{{sid}}
+````
+
+Example Request
+
+````
+PUT http://127.0.0.1:3000/services/new-applicant/1
+````
+
+````
+Content-Type: application/json
+User-Agent: PostmanRuntime/7.29.0
+Accept: */*
+Postman-Token: 4120df08-0e89-42b6-8557-d7fc2fd104f5
+Host: 127.0.0.1:3000
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 38
+````
+
+Body for adding applicant to services
+
+````
+{
+    "action":"add",
+    "cid":1
+}
+````
+
+Body for removing applicant from services
+
+````
+{
+    "action":"del",
+    "cid":1
+}
+````
+
+Example Response
+
+````
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: text/html; charset=utf-8
+Content-Length: 27
+ETag: W/"1b-XvaiRjuGhT/y4X+7N7qDy0OmoyM"
+Date: Fri, 04 Mar 2022 06:44:44 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+````
+
+````
+added applicant to services
+````
+
+````
+removed applicant from services
+````
+
+#### GET ALL SERVICES WITH APPLICANTS INFORMATION
+
+Example Request
+
+````
+GET http://127.0.0.1:3000/services/all-applicants
+````
+
+````
+User-Agent: PostmanRuntime/7.29.0
+Accept: */*
+Postman-Token: d301a9ea-a2a1-4b6f-9a34-321f66a49be6
+Host: 127.0.0.1:3000
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+````
+
+Example Response
+
+````
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 1232
+ETag: W/"4d0-V1udYR/817FRSu+qQ+c+sGl4d88"
+Date: Fri, 04 Mar 2022 06:50:53 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+[
+    {
+        "_id": "6220fef38d9e861941326b06",
+        "sid": 1,
+        "name": "Early Childhood",
+        "clients": [
+            {
+                "cid": 4,
+                "first_name": "Spongebob",
+                "mid_name": "S",
+                "last_name": "Squarepants",
+                "phone_number": "555-5555",
+                "primary_email": "BestFryCook@yahoo.com"
+            }
+        ]
+    },
+    {
+        "_id": "6220ff360158a16042d98f73",
+        "sid": 2,
+        "name": "Housing",
+        "clients": [
+            {
+                "cid": 2,
+                "first_name": "Steven",
+                "mid_name": "Destiny",
+                "last_name": "Bonnell",
+                "phone_number": "252-578-5585",
+                "primary_email": "Destinygg@yahoo.com"
+            }
+        ]
+    }
+       
+]
+````
+
+#### UPDATE SERVICE INFORMATION
+
+````
+PUT http://127.0.0.1:3000/update/{{sid}}
+````
+
+Example Request
+
+````
+PUT http://127.0.0.1:3000/7
+````
+
+````
+Content-Type: application/json
+User-Agent: PostmanRuntime/7.29.0
+Accept: */*
+Postman-Token: 1d551beb-c275-4bd9-9d4b-abefbedec2a8
+Host: 127.0.0.1:3000
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 35
+````
+
+Body
+
+````
+{
+    "name":"new service name"
+}
+````
+
+Example Response
+
+````
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: text/html; charset=utf-8
+Content-Length: 29
+ETag: W/"1d-gzXvXGl4iJkbxOZKJsxaUrs4syA"
+Date: Fri, 04 Mar 2022 06:55:28 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+````
+
+````
+Services information updated.
+````
+
+#### DELETE SERVICE FROM SERVICES COLLECTION
+
+````
+DELETE http://127.0.0.1:3000/del/{{sid}}
+````
+
+Request Example
+
+````
+DELETE http://127.0.0.1:3000/del/7
+````
+
+````
+Content-Type: application/json
+User-Agent: PostmanRuntime/7.29.0
+Accept: */*
+Postman-Token: 29fe44c4-d0f0-4214-82bb-7445913deb19
+Host: 127.0.0.1:3000
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 35
+````
+
+Response Example
+
+````
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: text/html; charset=utf-8
+Content-Length: 15
+ETag: W/"f-DCwqkQCBi9y2ARHDbSlL+KOZrwg"
+Date: Fri, 04 Mar 2022 07:01:51 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+````
+
+````
+deleted from db
+````
+
+| Field			|	Type			|	Description																				  |
+|-----------|-----------|-----------------------------------------------------|
+|_id        |ObjectID   |A randomly generated identifier 
+| sid				|	Number		| identifier for services.	|
+|	name				|	String		| Name of the service			|
+| renewal| string		|	How long before service has to be reapplied for				|
+| notes  | string    | Notes                          |     
+| applicants | Object(Array(Number))    | Array that stores client ids                          |
+
+
+Possible errors:
+
+| Error code    | Description                   |
+| --------------| ------------------------------|
+| 404 Not Found | The requested resource could not be found buy may be available again in the future. Subsequent requests by the cleints are permissible. |
+
+### Events
+
+DEALS WITH DATA STORED IN EVENTS COLLECTION
+
+#### Get information from all events
+
+Request Example
+
+````
+GET http//127.0.0.1:3000/events
+````
+
+````
+User-Agent: PostmanRuntime/7.29.0
+Accept: */*
+Postman-Token: 545b0985-c8d9-457f-a344-3d51932a3797
+Host: 127.0.0.1:3000
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+````
+
+Response Example
+
+```
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 1444
+ETag: W/"5a4-MnJNyv2+UoF+/rjHGpTWRDq7O+Q"
+Date: Fri, 04 Mar 2022 07:15:11 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+[
+    {
+        "attendees": {
+            "vid": [
+                1,
+                3
+            ],
+            "cid": [
+                1,
+                2,
+                3
+            ],
+            "employeeID": [
+                4,
+                5,
+                2
+            ]
+        },
+        "_id": "6220043b21536ab7282151c9",
+        "evid": 1,
+        "ev_name": "Little bird celebrations",
+        "ev_host": 1,
+        "ev_date": "2019-05-16T00:00:00.000Z",
+        "addr": "123 Next Street",
+        "city": "Houston",
+        "st": "Tx",
+        "country": "United States",
+        "zip": "75456",
+        "__v": 0
+    }
+]
+```
+
+#### ADD NEW EVENT TO EVENTS COLLECTION
+
+Request Example
+
+````
+POST http://127.0.0.1:3000/events/new-event
+````
+
+````
+Content-Type: application/json
+User-Agent: PostmanRuntime/7.29.0
+Accept: */*
+Postman-Token: a811018b-249e-46a5-be29-6445cc59f385
+Host: 127.0.0.1:3000
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 222
+````
+
+Body
+
+````
+{
+    "evid":7,
+    "ev_name":"New event name",
+    "ev_host":1,
+    "ev_date":"1996-10-25",
+    "addr":"123 Second street",
+    "city":"Houston",
+    "st":"Tx",
+    "country":"United states",
+    "zip":"77456"
+}
+
+````
+
+Response Example
+
+````
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: text/html; charset=utf-8
+Content-Length: 15
+ETag: W/"f-ayqkKNXu90A571jEgFyhzznqI9k"
+Date: Fri, 04 Mar 2022 07:20:29 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+````
+
+````
+New Event added
+````
+
+
+#### FIND EVENT FROM EVENT COLLECTION BY EVID
+
+````
+GET http://127.0.0.1:3000/find/{{evid}}
+````
+
+Request Example
+
+````
+GET http://127.0.0.1:3000/find/1
+````
+
+```
+User-Agent: PostmanRuntime/7.29.0
+Accept: */*
+Postman-Token: 10d1e286-ca00-4673-91a9-dec644c2f1aa
+Host: 127.0.0.1:3000
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+```
+
+Response Example
+
+````
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 292
+ETag: W/"124-J66PBORSw27uGPTorAzB0ymW5HQ"
+Date: Fri, 04 Mar 2022 07:21:48 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+[
+    {
+        "attendees": {
+            "vid": [
+                1,
+                3
+            ],
+            "cid": [
+                1,
+                2,
+                3
+            ],
+            "employeeID": [
+                4,
+                5,
+                2
+            ]
+        },
+        "_id": "6220043b21536ab7282151c9",
+        "evid": 1,
+        "ev_name": "Little bird celebrations",
+        "ev_host": 1,
+        "ev_date": "2019-05-16T00:00:00.000Z",
+        "addr": "123 Next Street",
+        "city": "Houston",
+        "st": "Tx",
+        "country": "United States",
+        "zip": "75456",
+        "__v": 0
+    }
+]
+````
+
+
+#### ADD OR REMOVE ATTENDEE FROM/TO EVENT
+
+````
+PUT http://127:0.0.1:3000/attendee/{{evid}}
+````
+
+Request Example
+
+````
+PUT http://127.0.0.1:3000/attendee/1
+````
+
+````
+Content-Type: application/json
+User-Agent: PostmanRuntime/7.29.0
+Accept: */*
+Postman-Token: a2f054c0-ce09-443f-b255-ed7a348d54c9
+Host: 127.0.0.1:3000
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 62
+````
+
+Body example
+
+if adding volunteer to event
+
+````
+{
+    "action":"add",
+    "type":"volunteer",
+    "id":1
+}
+````
+
+if deleting volunteer from event
+````
+{
+    "action":"del",
+    "type":"volunteer",
+    "id":1
+}
+````
+
+if adding employee to event
+
+````
+{
+    "action":"add",
+    "type":"employee",
+    "id":1
+}
+````
+
+if deleting employee from event
+````
+{
+    "action":"del",
+    "type":"employee",
+    "id":1
+}
+````
+
+if adding client to event
+
+````
+{
+    "action":"add",
+    "type":"client",
+    "id":1
+}
+````
+
+if deleting client from event
+````
+{
+    "action":"del",
+    "type":"client",
+    "id":1
+}
+````
+
+Response Example
+
+````
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: text/html; charset=utf-8
+Content-Length: 38
+ETag: W/"26-KD7jcLsxnSFBPyTVQx9ETFg24RM"
+Date: Fri, 04 Mar 2022 07:28:11 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+````
+
+````
+Added new volunteer attendee to event.
+````
+
+````
+Removed volunteer attendee from event.
+````
+
+````
+Added new employee attendee to event.
+````
+
+````
+Removed employee attendee from event.
+````
+
+````
+Added new client attendee to event.
+````
+
+````
+Removed client attendee from event.
+````
+
+#### GET INFORMATION FOR ATTENDEES AT EVENT(volunteers, clients, employees)
+
+Request Example
+
+````
+GET http://127.0.0.1:3000/events/event-attendess
+````
+
+````
+User-Agent: PostmanRuntime/7.29.0
+Accept: */*
+Postman-Token: c57f6573-e0df-43a8-94ac-59e3038de5ec
+Host: 127.0.0.1:3000
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+````
+
+Response Example
+
+````
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 3680
+ETag: W/"e60-4KNxZT9lOgweKr3ai4Q1badga3k"
+Date: Fri, 04 Mar 2022 07:35:43 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+[
+    {
+        "evid": 1,
+        "ev_name": "Little bird celebrations",
+        "ev_host": 1,
+        "ev_date": "2019-05-16T00:00:00.000Z",
+        "city": "Houston",
+        "st": "Tx",
+        "zip": "75456",
+        "volunteers": [
+            {
+                "vid": 3,
+                "first_name": "Shelly",
+                "last_name": "Gonzalez",
+                "phone_num": "145-789-1144"
+            }
+        ],
+        "clients": [
+            {
+                "cid": 1,
+                "first_name": "Michael",
+                "last_name": "Jackson",
+                "phone_number": "222-545-5585"
+            },
+            {
+                "cid": 2,
+                "first_name": "Steven",
+                "last_name": "Bonnell",
+                "phone_number": "252-578-5585"
+            }
+        ],
+        "employees": [
+            {
+                "employeeID": 2,
+                "firstName": "Kim",
+                "lastName": "Brown",
+                "phone": "810-343-2078"
+            },
+            {
+                "employeeID": 4,
+                "firstName": "Louis",
+                "lastName": "Anderson",
+                "phone": "713-558-8849"
+            },
+            {
+                "employeeID": 5,
+                "firstName": "Timothy",
+                "lastName": "Delp",
+                "phone": "832-205-4477"
+            }
+        ]
+    } 
+]
+````
+
+#### UPDATE EVENT INFORMATION BY EVID
+
+````
+PUT http://127.0.0.1:3000/events/update{{evid}}
+````
+
+Request Example
+
+````
+PUT http://127.0.0.1:3000/events/update/1
+````
+
+````
+Content-Type: application/json
+User-Agent: PostmanRuntime/7.29.0
+Accept: */*
+Postman-Token: 3a34c820-0019-4d61-b81c-c1c6a3c3d61e
+Host: 127.0.0.1:3000
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 69
+````
+
+Body Example
+
+````
+{
+    "ev_name":"updated event name",
+    "ev_date":"2020-02-22"
+}
+````
+
+Response Example
+
+````
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: text/html; charset=utf-8
+Content-Length: 26
+ETag: W/"1a-T1f4dD4UrwtHKTZmqbilMLroqR4"
+Date: Fri, 04 Mar 2022 07:42:23 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+````
+
+````
+Event information updated.
+````
+
+#### DELETE EVENT FROM EVENT COLLECTION
+
+````
+DELETE http://127.0.0.1:3000/events/del/{{evid}}
+````
+
+Request Example
+
+````
+DELETE http://127.0.0.1:3000/events/del/7
+````
+
+````
+User-Agent: PostmanRuntime/7.29.0
+Accept: */*
+Postman-Token: dea26e3b-407b-4762-841c-28f83fe5122d
+Host: 127.0.0.1:3000
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+````
+
+Response Example
+
+````
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: text/html; charset=utf-8
+Content-Length: 15
+ETag: W/"f-DCwqkQCBi9y2ARHDbSlL+KOZrwg"
+Date: Fri, 04 Mar 2022 07:47:13 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+````
+
+````
+deleted from db
+````
+
+| Field			|	Type			|	Description																				  |
+|-----------|-----------|-----------------------------------------------------|
+| _id				|	ObjectID		| A randomly generated identifier	|
+|	evid				|	number		| A unique event identifier			|
+| ev_name| String		|	name of an event													|
+| ev_host  | string    | id of host in charge of event                         |     
+| ev_date | Date   | date of event('YYYY-MM--DD')                           |
+| addr    | string    | street address                           |
+| city      | string    | city of event              |
+| st        | string    | state of event is in              |
+| country    | string    | country that event is in                              |
+| zip | string    | zip code that event is in                           |
+| attendees | Object(Array)    | array that stores either volunteer id, client id or employee id                        |
+
+
+Possible errors:
+
+| Error code    | Description                   |
+| --------------| ------------------------------|
+| 404 Not Found | The requested resource could not be found buy may be available again in the future. Subsequent requests by the cleints are permissible. |
+
+
+
+
 ## 3. Testing
