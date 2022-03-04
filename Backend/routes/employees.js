@@ -68,6 +68,49 @@ router.delete("/del/:employeeID", (req, res, next) => {
   });
 });
 
-
+//shows all employees with information about the volunteers and/or clients they have
+router.get("/employee-clients-events", (req, res, next) => {
+  empModel.aggregate(
+    [
+      {
+        $lookup: {
+          from: "clients",
+          localField: "clients.clientID",
+          foreignField: "cid",
+          as: "clients",
+        },
+        $lookup: {
+          from: "events",
+          localField: "events.eventID",
+          foreignField: "evid",
+          as: "events",
+        }
+      },
+      {
+        $project: {
+          "employeeID": 1,
+          "firstName": 1,
+          "lastName": 1,
+          "clients.cid": 1,
+          "clients.first_name": 1,
+          "clients.last_name": 1,
+          "clients.phone_number": 1,
+          "events.evid": 1,
+          "events.ev_name": 1,
+          "events.ev_host": 1,
+          "events.ev_date": 1,
+        },
+      },
+    ],
+    (error, results) => {
+      if (error) {
+        return next(error);
+      } else {
+        console.log(results);
+        res.json(results);
+      }
+    }
+  );
+});
 
 module.exports = router;
