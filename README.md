@@ -2,21 +2,25 @@
 
 #### Contents
 - [Overview](#1-overview)
-- [Resources](#2-resources)
-  - [Volunteers](#21-volunteers)
-  - [Employees](#22-employees)
-  - [Clients](#23-clients)
-  - [Services](#24-services)
-  - [Events](#25-events)
+- [Connecting to the Backend](#2-connecting-to-the-backend)
+- [Resources](#3-resources)
+  - [Volunteers](#31-volunteers)
+  - [Employees](#32-employees)
+  - [Clients](#33-clients)
+  - [Services](#34-services)
+  - [Events](#35-events)
   
- - [Testing](#3-testing)
+ - [Testing](#4-testing)
 
 ## 1. Overview
 Our group's API is JSON-based. All requests are made to endpoints beginning: `http://localhost:3000/` or `http://127.0.0.1:3000/`
 
-## 2. Resources
+## 2. Connecting to the Backend
 
-### 2.1 Volunteers
+## 3. Resources
+
+### 3.1 Volunteers
+
 #### Getting a volunteer's details
 Deals with volunteers collection
 
@@ -150,7 +154,7 @@ Keep-Alive: timeout=5
 New Volunteer added
 ````
 
-#### FIND VOLUNTEER BY VID
+#### Find Volunteer By VID
 
 ````
 GET 127.0.0.1:3000/volunteers/find/{{vid}}
@@ -484,7 +488,7 @@ Possible errors:
 | 404 Not Found | The requested resource could not be found buy may be available again in the future. Subsequent requests by the cliEnts are permissible. |
 
 
-### 2.2 Employees
+### 3.2 Employees
 
 #### Retrieving all employee collections
 
@@ -847,8 +851,7 @@ Example Request
 
 ````
 PUT http://localhost:3000/employees/update/7
-````
-````
+
 Request Headers
 Content-Type: text/plain
 User-Agent: PostmanRuntime/7.29.0
@@ -912,6 +915,7 @@ Request Body
 ````
 Example Response
 
+````
 Response Headers
 X-Powered-By: Express
 Access-Control-Allow-Origin: *
@@ -936,6 +940,7 @@ PUT http://localhost:3000/employees/client/{employeeID}
 Example Request:
 
 ````
+PUT http://localhost:3000/employees/client/13
 Request Headers
 Content-Type: application/json
 User-Agent: PostmanRuntime/7.29.0
@@ -967,7 +972,7 @@ Keep-Alive: timeout=5
 
 Response Body
 Removed client from employee.
-
+````
 #### Adding an event to an employee collection
 
 The request to add an event to an employee looks like this:
@@ -1060,9 +1065,7 @@ Removed event from employee.
 ````
 
 
-
-
-### 2.3 Clients
+### 3.3 Clients
   
   #### Getting a volunteer's details
   Returns details stored in collection about a volunteer
@@ -1472,7 +1475,7 @@ Removed event from employee.
     }
    ````
   
-  ### 2.4 Services
+  ### 3.4 Services
 
   
 Deals with Services collection
@@ -1880,7 +1883,7 @@ Possible errors:
 | --------------| ------------------------------|
 | 404 Not Found | The requested resource could not be found buy may be available again in the future. Subsequent requests by the cleints are permissible. |
 
-### 2.5 Events
+### 3.5 Events
 
 DEALS WITH DATA STORED IN EVENTS COLLECTION
 
@@ -2383,4 +2386,4 @@ Possible errors:
 
 
 
-## 3. Testing
+## 4. Testing
