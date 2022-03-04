@@ -105,6 +105,157 @@ Possible errors:
 
 ### 2.2 Employees
 
+#### Retrieving all employee collections
+
+Returns all employee collections in the database
+
+The request to fetch the employees collections looks like this:
+
+````
+GET http://localhost:3000/employees
+````
+Example Response:
+
+````
+Response Headers
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 6930
+ETag: W/"1b12-kYXasgXCV5V4J9Vd8NTwkQrCMlc"
+Date: Fri, 04 Mar 2022 09:00:57 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+Response Body
+[
+    {
+        "employeeID": 2,
+        "firstName": "Kim",
+        "lastName": "Brown",
+        "birthday": "2002-12-09T00:00:00.000Z",
+        "SSN": "323-23-5534",
+        "dLicense": "5050377",
+        "gender": "Female",
+        "race": "White",
+        "hispanic": true,
+        "address": "1597 D Street",
+        "city": "New Berlin",
+        "state": "Wisconsin",
+        "__v": 0,
+        "county": "Waukesha",
+        "degree": "Bachelor's",
+        "dept": "Accounting",
+        "eContact": [
+            {
+                "_id": "6221d54952902837f457a590",
+                "fName": "John",
+                "lName": "Paul",
+                "phone": "836-212-7382"
+            }
+        ],
+        "home": "586-470-2971",
+        "jDesc": "Accountant",
+        "lEmployment": "1yr 3mo",
+        "language": [
+            "English"
+        ],
+        "pEmail": "acox@hotmail.com",
+        "phone": "810-343-2078",
+        "zip": "53151",
+        "events": [],
+        "clients": []
+    },
+    {
+        "employeeID": 3,
+        "firstName": "Leslie",
+        "lastName": "Brown",
+        "birthday": "2002-12-09T00:00:00.000Z",
+        "SSN": "323-23-5534",
+        "dLicense": "5050377",
+        "gender": "Female",
+        "race": "White",
+        "hispanic": true,
+        "address": "4624 Lynch Street",
+        "city": "New Berlin",
+        "state": "Wisconsin",
+        "__v": 0,
+        "county": "Waukesha",
+        "dept": "Accounting",
+        "eContact": [
+            {
+                "_id": "6221d54952902837f457a591",
+                "fName": "Thomas",
+                "lName": "Johnson",
+                "phone": "919-924-0851"
+            }
+        ],
+        "home": "920-905-7562",
+        "jDesc": "Accountant",
+        "lEmployment": "1mo",
+        "language": [
+            "English",
+            "Spanish"
+        ],
+        "pEmail": "lbrown@gmail.com",
+        "phone": "715-370-6985",
+        "zip": "53151",
+        "events": [],
+        "clients": []
+    },
+    {
+        "_id": "621ed931ff5db593c9979289",
+        "employeeID": 1,
+        "firstName": "Asha",
+        "lastName": "Cox",
+        "birthday": "1998-02-12T00:00:00.000Z",
+        "SSN": "536-34-7553",
+        "dLicense": "5050377",
+        "gender": "Female",
+        "race": "Black",
+        "hispanic": false,
+        "phone": "810-343-2078",
+        "home": "586-470-2971",
+        "eContact": [
+            {
+                "_id": "6221d54952902837f457a592",
+                "fName": "Christopher",
+                "lName": "Machado",
+                "phone": "816-202-1863"
+            }
+        ],
+        "pEmail": "acox@hotmail.com",
+        "language": [
+            "English"
+        ],
+        "address": "1597 D Street",
+        "city": "Southfield",
+        "state": "Michigan",
+        "county": "Oakland",
+        "zip": "48075",
+        "lEmployment": "2 years",
+        "dept": "Marketing",
+        "jDesc": "Marketing Coordinator",
+        "degree": "Associate's",
+        "events": [
+            {
+                "_id": "6221d54952902837f457a593",
+                "eventID": 2,
+                "eventName": "Town Fair 2020"
+            }
+        ],
+        "clients": [
+            {
+                "_id": "6221d54952902837f457a594",
+                "clientID": 7,
+                "firstName": "Trisha",
+                "lastName": "Paytas"
+            }
+        ],
+        "__v": 0
+    }
+    ]
+````
 #### Retrieving an employee collection by employee id
 
 Returns a single collection of an employee with specified id 
@@ -272,7 +423,72 @@ Keep-Alive: timeout=5
 Response Body
 Employee is added to the database.
 ````
-  ### 2.3 Clients
+
+#### Deleting an employee by Id
+
+Example Request
+
+````
+DELETE http://localhost:3000/employees/del/13
+````
+Example Response
+
+````
+Response Headers
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: text/html; charset=utf-8
+Content-Length: 15
+ETag: W/"f-DCwqkQCBi9y2ARHDbSlL+KOZrwg"
+Date: Fri, 04 Mar 2022 08:23:00 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+Response Body
+deleted from db
+````
+
+#### Updating an employee collection
+
+Example Request
+
+````
+PUT http://localhost:3000/employees/update/7
+````
+````
+Request Headers
+Content-Type: text/plain
+User-Agent: PostmanRuntime/7.29.0
+Accept: */*
+Postman-Token: e48c0faf-8226-4950-ba87-c214eb2f742e
+Host: localhost:3000
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 32
+
+Request Body
+{
+    "phone":"832-392-2020"
+}
+````
+Example Response
+
+````
+Response Headers
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: text/html; charset=utf-8
+Content-Length: 27
+ETag: W/"1b-tpyE1TzVsI0Gwqfu1zwMT1Nlmgw"
+Date: Fri, 04 Mar 2022 08:32:30 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+Response Body
+Activity is edited via PUT.
+
+````
+### 2.3 Clients
   
   #### Getting a volunteer's details
   Returns details stored in collection about a volunteer
