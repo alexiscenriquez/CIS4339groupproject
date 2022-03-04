@@ -1,0 +1,249 @@
+{
+	"info": {
+		"_postman_id": "f440672c-a1aa-4dd2-b637-2742875e6085",
+		"name": "Clients",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add Client",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"cid\": 10,\r\n        \"first_name\": \"Ronald\",\r\n        \"mid_name\": \"I\",\r\n        \"last_name\": \"McDonald\",\r\n        \"b_day\": \"1991-10-09T00:00:00.000Z\",\r\n        \"DL\": \"\",\r\n        \"gender\": \"Male\",\r\n        \"ethnicity\": \"\",\r\n        \"address\": \"Any and Every McDonalds\",\r\n        \"city\": \"Spring\",\r\n        \"state\": \"NJ\",\r\n        \"country\": \"United States\",\r\n        \"zip_code\": \"77771\",\r\n        \"rent\": \"100000\",\r\n        \"residency\": \" 40 years\",\r\n        \"living_arrangements\": \"In store\",\r\n        \"number_of_children\": 55,\r\n        \"number_of_adults_over_65\": 0,\r\n        \"phone_number\": \"281-564-5581\",\r\n        \"home_phone_number\": \"\",\r\n        \"emergency_contact_phone_number\": \"281-874-8154\",\r\n        \"primary_email\": \"McDonalds@yahoo.com\",\r\n        \"secondary_email\": \"\",\r\n        \"marital_status\": \"Single\",\r\n        \"language\": \"English\",\r\n        \"priority_population\": \"HIGH\",\r\n        \"employment_status\": \"Employed\",\r\n        \"length_of_employment\": \" 40 years\",\r\n        \"employer_name\": \"McDonalds\",\r\n        \"occupation\": \"Team Leader\",\r\n        \"highest_grade\": \"Mascot\",\r\n        \"graduate\": false,\r\n        \"degree_name\": \"None\",\r\n        \"head_of_household\": \"Ronald McDonald\",\r\n        \"monthly_income\": 10000000000,\r\n        \"spousal_income_support\": \"0\",\r\n        \"worker_compensation\": 0,\r\n        \"veteran_status\": \"None\",\r\n        \"child_support\": 0,\r\n        \"tanf\": 0,\r\n        \"food_stamps\": 0,\r\n        \"ssi\": 0,\r\n        \"unemployment\": 0,\r\n        \"social_security\": 874152232,\r\n        \"other_income\": null,\r\n        \"health_insurance\": true,\r\n        \"health_insurance_desc\": \"Full Coverage\",\r\n        \"insurance_program\": \"McDonalds Foundation\",\r\n        \"covid_status\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/clients/new-client",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"clients",
+						"new-client"
+					]
+				},
+				"description": "Add new client"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete specified client",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:3000/clients/del/3",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"clients",
+						"del",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all clients",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "file",
+					"file": {}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/clients/all",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"clients",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get specified client",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/clients/find/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"clients",
+						"find",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Clients history",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:3000/clients/client-history",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"clients",
+						"client-history"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update specified client",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cid\": 3,\r\n    \"first_name\": \"Hi\",\r\n    \"mid_name\": \"update\",\r\n    \"last_name\": \"worked\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/clients/update/4",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"clients",
+						"update",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Employee to Client",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"action\": \"delete\",\r\n    \"employeeID\":7\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/clients/adddelemp/6",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"clients",
+						"adddelemp",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Service to client",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"action\":\"delete\",\r\n    \"sid\":6\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/clients/adddelservice/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"clients",
+						"adddelservice",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

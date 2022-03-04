@@ -1,0 +1,214 @@
+{
+	"info": {
+		"_postman_id": "2458c72f-adaa-4291-add3-65de1d210eca",
+		"name": "volunteers",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get info for all volunteers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:3000/volunteers",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"volunteers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add new volunteer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"vid\": 6,\r\n    \"first_name\": \"Jeffrey\",\r\n    \"mid_name\": \"Johm\",\r\n    \"last_name\": \"Jacobs\",\r\n    \"b_day\": \"1990-02-27\",\r\n    \"ssn\": \"654-85-7458\",\r\n    \"DL\": \"452157894\",\r\n    \"gender\": \"Male\",\r\n    \"ethnicity\": \"Italian\",\r\n    \"phone_num\": \"128-458-4578\",\r\n    \"emer_num\": \"281-456-7878\",\r\n    \"email\": \"jjj@gmail.com\",\r\n    \"email2\": \"jjj2@gmail.com\",\r\n    \"prim_language\": \"English\",\r\n    \"addr\": \"152 First Street\",\r\n    \"city\": \"Houston\",\r\n    \"st\": \"Tx\",\r\n    \"zip\": \"77856\",\r\n    \"country\": \"United States\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:3000/volunteers/new-user",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"volunteers",
+						"new-user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find volunteer by vid",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:3000/volunteers/find/1",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"volunteers",
+						"find",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add/del event from volunteer",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"action\":\"del\",\r\n    \"evid\":6\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:3000/volunteers/events/1",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"volunteers",
+						"events",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get info from volunteer events",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:3000/volunteers/event-attendees",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"volunteers",
+						"event-attendees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update volunteer info",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"first_name\":\"New Name\",\r\n    \"last_name\":\"New last name\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:3000/volunteers/update/1",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"volunteers",
+						"update",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete volunteer",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"first_name\":\"New Name\",\r\n    \"last_name\":\"New last name\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:3000/volunteers/del/6",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"volunteers",
+						"del",
+						"6"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
