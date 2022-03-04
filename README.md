@@ -209,15 +209,17 @@ POST http://localhost:3000/employees/newemp
 Example request:
 
 ````
+Request Headers
 Content-Type: application/json
 User-Agent: PostmanRuntime/7.29.0
 Accept: */*
-Postman-Token: 36b19199-d979-47fb-9151-41a2e3ae2cf2
+Postman-Token: 265fb815-008f-4b60-95a2-ee923a5354ee
 Host: localhost:3000
 Accept-Encoding: gzip, deflate, br
 Connection: keep-alive
-Content-Length: 833
+Content-Length: 793
 
+Request Body
 {
      
     "eContact": {
@@ -250,12 +252,26 @@ Content-Length: 833
     "jDesc":"Event Moderator",
     "degree":"Bachelor's",
     "events": {
-      "eventID": 1,
-      "eventName": "Town Fair 2020"
+      "eventID": 1
     }
   } 
-  ````
-  
+````
+Example Response:
+
+````
+Response Headers
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: text/html; charset=utf-8
+Content-Length: 34
+ETag: W/"22-P9bDNlX3ALTiyte7dL06KfO0oZw"
+Date: Fri, 04 Mar 2022 07:02:10 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+Response Body
+Employee is added to the database.
+````
   ### 2.3 Clients
   
   #### Getting a volunteer's details
