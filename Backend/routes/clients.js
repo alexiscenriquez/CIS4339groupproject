@@ -154,7 +154,7 @@ router.put('/adddelemp/:cid', (req, res, next)=>{
             return next(error);
         }else{
             res.send('deleted employee linked to client')
-            console.log('added employee linked to client')
+            console.log('deleted employee linked to client')
         }
     });
     }
@@ -184,8 +184,8 @@ router.put('/adddelservice/:cid', (req, res, next)=>{
         if(error){
             return next(error);
         }else{
-            res.send('added service to client')
-            console.log('added service to client')
+            res.send('deleted service from client')
+            console.log('deleted service from client')
         }
     });
     }
