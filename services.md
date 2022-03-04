@@ -72,37 +72,7 @@ Keep-Alive: timeout=5
             "cid": [
                 4
             ]
-        },
-        "_id": "6220ff690158a16042d98f77",
-        "sid": 4,
-        "name": "Loans",
-        "renewal": "Yearly",
-        "__v": 0
-    },
-    {
-        "applicants": {
-            "cid": [
-                5
-            ]
-        },
-        "_id": "6220ff850158a16042d98f79",
-        "sid": 5,
-        "name": "Meals",
-        "renewal": "Monthly",
-        "__v": 0
-    },
-    {
-        "applicants": {
-            "cid": [
-                1
-            ]
-        },
-        "_id": "62214015897db2729f707800",
-        "sid": 6,
-        "name": "Family Support",
-        "renewal": "Monthly",
-        "__v": 0
-    }
+        }
 ]
 ````
 
