@@ -346,6 +346,201 @@ Content-Length: 833
   |	cid				|	number		| A Non-random primary identifier for client.			|
   |first_name	| string		|	The client's first name													|
   
+  #### Getting all volunteer's details
+  Returns details stored in collection about all volunteer
+  
+  ````
+  GET http://127.0.0.1:3000/clients/all
+  ````
+  Example request:
+
+  ````
+  GET /clients/all HTTP/1.1
+  Host: localhost:3000
+  ````
+  
+  The response is all available client objects within a data envelope.
+
+  Example response:
+  
+  `````
+  {
+        "employees": {
+            "employeeID": [
+                1
+            ]
+        },
+        "services": {
+            "sid": [
+                1,
+                6
+            ]
+        },
+        "_id": "6221287fd95bc85b9cb18929",
+        "cid": 1,
+        "first_name": "Steven",
+        "mid_name": "S",
+        "last_name": "Spielberg",
+        "b_day": "1993-08-22T00:00:00.000Z",
+        "DL": "",
+        "gender": "",
+        "ethnicity": "",
+        "address": "555 Peppermint Lane",
+        "city": "Austin",
+        "state": "TX",
+        "country": "Harris",
+        "zip_code": "77885",
+        "rent": "1,000",
+        "residency": "1 year",
+        "living_arrangements": "With Spouse",
+        "number_of_children": 1,
+        "number_of_adults_over_65": 0,
+        "phone_number": "222-545-5585",
+        "home_phone_number": "",
+        "emergency_contact_phone_number": "221-558-8995",
+        "primary_email": "SSberg@yahoo.com",
+        "secondary_email": "",
+        "marital_status": "Married",
+        "language": "English",
+        "priority_population": "HIGH",
+        "employment_status": "Employed",
+        "length_of_employment": "7 years",
+        "employer_name": "McDonalds",
+        "occupation": "Manager",
+        "highest_grade": "College",
+        "graduate": true,
+        "degree_name": "Business",
+        "head_of_household": "Steven Spielberg",
+        "monthly_income": 52124,
+        "spousal_income_support": "50000",
+        "worker_compensation": 0,
+        "veteran_status": "None",
+        "child_support": 0,
+        "tanf": 0,
+        "food_stamps": 0,
+        "ssi": 0,
+        "unemployment": 0,
+        "social_security": 740259875,
+        "other_income": null,
+        "health_insurance": true,
+        "health_insurance_desc": "General Heatlhcare",
+        "insurance_program": "United Healthcare",
+        "covid_status": true,
+        "__v": 0
+    },
+    
+    {
+        "employees": {
+            "employeeID": [
+                2
+            ]
+        },
+        "services": {
+            "sid": [
+                2
+            ]
+        },
+        "_id": "6221288ad95bc85b9cb1892b",
+        "cid": 2,
+        "first_name": "Steven",
+        "mid_name": "Destiny",
+        "last_name": "Bonnell",
+        "b_day": "1994-05-13T00:00:00.000Z",
+        "DL": "",
+        "gender": "",
+        "ethnicity": "",
+        "address": "567 Crumble Cookie Lane",
+        "city": "El Paso",
+        "state": "TX",
+        "country": "Swoop",
+        "zip_code": "77878",
+        "rent": "500",
+        "residency": "4 year",
+        "living_arrangements": "Alone",
+        "number_of_children": 1,
+        "number_of_adults_over_65": 0,
+        "phone_number": "252-578-5585",
+        "home_phone_number": "",
+        "emergency_contact_phone_number": "221-458-8515",
+        "primary_email": "Destinygg@yahoo.com",
+        "secondary_email": "",
+        "marital_status": "Single",
+        "language": "English",
+        "priority_population": "HIGH",
+        "employment_status": "Employed",
+        "length_of_employment": "7 years",
+        "employer_name": "Twitch.tv",
+        "occupation": "Streamer",
+        "highest_grade": "Highschool",
+        "graduate": true,
+        "degree_name": "None",
+        "head_of_household": "Steven Bonnell",
+        "monthly_income": 32167,
+        "spousal_income_support": "0",
+        "worker_compensation": 0,
+        "veteran_status": "None",
+        "child_support": 0,
+        "tanf": 0,
+        "food_stamps": 0,
+        "ssi": 0,
+        "unemployment": 0,
+        "social_security": 784522214,
+        "other_income": null,
+        "health_insurance": true,
+        "health_insurance_desc": "General Healthcare",
+        "insurance_program": "Aetna",
+        "covid_status": false,
+        "__v": 0
+    }
+  `````
+  
+  #### Getting all client's details with employees and services
+  Returns details stored in collection about all client's details with employees and services
+  
+  ````
+  GET http://127.0.0.1:3000/clients/client-history
+  ````
+  Example request:
+
+  ````
+  GET /clients/client-history HTTP/1.1
+  Host: localhost:3000
+  ````
+  
+  The response is a client object within a data envelope accompanied by any associated employee or service.
+  
+  Example response:
+  
+  `````
+  {
+        "first_name": "Steven",
+        "mid_name": "S",
+        "last_name": "Spielberg",
+        "employees": [
+            {
+                "employeeID": 1,
+                "firstName": "Asha",
+                "lastName": "Cox",
+                "phone": "810-343-2078",
+                "pEmail": "acox@hotmail.com"
+            }
+        ],
+        "services": [
+            {
+                "sid": 1,
+                "name": "Early Childhood",
+                "renewal": "Court Order"
+            },
+            {
+                "sid": 6,
+                "name": "Family Support",
+                "renewal": "Monthly"
+            }
+        ]
+    }
+    
+   `````
+  
   
 ### 2.4 Posts
 
