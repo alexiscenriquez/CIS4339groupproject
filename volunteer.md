@@ -430,3 +430,35 @@ Keep-Alive: timeout=5
 ````
 deleted from db
 ````
+
+
+| Field			|	Type			|	Description																				  |
+|-----------|-----------|-----------------------------------------------------|
+| id				|	string		| A randomly generated identifier for the volunteer.	|
+|	vid				|	number		| A Non-random primary identifier for volunteer.			|
+| first_name| string		|	The volunteer's first name													|
+| mid_name  | string    | The volunteer's middle name                         |     
+| last_name | string    | The volunteer's last name                           |
+| b_day     | string    | The volunteer's birthday                            |
+| ssn       | string    | The volunteer's social security number              |
+| dl        | string    | The volunteer's drivers license number              |
+| gender    | string    | The volunteer's gender                              |
+| ethnicity | string    | The volunteer's ethnicity                           |
+| phone_num | string    | The volunteer's phone number                        |
+| emer_num  | string    | Contact number of someone who should be contacted in case of a medical emergency  |
+| email     | string    | The volunteer's primary email address               |
+| email2    | string    | The volunteer's secondary email address             |
+| prim-language | string| The volunteer's primary language                    |
+| addr      | string    | The volunteer's street address                      |
+| city      | string    | The city the volunteer resides                      |
+| st        | string    | The state the volunteer resides                     |
+| country   | string    | The country the volunteer resides                   |
+| zip       | string    | The zip code of the area the volunteer resides      |
+| events    | array     | List of IDs for events volunteer is apart of        |
+
+Possible errors:
+
+| Error code    | Description                   |
+| --------------| ------------------------------|
+| 404 Not Found | The requested resource could not be found buy may be available again in the future. Subsequent requests by the cleints are permissible. |
+
