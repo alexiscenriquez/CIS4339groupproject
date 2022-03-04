@@ -22,11 +22,12 @@ Deals with volunteers collection
 
 Request to fetch all information from the volunteers collection:
 
+
+Request Example:
+
 ````
 GET http://localhost:3000/volunteers
 ````
-
-Example request:
 
 ````
 User-Agent: PostmanRuntime/7.29.0
@@ -37,9 +38,7 @@ Accept-Encoding: gzip, deflate, br
 Connection: keep-alive
 ````
 
-The response is a volunteer object within a data envelope.
-
-Example response:
+Response Example:
 
 ````
 X-Powered-By: Express
@@ -90,10 +89,12 @@ Keep-Alive: timeout=5
 
 #### Add new Volunteer to Volunteers collection
 
+
+Request Example
+
 ````
 POST http://localhost:3000/volunteers/new-user
 ````
-Example Request 
 
 ````
 Content-Type: application/json
@@ -170,7 +171,7 @@ Accept-Encoding: gzip, deflate, br
 Connection: keep-alive
 ````
 
-Response
+Response Example
 
 ````
 X-Powered-By: Express
@@ -222,7 +223,7 @@ Keep-Alive: timeout=5
 PUT 127.0.0.1:3000/volunteers/events/{{vid}}
 ````
 
-Example request
+Request Example
 
 ````
 PUT http://127.0.0.1:3000/volunteers/events/1
@@ -249,7 +250,7 @@ Request Body Adding event
 
 ````
 
-Example Response
+Response Example
 
 ````
 X-Powered-By: Express
@@ -274,7 +275,7 @@ Request Body Deleting event
 
 ````
 
-Example Response
+Response Example
 
 ````
 X-Powered-By: Express
@@ -293,7 +294,7 @@ deleted event from volunteer
 
 #### GET ALL EVENTS THAT VOLUNTEERS ATTENDED
 
-Example request
+Request Example
 
 ````
 GET http://127.0.0.1:3000/volunteers/event-attendees
@@ -308,7 +309,7 @@ Accept-Encoding: gzip, deflate, br
 Connection: keep-alive
 ````
 
-Example Response
+Response Example
 
 ````
 X-Powered-By: Express
@@ -365,7 +366,7 @@ Keep-Alive: timeout=5
 PUT http://127.0.0.1:3000/volunteers/update/{{vid}}
 ````
 
-Example Request
+Request Example
 
 ````
 PUT http://127.0.0.1:3000/volunteers/update/1
@@ -392,7 +393,7 @@ Request Body
 ````
 
 
-Example Response
+Response Example
 
 ````
 X-Powered-By: Express
@@ -416,7 +417,7 @@ Volunteer information updated.
 DELETE http://127.0.0.1:3000/volunteers/del/{{vid}}
 ````
 
-Example Request
+Request Example
 
 ````
 DELETE http://127.0.0.1:3000/volunteers/del/6
@@ -433,7 +434,7 @@ Connection: keep-alive
 Content-Length: 67
 ````
 
-Example Response
+Response Example
 
 ````
 X-Powered-By: Express
@@ -450,10 +451,11 @@ Keep-Alive: timeout=5
 deleted from db
 ````
 
+Volunteer Collection field information
 
 | Field			|	Type			|	Description																				  |
 |-----------|-----------|-----------------------------------------------------|
-| id				|	string		| A randomly generated identifier for the volunteer.	|
+| _id				|	string		| A randomly generated identifier for the volunteer.	|
 |	vid				|	number		| A Non-random primary identifier for volunteer.			|
 | first_name| string		|	The volunteer's first name													|
 | mid_name  | string    | The volunteer's middle name                         |     
@@ -879,6 +881,91 @@ Response Body
 Activity is edited via PUT.
 
 ````
+
+#### Adding a client to an employee collection
+
+The request to add an employee to a client looks like this:
+
+````
+PUT http://localhost:3000/employees/client/{employeeID}
+````
+Example Request 
+
+````
+PUT http://localhost:3000/employees/client/13
+
+Request Headers
+Content-Type: application/json
+User-Agent: PostmanRuntime/7.29.0
+Accept: */*
+Postman-Token: 51ba140c-6268-41f4-a4ac-b24c20ebbd8a
+Host: localhost:3000
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 45
+Request Body
+{
+    "action":"add",
+    "clientID":"4"
+}
+
+````
+Example Response
+
+Response Headers
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: text/html; charset=utf-8
+Content-Length: 24
+ETag: W/"18-pX0mww76oKvfiWtEGrMTyyTAdJM"
+Date: Fri, 04 Mar 2022 20:19:27 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Response Body
+added employee to client
+
+````
+
+#### Deleting a client from an Employee Collection
+
+The request to delete an employee to a client looks like this:
+
+Example Request:
+
+````
+Request Headers
+Content-Type: application/json
+User-Agent: PostmanRuntime/7.29.0
+Accept: */*
+Postman-Token: abdc4489-7cce-4afa-bd5d-0bad64b508dc
+Host: localhost:3000
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 45
+
+Request Body
+{
+    "action":"del",
+    "clientID":"3"
+}
+````
+Example Response
+
+````
+Response Headers
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: text/html; charset=utf-8
+Content-Length: 29
+ETag: W/"1d-u0XwGkRJ117Q5GyXFL1sQmgpiEY"
+Date: Fri, 04 Mar 2022 21:24:21 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+Response Body
+Removed client from employee.
+
+````
 ### 2.3 Clients
   
   #### Getting a volunteer's details
@@ -1296,7 +1383,7 @@ Deals with Services collection
 
 #### Request to fetch all services data
 
-Example Request
+Request Example
 ````
 GET http://127.0.0.1:3000/services
 ````
@@ -1310,7 +1397,7 @@ Accept-Encoding: gzip, deflate, br
 Connection: keep-alive
 ````
 
-Example Response
+Response Example
 
 ````
 X-Powered-By: Express
@@ -1371,7 +1458,7 @@ Keep-Alive: timeout=5
 
 #### ADD NEW SERVICES TO SERVICES COLLECTION
 
-Example Request
+Request Example
 
 ````
 POST http://127.0.0.1:services/new-service
@@ -1388,7 +1475,7 @@ Connection: keep-alive
 Content-Length: 70
 ````
 
-Body
+Body Example
 
 ````
 {
@@ -1398,7 +1485,7 @@ Body
 }
 ````
 
-Example Response
+Response Example
 
 ````
 X-Powered-By: Express
@@ -1421,7 +1508,7 @@ New Service added
 GET http://127.0.0.1:3000/services/find/{{sid}}
 ````
 
-Example Request
+Request Example
 
 ````
 GET http://127.0.0.1:3000/services/find/1
@@ -1436,7 +1523,7 @@ Accept-Encoding: gzip, deflate, br
 Connection: keep-alive
 ````
 
-Example Response
+Response Example
 
 ````
 X-Powered-By: Express
@@ -1471,7 +1558,7 @@ Keep-Alive: timeout=5
 PUT http://127.0.0.1:3000/services/new-applicant/{{sid}}
 ````
 
-Example Request
+Request Example
 
 ````
 PUT http://127.0.0.1:3000/services/new-applicant/1
@@ -1506,7 +1593,7 @@ Body for removing applicant from services
 }
 ````
 
-Example Response
+Response Example
 
 ````
 X-Powered-By: Express
@@ -1529,7 +1616,7 @@ removed applicant from services
 
 #### GET ALL SERVICES WITH APPLICANTS INFORMATION
 
-Example Request
+Request Example
 
 ````
 GET http://127.0.0.1:3000/services/all-applicants
@@ -1544,7 +1631,7 @@ Accept-Encoding: gzip, deflate, br
 Connection: keep-alive
 ````
 
-Example Response
+Response Example
 
 ````
 X-Powered-By: Express
@@ -1597,7 +1684,7 @@ Keep-Alive: timeout=5
 PUT http://127.0.0.1:3000/update/{{sid}}
 ````
 
-Example Request
+Request Example
 
 ````
 PUT http://127.0.0.1:3000/7
@@ -1614,7 +1701,7 @@ Connection: keep-alive
 Content-Length: 35
 ````
 
-Body
+Body Example
 
 ````
 {
@@ -1622,7 +1709,7 @@ Body
 }
 ````
 
-Example Response
+Response Example
 
 ````
 X-Powered-By: Express
@@ -1679,6 +1766,8 @@ Keep-Alive: timeout=5
 deleted from db
 ````
 
+SERVICES Document field information
+
 | Field			|	Type			|	Description																				  |
 |-----------|-----------|-----------------------------------------------------|
 |_id        |ObjectID   |A randomly generated identifier 
@@ -1686,7 +1775,7 @@ deleted from db
 |	name				|	String		| Name of the service			|
 | renewal| string		|	How long before service has to be reapplied for				|
 | notes  | string    | Notes                          |     
-| applicants | Object(Array(Number))    | Array that stores client ids                          |
+| applicants | Object(Array)    | Array that stores client ids                          |
 
 
 Possible errors:
@@ -1780,7 +1869,7 @@ Connection: keep-alive
 Content-Length: 222
 ````
 
-Body
+Body Example
 
 ````
 {
@@ -2171,6 +2260,8 @@ Keep-Alive: timeout=5
 ````
 deleted from db
 ````
+
+EVENT Collection field information
 
 | Field			|	Type			|	Description																				  |
 |-----------|-----------|-----------------------------------------------------|
