@@ -115,15 +115,30 @@ router.get("/employee-clients-events", (req, res, next) => {
   );
 });
 
-router.put("/delclient/:employeeID", (req, res, next) => {
-  var action = req.body.action;
+//add clients to employee collection
 
+
+router.put("/client/:employeeID", (req, res, next) => {
+  var action = req.body.action;
+//add clients to employees
+if(action == 'add'){
+  empModel.findOneAndUpdate({employeeID:parseInt(req.params.employeeID)},{
+    $push:{'clients.clientID':req.body.clientID}
+  },(error, results)=>{
+      if(error){
+          return next(error);
+      }else{
+          res.send('added employee to client')
+          console.log('added employee to client')
+      }
+  });
+}
   //remove clients from employees
-  if (action == "del") {
+ else if (action == "del") {
     empModel.findOneAndUpdate(
       { employeeID: parseInt(req.params.employeeID) },
       {
-        $unset: { "clients.clientID": req.body.clientID },
+        $pull : { "clients.clientID": req.body.clientID },
       },
       (error, results) => {
         if (error) {
@@ -135,7 +150,7 @@ router.put("/delclient/:employeeID", (req, res, next) => {
       }
     );
   }
-  //remove employee id
+ 
 });
 
 router.put("/delevent/:employeeID", (req, res, next) => {
@@ -146,7 +161,7 @@ router.put("/delevent/:employeeID", (req, res, next) => {
     empModel.findOneAndUpdate(
       { eventID: parseInt(req.params.eventID) },
       {
-        $unset: { "events.eventID": req.body.eventID },
+        $pull: { "events.eventID": req.body.eventID },
       },
       (error, results) => {
         if (error) {

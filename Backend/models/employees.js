@@ -94,11 +94,14 @@ let employeesSchema = new Schema(
         eventID: Number,
       },
     ],
-    clients: [
-      {
-        clientID: Number,
-      },
-    ],
+    clients: {
+      clientID: [
+        {
+          type: Number,
+          unique: true,
+        },
+      ],
+    },
   },
   {
     collection: "employees",

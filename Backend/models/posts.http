@@ -8,7 +8,7 @@ Content-Type: application/json
       "lName": "Franklin",
       "phone": "832-389-7539"
     },
-    "employeeID": 11,
+    "employeeID": 13,
     "firstName": "Rose",
     "lastName": "Robinson",
     "birthday": "05/29/1991",
@@ -32,15 +32,17 @@ Content-Type: application/json
     "dept":"Events",
     "jDesc":"Event Moderator",
     "degree":"Bachelor's",
-    "events": {
-      "eventID": 1,
-      "eventName": "Town Fair 2020"
+    "events":[ {
+      "eventID": 1
     }
+    ]
   }   
 
 
     
- GET http://localhost:3000/employees/find/2
+ GET http://localhost:3000/clients/all
+
+ GET http://localhost:3000/employees/
 
  DELETE http://localhost:3000/employees/del/1
 
