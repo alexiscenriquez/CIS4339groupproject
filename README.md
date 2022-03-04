@@ -396,7 +396,7 @@ Content-Length: 833
   
   Possible errors:
 
-  | Error code                | Description                   |
+  | Error code                | Description                  |
   | --------------------------|------------------------------|
   | 404 Not Found             | The requested resource could not be found buy may be available again in the future. Subsequent requests by the cleints are permissible. |
   | 500 Internal Server Error | The server encountered an unexpected condition that precented it from fullifilling the request.                                         |
