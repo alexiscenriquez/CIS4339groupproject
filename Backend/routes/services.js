@@ -44,7 +44,7 @@ router.get('/find/:sid', (req, res, next)=>{
 router.put('/new-applicant/:sid', (req, res, next)=>{
     var action = req.body.action
     if(action == 'add'){
-    servicesModel.findOneAndUpdate({vid:parseInt(req.params.sid)},{
+    servicesModel.findOneAndUpdate({sid:parseInt(req.params.sid)},{
         $push:{'applicants.cid':parseInt(req.body.cid)}
     },(error, results)=>{
         if(error){
@@ -56,7 +56,7 @@ router.put('/new-applicant/:sid', (req, res, next)=>{
         });
     }
     if(action == 'del'){
-        servicesModel.findOneAndUpdate({vid:parseInt(req.params.sid)},{
+        servicesModel.findOneAndUpdate({sid:parseInt(req.params.sid)},{
             $pull:{'applicants.cid':parseInt(req.body.cid)}
         },(error, results)=>{
             if(error){

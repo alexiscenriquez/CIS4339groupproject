@@ -87,6 +87,7 @@ router.put('/attendee/:evid', (req, res, next)=>{
             });
         }
     }
+
     if(action == 'del'){
         if (id_type == 'volunteer'){
             eventsModel.findOneAndUpdate({evid : parseInt(req.params.evid)},{
@@ -96,8 +97,8 @@ router.put('/attendee/:evid', (req, res, next)=>{
                     if(error){
                         return next(error);
                     }else{
-                    res.send('Added new volunteer attendee to event.')
-                    console.log('Added new volunteer attendee to event.')
+                    res.send('Removed volunteer attendee from event.')
+                    console.log('Removed volunteer attendee from event.')
                 }
             });
         }
@@ -110,8 +111,8 @@ router.put('/attendee/:evid', (req, res, next)=>{
                     if(error){
                         return next(error);
                     }else{
-                    res.send('Added new employee attendee to event.')
-                    console.log('Added new employee attendee to event.')
+                    res.send('Removed employee attendee from event.')
+                    console.log('Removed employee attendee from event.')
                 }
             });
         }
@@ -124,8 +125,8 @@ router.put('/attendee/:evid', (req, res, next)=>{
                     if(error){
                         return next(error);
                     }else{
-                    res.send('Added new client attendee to event.')
-                    console.log('Added new client attendee to event.')
+                    res.send('Removed client attendee from event.')
+                    console.log('Removed client attendee from event.')
                 }
             });
         }
