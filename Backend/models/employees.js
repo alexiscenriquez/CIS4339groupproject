@@ -92,14 +92,11 @@ let employeesSchema = new Schema(
     events: [
       {
         eventID: Number,
-        eventName: String,
       },
     ],
     clients: [
       {
         clientID: Number,
-        firstName: String,
-        lastName: String,
       },
     ],
   },

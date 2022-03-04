@@ -79,18 +79,20 @@ router.get("/employee-clients-events", (req, res, next) => {
           foreignField: "cid",
           as: "clients",
         },
+      },
+      {
         $lookup: {
           from: "events",
           localField: "events.eventID",
           foreignField: "evid",
           as: "events",
-        }
+        },
       },
       {
         $project: {
-          "employeeID": 1,
-          "firstName": 1,
-          "lastName": 1,
+          employeeID: 1,
+          firstName: 1,
+          lastName: 1,
           "clients.cid": 1,
           "clients.first_name": 1,
           "clients.last_name": 1,
@@ -113,4 +115,49 @@ router.get("/employee-clients-events", (req, res, next) => {
   );
 });
 
+router.put("/delclient/:employeeID", (req, res, next) => {
+  var action = req.body.action;
+
+  //remove clients from employees
+  if (action == "del") {
+    empModel.findOneAndUpdate(
+      { employeeID: parseInt(req.params.employeeID) },
+      {
+        $unset: { "clients.clientID": req.body.clientID },
+      },
+      (error, results) => {
+        if (error) {
+          return next(error);
+        } else {
+          res.send("Removed client from employee.");
+          console.log("Removed client from employee.");
+        }
+      }
+    );
+  }
+  //remove employee id
+});
+
+router.put("/delevent/:employeeID", (req, res, next) => {
+  var action = req.body.action;
+
+  //remove events from employees
+  if (action == "del") {
+    empModel.findOneAndUpdate(
+      { eventID: parseInt(req.params.eventID) },
+      {
+        $unset: { "events.eventID": req.body.eventID },
+      },
+      (error, results) => {
+        if (error) {
+          return next(error);
+        } else {
+          res.send("Removed event from employee.");
+          console.log("Removed event from employee.");
+        }
+      }
+    );
+  }
+  //remove employee id
+});
 module.exports = router;
