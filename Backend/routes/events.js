@@ -44,7 +44,9 @@ router.put('/attendee/:evid', (req, res, next)=>{
     var id_num = req.body.id
     var action = req.body.action
     
+    //add to events
     if(action == 'add'){
+        //add volunteer id's
         if (id_type == 'volunteer'){
             eventsModel.findOneAndUpdate({evid : parseInt(req.params.evid)},{
                 $push:{'attendees.vid':id_num}
@@ -58,7 +60,7 @@ router.put('/attendee/:evid', (req, res, next)=>{
                 }
             });
         }
-
+        //add employee ids
         if (id_type == 'employee'){
             eventsModel.findOneAndUpdate({evid : parseInt(req.params.evid)},{
                 $push:{'attendees.employeeID':id_num}
@@ -72,7 +74,7 @@ router.put('/attendee/:evid', (req, res, next)=>{
                 }
             });
         }
-
+        //add client ids
         if (id_type == 'client'){
             eventsModel.findOneAndUpdate({evid : parseInt(req.params.evid)},{
                 $push:{'attendees.cid':id_num}
@@ -87,8 +89,9 @@ router.put('/attendee/:evid', (req, res, next)=>{
             });
         }
     }
-
+    //remove attendees from events
     if(action == 'del'){
+        //remove volunteer id
         if (id_type == 'volunteer'){
             eventsModel.findOneAndUpdate({evid : parseInt(req.params.evid)},{
                 $pull:{'attendees.vid':id_num}
@@ -102,7 +105,7 @@ router.put('/attendee/:evid', (req, res, next)=>{
                 }
             });
         }
-
+        //remove employee id
         if (id_type == 'employee'){
             eventsModel.findOneAndUpdate({evid : parseInt(req.params.evid)},{
                 $pull:{'attendees.employeeID':id_num}
@@ -116,7 +119,7 @@ router.put('/attendee/:evid', (req, res, next)=>{
                 }
             });
         }
-
+        //remove client id
         if (id_type == 'client'){
             eventsModel.findOneAndUpdate({evid : parseInt(req.params.evid)},{
                 $pull:{'attendees.cid':id_num}
@@ -134,7 +137,7 @@ router.put('/attendee/:evid', (req, res, next)=>{
 
 });
 
-//
+//get event and attendee information
 router.get('/event-attendees', (req, res, next)=>{
     //join documents to get volunteers, clients, employees data
     eventsModel.aggregate([
