@@ -88,7 +88,7 @@ Keep-Alive: timeout=5
 
 
 
-Add new Volunteer to Volunteers collection----------------
+#### Add new Volunteer to Volunteers collection
 
 ````
 POST http://localhost:3000/volunteers/new-user
@@ -149,7 +149,7 @@ Keep-Alive: timeout=5
 New Volunteer added
 ````
 
-FIND VOLUNTEER BY VID
+#### FIND VOLUNTEER BY VID
 
 ````
 GET 127.0.0.1:3000/volunteers/find/{{vid}}
@@ -216,7 +216,7 @@ Keep-Alive: timeout=5
 ]
 ````
 
-ADD OR DELETE EVENT FROM VOLUNTEER EVENT ARRAY FIELD
+#### ADD OR DELETE EVENT FROM VOLUNTEER EVENT ARRAY FIELD
 
 ````
 PUT 127.0.0.1:3000/volunteers/events/{{vid}}
@@ -291,7 +291,7 @@ Keep-Alive: timeout=5
 deleted event from volunteer
 ````
 
-GET ALL EVENTS THAT VOLUNTEERS ATTENDED
+#### GET ALL EVENTS THAT VOLUNTEERS ATTENDED
 
 Example request
 
@@ -359,7 +359,7 @@ Keep-Alive: timeout=5
 ]
 ````
 
-UPDATE VOLUNTEERS INFORMATION
+#### UPDATE VOLUNTEERS INFORMATION
 
 ````
 PUT http://127.0.0.1:3000/volunteers/update/{{vid}}
@@ -410,7 +410,7 @@ Volunteer information updated.
 ````
 
 
-DELETE VOLUNTEER FROM DOCUMENT
+#### DELETE VOLUNTEER FROM DOCUMENT
 
 ````
 DELETE http://127.0.0.1:3000/volunteers/del/{{vid}}
