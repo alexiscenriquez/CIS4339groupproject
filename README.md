@@ -198,8 +198,7 @@ Where an employee object is:
 | language   | array     | The languages the employee is proficient in         |
 | pEmail     | string    | The employee's primary email                        |
 | phone      | string    | The employee's primary number                       |
-| zip        | string    | The zip code of the area the employee resides       |   
-
+| zip        | string    | The zip code of the area the employee resides       |  
 
 #### Creating a post
 Creates a new employee
@@ -340,11 +339,68 @@ Content-Length: 833
   
   Where a client object is:
 
-  | Field			|	Type			|	Description																				  |
-  |-----------|-----------|-----------------------------------------------------|
-  | id				|	string		| A randomly generated identifier for the client.	|
-  |	cid				|	number		| A Non-random primary identifier for client.			|
-  |first_name	| string		|	The client's first name													|
+  | Field			                     |	Type	 |	Description																				                       |
+  |--------------------------------|---------|---------------------------------------------------------------------------|
+  | id				                     | string  | A randomly generated identifier for the client.	                         |
+  |	cid				                     | number  | on-random primary identifier for client.			                             |
+  | first_name                     | string	 | The volunteer's first name													                       |
+  | mid_name                       | string  | The client's middle name                                                  |     
+  | last_name                      | string  | The client's last name                                                    |
+  | b_day                          | date    | The client's birthday                                                     |
+  | dl                             | string  | The client's drivers license number                                       |
+  | gender                         | string  | The client's gender                                                       |
+  | ethnicity                      | string  | The client's ethnicity                                                    |
+  | address                        | string  | The client's address                                                      |
+  | city                           | string  | The city the client resides                                               |
+  | state                          | string  | The state the client resides                                              |
+  | country                        | string  | The country the client resides                                            |
+  | zip_code                       | string  | The client's zip code address                                             | 
+  | rent                           | string  | The client's monthly rent amount                                          |
+  | residency                      | string  | The amount of time a client has been a resident                           |
+  | living_arrangement             | string  | The living situation of a client                                          | 
+  | number_of_children             | number  | The number of children a client has/has living with them                  |
+  | number_of_adults_over_65       | number  | The number of elderly people a client has living with them                |
+  | phone_number                   | string  | The client's phone number                                                 |
+  | home_phone_number              | string  | The client's home phone number                                            |
+  | emergency_contact_phone_number | string  | The client's emergency contact phone number                               |    
+  | primary_email                  | boolean | The client's primary email address                                        |
+  | secondary_email                | boolean | The client's secondary email address                                      |
+  | marital_status                 | boolean | The client's marital status                                               |
+  | language                       | boolean | The client's languages                                                    |
+  | priority_population            | boolean | The client's amount of priority based on their situation                  |
+  | employment_status              | boolean | The client's current employment status                                    |
+  | length_of_employment           | boolean | The client's length for which they are currently employed                 |            
+  | employer_name                  | boolean | The client's employer name                                                |
+  | occupation                     | boolean | The client's job title                                                    |
+  | highest_grade                  | boolean | The client's highest grade completed                                      |
+  | graduate                       | boolean | The client's graduation status                                            |
+  | degree_name                    | string  | The client's degree name                                                  | 
+  | head_of_household              | string  | The client's current head of household name                               |     
+  | monthly_income                 | number  | The client's monthly income                                               |
+  | spousal_income_support         | string  | The client's spouses monthly income                                       |                      
+  | worker_compensation            | number  | The client's amount of worker's compensation                              |
+  | veteran_status                 | string  | The client's veteran status                                               |
+  | child_support                  | number  | The cliient's income of child support paid or received                    |                  
+  | tanf                           | number  | The client's income received from Temporary Assistance for Needy Families |                                
+  | food_stamps                    | number  | The client's income received from food stamps                             |                                   
+  | ssi                            | number  | The client's income received from Supplemental Security Income            |
+  | unemployment                   | number  | The client's income received from unemployment                            |                                   
+  | social_security                | number  | The client's income received from social security                         |                                   
+  | other_income                   | number  | The client's income received from other sources of unlisted               |                                   
+  | health_insurance               | boolean | The client's status with healthcare                                       |
+  | health_insurance_desc          | string  | The client's health care description                                      |
+  | insurance_program              | string  | The client's insurance program                                            |
+  | covid_status                   | boolean | The client's status regarding COVID19                                     |
+  | employees                      | array   | List of IDs for employees that have assisted clients is apart of          |
+  | services                       | array   | List of IDs for services clients have requested                           |
+  
+  Possible errors:
+
+  | Error code                | Description                   |
+  | --------------------------|------------------------------|
+  | 404 Not Found             | The requested resource could not be found buy may be available again in the future. Subsequent requests by the cleints are permissible. |
+  | 500 Internal Server Error | The server encountered an unexpected condition that precented it from fullifilling the request.                                         |
+  
   
   #### Getting all volunteer's details
   Returns details stored in collection about all volunteer
