@@ -928,8 +928,11 @@ added employee to client
 
 #### Deleting a client from an Employee Collection
 
-The request to delete an employee to a client looks like this:
+The request to delete a client from an employee looks like this:
 
+````
+PUT http://localhost:3000/employees/client/{employeeID}
+````
 Example Request:
 
 ````
@@ -965,7 +968,100 @@ Keep-Alive: timeout=5
 Response Body
 Removed client from employee.
 
+#### Adding an event to an employee collection
+
+The request to add an event to an employee looks like this:
+
 ````
+PUT http://localhost:3000/employees/event/{employeeID}
+````
+Example Request
+
+````
+PUT http://localhost:3000/employees/event/13
+
+Request Headers
+Content-Type: application/json
+User-Agent: PostmanRuntime/7.29.0
+Accept: */*
+Postman-Token: 7e838f44-9161-440d-9af6-c8636054f3ab
+Host: localhost:3000
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 42
+Request Body
+{
+    "action":"add",
+    "eventID":3
+}
+````
+
+Example Response
+````
+Response Headers
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: text/html; charset=utf-8
+Content-Length: 23
+ETag: W/"17-hRBsPieLRJ6w1uhYipmdV/mKvVg"
+Date: Fri, 04 Mar 2022 22:43:22 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+Response Body
+added event to employee
+
+````
+
+#### Deleting an event from an employee collection
+
+The request to add an event to an employee looks like this:
+
+````
+PUT http://localhost:3000/employees/event/{employeeID}
+````
+Example Request:
+
+````
+http://localhost:3000/employees/event/13
+Request Headers
+Content-Type: application/json
+User-Agent: PostmanRuntime/7.29.0
+Accept: */*
+Postman-Token: dc5eec23-c9a3-4bf5-a952-74e9c12b05eb
+Host: localhost:3000
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 42
+
+Request Body
+{
+    "action":"del",
+    "eventID":3
+}
+
+
+````
+
+Example Response:
+
+````
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: text/html; charset=utf-8
+Content-Length: 28
+ETag: W/"1c-PyIHnk+As77LOfH1Sy6YI1CqbcA"
+Date: Fri, 04 Mar 2022 22:49:25 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+Response Body
+Removed event from employee.
+````
+
+
+
+
 ### 2.3 Clients
   
   #### Getting a volunteer's details
