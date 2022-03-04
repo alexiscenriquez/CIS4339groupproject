@@ -38,13 +38,15 @@ router.get('/find/:evid', (req, res, next)=>{
     });
 });
 
-//{UPDATE} Add attendees to events
+//{UPDATE} Add/remove attendees from events
 router.put('/attendee/:evid', (req, res, next)=>{
     var id_type = req.body.type
     var id_num = req.body.id
     var action = req.body.action
     
+    //add to events
     if(action == 'add'){
+        //add volunteer id's
         if (id_type == 'volunteer'){
             eventsModel.findOneAndUpdate({evid : parseInt(req.params.evid)},{
                 $push:{'attendees.vid':id_num}
@@ -58,7 +60,7 @@ router.put('/attendee/:evid', (req, res, next)=>{
                 }
             });
         }
-
+        //add employee ids
         if (id_type == 'employee'){
             eventsModel.findOneAndUpdate({evid : parseInt(req.params.evid)},{
                 $push:{'attendees.employeeID':id_num}
@@ -72,7 +74,7 @@ router.put('/attendee/:evid', (req, res, next)=>{
                 }
             });
         }
-
+        //add client ids
         if (id_type == 'client'){
             eventsModel.findOneAndUpdate({evid : parseInt(req.params.evid)},{
                 $push:{'attendees.cid':id_num}
@@ -87,7 +89,9 @@ router.put('/attendee/:evid', (req, res, next)=>{
             });
         }
     }
+    //remove attendees from events
     if(action == 'del'){
+        //remove volunteer id
         if (id_type == 'volunteer'){
             eventsModel.findOneAndUpdate({evid : parseInt(req.params.evid)},{
                 $pull:{'attendees.vid':id_num}
@@ -96,12 +100,12 @@ router.put('/attendee/:evid', (req, res, next)=>{
                     if(error){
                         return next(error);
                     }else{
-                    res.send('Added new volunteer attendee to event.')
-                    console.log('Added new volunteer attendee to event.')
+                    res.send('Removed volunteer attendee from event.')
+                    console.log('Removed volunteer attendee from event.')
                 }
             });
         }
-
+        //remove employee id
         if (id_type == 'employee'){
             eventsModel.findOneAndUpdate({evid : parseInt(req.params.evid)},{
                 $pull:{'attendees.employeeID':id_num}
@@ -110,12 +114,12 @@ router.put('/attendee/:evid', (req, res, next)=>{
                     if(error){
                         return next(error);
                     }else{
-                    res.send('Added new employee attendee to event.')
-                    console.log('Added new employee attendee to event.')
+                    res.send('Removed employee attendee from event.')
+                    console.log('Removed employee attendee from event.')
                 }
             });
         }
-
+        //remove client id
         if (id_type == 'client'){
             eventsModel.findOneAndUpdate({evid : parseInt(req.params.evid)},{
                 $pull:{'attendees.cid':id_num}
@@ -124,8 +128,8 @@ router.put('/attendee/:evid', (req, res, next)=>{
                     if(error){
                         return next(error);
                     }else{
-                    res.send('Added new client attendee to event.')
-                    console.log('Added new client attendee to event.')
+                    res.send('Removed client attendee from event.')
+                    console.log('Removed client attendee from event.')
                 }
             });
         }
@@ -133,7 +137,7 @@ router.put('/attendee/:evid', (req, res, next)=>{
 
 });
 
-//
+//get event and attendee information
 router.get('/event-attendees', (req, res, next)=>{
     //join documents to get volunteers, clients, employees data
     eventsModel.aggregate([

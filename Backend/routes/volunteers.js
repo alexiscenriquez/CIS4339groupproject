@@ -82,7 +82,7 @@ router.get('/event-attendees', (req, res, next)=>{
                 localField:'events.evid',
                 foreignField:'evid',
                 as:'events'
-        }
+            }
 
         },{
             //get only specific fields
@@ -92,6 +92,7 @@ router.get('/event-attendees', (req, res, next)=>{
             'mid_name':1,
             'last_name':1,
             'phone_num':1,
+            //'events':{$size:'$events'},
             'events.evid':1,
             'events.ev_name':1,
             'events.ev_date':1,
@@ -99,8 +100,8 @@ router.get('/event-attendees', (req, res, next)=>{
             'events.st':1,
             'events.zip':1
 
+            }
         }
-    }
     ],(error, results)=>{
         if(error){
             return next(error)
