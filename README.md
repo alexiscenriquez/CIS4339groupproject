@@ -20,7 +20,7 @@ Our group's API is JSON-based. All requests are made to endpoints beginning: `ht
 ### 2.1 For Local Deployments 
  1) Insert data into the database
 
- 2) To gain access to the database, a .env file is required containing the DATABASE_URL
+ 2) To gain access to the database, an .env file is required containing the DATABASE_URL string
 
 ### 2.2 How to Initialize the Backend
 
