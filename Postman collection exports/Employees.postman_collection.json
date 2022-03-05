@@ -1,0 +1,248 @@
+{
+	"info": {
+		"_postman_id": "94d73616-6ce5-4ab9-ad0f-1ba7fa6b116f",
+		"name": "Employees",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Updating an Employee",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/employees/{employeeID}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"employees",
+						"{employeeID}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all employees",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/employees",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Creating a new employee",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \r\n    \"eContact\": {\r\n      \"fName\": \"Simon\",\r\n      \"lName\": \"Franklin\",\r\n      \"phone\": \"832-389-7539\"\r\n    },\r\n    \"employeeID\": 12,\r\n    \"firstName\": \"Rose\",\r\n    \"lastName\": \"Robinson\",\r\n    \"birthday\": \"05/29/1991\",\r\n    \"SSN\": \"455-88-3298\",\r\n    \"dLicense\": \"32326638 \",\r\n    \"gender\": \"Female\",\r\n    \"race\": \"Black\",\r\n    \"hispanic\": true,\r\n    \"phone\": \"832-212-2003\",\r\n    \"home\": \"832-355-5946\",\r\n    \"pEmail\": \"rrobinson@gmail.com\",\r\n    \"language\": [\r\n      \"English\",\"Spanish\"\r\n    ],\r\n    \"address\": \"1542 Wines Lane\",\r\n    \"city\": \"Houston\",\r\n    \"state\": \"Texas\",\r\n    \"county\": \"Harris\",\r\n    \"zip\": \"77030\",\r\n    \"lEmployment\": \"8mo\",\r\n    \"dept\":\"Events\",\r\n    \"jDesc\":\"Event Moderator\",\r\n    \"degree\":\"Bachelor's\",\r\n    \"events\": {\r\n      \"eventID\": 1\r\n    }\r\n  } ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/employees/newemp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"employees",
+						"newemp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deleting an employee",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/employees/del/{employeeID}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"employees",
+						"del",
+						"{employeeID}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find Employee by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/employees/find/{employeeID}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"employees",
+						"find",
+						"{employeeID}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Adding an event to an employee collection",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"action\":\"add\",\r\n    \"eventID\":3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/employees/event/{employeeID}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"employees",
+						"event",
+						"{employeeID}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deleting event from employee",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"action\":\"del\",\r\n    \"eventID\":3\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "PUT http://localhost:3000/employees/event/{employeeID}",
+					"protocol": "PUT http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"employees",
+						"event",
+						"{employeeID}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deleting a client from an Employee Collection",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"action\":\"del\",\r\n    \"clientID\":\"3\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/employees/client/{employeeID}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"employees",
+						"client",
+						"{employeeID}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Adding a client to an employee collection",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"action\":\"add\",\r\n    \"clientID\":\"4\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "PUT http://localhost:3000/employees/client/{employeeID}",
+					"protocol": "PUT http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"employees",
+						"client",
+						"{employeeID}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
