@@ -1086,16 +1086,18 @@ Removed event from employee.
 
 ### 3.3 Clients
   
-  #### Getting a volunteer's details
-  Returns details stored in collection about a volunteer
+ #### Getting client's details
+  Deals with clients collection
+  
+  Request to fetch all information from the clients collection
   
   ````
-  GET http://127.0.0.1:3000/clients/find/1
+  GET http://127.0.0.1:3000/clients/all
   ````
   Example request:
 
   ````
-  GET /clients/find/1 HTTP/1.1
+  GET /clients/all HTTP/1.1
   Host: localhost:3000
   ````
   
@@ -1104,65 +1106,570 @@ Removed event from employee.
   Example response:
    
   ````
-  HTTP/1.1 304 Not Modified
+  Access-Control-Allow-Origin: *
+  Connection: keep-alive
+  Date: Fri, 04 Mar 2022 06:24:01 GMT
+  ETag: W/"18de-MrB3R2XUzntxvh4qFEwlUg58KbI"
+  Keep-Alive: timeout=5
+  X-Powered-By: Express
+  
+  [
+    {
+        "employees": {
+            "employeeID": [
+                1
+            ]
+        },
+        "services": {
+            "sid": [
+                1,
+                6
+            ]
+        },
+        "_id": "6221287fd95bc85b9cb18929",
+        "cid": 1,
+        "first_name": "Steven",
+        "mid_name": "S",
+        "last_name": "Spielberg",
+        "b_day": "1993-08-22T00:00:00.000Z",
+        "DL": "",
+        "gender": "",
+        "ethnicity": "",
+        "address": "555 Peppermint Lane",
+        "city": "Austin",
+        "state": "TX",
+        "country": "Harris",
+        "zip_code": "77885",
+        "rent": "1,000",
+        "residency": "1 year",
+        "living_arrangements": "With Spouse",
+        "number_of_children": 1,
+        "number_of_adults_over_65": 0,
+        "phone_number": "222-545-5585",
+        "home_phone_number": "",
+        "emergency_contact_phone_number": "221-558-8995",
+        "primary_email": "SSberg@yahoo.com",
+        "secondary_email": "",
+        "marital_status": "Married",
+        "language": "English",
+        "priority_population": "HIGH",
+        "employment_status": "Employed",
+        "length_of_employment": "7 years",
+        "employer_name": "McDonalds",
+        "occupation": "Manager",
+        "highest_grade": "College",
+        "graduate": true,
+        "degree_name": "Business",
+        "head_of_household": "Steven Spielberg",
+        "monthly_income": 52124,
+        "spousal_income_support": "50000",
+        "worker_compensation": 0,
+        "veteran_status": "None",
+        "child_support": 0,
+        "tanf": 0,
+        "food_stamps": 0,
+        "ssi": 0,
+        "unemployment": 0,
+        "social_security": 740259875,
+        "other_income": null,
+        "health_insurance": true,
+        "health_insurance_desc": "General Heatlhcare",
+        "insurance_program": "United Healthcare",
+        "covid_status": true,
+        "__v": 0
+    },
+    {
+        "employees": {
+            "employeeID": [
+                2
+            ]
+        },
+        "services": {
+            "sid": [
+                2
+            ]
+        }
+    ]
+  ````
+  
+  
+  
+  
+  
+  Add new Client to Client collection---------------------------------
+  
+  ````
+  POST http://127.0.0.1:3000/clients/new-client
+  ````
+  Example Request
+  
+  ````
+  Content-Type: application/json
+  User-Agent: PostmanRuntime/7.29.0
+  Accept: */*
+  Postman-Token: 0b2e3a22-23f7-481d-a853-89f012096689
+  Host: 127.0.0.1:3000
+  Accept-Encoding: gzip, deflate, br
+  Connection: keep-alive
+  Content-Length: 1704
+  ````
+  
+  Request Body
+  
+  ````
+  {
+    "cid": 6,
+    "first_name": "Chancellor",
+    "mid_name": "J",
+    "last_name": "Bennett",
+    "b_day": "1993-04-16T00:00:00.000Z",
+    "DL": "",
+    "gender": "Male",
+    "ethnicity": "African American",
+    "address": "4171 Cannot Find",
+    "city": "Middle of Nowhere",
+    "state": "???",
+    "country": "United States",
+    "zip_code": "687452",
+    "rent": "19000",
+    "residency": " 6 years",
+    "living_arrangements": "With Family",
+    "number_of_children": 2,
+    "number_of_adults_over_65": 0,
+    "phone_number": "281-854-7444",
+    "home_phone_number": "",
+    "emergency_contact_phone_number": "281-874-7842",
+    "primary_email": "BestArtist@yahoo.com",
+    "secondary_email": "",
+    "marital_status": "Married",
+    "language": "English",
+    "priority_population": "HIGH",
+    "employment_status": "Employed",
+    "length_of_employment": " 16 years",
+    "employer_name": "RCA Records",
+    "occupation": "Music Artist",
+    "highest_grade": "Highschool",
+    "graduate": true,
+    "degree_name": "None",
+    "head_of_household": "Chance Bennett",
+    "monthly_income": 400000,
+    "spousal_income_support": "0",
+    "worker_compensation": 0,
+    "veteran_status": "None",
+    "child_support": 0,
+    "tanf": 0,
+    "food_stamps": 0,
+    "ssi": 0,
+    "unemployment": 0,
+    "social_security": 874125874,
+    "other_income": null,
+    "health_insurance": true,
+    "health_insurance_desc": "Full Coverage",
+    "insurance_program": "Chance the Rapper Program",
+    "covid_status": true
+}
+  ````
+  
+  Example Respose
+  
+  ````
   X-Powered-By: Express
   Access-Control-Allow-Origin: *
-  ETag: W/"4ee-hW/VMs5pnpKlr1LO6qMapGaaM9E"
-  Date: Thu, 03 Mar 2022 17:25:18 GMT
+  Content-Type: text/html; charset=utf-8
+  Content-Length: 16
+  ETag: W/"10-vneoRItZ5CDev+tKxpoOUGfCEYw"
+  Date: Thu, 03 Mar 2022 17:05:27 GMT
+  Connection: keep-alive
+  Keep-Alive: timeout=5
+  ````
+  
+  ````
+  New Client added
+  ````
+  
+  FIND CLIENT BY CID
+  
+  ````
+  GET http://127.0.0.1:3000/clients/find/{{cid}}
+  ````
+  
+  Request Example
+  ````
+  GET http://127.0.0.1:3000/clients/find/1
+  ````
+  
+  ````
+  User-Agent: PostmanRuntime/7.29.0
+  Accept: */*
+  Postman-Token: 378fe422-135c-42a7-aa2b-264092dfda8a
+  Host: 127.0.0.1:3000
+  Accept-Encoding: gzip, deflate, br
+  Connection: keep-alive
+  ````
+  
+  Response
+  
+  ````
+  X-Powered-By: Express
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  Content-Length: 1266
+  ETag: W/"4f2-K35g6+WHj6v8xLkSDJSR+KPEtLs"
+  Date: Fri, 04 Mar 2022 06:34:18 GMT
   Connection: keep-alive
   Keep-Alive: timeout=5
   
-  {"_id": "6220f557b87e766fa5128410",
-   "cid": 1,
-   "first_name": "Steven",
-   "mid_name": "S",
-   "last_name": "Spielberg",
-   "b_day": "1993-08-22T00:00:00.000Z",
-   "DL": "",
-   "gender": "",
-   "ethnicity": "",
-   "address": "555 Peppermint Lane",
-   "city": "Austin",
-   "state": "TX",
-   "country": "Harris",
-   "zip_code": "77885",
-   "rent": "1,000",
-   "residency": "1 year",
-   "living_arrangements": "With Spouse",
-   "number_of_children": 1,
-   "number_of_adults_over_65": 0,
-   "phone_number": "222-545-5585",
-   "home_phone_number": "",
-   "emergency_contact_phone_number": "221-558-8995",
-   "primary_email": "SSberg@yahoo.com",
-   "secondary_email": "",
-   "marital_status": "Married",
-   "language": "English",
-   "priority_population": "HIGH",
-   "employment_status": "Employed",
-   "length_of_employment": "7 years",
-   "employer_name": "McDonalds",
-   "occupation": "Manager",
-   "highest_grade": "College",
-   "graduate": true,
-   "degree_name": "Business",
-   "head_of_household": "Steven Spielberg",
-   "monthly_income": 52124,
-   "spousal_income_support": "50000",
-   "worker_compensation": 0,
-   "veteran_status": "None",
-   "child_support": 0,
-   "tanf": 0,
-   "food_stamps": 0,
-   "ssi": 0,
-   "unemployment": 0,
-   "social_security": 740259875,
-   "other_income": null,
-   "health_insurance": true,
-   "health_insurance_desc": "General Heatlhcare",
-   "insurance_program": "United Healthcare",
-   "covid_status": true,
-   "__v": 0}
+  [
+    {
+        "employees": {
+            "employeeID": [
+                1
+            ]
+        },
+        "services": {
+            "sid": [
+                1,
+                6
+            ]
+        },
+        "_id": "6221287fd95bc85b9cb18929",
+        "cid": 1,
+        "first_name": "Steven",
+        "mid_name": "S",
+        "last_name": "Spielberg",
+        "b_day": "1993-08-22T00:00:00.000Z",
+        "DL": "",
+        "gender": "",
+        "ethnicity": "",
+        "address": "555 Peppermint Lane",
+        "city": "Austin",
+        "state": "TX",
+        "country": "Harris",
+        "zip_code": "77885",
+        "rent": "1,000",
+        "residency": "1 year",
+        "living_arrangements": "With Spouse",
+        "number_of_children": 1,
+        "number_of_adults_over_65": 0,
+        "phone_number": "222-545-5585",
+        "home_phone_number": "",
+        "emergency_contact_phone_number": "221-558-8995",
+        "primary_email": "SSberg@yahoo.com",
+        "secondary_email": "",
+        "marital_status": "Married",
+        "language": "English",
+        "priority_population": "HIGH",
+        "employment_status": "Employed",
+        "length_of_employment": "7 years",
+        "employer_name": "McDonalds",
+        "occupation": "Manager",
+        "highest_grade": "College",
+        "graduate": true,
+        "degree_name": "Business",
+        "head_of_household": "Steven Spielberg",
+        "monthly_income": 52124,
+        "spousal_income_support": "50000",
+        "worker_compensation": 0,
+        "veteran_status": "None",
+        "child_support": 0,
+        "tanf": 0,
+        "food_stamps": 0,
+        "ssi": 0,
+        "unemployment": 0,
+        "social_security": 740259875,
+        "other_income": null,
+        "health_insurance": true,
+        "health_insurance_desc": "General Heatlhcare",
+        "insurance_program": "United Healthcare",
+        "covid_status": true,
+        "__v": 0
+    }
+]
+  ````
+  
+  ADD OR DELETE EMPLOYEE FROM CLIENT EMPLOYEE ARRAY FIELD
+  
+  ````
+  PUT http://127.0.0.1:3000/clients/adddelemp/2
+  ````
+  
+  Example request
+  
+  ````
+  Content-Type: application/json
+  User-Agent: PostmanRuntime/7.29.0
+  Accept: */*
+  Postman-Token: 23a8168d-c074-424f-b0a4-2054abea88a5
+  Host: 127.0.0.1:3000
+  Accept-Encoding: gzip, deflate, br
+  Connection: keep-alive
+  Content-Length: 46
+  ````
+  
+  Request Body Adding employee
+  
+  ````
+  {
+    "action": "add",
+    "employeeID":7
+  }
+  ````
+  
+  Example Response
+  
+  ````
+  X-Powered-By: Express
+  Access-Control-Allow-Origin: *
+  Content-Type: text/html; charset=utf-8
+  Content-Length: 24
+  ETag: W/"18-pX0mww76oKvfiWtEGrMTyyTAdJM"
+  Date: Fri, 04 Mar 2022 06:37:38 GMT
+  Connection: keep-alive
+  Keep-Alive: timeout=5
+  ````
+  
+  ````
+  added employee to client
+  ````
+  
+  Request Body Deleting employee
+  
+  ````
+  {
+    "action": "delete",
+    "employeeID":7
+  } 
+  ````
+  
+  Example Response
+  
+  ````
+  X-Powered-By: Express
+  Access-Control-Allow-Origin: *
+  Content-Type: text/html; charset=utf-8
+  Content-Length: 24
+  ETag: W/"18-pX0mww76oKvfiWtEGrMTyyTAdJM"
+  Date: Fri, 04 Mar 2022 06:37:38 GMT
+  Connection: keep-alive
+  Keep-Alive: timeout=5
+  ````
+  
+  ````
+  deleted employee linked to client
+  ````
+  
+  ADD OR DELETE SERVICE FROM CLIENT SERVICE ARRAY FIELD
+  
+   ````
+   PUT http://127.0.0.1:3000/clients/adddelservice/1
+   ````
+  
+  Example request
+  
+  ````
+  Content-Type: application/json
+  User-Agent: PostmanRuntime/7.29.0
+  Accept: */*
+  Postman-Token: 23a8168d-c074-424f-b0a4-2054abea88a5
+  Host: 127.0.0.1:3000
+  Accept-Encoding: gzip, deflate, br
+  Connection: keep-alive
+  Content-Length: 46
+  ````
+  
+  Request Body Adding service
+  
+  ````
+  {
+    "action":"add",
+    "sid":6
+  }
+  ````
+  
+  Example Response
+  
+  ````
+  X-Powered-By: Express
+  Access-Control-Allow-Origin: *
+  Content-Type: text/html; charset=utf-8
+  Content-Length: 24
+  ETag: W/"18-pX0mww76oKvfiWtEGrMTyyTAdJM"
+  Date: Fri, 04 Mar 2022 06:37:38 GMT
+  Connection: keep-alive
+  Keep-Alive: timeout=5
+  ````
+  
+  ````
+  added service to client
+  ````
+  
+  Request Body Deleting service
+  
+  ````
+  {
+    "action":"delete",
+    "sid":6
+  }
+  ````
+  
+  Example Response
+  
+  ````
+  X-Powered-By: Express
+  Access-Control-Allow-Origin: *
+  Content-Type: text/html; charset=utf-8
+  Content-Length: 24
+  ETag: W/"18-pX0mww76oKvfiWtEGrMTyyTAdJM"
+  Date: Fri, 04 Mar 2022 06:37:38 GMT
+  Connection: keep-alive
+  Keep-Alive: timeout=5
+  ````
+  
+  ````
+  deleted service from client
+  ````
+  
+  GET ALL SERVICES AND EMPLOYEES THAT ARE ASSOCIATED WITH CLIENTS
+  
+  Example Request
+  
+  ````
+  GET http://127.0.0.1:3000/clients/client-history
+  ````
+  
+  ````
+  User-Agent: PostmanRuntime/7.29.0
+  Accept: */*
+  Postman-Token: d1841837-d83f-448e-8590-3491672b0f9f
+  Host: 127.0.0.1:3000
+  Accept-Encoding: gzip, deflate, br
+  Connection: keep-alive
+  ````
+  
+  Example Response
+  
+  ````
+  X-Powered-By: Express
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  Content-Length: 1201
+  ETag: W/"4b1-L1bLnwRgM4Dbt5MgZBhlGPV//ms"
+  Date: Fri, 04 Mar 2022 06:55:59 GMT
+  Connection: keep-alive
+  Keep-Alive: timeout=5
+  
+  [
+    {
+        "first_name": "Steven",
+        "mid_name": "S",
+        "last_name": "Spielberg",
+        "employees": [
+            {
+                "employeeID": 1,
+                "firstName": "Asha",
+                "lastName": "Cox",
+                "phone": "810-343-2078",
+                "pEmail": "acox@hotmail.com"
+            }
+        ],
+        "services": [
+            {
+                "sid": 1,
+                "name": "Early Childhood",
+                "renewal": "Court Order"
+            }
+        ]
+    }
+  ]
+  ````
+  
+  UPDATE CLIENTS INFORMATION
+  
+  ````
+  PUT http://127.0.0.1:3000/clients/update/{{cid}}
+  ````
+  
+  Example Request
+  
+  ````
+  PUT http://127.0.0.1:3000/clients/update/1
+  ````
+  
+  ````
+  Content-Type: application/json
+  User-Agent: PostmanRuntime/7.29.0
+  Accept: */*
+  Postman-Token: c7f8d103-1536-4d72-8cb7-5ecc8415ff53
+  Host: 127.0.0.1:3000
+  Accept-Encoding: gzip, deflate, br
+  Connection: keep-alive
+  Content-Length: 99
+  ````
+  
+  Request Body
+  
+  ````
+  {
+    "cid": 1,
+    "first_name": "Michael",
+    "mid_name": "J",
+    "last_name": "Jackson"
+  }
+  ````
+  
+  Example Response
+  
+  ````
+  X-Powered-By: Express
+  Access-Control-Allow-Origin: *
+  Content-Type: text/html; charset=utf-8
+  Content-Length: 27
+  ETag: W/"1b-PgSiyGaEILhv/6JCGxFB8vyT6mk"
+  Date: Fri, 04 Mar 2022 06:58:50 GMT
+  Connection: keep-alive
+  Keep-Alive: timeout=5
+  ````
+  
+  ````
+  Client information updated.
+  ````
+  
+  DELETE CLIENT FROM COLLECTION
+  
+  ````
+  DELETE  http://127.0.0.1:3000/clients/del/{{cid}}
+  ````
+  
+  Example Request
+  
+  ````
+  DELETE http://127.0.0.1:3000/clients/del/1
+  ````
+  
+  ````
+  User-Agent: PostmanRuntime/7.29.0
+  Accept: */*
+  Postman-Token: e06f7a33-86db-4b89-a043-941899712d9b
+  Host: 127.0.0.1:3000
+  Accept-Encoding: gzip, deflate, br
+  Connection: keep-alive
+  ````
+  
+  Example Response
+  
+  ````
+  X-Powered-By: Express
+  Access-Control-Allow-Origin: *
+  Content-Type: text/html; charset=utf-8
+  Content-Length: 28
+  ETag: W/"1c-RLcQeREgCt+vmqZ1wC1m/eeu+cs"
+  Date: Fri, 04 Mar 2022 07:03:08 GMT
+  Connection: keep-alive
+  Keep-Alive: timeout=5
+  ````
+  
+  ````
+  Client deleted from database
   ````
   
   Where a client object is:
@@ -1228,271 +1735,7 @@ Removed event from employee.
   | --------------------------|------------------------------|
   | 404 Not Found             | The requested resource could not be found buy may be available again in the future. Subsequent requests by the cleints are permissible. |
   | 500 Internal Server Error | The server encountered an unexpected condition that precented it from fullifilling the request.                                         |
-  
-  
-  #### Getting all volunteer's details
-  Returns details stored in collection about all volunteer
-  
-  ````
-  GET http://127.0.0.1:3000/clients/all
-  ````
-  Example request:
 
-  ````
-  GET /clients/all HTTP/1.1
-  Host: localhost:3000
-  ````
-  
-  The response is all available client objects within a data envelope.
-
-  Example response:
-  
-  `````
-  {
-        "employees": {
-            "employeeID": [
-                1
-            ]
-        },
-        "services": {
-            "sid": [
-                1,
-                6
-            ]
-        },
-        "_id": "6221287fd95bc85b9cb18929",
-        "cid": 1,
-        "first_name": "Steven",
-        "mid_name": "S",
-        "last_name": "Spielberg",
-        "b_day": "1993-08-22T00:00:00.000Z",
-        "DL": "",
-        "gender": "",
-        "ethnicity": "",
-        "address": "555 Peppermint Lane",
-        "city": "Austin",
-        "state": "TX",
-        "country": "Harris",
-        "zip_code": "77885",
-        "rent": "1,000",
-        "residency": "1 year",
-        "living_arrangements": "With Spouse",
-        "number_of_children": 1,
-        "number_of_adults_over_65": 0,
-        "phone_number": "222-545-5585",
-        "home_phone_number": "",
-        "emergency_contact_phone_number": "221-558-8995",
-        "primary_email": "SSberg@yahoo.com",
-        "secondary_email": "",
-        "marital_status": "Married",
-        "language": "English",
-        "priority_population": "HIGH",
-        "employment_status": "Employed",
-        "length_of_employment": "7 years",
-        "employer_name": "McDonalds",
-        "occupation": "Manager",
-        "highest_grade": "College",
-        "graduate": true,
-        "degree_name": "Business",
-        "head_of_household": "Steven Spielberg",
-        "monthly_income": 52124,
-        "spousal_income_support": "50000",
-        "worker_compensation": 0,
-        "veteran_status": "None",
-        "child_support": 0,
-        "tanf": 0,
-        "food_stamps": 0,
-        "ssi": 0,
-        "unemployment": 0,
-        "social_security": 740259875,
-        "other_income": null,
-        "health_insurance": true,
-        "health_insurance_desc": "General Heatlhcare",
-        "insurance_program": "United Healthcare",
-        "covid_status": true,
-        "__v": 0
-    },
-    
-    {
-        "employees": {
-            "employeeID": [
-                2
-            ]
-        },
-        "services": {
-            "sid": [
-                2
-            ]
-        },
-        "_id": "6221288ad95bc85b9cb1892b",
-        "cid": 2,
-        "first_name": "Steven",
-        "mid_name": "Destiny",
-        "last_name": "Bonnell",
-        "b_day": "1994-05-13T00:00:00.000Z",
-        "DL": "",
-        "gender": "",
-        "ethnicity": "",
-        "address": "567 Crumble Cookie Lane",
-        "city": "El Paso",
-        "state": "TX",
-        "country": "Swoop",
-        "zip_code": "77878",
-        "rent": "500",
-        "residency": "4 year",
-        "living_arrangements": "Alone",
-        "number_of_children": 1,
-        "number_of_adults_over_65": 0,
-        "phone_number": "252-578-5585",
-        "home_phone_number": "",
-        "emergency_contact_phone_number": "221-458-8515",
-        "primary_email": "Destinygg@yahoo.com",
-        "secondary_email": "",
-        "marital_status": "Single",
-        "language": "English",
-        "priority_population": "HIGH",
-        "employment_status": "Employed",
-        "length_of_employment": "7 years",
-        "employer_name": "Twitch.tv",
-        "occupation": "Streamer",
-        "highest_grade": "Highschool",
-        "graduate": true,
-        "degree_name": "None",
-        "head_of_household": "Steven Bonnell",
-        "monthly_income": 32167,
-        "spousal_income_support": "0",
-        "worker_compensation": 0,
-        "veteran_status": "None",
-        "child_support": 0,
-        "tanf": 0,
-        "food_stamps": 0,
-        "ssi": 0,
-        "unemployment": 0,
-        "social_security": 784522214,
-        "other_income": null,
-        "health_insurance": true,
-        "health_insurance_desc": "General Healthcare",
-        "insurance_program": "Aetna",
-        "covid_status": false,
-        "__v": 0
-    }
-  `````
-  
-  #### Getting all client's details with employees and services
-  Returns details stored in collection about all client's details with employees and services
-  
-  ````
-  GET http://127.0.0.1:3000/clients/client-history
-  ````
-  Example request:
-
-  ````
-  GET /clients/client-history HTTP/1.1
-  Host: localhost:3000
-  ````
-  
-  The response is a client object within a data envelope accompanied by any associated employee or service.
-  
-  Example response:
-  
-  `````
-  Access-Control-Allow-Origin: *
-  Connection: keep-alive
-  Date: Fri, 04 Mar 2022 04:51:10 GMT
-  ETag: W/"511-3oarHIMqV9Xawjk30RMyqBT7QiM"
-  Keep-Alive: timeout=5
-  X-Powered-By: Express
-  
-  {
-        "first_name": "Steven",
-        "mid_name": "S",
-        "last_name": "Spielberg",
-        "employees": [
-            {
-                "employeeID": 1,
-                "firstName": "Asha",
-                "lastName": "Cox",
-                "phone": "810-343-2078",
-                "pEmail": "acox@hotmail.com"
-            }
-        ],
-        "services": [
-            {
-                "sid": 1,
-                "name": "Early Childhood",
-                "renewal": "Court Order"
-            },
-            {
-                "sid": 6,
-                "name": "Family Support",
-                "renewal": "Monthly"
-            }
-        ]
-    }
-    
-   `````
-   
-   #### Creating a post
-   Creates a new client
-
-  ````
-  POST http://127.0.0.1:3000/clients/new-client
-  ````
-  Example request:
-  
-  ````
-    {
-    "cid": 5,
-    "first_name": "Michael",
-    "mid_name": "J",
-    "last_name": "Jordan",
-    "b_day": "1963-02-17T00:00:00.000Z",
-    "DL": "",
-    "gender": "Male",
-    "ethnicity": "African American",
-    "address": "2700 Point Ln",
-    "city": "Highland Park",
-    "state": "IL",
-    "country": "United States",
-    "zip_code": "60035",
-    "rent": "0",
-    "residency": " 12 years",
-    "living_arrangements": "With Family",
-    "number_of_children": 5,
-    "number_of_adults_over_65": 0,
-    "phone_number": "281-854-3332",
-    "home_phone_number": "",
-    "emergency_contact_phone_number": "281-874-5512",
-    "primary_email": "HallofFamer@yahoo.com",
-    "secondary_email": "",
-    "marital_status": "Married",
-    "language": "English",
-    "priority_population": "HIGH",
-    "employment_status": "Unemployed",
-    "length_of_employment": " 16 years",
-    "employer_name": "None",
-    "occupation": "None",
-    "highest_grade": "College",
-    "graduate": true,
-    "degree_name": "Bachelors of Arts in Geography",
-    "head_of_household": "Michael Jordan",
-    "monthly_income": 3000000,
-    "spousal_income_support": "0",
-    "worker_compensation": 0,
-    "veteran_status": "None",
-    "child_support": 0,
-    "tanf": 0,
-    "food_stamps": 0,
-    "ssi": 0,
-    "unemployment": 0,
-    "social_security": 555555555,
-    "other_income": null,
-    "health_insurance": true,
-    "health_insurance_desc": "Full Coverage",
-    "insurance_program": "Jordan Family Program",
-    "covid_status": false
-    }
-   ````
   
   ### 3.4 Services
 
