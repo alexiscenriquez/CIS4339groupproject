@@ -2650,3 +2650,5 @@ Possible errors:
 ## 4. Testing
 
 To test the backend, we use the software Postman. To test, use the request syntax given in the resources section and replace the contents within brackets with IDs from the database if necessary.
+
+NOTE: Create all Posts of Clients, Employees, Services and Volunteers before using DELETE, GET, and POST statements.
