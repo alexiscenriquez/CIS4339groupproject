@@ -1083,7 +1083,11 @@ Keep-Alive: timeout=5
 Response Body
 Removed event from employee.
 ````
+####Possible Errors
 
+| Error code    | Description                   |
+| --------------| ------------------------------|
+| 404 Not Found | The requested resource could not be found buy may be available again in the future. Subsequent requests by the cliEnts are permissible. |
 
 ### 3.3 Clients
   
