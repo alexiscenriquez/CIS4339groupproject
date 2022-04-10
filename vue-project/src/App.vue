@@ -30,10 +30,21 @@
               >
                 Create
               </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Clients</a></li>
-                <li><a class="dropdown-item" href="#">Volunteers</a></li>
-                <li><a class="dropdown-item" href="#">Events</a></li>
+              <ul
+                class="dropdown-menu dropdown-menu-dark"
+                aria-labelledby="navbarDropdown"
+              >
+                <li>
+                  <a class="dropdown-item" href="/create-client">Clients</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/create-volunteer"
+                    >Volunteers</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/create-event">Events</a>
+                </li>
                 <li></li>
               </ul>
             </li>
@@ -48,12 +59,21 @@
               >
                 View
               </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Clients</a></li>
-                <li><a class="dropdown-item" href="#">Volunteers</a></li>
-                <li><a class="dropdown-item" href="#">Events</a></li>
-                <li><a class="dropdown-item" href="#">Employees</a></li>
-                <li><a class="dropdown-item" href="#">Services</a></li>
+              <ul
+                class="dropdown-menu dropdown-menu-dark"
+                aria-labelledby="navbarDropdown"
+              >
+                <li>
+                  <a class="dropdown-item" href="/view-client">Clients</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/view-volunteer">Volunteers</a>
+                </li>
+                <li><a class="dropdown-item" href="/view-events">Events</a></li>
+                <li>
+                  <a class="dropdown-item" href="/view-employees">Employees</a>
+                </li>
+                <li><a class="dropdown-item" href="">Services</a></li>
                 <li></li>
               </ul>
             </li>
@@ -69,9 +89,7 @@
 
 <style scoped>
 @import "./assets/base.css";
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Roboto&display=swap");
-body {
-}
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 #app {
   max-width: 1280px;
   margin: 0 auto;
@@ -81,11 +99,13 @@ body {
 nav {
   font-size: 1.1em;
   padding: 20px;
-  font-family: "Roboto", sans-serif !important;
 }
 a:hover {
   font-size: 20px;
   padding-bottom: 0px;
+}
+.dropdown-item:hover{
+margin: 0;
 }
 .container {
   padding: 15px;
