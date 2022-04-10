@@ -212,8 +212,17 @@
                     <label> cid</label>
                     <input type="text" class="form-control" placeholder="Enter the ID for Client"  required>
                 </div>
-                <button class="btn btn-danger mt-3">Create</button>
+                <button class="btn btn-danger mt-3">Create Client</button>
             </form>
         </div>
     </div>
 </template>
+
+<script>
+    export default {
+        data() {
+            return {
+            }
+        }
+    }
+</script>
