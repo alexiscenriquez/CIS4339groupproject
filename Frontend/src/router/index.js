@@ -10,14 +10,29 @@ const router = createRouter({
       component: HomeView
     },
     {
+      path: '/clients',
+      name: 'clients',
+      component: () => import('../views/ClientsView.vue')
+    },
+    {
       path: '/events',
       name: 'events',
       component: () => import('../views/EventsView.vue')
     },
     {
+      path: '/clients_edit',
+      name: 'clients_edit',
+      component: () => import('../views/ClientsEdit.vue')
+    },
+    {
       path: '/events_edit',
       name: 'events_edit',
       component: () => import('../views/EventsEdit.vue')
+    },
+    {
+      path: '/new-client',
+      name: 'new-client',
+      component: () => import('../views/NewClient.vue')
     },
     {
       path:'/new-event',

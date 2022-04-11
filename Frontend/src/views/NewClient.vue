@@ -239,6 +239,11 @@
                 </div>
 
                 <div class="form-group">
+                    <label>Insurance Program</label>
+                    <input type="text" class="form-control" placeholder="Name of Healthcare Provider" v-model="clients.insurance_program" required>
+                </div>
+
+                <div class="form-group">
                     <label>Covid Status</label>
                     <input type="text" class="form-control" placeholder="Do you have COVID-19? (True/False)" v-model="clients.covid_status" required>
                 </div>
@@ -254,7 +259,7 @@
     export default {
         data() {
             return {
-                client: {
+                clients: {
                    cid: '',
                    first_Name: '',
                    mid_name: '',
@@ -308,12 +313,12 @@
         },
         methods: {
             handleSubmitForm() {
-                let apiURL = 'http://localhost:3000/create-client';
+                let apiURL = 'http://localhost:8080/clients/new-client';
                 
-                axios.post(apiURL, this.client).then(() => {
+                axios.post(apiURL, this.clients).then(() => {
                     //changing the view to the list
                   this.$router.push('/view')
-                  this.client = {
+                  this.clients = {
                    cid: '',
                    first_Name: '',
                    mid_name: '',
