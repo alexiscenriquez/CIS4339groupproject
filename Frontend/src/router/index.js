@@ -12,7 +12,7 @@ const router = createRouter({
     {
       path: '/clients',
       name: 'clients',
-      component: () => import('../views/ClientsView.vue')
+      component: () => import('../views/clients/ClientsView.vue')
     },
     {
       path: '/events',
@@ -22,7 +22,7 @@ const router = createRouter({
     {
       path: '/clients_edit',
       name: 'clients_edit',
-      component: () => import('../views/ClientsEdit.vue')
+      component: () => import('../views/clients/ClientsEdit.vue')
     },
     {
       path: '/events_edit',
@@ -32,7 +32,7 @@ const router = createRouter({
     {
       path: '/new-client',
       name: 'new-client',
-      component: () => import('../views/NewClient.vue')
+      component: () => import('../views/clients/NewClient.vue')
     },
     {
       path:'/new-event',
