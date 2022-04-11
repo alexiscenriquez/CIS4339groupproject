@@ -17,7 +17,7 @@ const router = createRouter({
     {
       path: '/events',
       name: 'events',
-      component: () => import('../views/EventsView.vue')
+      component: () => import('../views/events/EventsView.vue')
     },
     {
       path: '/clients_edit',
@@ -27,7 +27,7 @@ const router = createRouter({
     {
       path: '/events_edit',
       name: 'events_edit',
-      component: () => import('../views/EventsEdit.vue')
+      component: () => import('../views/events/EventsEdit.vue')
     },
     {
       path: '/new-client',
@@ -37,7 +37,38 @@ const router = createRouter({
     {
       path:'/new-event',
       name:'new-event',
-      component: ()=> import('../views/NewEvent.vue')
+      component: ()=> import('../views/events/NewEvent.vue')
+    },
+    {
+      path: '/services',
+      name: 'services',
+      component: () => import('../views/services/ServicesView.vue')
+    },
+    {
+      path: '/services_edit',
+      name: 'services_edit',
+      component: () => import('../views/services/ServicesEdit.vue')
+    },
+    {
+      path:'/new-service',
+      name:'new-service',
+      component: ()=> import('../views/services/NewService.vue')
+    }
+    ,
+    {
+      path: '/volunteers',
+      name: 'volunteers',
+      component: () => import('../views/volunteers/VolunteerView.vue')
+    },
+    {
+      path: '/volunteers_edit',
+      name: 'volunteers_edit',
+      component: () => import('../views/volunteers/VolunteerEdit.vue')
+    },
+    {
+      path:'/new-volunteers',
+      name:'new-volunteers',
+      component: ()=> import('../views/volunteers/NewVolunteer.vue')
     }
     //,
     // {
