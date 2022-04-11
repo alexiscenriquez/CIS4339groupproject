@@ -15,7 +15,7 @@
             View
           </a>
           <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-            <li><a class="dropdown-item" href="#">Client</a></li>
+            <li><a class="dropdown-item"><router-link class="nav-link" to="/clients">Clients</router-link></a></li>
             <li><a class="dropdown-item" href="#">Employees</a></li>
             <li><a class="dropdown-item"><router-link class="nav-link" to="/volunteers">Volunteers</router-link></a></li>
             <li><a class="dropdown-item"><router-link class="nav-link" to="/services">Services</router-link></a></li>
