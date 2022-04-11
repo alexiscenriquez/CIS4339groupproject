@@ -189,3 +189,4 @@ else if (action == "del") {
   //remove employee id
 });
 
+module.exports = router;

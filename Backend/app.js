@@ -9,7 +9,7 @@ const cors = require('cors')
 const app = express();  //Create new instance
 //point to files required
 const clientRouter = require('./routes/clients')
-const employeeRouter =require('./routes/employees')
+const employeeRouter = require('./routes/employees')
 const volunteerRouter = require('./routes/volunteers')
 const eventRouter = require('./routes/events')
 const servicesRouter = require('./routes/services')
@@ -31,7 +31,7 @@ app.use(morgan("dev"));  //enable incoming request logging in dev mode
 
 //sets up middleware
 app.use('/clients', clientRouter)
-app.use('/employees',employeeRouter)
+app.use('/employees', employeeRouter)
 app.use('/volunteers', volunteerRouter) 
 app.use('/events', eventRouter)
 app.use('/services', servicesRouter)
