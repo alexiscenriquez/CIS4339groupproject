@@ -37,7 +37,7 @@ app.use('/events', eventRouter)
 app.use('/services', servicesRouter)
 
 //Declare the port number
-const PORT = process.env.PORT || 3000; 
+const PORT = process.env.PORT || 8080; 
 app.listen(PORT, () => {
     console.log("Server started listening on port : ", PORT);
   });
