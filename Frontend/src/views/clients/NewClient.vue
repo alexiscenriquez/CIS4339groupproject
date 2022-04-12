@@ -15,7 +15,7 @@
 
                 <div class="form-group">
                     <label>Middle Name</label>
-                    <input type="text" class="form-control" v-model="clients.middle_name" required>
+                    <input type="text" class="form-control" v-model="clients.mid_name" required>
                 </div>
 
                 <div class="form-group">
@@ -25,7 +25,7 @@
 
                 <div class="form-group">
                     <label>Date of Birth</label>
-                    <input type="date" class="form-control"  placeholder= "YYYY-MM-DD" v-model="clients.b_day" required>
+                    <input type="text" class="form-control" v-model="clients.b_day" required>
                 </div>
 
                 <div class="form-group">
@@ -185,7 +185,7 @@
 
                 <div class="form-group">
                     <label>Worker Compensation</label>
-                    <input type="text" class="form-control" v-model="clients.spousal_income_support" required>
+                    <input type="text" class="form-control" v-model="clients.worker_compensation" required>
                 </div>
 
                 <div class="form-group">
@@ -219,8 +219,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Social Security</label>
-                    <input type="text" class="form-control" placeholder="Social security number" v-model="clients.social_secturity" required>
+                    <label>Social Security Number</label>
+                    <input type="text" class="form-control" v-model="clients.social_security" required>
                 </div>
 
                 <div class="form-group">
