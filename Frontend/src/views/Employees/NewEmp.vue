@@ -1,6 +1,6 @@
 <template>
   <h1>Add New Employee</h1>
-  <form>
+  <form @submit.prevent="handleSubmitForm">
     <fieldset class="form-control mb-5">
       <legend>Personal Information</legend>
       <div class="row mb-4">
@@ -236,11 +236,21 @@
         <div class="col-sm-6">
           <label for="lEmployment" class="form-label"
             >Length of Employment</label
-          ><input type="text" class="form-control" name="lEmployment" />
+          ><input
+            type="text"
+            class="form-control"
+            name="lEmployment"
+            v-model="employees.lEmployment"
+          />
         </div>
         <div class="col-sm-6">
           <label for="dept" class="form-label">Department</label>
-          <select name="dept" id="" class="form-control">
+          <select
+            name="dept"
+            id=""
+            class="form-control"
+            v-model="employees.dept"
+          >
             <option value=""></option>
             <option value="Accounting">Accounting</option>
             <option value="Events">Events</option>
@@ -252,18 +262,34 @@
       <div class="row mb-4">
         <div class="col-sm-4">
           <label for="jdesc" class="form-label">Job Description</label
-          ><input type="text" class="form-control" name="jdesc" />
+          ><input
+            type="text"
+            class="form-control"
+            name="jdesc"
+            v-model="employees.jDesc"
+          />
         </div>
         <div class="col-sm-4">
-          <label for="hgrade" class="form-label">Highest Grade</label
-          ><input type="text" class="form-control" name="hGrade" />
+          <label for="hgrade" class="form-label"> Highest Grade</label
+          ><input
+            type="text"
+            class="form-control"
+            name="hGrade"
+            v-model="employees.hGrade"
+          />
         </div>
         <div class="col-sm-4">
           <label for="deg" class="form-label">Degree</label
-          ><input type="text" class="form-control" name="degree" />
+          ><input
+            type="text"
+            class="form-control"
+            name="degree"
+            v-model="employees.degree"
+          />
         </div>
       </div>
     </fieldset>
+    <button class="btn btn-primary">Create</button>
   </form>
 </template>
 
@@ -273,21 +299,72 @@ import axios from "axios";
 export default {
   data() {
     return {
-      employee: {
+      employees: {
         employeeID: "",
         firstName: "",
         lastName: "",
-        birthday:"",
-        SSN:"",
-        dLicense:"",
-        gender:"",
-        race:"",
-        hispanic:"",
-        phone:"",
-        home:"",
-        eContact
+        birthday: "",
+        SSN: "",
+        dLicense: "",
+        gender: "",
+        race: "",
+        hispanic: "",
+        phone: "",
+        home: "",
+        pEmail: "",
+        sEmail: "",
+        language: "",
+        address: "",
+        city: "",
+        state: "",
+        county: "",
+        zip: "",
+        lEmployment: "",
+        dept: "",
+        jDesc: "",
+        hGrade: "",
+        degree: "",
       },
     };
+  },
+  methods: {
+    handleSubmitForm() {
+      let apiURL = "http://localhost:8080/volunteers/newemp";
+      axios
+        .post(apiURL, this.employees)
+        .then(() => {
+          this.$router.push("/employees");
+          this.employees = {
+            employeeID: "",
+            firstName: "",
+            lastName: "",
+            birthday: "",
+            SSN: "",
+            dLicense: "",
+            gender: "",
+            race: "",
+            hispanic: "",
+            phone: "",
+            home: "",
+            pEmail: "",
+            sEmail: "",
+            language: "",
+            address: "",
+            city: "",
+            state: "",
+            county: "",
+            zip: "",
+            lEmployment: "",
+            dept: "",
+            jDesc: "",
+            hGrade: "",
+            degree: "",
+          };
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   },
 };
 </script>

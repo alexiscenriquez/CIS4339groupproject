@@ -10,24 +10,70 @@ const router = createRouter({
       component: HomeView
     },
     {
+      path: '/clients',
+      name: 'clients',
+      component: () => import('../views/clients/ClientsView.vue')
+    },
+    {
       path: '/events',
       name: 'events',
-      component: () => import('../views/EventsView.vue')
+      component: () => import('../views/events/EventsView.vue')
+    },
+    {
+      path: '/clients_edit',
+      name: 'clients_edit',
+      component: () => import('../views/clients/ClientsEdit.vue')
     },
     {
       path: '/events_edit',
       name: 'events_edit',
-      component: () => import('../views/EventsEdit.vue')
+      component: () => import('../views/events/EventsEdit.vue')
+    },
+    {
+      path: '/new-client',
+      name: 'new-client',
+      component: () => import('../views/clients/NewClient.vue')
     },
     {
       path:'/new-event',
       name:'new-event',
-      component: ()=> import('../views/NewEvent.vue')
+      component: ()=> import('../views/events/NewEvent.vue')
+    },
+    {
+      path: '/services',
+      name: 'services',
+      component: () => import('../views/services/ServicesView.vue')
+    },
+    {
+      path: '/services_edit',
+      name: 'services_edit',
+      component: () => import('../views/services/ServicesEdit.vue')
+    },
+    {
+      path:'/new-service',
+      name:'new-service',
+      component: ()=> import('../views/services/NewService.vue')
+    }
+    ,
+    {
+      path: '/volunteers',
+      name: 'volunteers',
+      component: () => import('../views/volunteers/VolunteerView.vue')
+    },
+    {
+      path: '/volunteers_edit',
+      name: 'volunteers_edit',
+      component: () => import('../views/volunteers/VolunteerEdit.vue')
+    },
+    {
+      path:'/new-volunteers',
+      name:'new-volunteers',
+      component: ()=> import('../views/volunteers/NewVolunteer.vue')
     },
     {
       path:'/new-emp',
       name:'new-emp',
-      component:()=>import('../views/CreateEmp.vue')
+      component:()=>import('../views/Employees/NewEmp.vue')
     }
     //,
     // {
