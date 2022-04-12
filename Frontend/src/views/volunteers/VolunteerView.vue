@@ -6,7 +6,11 @@
         </div>
         <div class="row justify-content-center">
             <router-link :to="{path:'new-volunteers'}" class="btn btn-secondary">Create New Volunteer</router-link>
-            <table class="table table-striped">
+            <!-- allows table to scroll horizontally -->
+            <div class='table-responsive'>
+            <!-- table-hover adds gray hover -->
+            <table class="table table-striped table-hover">
+            
             <thead class="table-dark">
                 <tr>
                 <th>ID#</th>
@@ -27,6 +31,7 @@
                 <th>City</th>
                 <th>Zip Code</th>
                 <th>Country</th>
+                <th></th>
                 <th></th>
                 <th></th>
                 <th></th>
@@ -64,6 +69,7 @@
                 </tr>
             </tbody>
             </table>
+    </div>
   </div>
 
     </main>
