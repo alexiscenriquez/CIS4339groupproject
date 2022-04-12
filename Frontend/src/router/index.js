@@ -23,6 +23,11 @@ const router = createRouter({
       path:'/new-event',
       name:'new-event',
       component: ()=> import('../views/NewEvent.vue')
+    },
+    {
+      path:'/new-emp',
+      name:'new-emp',
+      component:()=>import('../views/CreateEmp.vue')
     }
     //,
     // {
