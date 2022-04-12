@@ -4,11 +4,13 @@
           <!-- <h3>{{msg}}</h3>   -->
           <!-- <events :msg="msg"/> -->
         </div>
-        <div class="row justify-content-center">
+        <div class="row justify-content-evenly">
+            <fieldset class ='flex'>
             <router-link :to="{path:'new-client'}" class="btn btn-secondary">Create New Client</router-link>
-            <table class="table table-striped">
+            <table class="table table-striped;equal-width">
             <thead class="table-dark">
                 <tr>
+                <th>Client</th>    
                 <th>First Name</th>
                 <th>Middle Name</th>
                 <th>Last Name</th>
@@ -50,10 +52,11 @@
                 <th>TANF</th>
                 <th>Food Stamps</th>
                 <th>SSI</th>
-                <th>Unemployment Benefits</th>
-                <th>Social Security Number</th>
+                <th>Unemployment</th>
+                <th>Social Security</th>
                 <th>Other Income</th>
                 <th>Health Insurance</th>
+                <th>Insurance Program</th>
                 <th>Health Insurance Description</th>
                 <th>Covid Status</th>
                 </tr>
@@ -103,7 +106,7 @@
                 <td>{{cls.food_stamps }}</td>
                 <td>{{cls.ssi }}</td>
                 <td>{{cls.unemployment }}</td>
-                <td>{{cls.social_secturity }}</td>
+                <td>{{cls.social_security }}</td>
                 <td>{{cls.other_income }}</td>
                 <td>{{cls.health_insurance }}</td>
                 <td>{{cls.health_insurance_desc }}</td>
@@ -111,7 +114,6 @@
                 <td>{{cls.covid_status }}</td>
                 <td><button @click="active = !active" class="btn btn-secondary">Employees</button></td>
                 <td><button @click="active = !active" class="btn btn-secondary">Services</button></td>
-                <td><button @click="active = !active" class="btn btn-secondary">Events</button></td>
                 <td><router-link :to="{name: 'clients_edit', params: { id: cls.cid }}" class="btn btn-secondary ">Edit</router-link></td>
                 <td><button @click.prevent="del_client(cls.cid)" class="btn btn-secondary">Delete</button></td>
                 <td v-if="active">hello</td>
@@ -119,6 +121,7 @@
                 </tr>
             </tbody>
             </table>
+            </fieldset>
   </div>
 
     </main>
@@ -148,7 +151,7 @@
                 let apiURL = `http://localhost:8080/clients/del/${id}`
                 let indexOfArrayItem = this.allclients.findIndex(i=>i.cid === id);
 
-                if(window.confirm('Delete?')){
+                if(window.confirm('Delete Client?')){
                     axios.delete(apiURL).then(()=>{
                         this.allclients.splice(indexOfArrayItem, 1);
                     }).catch(error => {
@@ -160,7 +163,15 @@
     }
 </script>
 
+<style>
+.flex {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: space-between;
+}
 
+</style>
 
 
 
