@@ -43,7 +43,13 @@
                   class="dropdown-menu dropdown-menu-dark"
                   aria-labelledby="navbarDarkDropdownMenuLink"
                 >
-                  <li><a class="dropdown-item" href="#">Client</a></li>
+                  <li>
+                    <a class="dropdown-item" href="#">
+                      <router-link class="nav-link" to="/new-client">
+                        Client</router-link
+                      ></a
+                    >
+                  </li>
                   <li>
                     <a class="dropdown-item">
                       <router-link class="nav-link" to="/new-emp">
@@ -51,8 +57,19 @@
                       >
                     </a>
                   </li>
-                  <li><a class="dropdown-item" href="#">Volunteers</a></li>
-                  <li><a class="dropdown-item" href="#">Services</a></li>
+                  <li>
+                    <a class="dropdown-item">
+                      <router-link class="nav-link" to="/new-volunteers">
+                        Volunteers</router-link
+                      >
+                    </a>
+                  </li>
+
+                  <li><a class="dropdown-item" href="#">
+                    <router-link class="nav-link" to="/new-service">
+                    Services
+                    </router-link></a>
+                    </li>
                   <li>
                     <a class="dropdown-item"
                       ><router-link class="nav-link" to="/events"
