@@ -1,80 +1,89 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import { createRouter, createWebHistory } from "vue-router";
+import HomeView from "../views/HomeView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: HomeView
+      path: "/",
+      name: "home",
+      component: HomeView,
     },
     {
-      path: '/clients',
-      name: 'clients',
-      component: () => import('../views/clients/ClientsView.vue')
+      path: "/clients",
+      name: "clients",
+      component: () => import("../views/clients/ClientsView.vue"),
     },
     {
-      path: '/events',
-      name: 'events',
-      component: () => import('../views/events/EventsView.vue')
+      path: "/events",
+      name: "events",
+      component: () => import("../views/events/EventsView.vue"),
     },
     {
-      path: '/clients_edit',
-      name: 'clients_edit',
-      component: () => import('../views/clients/ClientsEdit.vue')
+      path: "/clients_edit",
+      name: "clients_edit",
+      component: () => import("../views/clients/ClientsEdit.vue"),
     },
     {
-      path: '/events_edit',
-      name: 'events_edit',
-      component: () => import('../views/events/EventsEdit.vue')
+      path: "/events_edit",
+      name: "events_edit",
+      component: () => import("../views/events/EventsEdit.vue"),
     },
     {
-      path: '/new-client',
-      name: 'new-client',
-      component: () => import('../views/clients/NewClient.vue')
+      path: "/new-client",
+      name: "new-client",
+      component: () => import("../views/clients/NewClient.vue"),
     },
     {
-      path:'/new-event',
-      name:'new-event',
-      component: ()=> import('../views/events/NewEvent.vue')
+      path: "/new-event",
+      name: "new-event",
+      component: () => import("../views/events/NewEvent.vue"),
     },
     {
-      path: '/services',
-      name: 'services',
-      component: () => import('../views/services/ServicesView.vue')
+      path: "/services",
+      name: "services",
+      component: () => import("../views/services/ServicesView.vue"),
     },
     {
-      path: '/services_edit',
-      name: 'services_edit',
-      component: () => import('../views/services/ServicesEdit.vue')
+      path: "/services_edit",
+      name: "services_edit",
+      component: () => import("../views/services/ServicesEdit.vue"),
     },
     {
-      path:'/new-service',
-      name:'new-service',
-      component: ()=> import('../views/services/NewService.vue')
-    }
-    ,
-    {
-      path: '/volunteers',
-      name: 'volunteers',
-      component: () => import('../views/volunteers/VolunteerView.vue')
+      path: "/new-service",
+      name: "new-service",
+      component: () => import("../views/services/NewService.vue"),
     },
     {
-      path: '/volunteers_edit',
-      name: 'volunteers_edit',
-      component: () => import('../views/volunteers/VolunteerEdit.vue')
+      path: "/volunteers",
+      name: "volunteers",
+      component: () => import("../views/volunteers/VolunteerView.vue"),
     },
     {
-      path:'/new-volunteers',
-      name:'new-volunteers',
-      component: ()=> import('../views/volunteers/NewVolunteer.vue')
+      path: "/volunteers_edit",
+      name: "volunteers_edit",
+      component: () => import("../views/volunteers/VolunteerEdit.vue"),
     },
     {
-      path:'/new-emp',
-      name:'new-emp',
-      component:()=>import('../views/Employees/NewEmp.vue')
-    }
+      path: "/new-volunteers",
+      name: "new-volunteers",
+      component: () => import("../views/volunteers/NewVolunteer.vue"),
+    },
+    {
+      path: "/new-emp",
+      name: "new-emp",
+      component: () => import("../views/Employees/NewEmp.vue"),
+    },
+    {
+      path: "/employees",
+      name: "employees",
+      component: () => import("../views/Employees/EmployeeView.vue"),
+    },
+    {
+      path: "/edit-emp",
+      name: "edit-emp",
+      component: () => import("../views/Employees/EmployeeEdit.vue"),
+    },
     //,
     // {
     //   path: '/about',
@@ -84,7 +93,7 @@ const router = createRouter({
     //   // which is lazy-loaded when the route is visited.
     //   component: () => import('../views/AboutView.vue')
     // }
-  ]
-})
+  ],
+});
 
-export default router
+export default router;

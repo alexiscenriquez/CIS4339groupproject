@@ -1,5 +1,5 @@
 <template>
-  <h1>Create Employee</h1>
+  <h1>Edit Employee</h1>
   <form @submit.prevent="handleSubmitForm">
     <fieldset class="form-control mb-5">
       <legend>Personal Information</legend>
@@ -213,7 +213,7 @@
       </div>
     </fieldset>
 
-     <fieldset class="form-control mb-5">
+    <fieldset class="form-control mb-5">
       <legend>Emergency Contact</legend>
       <label>Contact 1</label>
       <div class="row mb-4">
@@ -274,7 +274,7 @@
             v-model="employees.eContact.phone"
           />
         </div>
-      </div> 
+      </div>
     </fieldset>
     <fieldset class="form-control mb-5">
       <legend>Employment Information</legend>
@@ -377,71 +377,30 @@ import axios from "axios";
 export default {
   data() {
     return {
-  
-      employees: {
-        employeeID: "",
-        firstName: "",
-        lastName: "",
-        birthday: "",
-        SSN: "",
-        dLicense: "",
-        gender: "",
-        race: "",
-        hispanic: undefined,
-        phone: "",
-        home: "",
-        pEmail: "",
-        sEmail: "",
-        address: "",
-        city: "",
-        state: "",
-        county: "",
-        zip: "",
-        lEmployment: "",
-        dept: "",
-        jDesc: "",
-        hGrade: "",
-        degree: "",
-       eContact:[{fName:"",lName:"",phone:""}],
-        language: [],
-      },
+      employees: {},
     };
   },
+  created() {
+    let apiURL = `http://localhost:8080/employees/find/${this.$route.params.id}`;
+
+    axios
+      .get(apiURL)
+      .then((res) => {
+        this.employees = res.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
   methods: {
-    handleSubmitForm() {
-      let apiURL = "http://localhost:8080/employees/newemp";
-      console.log(this.employees);
+    handleUpdateForm() {
+      let apiURL = `http://localhost:8080/employees/update/${this.$route.params.id}`;
+
       axios
-        .post(apiURL, this.employees)
-        .then(() => {
+        .put(apiURL, this.employees)
+        .then((res) => {
+          console.log(res);
           this.$router.push("/employees");
-          this.employees = {
-            employeeID: "",
-            firstName: "",
-            lastName: "",
-            birthday: "",
-            SSN: "",
-            dLicense: "",
-            gender: "",
-            race: "",
-            hispanic: undefined,
-            phone: "",
-            home: "",
-            pEmail: "",
-            sEmail: "",
-            address: "",
-            city: "",
-            state: "",
-            county: "",
-            zip: "",
-            lEmployment: "",
-            dept: "",
-            jDesc: "",
-            hGrade: "",
-            degree: "",
-            eContact: [{fName:"",lName:"",phone:""}],
-            language: [],
-          };
         })
         .catch((error) => {
           console.log(error);
@@ -460,11 +419,11 @@ h1 {
 form {
   margin-top: 50px;
 }
-#create{
-  background-color: #A6A7A8;
+#create {
+  background-color: #a6a7a8;
 }
-#create:hover{
-  background-color: #2E5902;
+#create:hover {
+  background-color: #2e5902;
   color: white;
 }
 </style>

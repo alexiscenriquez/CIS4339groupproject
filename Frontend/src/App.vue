@@ -102,7 +102,10 @@
                       ></a
                     >
                   </li>
-                  <li><a class="dropdown-item" href="#">Employees</a></li>
+                  <li><a class="dropdown-item" >
+                   <router-link class="nav-link" to="/employees"
+                        >Employees</router-link
+                      ></a></li>
                   <li>
                     <a class="dropdown-item"
                       ><router-link class="nav-link" to="/volunteers"
