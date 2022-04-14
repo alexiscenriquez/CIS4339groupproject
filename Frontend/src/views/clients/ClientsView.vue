@@ -1,7 +1,6 @@
 <template>
     <main>
         <div class="row justify-content-center">
-            <!--<fieldset class ='flex'>-->
             <router-link :to="{path:'new-client'}" class="btn btn-secondary">Create New Client</router-link>
             <div class='table-responsive'>
             <table class="table table-striped">
@@ -118,7 +117,8 @@
                 </tr>
             </tbody>
             </table>
-          </div>  
+          </div>
+          </div>
   
 
     </main>

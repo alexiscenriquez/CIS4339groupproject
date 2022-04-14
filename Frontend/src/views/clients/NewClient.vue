@@ -25,11 +25,7 @@
 
                 <div class="form-group">
                     <label>Date of Birth</label>
-<<<<<<< HEAD
-                    <input type="text" class="form-control" v-model="clients.b_day" required>
-=======
                     <input type="text" class="form-control" placeholder='YYYY-MM-DD' v-model="clients.b_day" required>
->>>>>>> 261b946e9e9646b8f71a6e8caabf387c3a81dc51
                 </div>
 
                 <div class="form-group">
