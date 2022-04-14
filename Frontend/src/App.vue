@@ -22,7 +22,7 @@
               <!-- <div class="input-group">
  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <!-- added float-left -->
+    added float-left -->
     <a class="navbar-brand float-left" href="/">
     
       <img
@@ -39,7 +39,6 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
-<<<<<<< HEAD
       <!-- added mr-auto -->
       <ul class="navbar-nav mr-auto">
         <!-- view dropdown -->
@@ -76,138 +75,6 @@
     </li>
           <!-- search bar -->
           <!-- <div class="input-group">
-=======
-      <ul class="navbar-nav">-->
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarDarkDropdownMenuLink"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Create
-                </a>
-                <ul
-                  class="dropdown-menu dropdown-menu-dark"
-                  aria-labelledby="navbarDarkDropdownMenuLink"
-                >
-                  <li>
-                    <a class="dropdown-item" href="#">
-                      <router-link class="nav-link" to="/new-client">
-                        Client</router-link
-                      ></a
-                    >
-                  </li>
-                  <li>
-                    <a class="dropdown-item">
-                      <router-link class="nav-link" to="/new-emp">
-                        Employees</router-link
-                      >
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item">
-                      <router-link class="nav-link" to="/new-volunteers">
-                        Volunteers</router-link
-                      >
-                    </a>
-                  </li>
-
-                  <li><a class="dropdown-item" href="#">
-                    <router-link class="nav-link" to="/new-service">
-                    Services
-                    </router-link></a>
-                    </li>
-                  <li>
-                    <a class="dropdown-item"
-                      ><router-link class="nav-link" to="/events"
-                        >Events</router-link
-                      ></a
-                    >
-                  </li>
-                </ul>
-              </li>
-              <!-- view dropdown -->
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarDarkDropdownMenuLink"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  View
-                </a>
-                <ul
-                  class="dropdown-menu dropdown-menu-dark"
-                  aria-labelledby="navbarDarkDropdownMenuLink"
-                >
-                  <li>
-                    <a class="dropdown-item"
-                      ><router-link class="nav-link" to="/clients"
-                        >Clients</router-link
-                      ></a
-                    >
-                  </li>
-                  <li><a class="dropdown-item" >
-                   <router-link class="nav-link" to="/employees"
-                        >Employees</router-link
-                      ></a></li>
-                  <li>
-                    <a class="dropdown-item"
-                      ><router-link class="nav-link" to="/volunteers"
-                        >Volunteers</router-link
-                      ></a
-                    >
-                  </li>
-                  <li>
-                    <a class="dropdown-item"
-                      ><router-link class="nav-link" to="/services"
-                        >Services</router-link
-                      ></a
-                    >
-                  </li>
-                  <li>
-                    <a class="dropdown-item"
-                      ><router-link class="nav-link" to="/events"
-                        >Events</router-link
-                      ></a
-                    >
-                  </li>
-                </ul>
-              </li>
-              <!-- edit dropdown -->
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarDarkDropdownMenuLink"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Edit
-                </a>
-                <ul
-                  class="dropdown-menu dropdown-menu-dark"
-                  aria-labelledby="navbarDarkDropdownMenuLink"
-                >
-                  <li><a class="dropdown-item" href="#">Client</a></li>
-                  <li><a class="dropdown-item" href="#">Employees</a></li>
-                  <li><a class="dropdown-item" href="#">Volunteers</a></li>
-                  <li><a class="dropdown-item" href="#">Services</a></li>
-                  <li><a class="dropdown-item" href="#">Events</a></li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
-              </li>
-              <!-- search bar -->
-              <!-- <div class="input-group">
->>>>>>> 261b946e9e9646b8f71a6e8caabf387c3a81dc51
             <div class="form-outline">
               <input type="search" id="form1" class="form-control" />
               <label class="form-label" for="form1">Search</label>
@@ -228,19 +95,8 @@
 </template>
 
 <style>
-<<<<<<< HEAD
   .navbar-nav{
     margin-left:auto;
   }
 </style>
 
-=======
-nav {
-  padding: 20px;
-}
-li a:hover {
-  font-size: 18px;
-  padding-bottom: 0px;
-}
-</style>
->>>>>>> 261b946e9e9646b8f71a6e8caabf387c3a81dc51
