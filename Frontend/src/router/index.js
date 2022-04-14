@@ -1,15 +1,16 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import { createRouter, createWebHistory } from "vue-router";
+import HomeView from "../views/HomeView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: HomeView
+      path: "/",
+      name: "home",
+      component: HomeView,
     },
     {
+<<<<<<< HEAD
       path: '/clients',
       name: 'clients',
       component: () => import('../views/clients/ClientsView.vue')
@@ -38,34 +39,64 @@ const router = createRouter({
       path:'/new-event',
       name:'new-event',
       component: ()=> import('../views/events/NewEvent.vue')
+=======
+      path: "/clients",
+      name: "clients",
+      component: () => import("../views/clients/ClientsView.vue"),
     },
     {
-      path: '/services',
-      name: 'services',
-      component: () => import('../views/services/ServicesView.vue')
+      path: "/events",
+      name: "events",
+      component: () => import("../views/events/EventsView.vue"),
     },
     {
-      path: '/services_edit',
-      name: 'services_edit',
-      component: () => import('../views/services/ServicesEdit.vue')
+      path: "/clients_edit",
+      name: "clients_edit",
+      component: () => import("../views/clients/ClientsEdit.vue"),
+>>>>>>> 261b946e9e9646b8f71a6e8caabf387c3a81dc51
     },
     {
-      path:'/new-service',
-      name:'new-service',
-      component: ()=> import('../views/services/NewService.vue')
-    }
-    ,
-    {
-      path: '/volunteers',
-      name: 'volunteers',
-      component: () => import('../views/volunteers/VolunteerView.vue')
+      path: "/events_edit",
+      name: "events_edit",
+      component: () => import("../views/events/EventsEdit.vue"),
     },
     {
-      path: '/volunteers_edit',
-      name: 'volunteers_edit',
-      component: () => import('../views/volunteers/VolunteerEdit.vue')
+      path: "/new-client",
+      name: "new-client",
+      component: () => import("../views/clients/NewClient.vue"),
     },
     {
+      path: "/new-event",
+      name: "new-event",
+      component: () => import("../views/events/NewEvent.vue"),
+    },
+    {
+      path: "/services",
+      name: "services",
+      component: () => import("../views/services/ServicesView.vue"),
+    },
+    {
+      path: "/services_edit",
+      name: "services_edit",
+      component: () => import("../views/services/ServicesEdit.vue"),
+    },
+    {
+      path: "/new-service",
+      name: "new-service",
+      component: () => import("../views/services/NewService.vue"),
+    },
+    {
+      path: "/volunteers",
+      name: "volunteers",
+      component: () => import("../views/volunteers/VolunteerView.vue"),
+    },
+    {
+      path: "/volunteers_edit",
+      name: "volunteers_edit",
+      component: () => import("../views/volunteers/VolunteerEdit.vue"),
+    },
+    {
+<<<<<<< HEAD
       path:'/new-volunteers',
       name:'new-volunteers',
       component: ()=> import('../views/volunteers/NewVolunteer.vue')
@@ -90,5 +121,37 @@ const router = createRouter({
     }
   ]
 })
+=======
+      path: "/new-volunteers",
+      name: "new-volunteers",
+      component: () => import("../views/volunteers/NewVolunteer.vue"),
+    },
+    {
+      path: "/new-emp",
+      name: "new-emp",
+      component: () => import("../views/Employees/NewEmp.vue"),
+    },
+    {
+      path: "/employees",
+      name: "employees",
+      component: () => import("../views/Employees/EmployeeView.vue"),
+    },
+    {
+      path: "/edit-emp",
+      name: "edit-emp",
+      component: () => import("../views/Employees/EmployeeEdit.vue"),
+    },
+    //,
+    // {
+    //   path: '/about',
+    //   name: 'about',
+    //   // route level code-splitting
+    //   // this generates a separate chunk (About.[hash].js) for this route
+    //   // which is lazy-loaded when the route is visited.
+    //   component: () => import('../views/AboutView.vue')
+    // }
+  ],
+});
+>>>>>>> 261b946e9e9646b8f71a6e8caabf387c3a81dc51
 
-export default router
+export default router;

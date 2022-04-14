@@ -4,10 +4,18 @@
           <!-- <h3>{{msg}}</h3>   -->
           <!-- <events :msg="msg"/> -->
         </div>
+<<<<<<< HEAD
         <div class="row justify-content-evenly">
             <fieldset class ='flex'>
             <router-link :to="{path:'new-client'}" class="btn btn-secondary">Create New Client</router-link>
             <table class="table table-striped;equal-width">
+=======
+        <div class="row justify-content-center">
+            <!--<fieldset class ='flex'>-->
+            <router-link :to="{path:'new-client'}" class="btn btn-secondary">Create New Client</router-link>
+            <div class='table-responsive'>
+            <table class="table table-striped">
+>>>>>>> 261b946e9e9646b8f71a6e8caabf387c3a81dc51
             <thead class="table-dark">
                 <tr>
                 <th>Client</th>    
@@ -59,6 +67,13 @@
                 <th>Insurance Program</th>
                 <th>Health Insurance Description</th>
                 <th>Covid Status</th>
+<<<<<<< HEAD
+=======
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+>>>>>>> 261b946e9e9646b8f71a6e8caabf387c3a81dc51
                 </tr>
             </thead>
             <tbody>
@@ -121,7 +136,12 @@
                 </tr>
             </tbody>
             </table>
+<<<<<<< HEAD
             </fieldset>
+=======
+            </div>
+            <!--</fieldset>-->
+>>>>>>> 261b946e9e9646b8f71a6e8caabf387c3a81dc51
   </div>
 
     </main>
@@ -171,6 +191,10 @@
     align-items: space-between;
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 261b946e9e9646b8f71a6e8caabf387c3a81dc51
 </style>
 
 
