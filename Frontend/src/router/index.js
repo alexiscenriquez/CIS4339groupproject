@@ -105,19 +105,14 @@ const router = createRouter({
     {
 
       path: "/new-emp",
-
       name: "new-emp",
-
       component: () => import("../views/Employees/NewEmp.vue"),
 
     },
-
     {
 
       path: "/employees",
-
       name: "employees",
-
       component: () => import("../views/Employees/EmployeeView.vue"),
 
     },
@@ -125,12 +120,16 @@ const router = createRouter({
     {
 
       path: "/edit-emp",
-
       name: "edit-emp",
-
       component: () => import("../views/Employees/EmployeeEdit.vue"),
 
+    },
+    {
+      path:'/v_events',
+      name:'v_events',
+      component: ()=> import('../views/volunteers/v_events.vue')
     }
+
   ]
 })
 

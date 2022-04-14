@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router()
 const volunteerModel = require('../models/volunteers');
+const eventsModel = require('../models/events')
 const axios = require("axios")
 
 //get all data for volunteers
@@ -138,6 +139,45 @@ router.delete('/del/:vid', (req, res, next)=> {
             console.log('deleted')
         }
     })
+})
+
+router.get('/events/:vid', (req, res, next)=>{
+    volunteerModel.aggregate([
+        {
+            $match:{
+                vid:parseInt(req.params.vid)
+            }
+        },
+        {
+            $lookup: {
+              from: "events",
+              localField: "vid",
+              foreignField: "attendees.vid",
+              as: "events",
+            }
+          },
+          {
+              $project:{
+                  vid:1,
+                  first_name:1,
+                  last_name:1,
+                  "events.evid":1,
+                  'events.ev_name':1,
+                  'events.ev_date':1,
+                  'events.city':1,
+                  'events.st':1
+              }
+          }
+        ],
+        (error, results) => {
+            if(error){
+                return next(error);
+            }else{
+                console.log(results);
+                res.json(results);
+            }
+        }
+    )
 })
 
 module.exports = router
