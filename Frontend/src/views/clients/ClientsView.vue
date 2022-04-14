@@ -1,13 +1,9 @@
 <template>
     <main>
-        <div class="wrapper">
-          <!-- <h3>{{msg}}</h3>   -->
-          <!-- <events :msg="msg"/> -->
-        </div>
-        <div class="row justify-content-evenly">
-            <fieldset class ='flex'>
+        <div class="row justify-content-center">
             <router-link :to="{path:'new-client'}" class="btn btn-secondary">Create New Client</router-link>
-            <table class="table table-striped;equal-width">
+            <div class='table-responsive'>
+            <table class="table table-striped">
             <thead class="table-dark">
                 <tr>
                 <th>Client</th>    
@@ -121,8 +117,9 @@
                 </tr>
             </tbody>
             </table>
-            </fieldset>
-  </div>
+          </div>
+          </div>
+  
 
     </main>
 </template>
@@ -172,17 +169,3 @@
 }
 
 </style>
-
-
-
-    // import events from '../components/events.vue'
-    // export default{
-    //     components:{
-    //         events
-    //     },
-    //     data(){
-    //         return{
-    //             msg:'line 9 eventsView'
-    //         }
-    //     }
-    // }
