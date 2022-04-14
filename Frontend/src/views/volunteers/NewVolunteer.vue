@@ -103,13 +103,18 @@
 
             </form>
         </div>
+        <Footer />
     </div>
 </template>
 
 <script>
    import axios from "axios";
+import Footer from '../../components/footer.vue'
 
-    export default {
+export default {
+    components:{
+        Footer
+    },
         data() {
             return {
                 volunteers: {

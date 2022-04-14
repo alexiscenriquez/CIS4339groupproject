@@ -49,28 +49,23 @@
                     <input type="text" class="form-control" v-model="ev_list[0].st" required>
                 </div>
 
-
-
                 <button class="btn btn-danger mt-3">Update</button>
-
             </form>
         </div>
     </div>
 </template>
 
 <script>
-import axios from "axios";
+    import axios from "axios";
 
 export default {
-     data() {
+    data() {
         return {
-            //events_list:{}
             ev_list: {}
         }
     },
     created() {
         let apiURL = `http://localhost:8080/events/find/${this.$route.params.id}`;
-
         axios.get(apiURL).then(res => {
             this.ev_list = res.data;
         }).catch(error =>{
@@ -89,5 +84,5 @@ export default {
             });
         }
     }
-    }
+}
 </script>

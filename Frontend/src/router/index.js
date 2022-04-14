@@ -10,14 +10,29 @@ const router = createRouter({
       component: HomeView
     },
     {
+      path: '/clients',
+      name: 'clients',
+      component: () => import('../views/clients/ClientsView.vue')
+    },
+    {
       path: '/events',
       name: 'events',
       component: () => import('../views/events/EventsView.vue')
     },
     {
+      path: '/clients_edit',
+      name: 'clients_edit',
+      component: () => import('../views/clients/ClientsEdit.vue')
+    },
+    {
       path: '/events_edit',
       name: 'events_edit',
       component: () => import('../views/events/EventsEdit.vue')
+    },
+    {
+      path: '/new-client',
+      name: 'new-client',
+      component: () => import('../views/clients/NewClient.vue')
     },
     {
       path:'/new-event',
@@ -54,16 +69,25 @@ const router = createRouter({
       path:'/new-volunteers',
       name:'new-volunteers',
       component: ()=> import('../views/volunteers/NewVolunteer.vue')
+    },
+    {
+      path:'/attendees',
+      name:'attendees',
+      component: ()=> import('../views/events/attendees.vue')
+    },
+    {
+      path:'/applicants',
+      name:'applicants',
+      component: ()=> import('../views/services/applicants.vue')
+    },
+    {
+      path: '/about',
+      name: 'about',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/AboutView.vue')
     }
-    //,
-    // {
-    //   path: '/about',
-    //   name: 'about',
-    //   // route level code-splitting
-    //   // this generates a separate chunk (About.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: () => import('../views/AboutView.vue')
-    // }
   ]
 })
 

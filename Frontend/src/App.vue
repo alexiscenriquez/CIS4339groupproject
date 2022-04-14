@@ -3,13 +3,29 @@
     <!-- Nav bar -->
  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/">Consolidated App</a>
+    <!-- added float-left -->
+    <a class="navbar-brand float-left" href="/">
+    
+      <img
+              alt="CLC logo"
+              src="./assets/clcenter.png"
+              width="30"
+              height="30"
+              class="d-inline-block align-text-top"
+            />Community Life Center
+    </a>
+
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
-      <ul class="navbar-nav">
+      <!-- added mr-auto -->
+      <ul class="navbar-nav mr-auto">
         <!-- view dropdown -->
+        <li class="nav-item">
+    <a class="nav-link" href="/">Home</a>
+    </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             View
@@ -17,7 +33,7 @@
           <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
             <li><a class="dropdown-item"><router-link class="nav-link" to="/clients">Clients</router-link></a></li>
             <li><a class="dropdown-item" href="#">Employees</a></li>
-            <li><a class="dropdown-item"><router-link class="nav-link" to="/volunteers">Volunteers</router-link></a></li>
+            <li><a class="dropdown-item"><router-link class='nav-link' to="/volunteers">Volunteers</router-link></a></li>
             <li><a class="dropdown-item"><router-link class="nav-link" to="/services">Services</router-link></a></li>
             <li><a class="dropdown-item"><router-link class="nav-link" to="/events">Events</router-link></a></li>
           </ul>
@@ -59,4 +75,9 @@
   </div>
 </template>
 
+<style>
+  .navbar-nav{
+    margin-left:auto;
+  }
+</style>
 

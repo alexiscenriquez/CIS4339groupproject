@@ -2,7 +2,6 @@ const uuid = require('uuid');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-
 let employeesSchema = new Schema(
   {
     employeeID: {

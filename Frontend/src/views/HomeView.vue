@@ -1,15 +1,17 @@
 <script>
 // import child component
 import HelloWorld from '../components/HelloWorld.vue'
+// import Footer from '../components/footer.vue'
 
 export default {
   // register child component
   components: {
-    HelloWorld
+    HelloWorld,
+    //Footer
   },
   data() {
     return {
-      msg: "You really did it!"
+      msg: "Welcome to CLC!"
     }
   }
 }
@@ -23,6 +25,7 @@ export default {
       <HelloWorld :msg="msg" />
       
     </div>
+    <!-- <Footer /> -->
   </main>
 </template>
 
@@ -32,3 +35,22 @@ export default {
 @import "../assets/base.css";
 </style>
 -->
+<style >
+  body {
+   
+    background: url('../assets/one.svg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+
+    /* background-image: url('../assets/seven.svg');
+    height: 100vh; */
+  }
+/* footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #333;
+  color:#fff; }*/
+</style>

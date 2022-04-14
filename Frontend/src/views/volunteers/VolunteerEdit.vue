@@ -1,4 +1,5 @@
 <template>
+    <div class ='div'>
     <div class="row justify-content-center">
         <div class="col-md-6">
             <!-- Update Student content -->
@@ -100,22 +101,27 @@
                     <input type="text" class="form-control" v-model="volunteers[0].country" required>
                 </div>
 
-                
-
                 <button class="btn btn-danger mt-3">Update</button>
 
             </form>
+            
         </div>
+        
+    </div>
+    <!-- <Footer /> -->
     </div>
 </template>
 
 <script>
-import axios from "axios";
+import axios from "axios"
+import Footer from '../../components/footer.vue'
 
 export default {
+    // components:{
+    //     Footer
+    // },
      data() {
         return {
-            //events_list:{}
             volunteers: {}
         }
     },
@@ -142,3 +148,9 @@ export default {
     }
     }
 </script>
+
+<style scoped>
+    form{
+        background: white;
+    }
+</style>

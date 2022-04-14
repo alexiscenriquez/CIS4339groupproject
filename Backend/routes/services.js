@@ -71,8 +71,13 @@ router.put('/new-applicant/:sid', (req, res, next)=>{
 
 //get all services with applicant basic info
 //join documents to compare data with clients
-router.get('/all-applicants', (req, res, next)=>{
+router.get('/all-applicants/:sid', (req, res, next)=>{
     servicesModel.aggregate([
+        {
+            $match:{
+                sid:parseInt(req.params.sid)
+            }
+        },
         {
             $lookup:{
                 from:'clients',

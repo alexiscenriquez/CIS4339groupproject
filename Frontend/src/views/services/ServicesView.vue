@@ -6,7 +6,7 @@
         </div>
         <div class="row justify-content-center">
             <router-link :to="{path:'new-service'}" class="btn btn-secondary">Create New Service</router-link>
-            <table class="table table-striped">
+            <table class="table table-light table-hover">
             <thead class="table-dark">
                 <tr>
                 <th>ID#</th>
@@ -25,7 +25,7 @@
                 <td>{{service.renewal}}</td>
                 <td>{{service.notes}}</td>
                 
-                <td><button @click="active = !active" class="btn btn-secondary">Applicants</button></td>
+                <td><router-link :to="{name: 'applicants', params: { id: service.sid }}" class="btn btn-secondary ">Applicants</router-link></td>
                 <td><router-link :to="{name: 'services_edit', params: { id: service.sid }}" class="btn btn-secondary ">Edit</router-link></td>
                 <td><button @click.prevent="del_event(service.sid)" class="btn btn-secondary">Delete</button></td>
                 <td v-if="active">hello</td>
