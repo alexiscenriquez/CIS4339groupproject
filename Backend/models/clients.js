@@ -218,8 +218,7 @@ let clientSchema = new Schema({
         employeeID:
         [
           {
-            type:Number,
-            unique:true
+            type:Number
           }
         ]
       },
@@ -228,8 +227,7 @@ let clientSchema = new Schema({
         sid:
         [
           {
-            type:Number,
-            unique:true
+            type:Number
           }
         ]
       }
