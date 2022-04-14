@@ -4,11 +4,11 @@
           <!-- <h3>{{msg}}</h3>   -->
           <!-- <events :msg="msg"/> -->
         </div>
-        <div class="row justify-content-evenly">
-            <fieldset class ='flex'>
+        <div class="row justify-content-center">
+            <!--<fieldset class ='flex'>-->
             <router-link :to="{path:'new-client'}" class="btn btn-secondary">Create New Client</router-link>
             <div class='table-responsive'>
-            <table class="table table-striped;equal-width">
+            <table class="table table-striped">
             <thead class="table-dark">
                 <tr>
                 <th>Client</th>    
@@ -60,6 +60,10 @@
                 <th>Insurance Program</th>
                 <th>Health Insurance Description</th>
                 <th>Covid Status</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -123,7 +127,7 @@
             </tbody>
             </table>
             </div>
-            </fieldset>
+            <!--</fieldset>-->
   </div>
 
     </main>
@@ -172,6 +176,7 @@
     flex-wrap: nowrap;
     align-items: space-between;
 }
+
 
 </style>
 
