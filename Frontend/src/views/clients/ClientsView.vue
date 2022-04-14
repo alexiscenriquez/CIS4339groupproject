@@ -7,6 +7,7 @@
         <div class="row justify-content-evenly">
             <fieldset class ='flex'>
             <router-link :to="{path:'new-client'}" class="btn btn-secondary">Create New Client</router-link>
+            <div class='table-responsive'>
             <table class="table table-striped;equal-width">
             <thead class="table-dark">
                 <tr>
@@ -121,6 +122,7 @@
                 </tr>
             </tbody>
             </table>
+            </div>
             </fieldset>
   </div>
 
