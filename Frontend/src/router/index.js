@@ -10,7 +10,6 @@ const router = createRouter({
       component: HomeView,
     },
     {
-<<<<<<< HEAD
       path: '/clients',
       name: 'clients',
       component: () => import('../views/clients/ClientsView.vue')
@@ -39,21 +38,6 @@ const router = createRouter({
       path:'/new-event',
       name:'new-event',
       component: ()=> import('../views/events/NewEvent.vue')
-=======
-      path: "/clients",
-      name: "clients",
-      component: () => import("../views/clients/ClientsView.vue"),
-    },
-    {
-      path: "/events",
-      name: "events",
-      component: () => import("../views/events/EventsView.vue"),
-    },
-    {
-      path: "/clients_edit",
-      name: "clients_edit",
-      component: () => import("../views/clients/ClientsEdit.vue"),
->>>>>>> 261b946e9e9646b8f71a6e8caabf387c3a81dc51
     },
     {
       path: "/events_edit",
@@ -96,7 +80,6 @@ const router = createRouter({
       component: () => import("../views/volunteers/VolunteerEdit.vue"),
     },
     {
-<<<<<<< HEAD
       path:'/new-volunteers',
       name:'new-volunteers',
       component: ()=> import('../views/volunteers/NewVolunteer.vue')
@@ -118,40 +101,36 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/AboutView.vue')
+    }{
+
+      path: "/new-emp",
+
+      name: "new-emp",
+
+      component: () => import("../views/Employees/NewEmp.vue"),
+
+    },
+
+    {
+
+      path: "/employees",
+
+      name: "employees",
+
+      component: () => import("../views/Employees/EmployeeView.vue"),
+
+    },
+
+    {
+
+      path: "/edit-emp",
+
+      name: "edit-emp",
+
+      component: () => import("../views/Employees/EmployeeEdit.vue"),
+
     }
   ]
 })
-=======
-      path: "/new-volunteers",
-      name: "new-volunteers",
-      component: () => import("../views/volunteers/NewVolunteer.vue"),
-    },
-    {
-      path: "/new-emp",
-      name: "new-emp",
-      component: () => import("../views/Employees/NewEmp.vue"),
-    },
-    {
-      path: "/employees",
-      name: "employees",
-      component: () => import("../views/Employees/EmployeeView.vue"),
-    },
-    {
-      path: "/edit-emp",
-      name: "edit-emp",
-      component: () => import("../views/Employees/EmployeeEdit.vue"),
-    },
-    //,
-    // {
-    //   path: '/about',
-    //   name: 'about',
-    //   // route level code-splitting
-    //   // this generates a separate chunk (About.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: () => import('../views/AboutView.vue')
-    // }
-  ],
-});
->>>>>>> 261b946e9e9646b8f71a6e8caabf387c3a81dc51
 
 export default router;
