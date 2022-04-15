@@ -2,8 +2,8 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <!-- Update Student content -->
-            <h3 class="text-center">Update Event</h3>
-            <form @submit.prevent="UpdateEvent">
+            <h3 class="text-center">Update Client</h3>
+            <form @submit.prevent="UpdateClient">
 
                 <div class="form-group">
                     <label>ID {{cls_list[0].cid}}</label>
@@ -278,7 +278,7 @@ export default {
         });
     },
     methods: {
-        UpdateEvent() {
+        UpdateClient() {
             let apiURL = `http://localhost:8080/clients/update/${this.$route.params.id}`;
 
             axios.put(apiURL, this.cls_list[0]).then((res) => {
