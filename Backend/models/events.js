@@ -1,16 +1,16 @@
-const uuid = require('uuid');
 const mongoose = require('mongoose');
-//const volunteers = require('./volunteers');
 const Schema = mongoose.Schema;
+
+const autoIncrement = require('mongoose-sequence')(mongoose);
 
 let eventSchema = new Schema(
   {
-  evid: 
-    {
-      type: Number,
-      required: true,
-      unique: true
-    },
+  // evid: 
+  //   {
+  //     type: Number,
+  //     required: true,
+  //     unique: true
+  //   },
   ev_name: 
     {
       type: String,
@@ -75,7 +75,7 @@ let eventSchema = new Schema(
      
   collection: 'events'
 });
-
+eventSchema.plugin(autoIncrement, {inc_field:'evid'})
 module.exports = mongoose.model('event', eventSchema)
 
 

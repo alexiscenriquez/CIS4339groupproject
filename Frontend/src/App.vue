@@ -61,7 +61,7 @@
                     </li>
                   <li>
                     <a class="dropdown-item"
-                      ><router-link class="nav-link" to="/events"
+                      ><router-link class="nav-link" to="/new-event"
                         >Events</router-link
                       ></a
                     >

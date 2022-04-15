@@ -1,12 +1,9 @@
 <template>
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <h3 class="text-center">Create Student</h3>
+            <h3 class="text-center">Create Event</h3>
             <form @submit.prevent="handleSubmitForm">
-                <div class="form-group">
-                    <label>ID#</label>
-                    <input type="text" class="form-control" v-model="event.evid" required>
-                </div>
+                
                 <div class="form-group">
                     <label>Name</label>
                     <input type="text" class="form-control"  v-model="event.ev_name" required>
@@ -14,12 +11,12 @@
 
                 <div class="form-group">
                     <label>Host</label>
-                    <input type="text" class="form-control"  v-model="event.ev_host" required>
+                    <input type="number" class="form-control"  v-model="event.ev_host" required>
                 </div>
 
                 <div class="form-group">
                     <label>Date</label>
-                    <input type="text" class="form-control" v-model="event.ev_date"  required>
+                    <input type="date" class="form-control" v-model="event.ev_date"  required>
                 </div>
 
                 <div class="form-group">
