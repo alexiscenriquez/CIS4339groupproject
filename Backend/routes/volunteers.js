@@ -39,37 +39,41 @@ router.get('/find/:vid', (req, res, next)=>{
     });
 });
 
-
-//add/remove event to volunteer
-router.put('/events/:vid', (req, res, next)=>{
-    var action = req.body.action
-
-    if(action == 'add'){
-    volunteerModel.findOneAndUpdate({vid:parseInt(req.params.vid)},{
-        $push:{'events.evid':parseInt(req.body.evid)}
-    },(error, results)=>{
-        if(error){
-            return next(error);
-        }else{
-            res.send('added event to volunteer')
-            console.log('added event to volunteer')
-        }
-    });
-    }
-    if(action == 'del'){
-        volunteerModel.findOneAndUpdate({vid:parseInt(req.params.vid)},{
-            $pull:{'events.evid':parseInt(req.body.evid)}
+router.post('/add-event/:vid', (req, res, next) =>{
+    volunteerModel.findOneAndUpdate(
+        {
+            vid:parseInt(req.params.vid)
+        },
+        {
+            $push:{'events.vid':parseInt(req.body.evid)}
         },(error, results)=>{
             if(error){
-                return next(error);
+                return next(error)
             }else{
-                res.send('deleted event from volunteer')
-                console.log('deleted event from volunteer')
+                res.send('added event to volunteer')
+                console.log('added event to volunteer')
             }
-        });
         }
+    )
+})
 
-});
+router.post('/del-event/:vid', (req, res, next) =>{
+    volunteerModel.findOneAndUpdate(
+        {
+            vid:parseInt(req.params.vid)
+        },
+        {
+            $pull:{'events.vid':parseInt(req.body.evid)}
+        },(error, results)=>{
+            if(error){
+                return next(error)
+            }else{
+                res.send('deleted event to volunteer')
+                console.log('deleted event to volunteer')
+            }
+        }
+    )
+})
 
 
 

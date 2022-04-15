@@ -50,7 +50,8 @@ let eventSchema = new Schema(
     {
       vid:[
         {
-          type:Number
+          type:Number,
+          unique:true
         }
       ],
       cid:[
@@ -60,7 +61,8 @@ let eventSchema = new Schema(
       ],
       employeeID:[
         {
-          type:Number
+          type:Number,
+          unique:true
         }
       ]
     }

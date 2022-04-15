@@ -11,7 +11,6 @@
                 new_cid:{id:''},
                 new_eid:{id:''},
                 active: false
-
             }
         },
         created(){
@@ -41,24 +40,31 @@
                     }).catch(error => {
                         console.log(error)
                     })
-                }
-            },
-            rem_client(ID){
-                let data = {
-                    "id":ID,
-                }
-                let apiURL = `http://localhost:8080/events/del-client/${this.$route.params.id}`
-                let indexOfArrayItem = this.client.findIndex(i=>i.cid === ID);
-                
-                if(window.confirm('Remove Client from event?')){
-                    axios.post(apiURL, data
-                    ).then(()=>{
-                        this.client.splice(indexOfArrayItem, 1);
-                    }).catch(error => {
+                    //remove from volunteers table
+                    let apiURL2 = `http://localhost:8080/volunteers/del-event/${ID}`
+                    axios.post(apiURL2, this.$route.params.id).then(()=>{
+                        
+                    }).catch(error =>{
                         console.log(error)
                     })
                 }
             },
+            // rem_client(ID){
+            //     let data = {
+            //         "id":ID,
+            //     }
+            //     let apiURL = `http://localhost:8080/events/del-client/${this.$route.params.id}`
+            //     let indexOfArrayItem = this.client.findIndex(i=>i.cid === ID);
+                
+            //     if(window.confirm('Remove Client from event?')){
+            //         axios.post(apiURL, data
+            //         ).then(()=>{
+            //             this.client.splice(indexOfArrayItem, 1);
+            //         }).catch(error => {
+            //             console.log(error)
+            //         })
+            //     }
+            // },
             rem_employee(ID){
                 let data = {
                     "id":ID,
@@ -66,20 +72,31 @@
                 let apiURL = `http://localhost:8080/events/del-employee/${this.$route.params.id}`
                 let indexOfArrayItem = this.employee.findIndex(i=>i.employeeID === ID);
                 
-                if(window.confirm('Remove Client from event?')){
+                if(window.confirm('Remove employee from event?')){
+                    //remove from events collection
                     axios.post(apiURL, data
                     ).then(()=>{
                         this.employee.splice(indexOfArrayItem, 1);
                     }).catch(error => {
                         console.log(error)
                     })
+
+                    //remove from employees table
+                    let apiURL2 = `http://localhost:8080/employees/del-event/${ID}`
+                    axios.post(apiURL2, this.$route.params.id).then(()=>{
+                        
+                    }).catch(error =>{
+                        console.log(error)
+                    })
                 }
             },
             add_volunteer() {
+                
+                let idv = this.new_vid.id
                 let apiURL = `http://localhost:8080/events/add-volunteer/${this.$route.params.id}`;
                 axios.post(apiURL, this.new_vid).then(() => {
                     //changing the view to the list
-                  this.$router.push('/events')
+                //   this.$router.push('/events')
                   this.new_vid = {
                     id: ''
                   }
@@ -87,32 +104,48 @@
                     console.log('line 59 attendees')
                     console.log(error)
                 });
-            },
-            add_client() {
-                let apiURL = `http://localhost:8080/events/add-client/${this.$route.params.id}`;
-                
-                axios.post(apiURL, this.new_cid).then(() => {
-                    //changing the view to the list
-                  this.$router.push('/events')
-                  this.new_cid = {
-                    id: ''
-                  }
-                }).catch(error => {
+
+                let apiURL2 = `http://localhost:8080/volunteers/add-event/${idv}`
+                axios.post(apiURL2, this.$route.params.id).then(()=>{
+                    
+                }).catch(error =>{
                     console.log(error)
-                });
+                })
             },
+            // add_client() {
+            //     let idc = this.new_cid.id
+            //     let apiURL = `http://localhost:8080/events/add-client/${this.$route.params.id}`;
+                
+            //     axios.post(apiURL, this.new_cid).then(() => {
+            //         //changing the view to the list
+            //       this.$router.push('/events')
+            //       this.new_cid = {
+            //         id: ''
+            //       }
+            //     }).catch(error => {
+            //         console.log(error)
+            //     });
+            // },
             add_employee() {
+                let ide = this.new_eid.id
                 let apiURL = `http://localhost:8080/events/add-employee/${this.$route.params.id}`;
                 
                 axios.post(apiURL, this.new_eid).then(() => {
                     //changing the view to the list
-                  this.$router.push('/events')
+                //   this.$router.push('/events')
                   this.new_eid = {
                     id: ''
                   }
                 }).catch(error => {
                     console.log(error)
                 });
+
+                let apiURL2 = `http://localhost:8080/employees/add-event/${ide}`
+                axios.post(apiURL2, this.$route.params.id).then(()=>{
+                    
+                }).catch(error =>{
+                    console.log(error)
+                })
             }
         } 
     }
@@ -183,7 +216,7 @@
             </table>
         </div>
 
-        <div class="row justify-content-center">
+        <!-- <div class="row justify-content-center">
             <h2 class='text-center'>Clients</h2>
             <form @submit.prevent='add_client' class='form-inline'>
                     <div class='form-group'>
@@ -211,7 +244,7 @@
                         </tr> 
                     </tbody>
                 </table>
-            </div>
+            </div> -->
     
         <div class="row justify-content-center">
             <h2 class='text-center'>Employees</h2>
