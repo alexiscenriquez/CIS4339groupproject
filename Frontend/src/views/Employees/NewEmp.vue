@@ -1,6 +1,6 @@
 <template>
   <h1>Create Employee</h1>
-  
+
   <form @submit.prevent="handleSubmitForm">
     <fieldset class="form-control mb-5">
       <legend>Personal Information</legend>
@@ -214,7 +214,7 @@
       </div>
     </fieldset>
 
-     <fieldset class="form-control mb-5">
+    <fieldset class="form-control mb-5">
       <legend>Emergency Contact</legend>
       <label>Contact 1</label>
       <div class="row mb-4">
@@ -254,7 +254,7 @@
             type="text"
             class="form-control"
             name="efname2"
-            v-model="employees.eContact.fName"
+            v-model="employees.eContact[1].fName"
           />
         </div>
         <div class="col-sm-4">
@@ -263,7 +263,7 @@
             type="text"
             class="form-control"
             name="elname2"
-            v-model="employees.eContact.lName"
+            v-model="employees.eContact[1].lName"
           />
         </div>
         <div class="col-sm-4">
@@ -272,10 +272,10 @@
             type="text"
             class="form-control"
             name="ephone2"
-            v-model="employees.eContact.phone"
+            v-model="employees.eContact[1].phone"
           />
         </div>
-      </div> 
+      </div>
     </fieldset>
     <fieldset class="form-control mb-5">
       <legend>Employment Information</legend>
@@ -378,7 +378,6 @@ import axios from "axios";
 export default {
   data() {
     return {
-  
       employees: {
         employeeID: "",
         firstName: "",
@@ -403,8 +402,9 @@ export default {
         jDesc: "",
         hGrade: "",
         degree: "",
-       eContact:[{fName:"",lName:"",phone:""}],
+        eContact: [{ fName: "", lName: "", phone: "" },{ fName: "", lName: "", phone: "" }],
         language: [],
+       
       },
     };
   },
@@ -440,8 +440,9 @@ export default {
             jDesc: "",
             hGrade: "",
             degree: "",
-            eContact: [{fName:"",lName:"",phone:""}],
+            eContact: [{ fName: "", lName: "", phone: "" },{ fName: "", lName: "", phone: "" }],
             language: [],
+           
           };
         })
         .catch((error) => {
@@ -461,11 +462,11 @@ h1 {
 form {
   margin-top: 50px;
 }
-#create{
-  background-color: #A6A7A8;
+#create {
+  background-color: #a6a7a8;
 }
-#create:hover{
-  background-color: #2E5902;
+#create:hover {
+  background-color: #2e5902;
   color: white;
 }
 </style>

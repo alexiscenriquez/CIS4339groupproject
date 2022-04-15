@@ -1,7 +1,7 @@
 <template>
   <h1>Edit Employee</h1>
   <form @submit.prevent="handleSubmitForm">
-    <fieldset class="form-control mb-5">
+     <fieldset class="form-control mb-5">
       <legend>Personal Information</legend>
       <div class="row mb-4">
         <div class="col-6">
@@ -14,8 +14,8 @@
             aria-label="First name"
           />
         </div>
-      </div>
-      <div class="row mb-4">
+        </div>
+     <div class="row mb-4">
         <div class="col">
           <label for="fName" class="form-label">First Name</label>
           <input
@@ -24,6 +24,7 @@
             class="form-control"
             name="fName"
             aria-label="First name"
+            required
           />
         </div>
         <div class="col">
@@ -34,6 +35,7 @@
             class="form-control"
             name="lName"
             aria-label="Last name"
+            required
           />
         </div>
       </div>
@@ -45,6 +47,7 @@
             class="form-control"
             name="Birthday"
             v-model="employees.birthday"
+            required
           />
         </div>
         <div class="col-sm-4">
@@ -54,6 +57,7 @@
             class="form-control"
             name="ssn"
             v-model="employees.SSN"
+            required
           />
         </div>
         <div class="col-sm-4">
@@ -211,9 +215,9 @@
           <input type="text" class="form-control" v-model="employees.sEmail" />
         </div>
       </div>
-    </fieldset>
+    </fieldset> 
 
-    <fieldset class="form-control mb-5">
+    <fieldset class="form-control mb-5" v-for="eContacts in employees.eContact" :key="eContacts.fName">
       <legend>Emergency Contact</legend>
       <label>Contact 1</label>
       <div class="row mb-4">
@@ -226,7 +230,7 @@
             v-model="employees.eContact[0].fName"
           />
         </div>
-        <div class="col-sm-4">
+         <div class="col-sm-4">
           <label for="elName" class="form-label">Last Name</label
           ><input
             type="text"
@@ -253,7 +257,7 @@
             type="text"
             class="form-control"
             name="efname2"
-            v-model="employees.eContact.fName"
+            v-model="employees.eContact[1].fName"
           />
         </div>
         <div class="col-sm-4">
@@ -262,7 +266,7 @@
             type="text"
             class="form-control"
             name="elname2"
-            v-model="employees.eContact.lName"
+            v-model="employees.eContact[1].lName"
           />
         </div>
         <div class="col-sm-4">
@@ -271,10 +275,10 @@
             type="text"
             class="form-control"
             name="ephone2"
-            v-model="employees.eContact.phone"
+            v-model="employees.eContact[1].phone"
           />
         </div>
-      </div>
+      </div> 
     </fieldset>
     <fieldset class="form-control mb-5">
       <legend>Employment Information</legend>
@@ -364,8 +368,11 @@
             name="l3"
             v-model="employees.language[2]"
           />
+          
         </div>
+
       </div>
+    
     </fieldset>
     <button class="btn mb-5" id="create">Create</button>
   </form>
@@ -386,7 +393,8 @@ export default {
     axios
       .get(apiURL)
       .then((res) => {
-        this.employees = res.data;
+        this.employees = res.data[0];
+        console.log(this.employees[0]);
       })
       .catch((error) => {
         console.log(error);
