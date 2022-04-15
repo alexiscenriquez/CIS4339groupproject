@@ -3,10 +3,10 @@
         <div class="col-md-6">
             <h3 class="text-center">Create Client</h3>
             <form @submit.prevent="handleSubmitForm">
-                 <div class="form-group">
+                <!-- <div class="form-group">
                     <label>ID</label>
                     <input type="text" class="form-control" v-model="clients.cid" required>
-                </div>
+                </div>-->
 
                 <div class="form-group">
                     <label>First Name</label>
@@ -247,6 +247,22 @@
                     <label>Covid Status</label>
                     <input type="text" class="form-control" placeholder="Do you have COVID-19? (True/False)" v-model="clients.covid_status" required>
                 </div>
+                
+                <!--<div class="form-group">
+                    <label for="Early Childhood">Early Childhood</label>
+                    <input type="checkbox" id="Early Childhood" v-model="services.sid"><br>
+                    <label>Housing</label>
+                    <input type="checkbox" v-model="clients.services"><br>
+                    <label>Adult Education</label>
+                    <input type="checkbox" v-model="clients.services"><br>
+                    <label>Loans</label>
+                    <input type="checkbox" v-model="clients.services"><br>
+                    <label>Meals</label>
+                    <input type="checkbox" v-model="clients.services"><br>
+                    <label>Family Support</label>
+                    <input type="checkbox" v-model="clients.services"><br>
+                </div>-->
+
                 <button class="btn btn-danger mt-3">Create Client</button>
             </form>
         </div>

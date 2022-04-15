@@ -48,10 +48,16 @@ router.get('/all', (req, res, next)=>{
 
 
 
-// get all of clients employee history and service hitsory
-router.get('/client-history', (req, res, next)=>{
+// get specified history of clients employees/services
+router.get('/client-history/:cid', (req, res, next)=>{
     //joining the data for employees and services
-    clientsModel.aggregate([
+    clientsModel.aggregate(
+    [
+        {
+            $match:{
+              cid:parseInt(req.params.cid)
+            }
+          },
         {
             $lookup:
                 {
@@ -77,11 +83,13 @@ router.get('/client-history', (req, res, next)=>{
              {
             //project allows for data retrieval specification (0 = no, 1= yes)
             $project:{
-                '_id':0, 
+                '_id':0,
+                'cid':1, 
                 'employeedID':1,
                 'first_name':1,
                 'mid_name':1,
                 'last_name':1,
+                'phone_number':1,
                 'employees.employeeID':1, 
                 'employees.firstName':1,
                 'employees.lastName':1,
@@ -129,67 +137,84 @@ router.delete('/del/:cid', (req, res, next)=> {
     })
 })
 
-//{PUT} adding an employee to a client
-router.put('/adddelemp/:cid', (req, res, next)=>{
-    var action = req.body.action
-    //While the 'action' field is 'add' then an employee can be added to a client
-    if(action == 'add'){
-    clientsModel.findOneAndUpdate({cid:parseInt(req.params.cid)},{
-        $push:{'employees.employeeID':parseInt(req.body.employeeID)}
-    },(error, results)=>{
-        if(error){
-            return next(error);
-        }else{
-            res.send('added employee to client')
-            console.log('added employee to client')
+//{POST} adding an employee to a client
+router.post('/add-emp/:cid', (req, res, next)=>{
+    clientsModel.findOneAndUpdate(
+        {
+            cid:parseInt(req.params.cid)
+        },
+        {
+            $push:{'employees.employeeID':req.body.id}
+        },
+        (error, results) => {
+            if(error){
+                return next(error)
+            }else{
+                res.send('Added new employee to client')
+                console.log('Added new employee to client')
+            }
         }
-    });
-}
-    //While the 'action' field is 'add' then an employee can be removed from a client
-    if(action == 'delete'){
-    clientsModel.findOneAndUpdate({cid:parseInt(req.params.cid)},{
-        $pull:{'employees.employeeID':parseInt(req.body.employeeID)}
-    },(error, results)=>{
-        if(error){
-            return next(error);
-        }else{
-            res.send('deleted employee linked to client')
-            console.log('deleted employee linked to client')
+    )
+  })
+//{POST} deleting an employee from client  
+router.post('/del-emp/:cid', (req, res, next)=>{
+    clientsModel.findOneAndUpdate(
+        {
+            cid:parseInt(req.params.cid)
+        },
+        {
+            $pull:{'employees.employeeID':req.body.id}
+        },
+        (error, results) => {
+            if(error){
+                return next(error)
+            }else{
+                res.send('Deleted employee from client')
+                console.log('Deleted employee from client')
+            }
         }
-    });
-    }
-});
+    )
+})
 
 //adding a service to a client
-router.put('/adddelservice/:cid', (req, res, next)=>{
-    var action = req.body.action
-      //While the 'action' field is 'add' then a service can be added to a client
-    if(action == 'add'){
-    clientsModel.findOneAndUpdate({cid:parseInt(req.params.cid)},{
-        $push:{'services.sid':parseInt(req.body.sid)}
-    },(error, results)=>{
-        if(error){
-            return next(error);
-        }else{
-            res.send('added service to client')
-            console.log('added service to client')
+router.post('/add-service/:cid', (req, res, next) =>{
+    clientsModel.findOneAndUpdate(
+        {
+            cid:parseInt(req.params.cid)
+        },
+        {
+            $push:{'services.sid':req.body.id}
+        },
+        (error, results) => {
+            if(error){
+                return next(error)
+            }else{
+                res.send('Added new service to client')
+                console.log('Added new service to client')
+            }
         }
-    });
-}
-    //While the 'action' field is 'add' then a service can be removed from a client
-    if(action == 'delete'){
-    clientsModel.findOneAndUpdate({cid:parseInt(req.params.cid)},{
-        $pull:{'services.sid':parseInt(req.body.sid)}
-    },(error, results)=>{
-        if(error){
-            return next(error);
-        }else{
-            res.send('deleted service from client')
-            console.log('deleted service from client')
+    )
+  })
+  
+  //remove client from event
+  router.post('/del-service/:cid', (req, res, next) =>{
+    clientsModel.findOneAndUpdate(
+        {
+            cid:parseInt(req.params.cid)
+        },
+        {
+            $pull:{'services.sid':req.body.id}
+        },
+        (error, results) =>{
+            if(error){
+                return next(error)
+            }else{
+                res.send('Removed service from event')
+                console.log('Removed service from event')
+            }
         }
-    });
-    }
-});
+    )
+  })
 
 //simple get
 router.get('/ext', async(req, res) => {
