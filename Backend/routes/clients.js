@@ -48,10 +48,16 @@ router.get('/all', (req, res, next)=>{
 
 
 
-// get all of clients employee history and service hitsory
-router.get('/client-history', (req, res, next)=>{
+// get specified history of clients employees/services
+router.get('/client-history/:cid', (req, res, next)=>{
     //joining the data for employees and services
-    clientsModel.aggregate([
+    clientsModel.aggregate(
+    [
+        {
+            $match:{
+              cid:parseInt(req.params.cid)
+            }
+          },
         {
             $lookup:
                 {

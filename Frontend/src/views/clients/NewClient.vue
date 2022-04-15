@@ -3,10 +3,10 @@
         <div class="col-md-6">
             <h3 class="text-center">Create Client</h3>
             <form @submit.prevent="handleSubmitForm">
-                 <div class="form-group">
+                <!-- <div class="form-group">
                     <label>ID</label>
                     <input type="text" class="form-control" v-model="clients.cid" required>
-                </div>
+                </div>-->
 
                 <div class="form-group">
                     <label>First Name</label>

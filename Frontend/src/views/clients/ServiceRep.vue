@@ -13,12 +13,11 @@
             }
         },
         created(){
-            let apiURL = `http://localhost:8080/clients/client-history`;
+            let apiURL = `http://localhost:8080/clients/client-history/${this.$route.params.id}`;
             axios.get(apiURL).then(res => {
                 this.client = res.data[0];
                 this.employee = res.data[0].employees;
                 this.service = res.data[0].services;
-                
             }).catch(error=>{
                 console.log(error)
             });
@@ -28,7 +27,7 @@
                 let data = {
                     "id":ID,
                 }
-                let apiURL = `http://localhost:8080/clients/add-emp/${this.$route.params.id}`
+                let apiURL = `http://localhost:8080/clients/del-emp/${this.$route.params.id}`
                 let indexOfArrayItem = this.employee.findIndex(i=>i.employeeID === ID);
                 
                 if(window.confirm('Remove Employee from Client?')){
