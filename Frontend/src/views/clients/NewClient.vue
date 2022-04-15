@@ -367,7 +367,7 @@
                     <label>Family Support</label>
                     <input type="checkbox" v-model="clients.services"><br>
                 </div>-->
-
+                <!--<td><button><router-link :to="{name: 'client', params: { id: cls.cid }}" class="btn btn-secondary ">Create Client</router-link></button></td>-->
                 <button class="btn btn-danger mt-3">Create Client</button>
             </form>
         </div>
