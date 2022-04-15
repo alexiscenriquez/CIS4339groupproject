@@ -1,6 +1,6 @@
-const uuid = require('uuid');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+//autoIncrement = require('mongoose-auto-increment');
 
 let volunteerSchema = new Schema({
   vid: {

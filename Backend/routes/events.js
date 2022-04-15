@@ -190,7 +190,7 @@ router.get("/event-attendees/:evid", (req, res, next) => {
           as: "employees",
         },
       },
-      //only get back specifi fields
+      //only get back specific fields
       {
         $project: {
           _id: 0,
