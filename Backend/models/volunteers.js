@@ -1,13 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-//autoIncrement = require('mongoose-auto-increment');
+
+const autoIncrement = require('mongoose-sequence')(mongoose);
 
 let volunteerSchema = new Schema({
-  vid: {
-    type: Number,
-    unique: true,
-    required:true
-  },
     first_name: {
       type: String,
       required: true
@@ -83,7 +79,7 @@ let volunteerSchema = new Schema({
   }, {
     collection: 'volunteers'
 });
-
+volunteerSchema.plugin(autoIncrement, {inc_field:'vid'})
 module.exports = mongoose.model('volunteer', volunteerSchema)
 
 //versionKey: false 

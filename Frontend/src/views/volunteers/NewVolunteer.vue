@@ -3,11 +3,6 @@
         <div class="col-md-6">
             <h3 class="text-center">Create Volunteer</h3>
             <form @submit.prevent="handleSubmitForm">
-                
-                <div class="form-group">
-                    <label>ID#</label>
-                    <input type="text" class="form-control" v-model="volunteers.vid" required>
-                </div>
 
                 <div class="form-group">
                     <label>First Name</label>
@@ -26,7 +21,7 @@
 
                 <div class="form-group">
                     <label>Birthday</label>
-                    <input type="text" class="form-control" v-model="volunteers.b_day" required>
+                    <input type="date" class="form-control" v-model="volunteers.b_day" required>
                 </div>
 
                 <div class="form-group">
@@ -61,12 +56,12 @@
 
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="text" class="form-control" v-model="volunteers.email" required>
+                    <input type="email" class="form-control" v-model="volunteers.email" required>
                 </div>
 
                 <div class="form-group">
                     <label>Email #2</label>
-                    <input type="text" class="form-control" v-model="volunteers.email2" required>
+                    <input type="email" class="form-control" v-model="volunteers.email2" required>
                 </div>
 
                 <div class="form-group">
