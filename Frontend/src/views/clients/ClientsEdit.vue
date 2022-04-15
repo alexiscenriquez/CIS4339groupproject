@@ -2,8 +2,8 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <!-- Update Student content -->
-            <h3 class="text-center">Update Event</h3>
-            <form @submit.prevent="UpdateEvent">
+            <h3 class="text-center">Update Client</h3>
+            <form @submit.prevent="UpdateClient">
 
                 <div class="form-group">
                     <label>ID {{cls_list[0].cid}}</label>
@@ -16,7 +16,7 @@
 
                 <div class="form-group">
                     <label>Middle Name</label>
-                    <input type="text" class="form-control" v-model="cls_list[0].middle_name" required>
+                    <input type="text" class="form-control" v-model="cls_list[0].mid_name" required>
                 </div>
 
                 <div class="form-group">
@@ -186,7 +186,7 @@
 
                 <div class="form-group">
                     <label>Worker Compensation</label>
-                    <input type="text" class="form-control" v-model="cls_list[0].spousal_income_support" required>
+                    <input type="text" class="form-control" v-model="cls_list[0].worker_compensation" required>
                 </div>
 
                 <div class="form-group">
@@ -221,7 +221,7 @@
 
                 <div class="form-group">
                     <label>Social Security</label>
-                    <input type="text" class="form-control" placeholder="Social security number" v-model="cls_list[0].social_secturity" required>
+                    <input type="text" class="form-control" placeholder="Social security number" v-model="cls_list[0].social_security" required>
                 </div>
 
                 <div class="form-group">
@@ -278,7 +278,7 @@ export default {
         });
     },
     methods: {
-        UpdateEvent() {
+        UpdateClient() {
             let apiURL = `http://localhost:8080/clients/update/${this.$route.params.id}`;
 
             axios.put(apiURL, this.cls_list[0]).then((res) => {

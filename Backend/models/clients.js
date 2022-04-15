@@ -1,14 +1,15 @@
-const uuid = require('uuid');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const autoIncrement = require('mongoose-sequence')(mongoose);
+
 let clientSchema = new Schema({
   // Client Personal Information
-  cid: {
-    type: Number,
-    required: true,
-    unique: true
-  },
+  //cid: {
+   // type: Number,
+  //  required: true,
+  //  unique: true
+ // },
     first_name: {
       type: String,
       required: true
@@ -236,4 +237,5 @@ let clientSchema = new Schema({
     collection: 'clients'
 });
 
+clientSchema.plugin(autoIncrement, {inc_field:'cid'})
 module.exports = mongoose.model('client', clientSchema)

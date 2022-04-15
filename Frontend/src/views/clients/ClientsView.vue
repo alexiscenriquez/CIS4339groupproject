@@ -55,6 +55,9 @@
                 <th>Insurance Program</th>
                 <th>Health Insurance Description</th>
                 <th>Covid Status</th>
+                <th>Actions</th>
+                <th>Actions</th>
+                <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -108,8 +111,7 @@
                 <td>{{cls.health_insurance_desc }}</td>
                 <td>{{cls.insurance_program }}</td>
                 <td>{{cls.covid_status }}</td>
-                <td><button @click="active = !active" class="btn btn-secondary">Employees</button></td>
-                <td><button @click="active = !active" class="btn btn-secondary">Services</button></td>
+                <td><router-link :to="{name: 'servicereps', params: { id: cls.cid }}" class="btn btn-secondary ">Employees/Services</router-link></td>
                 <td><router-link :to="{name: 'clients_edit', params: { id: cls.cid }}" class="btn btn-secondary ">Edit</router-link></td>
                 <td><button @click.prevent="del_client(cls.cid)" class="btn btn-secondary">Delete</button></td>
                 <td v-if="active">hello</td>

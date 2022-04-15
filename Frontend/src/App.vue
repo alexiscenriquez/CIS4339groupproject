@@ -61,7 +61,7 @@
                     </li>
                   <li>
                     <a class="dropdown-item"
-                      ><router-link class="nav-link" to="/events"
+                      ><router-link class="nav-link" to="/new-event"
                         >Events</router-link
                       ></a
                     >
@@ -118,29 +118,7 @@
                   </li>
                 </ul>
               </li>
-              <!-- edit dropdown -->
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarDarkDropdownMenuLink"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Edit
-                </a>
-                <ul
-                  class="dropdown-menu dropdown-menu-dark"
-                  aria-labelledby="navbarDarkDropdownMenuLink"
-                >
-                  <li><a class="dropdown-item" href="#">Client</a></li>
-                  <li><a class="dropdown-item" href="#">Employees</a></li>
-                  <li><a class="dropdown-item" href="#">Volunteers</a></li>
-                  <li><a class="dropdown-item" href="#">Services</a></li>
-                  <li><a class="dropdown-item" href="#">Events</a></li>
-                </ul>
-              </li>
+              
               <li class="nav-item">
                 <a class="nav-link" href="#">About</a>
               </li>

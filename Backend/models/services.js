@@ -2,12 +2,9 @@ const uuid = require('uuid');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const autoIncrement = require('mongoose-sequence')(mongoose);
+
 let servicesSchema = new Schema({
-  sid: {
-    type: Number,
-    required: true,
-    unique: true
-  },
     name: {
       type: String,
       required: true
@@ -31,6 +28,7 @@ let servicesSchema = new Schema({
     collection: 'services'
 });
 
+servicesSchema.plugin(autoIncrement, {inc_field: 'sid'});
 module.exports = mongoose.model('service', servicesSchema)
 
 //versionKey: false 
