@@ -30,18 +30,49 @@
 
                 <div class="form-group">
                     <label>Drivers License Number</label>
-                    <input type="text" class="form-control" v-model="clients.DL">
+                    <input type="text" class="form-control" v-model="clients.DL"><br>
                 </div>
 
-                <div class="form-group">
-                    <label>Gender</label>
-                    <input type="text" class="form-control" v-model="clients.gender">
+                <label>Gender</label>
+                <fieldset class="form-control mb-5">
+                <div class="form-check">
+                    <!--<label>Gender</label>
+                    <input type="text" class="form-control" v-model="clients.gender">-->
+                    <input type="radio" class="form-check-input" id="Male" value="Male" v-model='clients.gender'>Male
+                    <label class="form-check-label" for="Male"></label>
+                    <br>
+                    <input type="radio" class="form-check-input" id="Female" value="Female" v-model='clients.gender'>Female
+                    <label class="form-check-label" for="Female"></label>
+                    <br>
+                    <input type="radio" class="form-check-input" id="Other" value="Other" v-model='clients.gender'>Other
+                    <label class="form-check-label" for="Other"></label>
+                    <br>
                 </div>
+                </fieldset>
 
-                <div class="form-group">
-                    <label>Ethnicity</label>
-                    <input type="text" class="form-control" v-model="clients.ethnicity">
+                <label>Ethnicity</label>
+                <fieldset class="form-control mb-5">
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="White" value="White" v-model='clients.ethnicity'>White
+                    <label class="form-check-label" for="White"></label>
+                    <br>
+                    <input type="radio" class="form-check-input" id="Black or African American" value="Black or African American" v-model='clients.ethnicity'>Black or African American
+                    <label class="form-check-label" for="Black or African American"></label>
+                    <br>
+                    <input type="radio" class="form-check-input" id="American Indian or Alaska Native" value="American Indian or Alaska Native" v-model='clients.ethnicity'>American Indian or Alaska Native
+                    <label class="form-check-label" for="American Indian or Alaska Native"></label>
+                    <br>
+                    <input type="radio" class="form-check-input" id="Asian" value="Asian" v-model='clients.ethnicity'>Asian
+                    <label class="form-check-label" for="Asian"></label>
+                    <br>
+                    <input type="radio" class="form-check-input" id="Native Hawaiian or Other Pacific Islander" value="Native Hawaiian or Other Pacific Islander" v-model='clients.ethnicity'>Native Hawaiian or Other Pacific Islander
+                    <label class="form-check-label" for="Native Hawaiian or Other Pacific Islander"></label>
+                    <br>
+                    <input type="radio" class="form-check-input" id="Other" value="Other" v-model='clients.ethnicity'>Other
+                    <label class="form-check-label" for="Other"></label>
+                    <br>
                 </div>
+                </fieldset>
 
                 <div class="form-group">
                     <label>Home Address</label>
@@ -118,25 +149,64 @@
                     <input type="email" class="form-control" v-model="clients.secondary_email">
                 </div>
 
-                <div class="form-group">
-                    <label>Marital Status</label>
-                    <input type="text" class="form-control" v-model="clients.marital_status" required>
+                <label>Marital Status</label>
+                <fieldset class="form-control mb-5">
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="Married" value="Married" v-model='clients.marital_status'>Married
+                    <label class="form-check-label" for="Married"></label>
+                    <br>
+                    <input type="radio" class="form-check-input" id="Widowed" value="Widowed" v-model='clients.marital_status'>Widowed
+                    <label class="form-check-label" for="Widowed"></label>
+                    <br>
+                    <input type="radio" class="form-check-input" id="Separated" value="Separated" v-model='clients.marital_status'>Separated
+                    <label class="form-check-label" for="Separated"></label>
+                    <br>
+                    <input type="radio" class="form-check-input" id="Divorced" value="Divorced" v-model='clients.marital_status'>Divorced
+                    <label class="form-check-label" for="Divorced"></label>
+                    <br>
+                    <input type="radio" class="form-check-input" id="Single" value="Single" v-model='clients.marital_status'>Single
+                    <label class="form-check-label" for="Single"></label>
+                    <br>
                 </div>
+                </fieldset>
 
                 <div class="form-group">
                     <label>Language</label>
                     <input type="text" class="form-control" v-model="clients.language">
                 </div>
 
-                <div class="form-group">
-                    <label>Priority Population</label>
-                    <input type="text" class="form-control" v-model="clients.priority_population" required>
+                <label>Priority Population</label>
+                <fieldset class="form-control mb-5">
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="Pregnant" value="Pregnant" v-model='clients.priority_population'>Pregnant
+                    <label class="form-check-label" for="Pregnant"></label>
+                    <br>
+                    <input type="radio" class="form-check-input" id="Single Parent" value="Single Parent" v-model='clients.priority_population'>Single Parent
+                    <label class="form-check-label" for="Single Parent"></label>
+                    <br>
+                    <input type="radio" class="form-check-input" id="Disabled" value="Disabled" v-model='clients.priority_population'>Disabled
+                    <label class="form-check-label" for="Disabled"></label>
+                    <br>
+                    <input type="radio" class="form-check-input" id="Homeless" value="Homeless" v-model='clients.priority_population'>Homeless
+                    <label class="form-check-label" for="Homeless"></label>
+                    <br>
+                    <input type="radio" class="form-check-input" id="None" value="None" v-model='clients.priority_population'>None
+                    <label class="form-check-label" for="None"></label>
+                    <br>
                 </div>
+                </fieldset>
 
-                <div class="form-group">
-                    <label>Employment Status</label>
-                    <input type="text" class="form-control" v-model="clients.employment_status" required>
+                <label>Employment Status</label>
+                <fieldset class="form-control mb-5">
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="Employed" value="Employed" v-model='clients.employment_status'>Employed
+                    <label class="form-check-label" for="Employed"></label>
+                    <br>
+                    <input type="radio" class="form-check-input" id="Unemployed" value="Unemployed" v-model='clients.employment_status'>Unemployed
+                    <label class="form-check-label" for="Unemployed"></label>
+                    <br>
                 </div>
+                </fieldset>
 
                 <div class="form-group">
                     <label>Length of Employment</label>
@@ -153,15 +223,29 @@
                     <input type="text" class="form-control" placeholder="Job Title" v-model="clients.occupation" required>
                 </div>
 
-                <div class="form-group">
-                    <label>Highest Grade</label>
-                    <input type="text" class="form-control" v-model="clients.highest_grade" required>
+                <label>Highest Grade Completed</label>
+                <fieldset class="form-control mb-5">
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="Highschool" value="Highschool" v-model='clients.highest_grade'>Highschool
+                    <label class="form-check-label" for="Highschool"></label>
+                    <br>
+                    <input type="radio" class="form-check-input" id="College" value="College" v-model='clients.highest_grade'>College
+                    <label class="form-check-label" for="College"></label>
+                    <br>
                 </div>
+                </fieldset>
 
-                <div class="form-group">
-                    <label>Graduate</label>
-                    <input type="text" class="form-control" placeholder="College Graduate? (T/F)" v-model="clients.graduate" required>
+                <label>Graduation Status</label>
+                <fieldset class="form-control mb-5">
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="true" value="true" v-model='clients.graduate'>true
+                    <label class="form-check-label" for="true"></label>
+                    <br>
+                    <input type="radio" class="form-check-input" id="false" value="false" v-model='clients.graduate'>false
+                    <label class="form-check-label" for="false"></label>
+                    <br>
                 </div>
+                </fieldset>
 
                 <div class="form-group">
                     <label>Degree Name</label>
@@ -188,33 +272,40 @@
                     <input type="text" class="form-control" v-model="clients.worker_compensation" required>
                 </div>
 
-                <div class="form-group">
-                    <label>Veteran Status</label>
-                    <input type="text" class="form-control" v-model="clients.veteran_status" required>
+                <label>Veteran Status</label>
+                <fieldset class="form-control mb-5">
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="Veteran" value="Veteran" v-model='clients.veteran_status'>Veteran
+                    <label class="form-check-label" for="Veteran"></label>
+                    <br>
+                    <input type="radio" class="form-check-input" id="Not a Veteran" value="Not a Veteran" v-model='clients.veteran_status'>Not a Veteran
+                    <label class="form-check-label" for="Not a Veteran"></label>
+                    <br>
                 </div>
+                </fieldset>
 
                  <div class="form-group">
-                    <label>Child Support</label>
+                    <label>Child Support Benefits</label>
                     <input type="text" class="form-control" v-model="clients.child_support" required>
                 </div>
 
                 <div class="form-group">
-                    <label>TANF</label>
+                    <label>TANF Benefits</label>
                     <input type="text" class="form-control" placeholder="Texas Temporarry Assistance for Needy Families" v-model="clients.tanf" required>
                 </div>
 
                 <div class="form-group">
-                    <label>Food Stamps</label>
+                    <label>Food Stamp Benefits</label>
                     <input type="text" class="form-control" placeholder="Total monetary amount of food stamps" v-model="clients.food_stamps" required>
                 </div>
 
                 <div class="form-group">
-                    <label>SSI</label>
+                    <label>SSI Benefits</label>
                     <input type="text" class="form-control" placeholder="Supplemental Security Income" v-model="clients.ssi" required>
                 </div>
 
                 <div class="form-group">
-                    <label>Unemployment</label>
+                    <label>Unemployment Benefits</label>
                     <input type="text" class="form-control" placeholder="Total monetary amount of Unemployment benefits" v-model="clients.unemployment" required>
                 </div>
 
@@ -228,10 +319,17 @@
                     <input type="text" class="form-control" v-model="clients.other_income" required>
                 </div>
 
-                <div class="form-group">
-                    <label>Health Insurance</label>
-                    <input type="text" class="form-control" placeholder="Do you have Health Insurance? (T/F)" v-model="clients.health_insurance" required>
+                <label>Health Insurance Status</label>
+                <fieldset class="form-control mb-5">
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="true" value="true" v-model='clients.health_insurance'>true
+                    <label class="form-check-label" for="true"></label>
+                    <br>
+                    <input type="radio" class="form-check-input" id="false" value="false" v-model='clients.health_insurance'>false
+                    <label class="form-check-label" for="false"></label>
+                    <br>
                 </div>
+                </fieldset>
 
                 <div class="form-group">
                     <label>Health Insurance Desc</label>
@@ -243,10 +341,17 @@
                     <input type="text" class="form-control" placeholder="Name of Healthcare Provider" v-model="clients.insurance_program" required>
                 </div>
 
-                <div class="form-group">
-                    <label>Covid Status</label>
-                    <input type="text" class="form-control" placeholder="Do you have COVID-19? (True/False)" v-model="clients.covid_status" required>
+                <label>Covid Status</label>
+                <fieldset class="form-control mb-5">
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="true" value="true" v-model='clients.covid_status'>true
+                    <label class="form-check-label" for="true"></label>
+                    <br>
+                    <input type="radio" class="form-check-input" id="false" value="false" v-model='clients.covid_status'>false
+                    <label class="form-check-label" for="false"></label>
+                    <br>
                 </div>
+                </fieldset>
                 
                 <!--<div class="form-group">
                     <label for="Early Childhood">Early Childhood</label>
