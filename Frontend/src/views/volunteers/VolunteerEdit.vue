@@ -1,114 +1,115 @@
 <template>
-    <div class ='div'>
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <!-- Update Student content -->
-            <h3 class="text-center">Update Volunteers</h3>
-            <form @submit.prevent="UpdateVolunteers">
-
-                <div class="form-group">
-                    <label>ID#</label>
-                    <input type="text" class="form-control" v-model="volunteers[0].vid" required>
+    <div>
+        <h1>Update Volunteer#{{volunteers.vid}}</h1>
+        <form @submit.prevent="UpdateVolunteers">
+            <fieldset class='form-control mb-5'>
+                <legend>Personal Information</legend>
+                <div class='row mb-4'>
+                    <div class='col-sm-4'>
+                            <label>First Name</label>
+                            <input type="text" class="form-control" v-model="volunteers.first_name" required>
+                    </div>
+                    <div class='col-sm-4'>
+                            <label>Middle Name</label>
+                            <input type="text" class="form-control" v-model="volunteers.mid_name" required>
+                    </div>    
+                    <div class='col-sm-4'>
+                            <label>Last Name</label>
+                            <input type="text" class="form-control" v-model="volunteers.last_name" required>
+                    </div>
                 </div>
+                <div class='row mb-4'>
+                    <div class="col-sm-4">
+                        <label>Birthday</label>
+                        <input type="date" class="form-control" v-model="volunteers.b_day" required>
+                    </div>
 
-                <div class="form-group">
-                    <label>First Name</label>
-                    <input type="text" class="form-control" v-model="volunteers[0].first_name" required>
+                    <div class="col-sm-4">
+                        <label>Social Security</label>
+                        <input type="text" class="form-control" v-model="volunteers.ssn" required>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <label>Drivers License</label>
+                        <input type="text" class="form-control" v-model="volunteers.DL" required>
+                    </div>
                 </div>
+                <div class='row mb-4'>
+                    <div class="col-sm-4">
+                        <label>Gender</label>
+                        <input type="text" class="form-control" v-model="volunteers.gender" required>
+                    </div>
 
-                <div class="form-group">
-                    <label>Middle Name</label>
-                    <input type="text" class="form-control" v-model="volunteers[0].mid_name" required>
+                    <div class="col-sm-4">
+                        <label>Ethnicity</label>
+                        <input type="text" class="form-control" v-model="volunteers.ethnicity" required>
+                    </div>
+                    <div class="col-sm-4">
+                        <label>Primary Language</label>
+                        <input type="text" class="form-control" v-model="volunteers.prim_language" required>
+                    </div>
                 </div>
+            </fieldset>
 
-                <div class="form-group">
-                    <label>Last Name</label>
-                    <input type="text" class="form-control" v-model="volunteers[0].last_name" required>
+            <fieldset class='form-control mb-5'>
+                <legend>Address</legend>
+                <div class='row mb-4'>
+                    <div class="col-sm-6">
+                        <label>Street</label>
+                        <input type="text" class="form-control" v-model="volunteers.addr" required>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <label>City</label>
+                        <input type="text" class="form-control" v-model="volunteers.city" required>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <label>State</label>
+                        <input type="text" class="form-control" v-model="volunteers.st" required>
+                    </div>
                 </div>
-
-                <div class="form-group">
-                    <label>Birthday</label>
-                    <input type="text" class="form-control" v-model="volunteers[0].b_day" required>
+                <div class='row mb-4'>
+                    <div class='col-sm-6'>
+                        <label>Country</label>
+                        <input type="text" class="form-control" v-model="volunteers.country" required>
+                    </div>
+                    <div class='col-sm-3'>
+                        <label>Zip Code</label>
+                        <input type="text" class="form-control" v-model="volunteers.zip" required>
+                    </div>
                 </div>
+            </fieldset>
 
-                <div class="form-group">
-                    <label>Social Security</label>
-                    <input type="text" class="form-control" v-model="volunteers[0].ssn" required>
+            <fieldset class='form-control mb-5'>
+                <legend>Contact Information</legend>
+                <div class='row mb-4'>
+                    <div class="col-sm-6">
+                        <label>Phone #</label>
+                        <input type="text" class="form-control" v-model="volunteers.phone_num" required>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label>Emergency #</label>
+                        <input type="text" class="form-control" v-model="volunteers.emer_num" required>
+                    </div>
                 </div>
+                <div class='row mb-4'>
+                    <div class="col-sm-6">
+                        <label>Primary Email</label>
+                        <input type="email" class="form-control" v-model="volunteers.email" required>
+                    </div>
 
-                <div class="form-group">
-                    <label>Drivers License</label>
-                    <input type="text" class="form-control" v-model="volunteers[0].DL" required>
+                    <div class="col-sm-6">
+                        <label>Seconadary Email</label>
+                        <input type="email" class="form-control" v-model="volunteers.email2" required>
+                    </div>
                 </div>
-
-                <div class="form-group">
-                    <label>Gender</label>
-                    <input type="text" class="form-control" v-model="volunteers[0].gender" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Ethnicity</label>
-                    <input type="text" class="form-control" v-model="volunteers[0].ethnicity" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Phone #</label>
-                    <input type="text" class="form-control" v-model="volunteers[0].phone_num" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Emergency #</label>
-                    <input type="text" class="form-control" v-model="volunteers[0].emer_num" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="text" class="form-control" v-model="volunteers[0].email" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Email #2</label>
-                    <input type="text" class="form-control" v-model="volunteers[0].email2" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Primary Language</label>
-                    <input type="text" class="form-control" v-model="volunteers[0].prim_language" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Street</label>
-                    <input type="text" class="form-control" v-model="volunteers[0].addr" required>
-                </div>
-
-                <div class="form-group">
-                    <label>City</label>
-                    <input type="text" class="form-control" v-model="volunteers[0].city" required>
-                </div>
-
-                <div class="form-group">
-                    <label>State</label>
-                    <input type="text" class="form-control" v-model="volunteers[0].st" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Zip Code</label>
-                    <input type="text" class="form-control" v-model="volunteers[0].zip" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Country</label>
-                    <input type="text" class="form-control" v-model="volunteers[0].country" required>
-                </div>
-
-                <button class="btn btn-danger mt-3">Update</button>
-
-            </form>
-            
-        </div>
-        
-    </div>
-    <!-- <Footer /> -->
+            </fieldset>
+            <button class="btn mb-5" id="create">Update</button>
+        </form>
+        <!-- </div> -->
+        <Footer />
     </div>
 </template>
 
@@ -129,7 +130,7 @@ export default {
         let apiURL = `http://localhost:8080/volunteers/find/${this.$route.params.id}`;
 
         axios.get(apiURL).then(res => {
-            this.volunteers = res.data;
+            this.volunteers = res.data[0];
         }).catch(error =>{
             console.log(error)
         });
@@ -149,8 +150,22 @@ export default {
     }
 </script>
 
+
+
 <style scoped>
-    form{
-        background: white;
-    }
+h1 {
+  font-size: 26px;
+  text-align: center;
+  margin-top: 80px;
+}
+form {
+  margin-top: 50px;
+}
+#create{
+  background-color: #A6A7A8;
+}
+#create:hover{
+  background-color: #2E5902;
+  color: white;
+}
 </style>

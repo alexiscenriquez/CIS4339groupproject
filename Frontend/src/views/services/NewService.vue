@@ -37,13 +37,11 @@
         <h1>Create Service</h1>
         <form @submit.prevent="handleSubmitForm">
         <fieldset class='form-control mb-5'>
-            <div class='form-control mb-4'>
                 <div>
                     <label class='form-label' for="">Name</label>
                     <input type="text" class='form-control' v-model='services.name' required>
                 </div>
-
-            </div>
+            <br>
             <div class='row mb-4'>
                 <div class='col'>
                     <label>Renewal</label>
