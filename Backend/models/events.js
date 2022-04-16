@@ -12,7 +12,7 @@ let eventSchema = new Schema(
     },
   ev_host:
     {
-      type:Number,
+      type:String,
       required: true
     },
   ev_date: 
@@ -52,11 +52,6 @@ let eventSchema = new Schema(
         {
           type:Number,
           unique:true
-        }
-      ],
-      cid:[
-        {
-          type:Number
         }
       ],
       employeeID:[
