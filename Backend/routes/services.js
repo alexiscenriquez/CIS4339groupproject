@@ -91,6 +91,7 @@ router.get('/all-applicants/:sid', (req, res, next)=>{
             'sid':1,
             'name':1,
             'notes':1,
+            'renewal':1,
             'clients.cid':1,
             'clients.first_name':1,
             'clients.mid_name':1,

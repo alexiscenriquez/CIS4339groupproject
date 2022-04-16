@@ -34,7 +34,7 @@ export default {
 
 <template>
     <div>
-        <h1>Create Service</h1>
+        <h1>Edit Service #{{services.sid}}</h1>
         <form @submit.prevent="UpdateService">
         <fieldset class='form-control mb-5'>
             <div class='form-control mb-4'>

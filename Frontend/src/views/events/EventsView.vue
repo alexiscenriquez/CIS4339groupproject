@@ -1,9 +1,7 @@
 <template>
-    <main>
-        <div class="wrapper">
-          <!-- <h3>{{msg}}</h3>   -->
-          <!-- <events :msg="msg"/> -->
-        </div>
+    <div>
+        <h1>All Events</h1>
+        <br>
         <div class="row justify-content-center">
             <router-link :to="{path:'new-event'}" class="btn btn-secondary">Create New Event</router-link>
             <table class="table table-light table-hover">
@@ -41,7 +39,7 @@
                 </tbody>
             </table>
         </div>
-    </main>
+    </div>
 </template>
 
 <script>

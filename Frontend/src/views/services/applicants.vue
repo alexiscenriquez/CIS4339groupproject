@@ -72,6 +72,9 @@
 </script>
 
 <template>
+    <div>
+        <h1>Service #{{service.sid}}</h1>
+        <br>
     <fieldset class='form-control mb-5'>
         <div>
             
@@ -81,7 +84,7 @@
                     
                 </div>
                 <div class='col'>
-                    <label>Service# {{service.sid}}</label>
+                    <label>Renewal type: {{service.renewal}}</label>
                     
                 </div>
             </div>
@@ -91,17 +94,24 @@
                     <textarea class='form-control'  cols="5" rows="5" v-model='service.notes' disabled></textarea>
                 </div>
             </div>
+            <router-link :to="{name:'services_edit', params:{id:service.sid}}" class='btn btn-secondary'>Edit</router-link>
             <hr>
 
-            <legend>Applicants</legend>
+            <div class='row-mb-4'>
+                <div class='col-sm-4'>
             <form @submit.prevent='add_applicant' class='form-inline'>
                     <div class='form-group'>
-                        <label for="">CID#</label>
-                        <input type="number" v-model='new_cid.id'  required>
-                        <button class='btn btn-secondary'>Add</button>
+                        <input type="number" class='form-control' v-model='new_cid.id'  required>
+                        <div class='form-helper'>CID#</div>
+                        <button class='btn btn-secondary'>Add Client</button>
                     </div>
             </form> 
-            <table class="table table-light table-hover">
+                </div>
+            </div>
+        </div>
+    </fieldset>
+        <table class="table table-light table-hover caption-top">
+            <caption><strong>Applicants</strong></caption>
                 <thead class="table-dark">
                     <tr>
                         <th>#</th>
@@ -126,10 +136,9 @@
                     </tr> 
                 </tbody>
             </table>
-
-        </div>
-
-    </fieldset>
+    
+    </div>
+    
 </template>
 
 <style scoped>

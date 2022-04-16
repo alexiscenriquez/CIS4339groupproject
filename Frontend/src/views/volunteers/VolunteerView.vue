@@ -1,9 +1,7 @@
 <template>
     <main>
-        <div class="wrapper">
-          <!-- <h3>{{msg}}</h3>   -->
-          <!-- <events :msg="msg"/> -->
-        </div>
+        <h1>All Volunteers</h1>
+        <br>
         <div class="row justify-content-center">
             <router-link :to="{path:'new-volunteers'}" class="btn btn-secondary">Create New Volunteer</router-link>
             <!-- allows table to scroll horizontally -->

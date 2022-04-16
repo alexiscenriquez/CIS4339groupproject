@@ -127,8 +127,10 @@
 
 <template>
     <div>
+        <h1>Event #{{event.evid}}</h1>
+        <br>
         <fieldset class='form-control mb-5'>
-            <legend><strong>{{event.ev_name}}</strong> #{{event.evid}}</legend>
+            <legend><strong>{{event.ev_name}}</strong></legend>
                 <div class='row mb-3'>
                     <div class='col-sm-3'>
                         <label for="" class='form-label'>Host</label>
@@ -180,8 +182,6 @@
 
         <!-- Volunteer table -->
         <div class="row justify-content-center">
-            
-            
             <table class="table table-light table-hover caption-top">
                 <caption><strong>Volunteers</strong></caption>
                 <thead class="table-dark">

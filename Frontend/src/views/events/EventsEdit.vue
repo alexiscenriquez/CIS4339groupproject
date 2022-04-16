@@ -1,7 +1,7 @@
 <template>
     <div>
             <!-- Update Student content -->
-            <h1>Update Event</h1>
+            <h1>Update Event#{{event.evid}}</h1>
             
             <form @submit.prevent="UpdateEvent">
                 <fieldset class='form-control mb-5'>
