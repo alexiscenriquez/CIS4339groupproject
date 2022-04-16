@@ -112,7 +112,7 @@
                 <!--<td>{{cls.health_insurance_desc }}</td>-->
                 <!--<td>{{cls.insurance_program }}</td>-->
                 <!--<td>{{cls.covid_status }}</td>-->
-                <td><router-link :to="{name: 'servicereps', params: { id: cls.cid }}" class="btn btn-secondary ">Employees/Services</router-link></td>
+                <td><router-link :to="{name: 'servicereps', params: { id: cls.cid }}" class="btn btn-secondary ">Services</router-link></td>
                 <td><router-link :to="{name: 'custinfo', params: { id: cls.cid }}" class="btn btn-secondary ">More Info</router-link></td>
                 <td><router-link :to="{name: 'clients_edit', params: { id: cls.cid }}" class="btn btn-secondary ">Edit</router-link></td>
                 <td><button @click.prevent="del_client(cls.cid)" class="btn btn-secondary">Delete</button></td>

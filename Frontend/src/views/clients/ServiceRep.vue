@@ -4,10 +4,10 @@
         data(){
             return{
                 client:[],
-                employee:[],
+                //employee:[],
                 service:[],
                 new_sid:{id:''},
-                new_eid:{id:''},
+                //new_eid:{id:''},
                 active: false
 
             }
@@ -16,14 +16,14 @@
             let apiURL = `http://localhost:8080/clients/client-history/${this.$route.params.id}`;
             axios.get(apiURL).then(res => {
                 this.client = res.data[0];
-                this.employee = res.data[0].employees;
+                //this.employee = res.data[0].employees;
                 this.service = res.data[0].services;
             }).catch(error=>{
                 console.log(error)
             });
         },
         methods:{
-            rem_employee(ID){
+           /* rem_employee(ID){
                 let data = {
                     "id":ID,
                 }
@@ -38,7 +38,7 @@
                         console.log(error)
                     })
                 }
-            },
+            },*/
             rem_service(ID){
                 let data = {
                     "id":ID,
@@ -53,9 +53,18 @@
                     }).catch(error => {
                         console.log(error)
                     })
+
+                    let apiURL2 = `http://localhost:8080/services/del-client/${ID}`
+                    axios.post(apiURL2, this.$route.params.id).then(()=>{
+                        
+                    }).catch(error =>{
+                        console.log(error)
+                    })
                 }
+
+                
             },
-            add_employee() {
+            /*add_employee() {
                 let apiURL = `http://localhost:8080/clients/add-emp/${this.$route.params.id}`;
                 axios.post(apiURL, this.new_eid).then(() => {
                     //changing the view to the list
@@ -66,19 +75,27 @@
                 }).catch(error => {
                     console.log(error)
                 });
-            },
+            },*/
             add_service() {
+                let isd = this.new_sid.id
                 let apiURL = `http://localhost:8080/clients/add-service/${this.$route.params.id}`;
-                
+
                 axios.post(apiURL, this.new_sid).then(() => {
                     //changing the view to the list
-                  this.$router.push('/clients')
+                  //this.$router.push('/clients')
                   this.new_sid = {
                     id: ''
                   }
                 }).catch(error => {
                     console.log(error)
                 });
+
+                let apiURL2 = `http://localhost:8080/services/add-client/${isd}`
+                axios.post(apiURL2, this.$route.params.id).then(()=>{
+                    
+                }).catch(error =>{
+                    console.log(error)
+                })
             }
         } 
     }
@@ -111,7 +128,7 @@
             </table>
         </div>
         <!-- Volunteer table -->
-        <div class="row justify-content-center">
+        <!--<div class="row justify-content-center">
             <h2 class='text-center'>Employees</h2>
             <form @submit.prevent='add_employee' class='form-inline'>
                     <div class='form-group'>
@@ -143,7 +160,7 @@
                     </tr> 
                 </tbody>
             </table>
-        </div>
+        </div>-->
 
         <div class="row justify-content-center">
             <h2 class='text-center'>Services</h2>
@@ -151,7 +168,7 @@
                     <div class='form-group'>
                         <label for="">SID#</label>
                         <input type="number" v-model='new_sid.id'  required>
-                        <button class='btn btn-secondary'>Add Service</button>
+                        <button class='btn btn-secondary'>Apply for Service</button>
                     </div>
             </form> 
                 <table class="table table-light table-hover">
@@ -164,11 +181,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="s in service" :key="s.sid">
-                            <td>{{s.sid }}</td>
-                            <td>{{s.name }}</td>
-                            <td>{{s.renewal }}</td>
-                            <td><button @click.prevent="rem_service(s.sid)" class="btn btn-secondary">Remove</button></td>
+                        <tr v-for="applicant in applicants" :key="applicant.sid">
+                            <td>{{applicant.sid }}</td>
+                            <td>{{applicant.name }}</td>
+                            <td>{{applicant.renewal }}</td>
+                            <td><button @click.prevent="rem_service(applicant.sid)" class="btn btn-secondary">Remove</button></td>
                         </tr> 
                     </tbody>
                 </table>
