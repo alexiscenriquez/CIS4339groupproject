@@ -133,8 +133,12 @@ const router = createRouter({
       path:'/v_events',
       name:'v_events',
       component: ()=> import('../views/volunteers/v_events.vue')
-    }
-
+    },
+{
+  path:'/events-clients',
+name:'events-clients',
+component:()=>import('../views/Employees/Events-Clients.vue')
+}
   ]
 })
 

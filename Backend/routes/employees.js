@@ -70,10 +70,15 @@ router.delete("/del/:employeeID", (req, res, next) => {
   });
 });
 
-//shows all employees with information about the volunteers and/or clients they have
-router.get("/employee-clients-events", (req, res, next) => {
+//shows all employees with information about the events and/or clients they have
+router.get("/employee-clients-events/:employeeID", (req, res, next) => {
   empModel.aggregate(
     [
+      {
+        $match: {
+          employeeID: parseInt(req.params.employeeID),
+        },
+      },
       {
         $lookup: {
           from: "clients",
@@ -92,6 +97,7 @@ router.get("/employee-clients-events", (req, res, next) => {
       },
       {
         $project: {
+          _id: 0,
           employeeID: 1,
           firstName: 1,
           lastName: 1,
@@ -119,52 +125,52 @@ router.get("/employee-clients-events", (req, res, next) => {
 
 //add clients to employee collection
 
-router.put("/client/:employeeID", (req, res, next) => {
-  var action = req.body.action;
+router.post("/add-client/:employeeID", (req, res, next) => {
   //add clients to employees
-  if (action == "add") {
-    empModel.findOneAndUpdate(
-      { employeeID: parseInt(req.params.employeeID) },
-      {
-        $push: { "clients.clientID": req.body.clientID },
-      },
-      (error, results) => {
-        if (error) {
-          return next(error);
-        } else {
-          res.send("added employee to client");
-          console.log("added employee to client");
-        }
+
+  empModel.findOneAndUpdate(
+    { employeeID: parseInt(req.params.employeeID) },
+    {
+      $push: { "clients.clientID": req.body.id },
+    },
+    (error, results) => {
+      if (error) {
+        console.log(error);
+        return next(error);
+      } else {
+        res.send("added employee to client");
+        console.log("added employee to client");
       }
-    );
-  }
-  //remove clients from employees
-  else if (action == "del") {
-    empModel.findOneAndUpdate(
-      { employeeID: parseInt(req.params.employeeID) },
-      {
-        $pull: { "clients.clientID": req.body.clientID },
-      },
-      (error, results) => {
-        if (error) {
-          return next(error);
-        } else {
-          res.send("Removed client from employee.");
-          console.log("Removed client from employee.");
-        }
-      }
-    );
-  }
+    }
+  );
 });
 
-router.put("/event/:employeeID", (req, res, next) => {
+//remove clients from employees
+router.post("/del-client/:employeeID", (req, res, next) => {
+  empModel.findOneAndUpdate(
+    { employeeID: parseInt(req.params.employeeID) },
+    {
+      $pull: { "clients.clientID": req.body.id },
+    },
+    (error, results) => {
+      if (error) {
+        return next(error);
+      } else {
+        res.send("Removed client from employee.");
+        console.log("Removed client from employee.");
+      }
+    }
+  );
+});
+
+router.post("/add-event/:employeeID", (req, res, next) => {
   var action = req.body.action;
   //add clients to employees
   if (action == "add") {
     empModel.findOneAndUpdate(
       { employeeID: parseInt(req.params.employeeID) },
       {
-        $push: { "events.eventID": req.body.eventID },
+        $push: { "events.eventID": req.body.id },
       },
       (error, results) => {
         if (error) {
@@ -176,25 +182,25 @@ router.put("/event/:employeeID", (req, res, next) => {
       }
     );
   }
-  //remove events from employees
-  else if (action == "del") {
-    empModel.findOneAndUpdate(
-      { employeeID: parseInt(req.params.employeeID) },
-      {
-        $pull: { "events.eventID": req.body.eventID },
-      },
-      (error, results) => {
-        if (error) {
-          console.log(error);
-          return next(error);
-        } else {
-          res.send("Removed event from employee.");
-          console.log("Removed event from employee.");
-        }
+});
+
+//remove events from employees
+router.post("/del-event/:employeeID", (req, res, next) => {
+  empModel.findOneAndUpdate(
+    { employeeID: parseInt(req.params.employeeID) },
+    {
+      $pull: { "events.eventID": req.body.id },
+    },
+    (error, results) => {
+      if (error) {
+        console.log(error);
+        return next(error);
+      } else {
+        res.send("Removed event from employee.");
+        console.log("Removed event from employee.");
       }
-    );
-  }
-  //remove employee id
+    }
+  );
 });
 
 module.exports = router;

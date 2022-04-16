@@ -30,7 +30,7 @@
             <th>Highest Grade</th>
             <th>Degree</th>
             <th>Languages</th>
-            <th colspan="4">Actions</th>
+            <th colspan="3">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -61,7 +61,7 @@
             <td>{{ employee.degree }}</td>
             <td>{{ employee.language.join(", ") }}</td>
             <td>
-              <router-link></router-link>
+              <router-link :to="{name:'events-clients',params:{id:employee.employeeID}}" class="btn btn-success">Events/Clients</router-link>
             </td>
             <td>
               <router-link
@@ -129,7 +129,8 @@ export default {
 </script>
 <style scoped>
 .btn {
-  width: 80px;
+  width: fit-content;
+
 }
 th {
   text-align: center;
@@ -137,4 +138,5 @@ th {
 .table-light tr:nth-of-type(2n) td {
   background-color: rgba(0, 0, 0, 0.137);
 }
+
 </style>

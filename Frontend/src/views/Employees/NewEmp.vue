@@ -178,7 +178,7 @@
         </div>
       </div>
     </fieldset>
-    <fieldset class="form-control mb-5">
+    <fieldset class="form-control mb-5 ">
       <legend>Contact Information</legend>
       <div class="row mb-4">
         <div class="col-sm-6">
@@ -205,11 +205,11 @@
       <div class="row mb-4">
         <div class="col-sm-6">
           <label for="pEmail" class="form-label">Primary Email</label>
-          <input type="text" class="form-control" v-model="employees.pEmail" />
+          <input type="email" class="form-control" v-model="employees.pEmail" />
         </div>
         <div class="col-sm-6">
           <label for="sEmail" class="form-label">Secondary Email</label>
-          <input type="text" class="form-control" v-model="employees.sEmail" />
+          <input type="email" class="form-control" v-model="employees.sEmail" />
         </div>
       </div>
     </fieldset>
