@@ -97,6 +97,7 @@
                 axios.post(apiURL, this.new_vid).then(() => {
                     //changing the view to the list
                 //   this.$router.push('/events')
+                    // this.volunteer.push(idv)
                   this.new_vid = {
                     id: ''
                   }
@@ -142,7 +143,7 @@
 
                 let apiURL2 = `http://localhost:8080/employees/add-event/${ide}`
                 axios.post(apiURL2, this.$route.params.id).then(()=>{
-                    
+                    // this.employee.push(ide)
                 }).catch(error =>{
                     console.log(error)
                 })

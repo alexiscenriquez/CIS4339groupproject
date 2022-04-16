@@ -1,4 +1,5 @@
 <template>
+<div>
   <h1>Create Employee</h1>
   
   <form @submit.prevent="handleSubmitForm">
@@ -370,6 +371,7 @@
     </fieldset>
     <button class="btn mb-5" id="create">Create</button>
   </form>
+  </div>
 </template>
 
 <script>
@@ -452,7 +454,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 h1 {
   font-size: 26px;
   text-align: center;
