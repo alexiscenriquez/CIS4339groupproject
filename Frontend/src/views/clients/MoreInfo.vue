@@ -1,129 +1,223 @@
 <template>
     <main>
+        <h1>Client #{{clients.cid}}</h1>
+        <br>
+        <fieldset class='form-control mb-5'>
+            <div class='row-mb-3'>
+                <div id="flex" class='col-sm-6'>
+                    <td><router-link :to="{name: 'clients', params: { id: clients.cid }}" id="flex" class="btn btn-secondary ">Clients View</router-link></td>
+                    <td><router-link :to="{name: 'clients_edit', params: { id: clients.cid }}" id="flex" class="btn btn-secondary ">Edit Client</router-link></td>
+                    <td><button @click.prevent="del_client(clients.cid)" id="flex" class="btn btn-secondary">Delete Client</button></td>
+                </div>  
+            </div>
+        </fieldset>
+    
         <div class="row justify-content-center">
-            <router-link :to="{path:'new-client'}" class="btn btn-secondary">Create New Client</router-link>
-            <div class='table-responsive'>
-            <table class="table table-striped">
-            <thead class="table-dark">
-                <tr>
-                <th>Client</th>    
-                <th>First Name</th>
-                <th>Middle Name</th>
-                <th>Last Name</th>
-                <th>Birth Date</th>
-                <th>Drivers License Number</th>
-                <th>Gender</th>
-                <th>Ethnicity</th>
-                <th>Address</th>
-                <th>City</th>
-                <th>State</th>
-                <th>Country</th>
-                <th>Zip Code</th>
-                <th>Monthly Rent</th>
-                <th>Length of Residency</th>
-                <th>Living Arrangements</th>
-                <th>Number of Children</th>
-                <th>Number of Adults over 65</th>
-                <th>Phone Number</th>
-                <th>Home Phone Number</th>
-                <th>Emergency Contact Phone Number</th>
-                <th>Primary Email</th>
-                <th>Secondary Email</th>
-                <th>Marital Status</th>
-                <th>Language</th>
-                <th>Priority Population</th>
-                <th>Employment Status</th>
-                <th>Length of Employment</th>
-                <th>Employer Name</th>
-                <th>Occupation</th>
-                <th>Highest Grade</th>
-                <th>Graduate</th>
-                <th>Degree Name</th>
-                <th>Head of Household</th>
-                <th>Monthly Income</th>
-                <th>Spousal Income Support</th>
-                <th>Worker Compensation</th>
-                <th>Veteran Status</th>
-                <th>Child Support</th>
-                <th>TANF</th>
-                <th>Food Stamps</th>
-                <th>SSI</th>
-                <th>Unemployment</th>
-                <th>Social Security</th>
-                <th>Other Income</th>
-                <th>Health Insurance</th>
-                <th>Insurance Program</th>
-                <th>Health Insurance Description</th>
-                <th>Covid Status</th>
-                <th>Actions</th>
-                <th>Actions</th>
-                <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-            <tr v-for="cls in allclients" :key="cls._id">
-                <td>{{cls.cid }}</td>
-                <td>{{cls.first_name }}</td>
-                <td>{{cls.mid_name }}</td>
-                <td>{{cls.last_name }}</td>
-                <td>{{cls.b_day }}</td>
-                <td>{{cls.DL }}</td>
-                <td>{{cls.gender }}</td>
-                <td>{{cls.ethnicity }}</td>
-                <td>{{cls.address }}</td>
-                <td>{{cls.city }}</td>
-                <td>{{cls.state }}</td>
-                <td>{{cls.country }}</td>
-                <td>{{cls.zip_code }}</td>
-                <td>{{cls.rent }}</td>
-                <td>{{cls.residency }}</td>
-                <td>{{cls.living_arrangements }}</td>
-                <td>{{cls.number_of_children }}</td>
-                <td>{{cls.number_of_adults_over_65 }}</td>
-                <td>{{cls.phone_number }}</td>
-                <td>{{cls.home_phone_number }}</td>
-                <td>{{cls.emergency_contact_phone_number }}</td>
-                <td>{{cls.primary_email }}</td>
-                <td>{{cls.secondary_email }}</td>
-                <td>{{cls.marital_status }}</td>
-                <td>{{cls.language }}</td>
-                <td>{{cls.priority_population }}</td>
-                <td>{{cls.employment_status }}</td>
-                <td>{{cls.length_of_employment }}</td>
-                <td>{{cls.employer_name }}</td>
-                <td>{{cls.occupation }}</td>
-                <td>{{cls.highest_grade }}</td>
-                <td>{{cls.graduate }}</td>
-                <td>{{cls.degree_name }}</td>
-                <td>{{cls.head_of_household }}</td>
-                <td>{{cls.monthly_income }}</td>
-                <td>{{cls.spousal_income_support }}</td>
-                <td>{{cls.worker_compensation }}</td>
-                <td>{{cls.veteran_status }}</td>
-                <td>{{cls.child_support }}</td>
-                <td>{{cls.tanf }}</td>
-                <td>{{cls.food_stamps }}</td>
-                <td>{{cls.ssi }}</td>
-                <td>{{cls.unemployment }}</td>
-                <td>{{cls.social_security }}</td>
-                <td>{{cls.other_income }}</td>
-                <td>{{cls.health_insurance }}</td>
-                <td>{{cls.health_insurance_desc }}</td>
-                <td>{{cls.insurance_program }}</td>
-                <td>{{cls.covid_status }}</td>
-                <td><router-link :to="{name: 'clients', params: { id: cls.cid }}" class="btn btn-secondary ">View</router-link></td>
-                <td><router-link :to="{name: 'clients_edit', params: { id: cls.cid }}" class="btn btn-secondary ">Edit</router-link></td>
-                <td><button @click.prevent="del_client(cls.cid)" class="btn btn-secondary">Delete</button></td>
-                <td v-if="active">hello</td>
-                
-                </tr>
-            </tbody>
+            
+            <table class="table table-light table-hover caption-top">
+                <caption><strong>All Client Information</strong></caption>
+                <thead class="table-dark">
+                    <tr>
+                    
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>First Name</th>
+                        <td>{{clients.first_name}}</td>
+                    </tr>
+                    <tr>
+                        <th>Middle Name</th>
+                        <td>{{clients.mid_name}}</td>
+                    </tr>
+                    <tr>
+                        <th>Last Name</th>
+                        <td>{{clients.last_name}}</td>
+                    </tr>
+                    <tr>
+                        <th>Birth Date</th>
+                        <td>{{clients.b_day}}</td>
+                    </tr>
+                    <tr>
+                        <th>Driver's License Number</th>
+                        <td>{{clients.DL}}</td>
+                    </tr>
+                    <tr>
+                        <th>Gender</th>
+                        <td>{{clients.gender}}</td>
+                    </tr>
+                    <tr>
+                        <th>Ethnicity</th>
+                        <td>{{clients.ethnicity}}</td>
+                    </tr>
+                    <tr>
+                        <th>Address</th>
+                        <td>{{clients.address}}</td>
+                    </tr>
+                    <tr>
+                        <th>City</th>
+                        <td>{{clients.city}}</td>
+                    </tr>
+                    <tr>
+                        <th>State</th>
+                        <td>{{clients.state}}</td>
+                    </tr>
+                    <tr>
+                        <th>Country</th>
+                        <td>{{clients.country}}</td>
+                    </tr>
+                    <tr>
+                        <th>Zip Code</th>
+                        <td>{{clients.zip_code}}</td>
+                    </tr>
+                    <tr>
+                        <th>Monthly Rent</th>
+                        <td>{{clients.rent}}</td>
+                    </tr>
+                    <tr>
+                        <th>Length of Residency</th>
+                        <td>{{clients.residency}}</td>
+                    </tr>
+                    <tr>
+                        <th>Current Living Arrangement</th>
+                        <td>{{clients.living_arrangements}}</td>
+                    </tr>
+                    <tr>
+                        <th>Number of Children</th>
+                        <td>{{clients.number_of_children}}</td>
+                    </tr>
+                    <tr>
+                        <th>Number of Adults over 65</th>
+                        <td>{{clients.number_of_adults_over_65}}</td>
+                    </tr>
+                    <tr>
+                        <th>Phone Number</th>
+                        <td>{{clients.phone_number}}</td>
+                    </tr>
+                    <tr>
+                        <th>Home Phone Number</th>
+                        <td>{{clients.home_phone_number}}</td>
+                    </tr>
+                    <tr>
+                        <th>Emergency Contact Phone Number</th>
+                        <td>{{clients.emergency_contact_phone_number}}</td>
+                    </tr>
+                    <tr>
+                        <th>Primary Email Address</th>
+                        <td>{{clients.primary_email}}</td>
+                    </tr>
+                    <tr>
+                        <th>Secondary Email Address</th>
+                        <td>{{clients.secondary_email}}</td>
+                    </tr>
+                    <tr>
+                        <th>Marital Status</th>
+                        <td>{{clients.marital_status}}</td>
+                    </tr>
+                    <tr>
+                        <th>Language</th>
+                        <td>{{clients.language}}</td>
+                    </tr>
+                    <tr>
+                        <th>Priority Population</th>
+                        <td>{{clients.priority_population}}</td>
+                    </tr>
+                    <tr>
+                        <th>Employment Status</th>
+                        <td>{{clients.employment_status}}</td>
+                    </tr>
+                    <tr>
+                        <th>Length of Employment</th>
+                        <td>{{clients.length_of_employment}}</td>
+                    </tr>
+                    <tr>
+                        <th>Employer's Name</th>
+                        <td>{{clients.employer_name}}</td>
+                    </tr>
+                    <tr>
+                        <th>Occupation</th>
+                        <td>{{clients.occupation}}</td>
+                    </tr>
+                    <tr>
+                        <th>Highest Completed Grade</th>
+                        <td>{{clients.highest_grade}}</td>
+                    </tr>
+                    <tr>
+                        <th>College Graduate</th>
+                        <td>{{clients.graduate}}</td>
+                    </tr>
+                    <tr>
+                        <th>Name of Degree</th>
+                        <td>{{clients.degree_name}}</td>
+                    </tr>
+                    <tr>
+                        <th>Head of Household</th>
+                        <td>{{clients.head_of_household}}</td>
+                    </tr>
+                    <tr>
+                        <th>Monthly Income</th>
+                        <td>{{clients.monthly_income}}</td>
+                    </tr>
+                    <tr>
+                        <th>Spousal Income Support</th>
+                        <td>{{clients.spousal_income_support}}</td>
+                    </tr>
+                    <tr>
+                        <th>Worker Compensation Benefits</th>
+                        <td>{{clients.worker_compensation}}</td>
+                    </tr>
+                    <tr>
+                        <th>Veteran Status</th>
+                        <td>{{clients.veteran_status}}</td>
+                    </tr>
+                    <tr>
+                        <th>Child Support Benefits</th>
+                        <td>{{clients.child_support}}</td>
+                    </tr>
+                    <tr>
+                        <th>Temporary Assistance for Needy Families Benefits</th>
+                        <td>{{clients.tanf}}</td>
+                    </tr>
+                    <tr>
+                        <th>Food Stamp Benefits</th>
+                        <td>{{clients.food_stamps}}</td>
+                    </tr>
+                    <tr>
+                        <th>Supplemental Security Income</th>
+                        <td>{{clients.ssi}}</td>
+                    </tr>
+                    <tr>
+                        <th>Unemployment Benefits</th>
+                        <td>{{clients.unemployment}}</td>
+                    </tr>
+                    <tr>
+                        <th>Social Security Number</th>
+                        <td>{{clients.social_security}}</td>
+                    </tr>
+                    <tr>
+                        <th>Other Income</th>
+                        <td>{{clients.other_income}}</td>
+                    </tr>
+                    <tr>
+                        <th>Health Insurance Owner</th>
+                        <td>{{clients.health_insurance}}</td>
+                    </tr>
+                    <tr>
+                        <th>Type of Health Insurance</th>
+                        <td>{{clients.health_insurance_desc}}</td>
+                    </tr>
+                    <tr>
+                        <th>Health Insurance Name</th>
+                        <td>{{clients.insurance_program}}</td>
+                    </tr>
+                    <tr>
+                        <th>Covid Status</th>
+                        <td>{{clients.covid_status}}</td>
+                    </tr>
+                </tbody>
             </table>
-          </div>
-          </div>
-  
-
-    </main>
+    </div>
+        </main>
 </template>
 
 <script>
@@ -132,15 +226,13 @@
     export default{
         data(){
             return{
-                allclients:[],
-                active: false
-
+                clients:{}
             }
         },
         created(){
-            let apiURL = 'http://localhost:8080/clients/all';
+            let apiURL = `http://localhost:8080/clients/find/${this.$route.params.id}`;
             axios.get(apiURL).then(res => {
-                this.allclients = res.data;
+                this.clients = res.data[0];
             }).catch(error=>{
                 console.log(error)
             });
@@ -148,11 +240,10 @@
         methods:{
             del_client(id){
                 let apiURL = `http://localhost:8080/clients/del/${id}`
-                let indexOfArrayItem = this.allclients.findIndex(i=>i.cid === id);
 
                 if(window.confirm('Delete Client?')){
                     axios.delete(apiURL).then(()=>{
-                        this.allclients.splice(indexOfArrayItem, 1);
+                        this.$router.push('/clients')
                     }).catch(error => {
                         console.log(error)
                     })
@@ -164,10 +255,12 @@
 
 <style>
 .flex {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-items: space-between;
+    padding:10px 3px 10px 3px;
+    background-color:#FEC7FD;
+    display:inline-block;
+    border-radius: 10px;
+    margin-bottom: 10px;
+
 }
 
 </style>

@@ -170,9 +170,10 @@
                     <div class='form-group'>
                         <label for="">SID#</label>
                         <!--<input type="number" v-model='new_sid.id'  required>-->
-                        <select v-model="Service">
-                            <option v-for='services in service' :key="services.sid">{{services}}</option>
-                        </select> 
+                        <select>
+                        <option></option>
+                        <option v-for="services in client" :key="services.name">{{services.name}}</option>
+                        </select>
                         <button class='btn btn-secondary'>Apply for Service</button>
                     </div>
             </form> 

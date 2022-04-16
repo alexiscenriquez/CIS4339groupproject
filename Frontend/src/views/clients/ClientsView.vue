@@ -2,8 +2,7 @@
     <main>
         <div class="row justify-content-center">
             <router-link :to="{path:'new-client'}" class="btn btn-secondary">Create New Client</router-link>
-            <div class='table-responsive'>
-            <table class="table table-striped">
+            <table class="table table-light table-hover">
             <thead class="table-dark">
                 <tr>
                 <th>Client</th>    
@@ -14,11 +13,11 @@
                 <!--<th>Drivers License Number</th>-->
                 <!--<th>Gender</th>--> 
                 <!--<th>Ethnicity</th>-->
-                <th>Address</th>
+                <!--<th>Address</th>
                 <th>City</th>
-                <th>State</th>
+                <th>State</th>-->
                 <!--<th>Country</th>-->
-                <th>Zip Code</th>
+                <!--<th>Zip Code</th>-->
                 <!--<th>Monthly Rent</th>-->
                 <!--<th>Length of Residency</th>-->
                 <!--<th>Living Arrangements</th>-->
@@ -27,7 +26,7 @@
                 <th>Phone Number</th>
                 <!--<th>Home Phone Number</th>-->
                 <!--<th>Emergency Contact Phone Number</th>-->
-                <th>Primary Email</th>
+                <!--<th>Primary Email</th>-->
                 <!--<th>Secondary Email</th>-->
                 <!--<th>Marital Status</th>-->
                 <!--<th>Language</th>-->
@@ -71,11 +70,11 @@
                 <!--<td>{{cls.DL }}</td>-->
                 <!--<td>{{cls.gender }}</td>-->
                 <!--<td>{{cls.ethnicity }}</td>-->
-                <td>{{cls.address }}</td>
-                <td>{{cls.city }}</td>
-                <td>{{cls.state }}</td>
+                <!--<td>{{cls.address }}</td>-->
+                <!--<td>{{cls.city }}</td>-->
+                <!--<td>{{cls.state }}</td>-->
                 <!--<td>{{cls.country }}</td>-->
-                <td>{{cls.zip_code }}</td>
+                <!--<td>{{cls.zip_code }}</td>-->
                 <!--<td>{{cls.rent }}</td>-->
                 <!--<td>{{cls.residency }}</td>-->
                 <!--<td>{{cls.living_arrangements }}</td>-->
@@ -84,7 +83,7 @@
                 <td>{{cls.phone_number }}</td>
                 <!--<td>{{cls.home_phone_number }}</td>-->
                 <!--<td>{{cls.emergency_contact_phone_number }}</td>-->
-                <td>{{cls.primary_email }}</td>
+                <!--<td>{{cls.primary_email }}</td>-->
                 <!--<td>{{cls.secondary_email }}</td>-->
                 <!--<td>{{cls.marital_status }}</td>-->
                 <!--<td>{{cls.language }}</td>-->
@@ -113,7 +112,7 @@
                 <!--<td>{{cls.insurance_program }}</td>-->
                 <!--<td>{{cls.covid_status }}</td>-->
                 <td><router-link :to="{name: 'servicereps', params: { id: cls.cid }}" class="btn btn-secondary ">Services</router-link></td>
-                <td><router-link :to="{name: 'custinfo', params: { id: cls.cid }}" class="btn btn-secondary ">More Info</router-link></td>
+                <td><router-link :to="{name: 'custinfo', params: { id: cls.cid }}" class="btn btn-secondary ">More..</router-link></td>
                 <td><router-link :to="{name: 'clients_edit', params: { id: cls.cid }}" class="btn btn-secondary ">Edit</router-link></td>
                 <td><button @click.prevent="del_client(cls.cid)" class="btn btn-secondary">Delete</button></td>
                 <td v-if="active">hello</td>
@@ -121,7 +120,6 @@
                 </tr>
             </tbody>
             </table>
-          </div>
           </div>
   
 
