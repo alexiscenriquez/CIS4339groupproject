@@ -68,8 +68,8 @@ router.post('/del-event/:vid', (req, res, next) =>{
             if(error){
                 return next(error)
             }else{
-                res.send('deleted event to volunteer')
-                console.log('deleted event to volunteer')
+                res.send('deleted event from volunteer')
+                console.log('deleted event from volunteer')
             }
         }
     )

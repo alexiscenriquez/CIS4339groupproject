@@ -27,9 +27,8 @@
         },
         methods:{
             rem_volunteer(ID){
-                let data = {
-                    "id":ID,
-                }
+                let data = {"id":ID}
+                let data2 = {"id":this.$route.params.id}
                 let apiURL = `http://localhost:8080/events/del-volunteer/${this.$route.params.id}`
                 let indexOfArrayItem = this.volunteer.findIndex(i=>i.vid === ID);
                 
@@ -42,7 +41,7 @@
                     })
                     //remove from volunteers table
                     let apiURL2 = `http://localhost:8080/volunteers/del-event/${ID}`
-                    axios.post(apiURL2, this.$route.params.id).then(()=>{
+                    axios.post(apiURL2, data2).then(()=>{
                         
                     }).catch(error =>{
                         console.log(error)
@@ -66,9 +65,8 @@
             //     }
             // },
             rem_employee(ID){
-                let data = {
-                    "id":ID,
-                }
+                let data = {"id":ID}
+                let data2 = {"id":this.$route.params.id}
                 let apiURL = `http://localhost:8080/events/del-employee/${this.$route.params.id}`
                 let indexOfArrayItem = this.employee.findIndex(i=>i.employeeID === ID);
                 
@@ -83,7 +81,7 @@
 
                     //remove from employees table
                     let apiURL2 = `http://localhost:8080/employees/del-event/${ID}`
-                    axios.post(apiURL2, this.$route.params.id).then(()=>{
+                    axios.post(apiURL2, data2).then(()=>{
                         
                     }).catch(error =>{
                         console.log(error)
@@ -93,10 +91,12 @@
             add_volunteer() {
                 
                 let idv = this.new_vid.id
+                let data2 = {"id":this.$route.params.id}
                 let apiURL = `http://localhost:8080/events/add-volunteer/${this.$route.params.id}`;
                 axios.post(apiURL, this.new_vid).then(() => {
                     //changing the view to the list
                 //   this.$router.push('/events')
+                    // this.volunteer.push(idv)
                   this.new_vid = {
                     id: ''
                   }
@@ -106,7 +106,7 @@
                 });
 
                 let apiURL2 = `http://localhost:8080/volunteers/add-event/${idv}`
-                axios.post(apiURL2, this.$route.params.id).then(()=>{
+                axios.post(apiURL2, data2).then(()=>{
                     
                 }).catch(error =>{
                     console.log(error)
@@ -128,6 +128,7 @@
             // },
             add_employee() {
                 let ide = this.new_eid.id
+                let data2 = {"id":this.$route.params.id}
                 let apiURL = `http://localhost:8080/events/add-employee/${this.$route.params.id}`;
                 
                 axios.post(apiURL, this.new_eid).then(() => {
@@ -141,8 +142,8 @@
                 });
 
                 let apiURL2 = `http://localhost:8080/employees/add-event/${ide}`
-                axios.post(apiURL2, this.$route.params.id).then(()=>{
-                    
+                axios.post(apiURL2, data2).then(()=>{
+                    // this.employee.push(ide)
                 }).catch(error =>{
                     console.log(error)
                 })

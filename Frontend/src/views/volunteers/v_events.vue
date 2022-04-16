@@ -67,17 +67,32 @@
             });
         },
         methods:{
+            
             del_event(id){
-                let apiURL = `http://localhost:8080/events/del/${id}`
+                let data = {"id":id}
+                let data2 = {"id":this.$route.params.id}
+                
+                let apiURL = `http://localhost:8080/volunteers/del-event/${this.$route.params.id}`
+                let apiURL2 = `http://localhost:8080/events/del-volunteer/${id}`
                 let indexOfArrayItem = this.events.findIndex(i=>i.vid === id);
+                
 
                 if(window.confirm('Delete?')){
-                    axios.delete(apiURL).then(()=>{
+                    axios.post(apiURL, data).then(()=>{
                         this.events.splice(indexOfArrayItem, 1);
                     }).catch(error => {
                         console.log(error)
                     })
+                
+                    axios.post(apiURL2, data2).then(()=>{
+                    }).catch(error =>{
+                        console.log(error)
+                    })
+
                 }
+            },
+            add_event(){
+                
             }
         }
     }
