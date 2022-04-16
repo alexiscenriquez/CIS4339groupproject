@@ -1,4 +1,5 @@
 <template>
+<div>
   <h1>Create Employee</h1>
 
   <form @submit.prevent="handleSubmitForm">
@@ -16,6 +17,7 @@
           />
         </div>
       </div>
+      
       <div class="row mb-4">
         <div class="col">
           <label for="fName" class="form-label">First Name</label>
@@ -38,6 +40,7 @@
           />
         </div>
       </div>
+      
       <div class="row mb-4">
         <div class="col-sm-4">
           <label for="Birthday" class="form-label">Birthday</label>
@@ -370,6 +373,7 @@
     </fieldset>
     <button class="btn mb-5" id="create">Create</button>
   </form>
+  </div>
 </template>
 
 <script>
@@ -453,7 +457,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 h1 {
   font-size: 26px;
   text-align: center;

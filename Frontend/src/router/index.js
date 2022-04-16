@@ -100,6 +100,12 @@ const router = createRouter({
       component: ()=> import('../views/clients/ServiceRep.vue')
     },
     {
+      path:'/custinfo',
+      name:'custinfo',
+      component: ()=> import('../views/clients/MoreInfo.vue')
+
+    },
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting
