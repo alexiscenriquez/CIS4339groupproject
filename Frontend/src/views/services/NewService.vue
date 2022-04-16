@@ -38,15 +38,15 @@
         <form @submit.prevent="handleSubmitForm">
         <fieldset class='form-control mb-5'>
                 <div>
-                    <label class='form-label' for="">Name</label>
+                    <label class='form-label' for="">*Name</label>
                     <input type="text" class='form-control' v-model='services.name' required>
                 </div>
             <br>
             <div class='row mb-4'>
                 <div class='col'>
-                    <label>Renewal</label>
+                    <label>*Renewal</label>
                     <div class="form-check">
-                    <input type="radio" class="form-check-input" id="Monthly" value="Monthly" v-model="services.renewal">Monthly
+                    <input type="radio" class="form-check-input" id="Monthly" value="Monthly" v-model="services.renewal" checked>Monthly
                     <label class="form-check-label" for="Monthly"></label>
                     <br>
                     <input type="radio" class="form-check-input" id="SemiAnually" value="SemiAnnually" v-model="services.renewal">SemiAnnually
