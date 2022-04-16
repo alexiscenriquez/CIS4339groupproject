@@ -43,7 +43,9 @@
                 let data = {
                     "id":ID,
                 }
+                let data2 = {"id":this.$route.params.id}
                 let apiURL = `http://localhost:8080/clients/del-service/${this.$route.params.id}`
+                let apiURL2 = `http://localhost:8080/services/del-applicant/${ID}`
                 let indexOfArrayItem = this.service.findIndex(i=>i.sid === ID);
                 
                 if(window.confirm('Remove Service from Client?')){
@@ -54,8 +56,7 @@
                         console.log(error)
                     })
 
-                    let apiURL2 = `http://localhost:8080/services/del-client/${ID}`
-                    axios.post(apiURL2, this.$route.params.id).then(()=>{
+                    axios.post(apiURL2, data2).then(()=>{
                         
                     }).catch(error =>{
                         console.log(error)
@@ -78,11 +79,13 @@
             },*/
             add_service() {
                 let isd = this.new_sid.id
+                let data = {"id":this.$route.params.id}
                 let apiURL = `http://localhost:8080/clients/add-service/${this.$route.params.id}`;
-
+                let apiURL2 = `http://localhost:8080/services/add-applicant/${isd}`
+                
                 axios.post(apiURL, this.new_sid).then(() => {
                     //changing the view to the list
-                  //this.$router.push('/clients')
+                  this.$router.push('/clients')
                   this.new_sid = {
                     id: ''
                   }
@@ -90,8 +93,7 @@
                     console.log(error)
                 });
 
-                let apiURL2 = `http://localhost:8080/services/add-client/${isd}`
-                axios.post(apiURL2, this.$route.params.id).then(()=>{
+                axios.post(apiURL2, data).then(()=>{
                     
                 }).catch(error =>{
                     console.log(error)
@@ -167,7 +169,10 @@
             <form @submit.prevent='add_service' class='form-inline'>
                     <div class='form-group'>
                         <label for="">SID#</label>
-                        <input type="number" v-model='new_sid.id'  required>
+                        <!--<input type="number" v-model='new_sid.id'  required>-->
+                        <select v-model="Service">
+                            <option v-for='services in service' :key="services.sid">{{services}}</option>
+                        </select> 
                         <button class='btn btn-secondary'>Apply for Service</button>
                     </div>
             </form> 
@@ -181,11 +186,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="applicant in applicants" :key="applicant.sid">
-                            <td>{{applicant.sid }}</td>
-                            <td>{{applicant.name }}</td>
-                            <td>{{applicant.renewal }}</td>
-                            <td><button @click.prevent="rem_service(applicant.sid)" class="btn btn-secondary">Remove</button></td>
+                        <tr v-for="applicants in service" :key="applicants.sid">
+                            <td>{{applicants.sid }}</td>
+                            <td>{{applicants.name }}</td>
+                            <td>{{applicants.renewal }}</td>
+                            <td><button @click.prevent="rem_service(applicants.sid)" class="btn btn-secondary">Remove</button></td>
                         </tr> 
                     </tbody>
                 </table>
