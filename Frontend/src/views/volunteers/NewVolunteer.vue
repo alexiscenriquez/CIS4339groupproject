@@ -6,7 +6,7 @@
                     <legend>Personal Information</legend>
                     <div class='row mb-4'>
                         <div class='col-sm-4'>
-                                <label>First Name</label>
+                                <label>*First Name</label>
                                 <input type="text" class="form-control" v-model="volunteers.first_name" required>
                         </div>
                         <div class='col-sm-4'>
@@ -14,13 +14,13 @@
                                 <input type="text" class="form-control" v-model="volunteers.mid_name">
                         </div>    
                         <div class='col-sm-4'>
-                                <label>Last Name</label>
+                                <label>*Last Name</label>
                                 <input type="text" class="form-control" v-model="volunteers.last_name" required>
                         </div>
                     </div>
                     <div class='row mb-4'>
                         <div class="col-sm-4">
-                            <label>Birthday</label>
+                            <label>*Birthday</label>
                             <input type="date" class="form-control" v-model="volunteers.b_day" required>
                         </div>
 
@@ -55,27 +55,27 @@
                     <legend>Address</legend>
                     <div class='row mb-4'>
                         <div class="col-sm-6">
-                            <label>Street</label>
+                            <label>*Street</label>
                             <input type="text" class="form-control" v-model="volunteers.addr" required>
                         </div>
 
                         <div class="col-sm-3">
-                            <label>City</label>
+                            <label>*City</label>
                             <input type="text" class="form-control" v-model="volunteers.city" required>
                         </div>
 
                         <div class="col-sm-3">
-                            <label>State</label>
+                            <label>*State</label>
                             <input type="text" class="form-control" v-model="volunteers.st" required>
                         </div>
                     </div>
                     <div class='row mb-4'>
                         <div class='col-sm-6'>
-                            <label>Country</label>
+                            <label>*Country</label>
                             <input type="text" class="form-control" v-model="volunteers.country" required>
                         </div>
                         <div class='col-sm-3'>
-                            <label>Zip Code</label>
+                            <label>*Zip Code</label>
                             <input type="text" class="form-control" v-model="volunteers.zip" required>
                         </div>
                     </div>
@@ -85,7 +85,7 @@
                     <legend>Contact Information</legend>
                     <div class='row mb-4'>
                         <div class="col-sm-6">
-                            <label>Phone #</label>
+                            <label>*Phone #</label>
                             <input type="text" class="form-control" v-model="volunteers.phone_num" required>
                         </div>
 
@@ -96,7 +96,7 @@
                     </div>
                     <div class='row mb-4'>
                         <div class="col-sm-6">
-                            <label>Email</label>
+                            <label>*Email</label>
                             <input type="email" class="form-control" v-model="volunteers.email" required>
                         </div>
 

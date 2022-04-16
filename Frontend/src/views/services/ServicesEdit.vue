@@ -39,14 +39,14 @@ export default {
         <fieldset class='form-control mb-5'>
             <div class='form-control mb-4'>
                 <div>
-                    <label class='form-label' for="">Name</label>
+                    <label class='form-label' for="">*Name</label>
                     <input type="text" class='form-control' v-model='services.name' required>
                 </div>
 
             </div>
             <div class='row mb-4'>
                 <div class='col'>
-                    <label>Renewal</label>
+                    <label>*Renewal</label>
                     <div class="form-check">
                     <input type="radio" class="form-check-input" id="Monthly" value="Monthly" v-model="services.renewal">Monthly
                     <label class="form-check-label" for="Monthly"></label>

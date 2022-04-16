@@ -8,17 +8,17 @@
                 
                 <div class='row mb-4'>
                 <div class='col-sm-4'>
-                    <label for="" class='form-label'>Name</label>
+                    <label for="" class='form-label'>*Name</label>
                     <input type="text" class='form-control' v-model="event.ev_name" required>
                 </div>
                 
                 <div class='col-sm-4'>
-                    <label for="" class='form-label'>Host</label>
+                    <label for="" class='form-label'>*Host</label>
                     <input type="text" class='form-control' v-model="event.ev_host" required>
                 </div>
                 
                 <div class='col-sm-4'>
-                    <label for="" class='form-label'>Date</label>
+                    <label for="" class='form-label'>*Date</label>
                     <input type="date" class='form-control' v-model="event.ev_date" required>
                 </div>
             </div>
@@ -28,26 +28,26 @@
             <legend>Address</legend>
                 <div class='row mb-3'>
                     <div class='col-sm-6'>
-                        <label for="" class='form-label'>Street</label>
+                        <label for="" class='form-label'>*Street</label>
                         <input type="text" class='form-control' v-model='event.addr' required>
                     </div>
                     <div class='col-sm-3'>
-                        <label for="" class='form-label'>City</label>
+                        <label for="" class='form-label'>*City</label>
                         <input type="text" class='form-control' v-model='event.city' required>
                     </div>
                     <div class='col-sm-3'>
-                        <label for="" class='form-label'>State</label>
+                        <label for="" class='form-label'>*State</label>
                         <input type="text" class='form-control' v-model='event.st' required>
                     </div>
                 </div>
 
                 <div class='row mb-3'>
                     <div class='col-sm-6'>
-                        <label for="" class='form-label'>Country</label>
+                        <label for="" class='form-label'>*Country</label>
                         <input type="text" class='form-control' v-model='event.country' required>
                     </div>
                     <div class='col-sm-3'>
-                        <label for="" class='form-label'>Zip</label>
+                        <label for="" class='form-label'>*Zip</label>
                         <input type="text" class='form-control' v-model='event.zip' required>
                     </div>
 
