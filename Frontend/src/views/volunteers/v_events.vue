@@ -1,5 +1,6 @@
 <template>
     <main>
+        <h1>Events for Volunteer#{{vid}}</h1>
         <div class="row justify-content-center">
             <!-- <router-link :to="{path:'new-volunteers'}" class="btn btn-secondary">Create New Volunteer</router-link> -->
             <!-- allows table to scroll horizontally -->
@@ -27,8 +28,6 @@
                         <td>{{event.ev_date}}</td>
                         <td>{{event.city}}</td>
                         <td>{{event.st}}</td>
-                        
-                        
                         <td><button @click.prevent="del_event(event.evid)" class="btn btn-secondary">Delete</button></td>
                     </tr>
                 </tbody>
@@ -53,7 +52,8 @@
             return{
                 v_list:[],
                 events:[],
-                active: false
+                active: false,
+                vid:this.$route.params.id
 
             }
         },
@@ -76,14 +76,14 @@
                 let apiURL2 = `http://localhost:8080/events/del-volunteer/${id}`
                 let indexOfArrayItem = this.events.findIndex(i=>i.vid === id);
                 
-
+                //delete form volunteers collection
                 if(window.confirm('Delete?')){
                     axios.post(apiURL, data).then(()=>{
                         this.events.splice(indexOfArrayItem, 1);
                     }).catch(error => {
                         console.log(error)
                     })
-                
+                //delete from events table
                     axios.post(apiURL2, data2).then(()=>{
                     }).catch(error =>{
                         console.log(error)

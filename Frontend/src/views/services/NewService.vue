@@ -46,7 +46,7 @@
                 <div class='col'>
                     <label>Renewal</label>
                     <div class="form-check">
-                    <input type="radio" class="form-check-input" id="Monthly" value="Monthly" v-model="services.renewal">Monthly
+                    <input type="radio" class="form-check-input" id="Monthly" value="Monthly" v-model="services.renewal" checked>Monthly
                     <label class="form-check-label" for="Monthly"></label>
                     <br>
                     <input type="radio" class="form-check-input" id="SemiAnually" value="SemiAnnually" v-model="services.renewal">SemiAnnually

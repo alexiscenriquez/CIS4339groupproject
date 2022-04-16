@@ -11,7 +11,7 @@
                     </div>
                     <div class='col-sm-4'>
                             <label>Middle Name</label>
-                            <input type="text" class="form-control" v-model="volunteers.mid_name" required>
+                            <input type="text" class="form-control" v-model="volunteers.mid_name">
                     </div>    
                     <div class='col-sm-4'>
                             <label>Last Name</label>
@@ -26,27 +26,27 @@
 
                     <div class="col-sm-4">
                         <label>Social Security</label>
-                        <input type="text" class="form-control" v-model="volunteers.ssn" required>
+                        <input type="text" class="form-control" v-model="volunteers.ssn">
                     </div>
 
                     <div class="col-sm-4">
                         <label>Drivers License</label>
-                        <input type="text" class="form-control" v-model="volunteers.DL" required>
+                        <input type="text" class="form-control" v-model="volunteers.DL">
                     </div>
                 </div>
                 <div class='row mb-4'>
                     <div class="col-sm-4">
                         <label>Gender</label>
-                        <input type="text" class="form-control" v-model="volunteers.gender" required>
+                        <input type="text" class="form-control" v-model="volunteers.gender">
                     </div>
 
                     <div class="col-sm-4">
                         <label>Ethnicity</label>
-                        <input type="text" class="form-control" v-model="volunteers.ethnicity" required>
+                        <input type="text" class="form-control" v-model="volunteers.ethnicity">
                     </div>
                     <div class="col-sm-4">
                         <label>Primary Language</label>
-                        <input type="text" class="form-control" v-model="volunteers.prim_language" required>
+                        <input type="text" class="form-control" v-model="volunteers.prim_language">
                     </div>
                 </div>
             </fieldset>
@@ -91,7 +91,7 @@
 
                     <div class="col-sm-6">
                         <label>Emergency #</label>
-                        <input type="text" class="form-control" v-model="volunteers.emer_num" required>
+                        <input type="text" class="form-control" v-model="volunteers.emer_num">
                     </div>
                 </div>
                 <div class='row mb-4'>
@@ -102,7 +102,7 @@
 
                     <div class="col-sm-6">
                         <label>Seconadary Email</label>
-                        <input type="email" class="form-control" v-model="volunteers.email2" required>
+                        <input type="email" class="form-control" v-model="volunteers.email2">
                     </div>
                 </div>
             </fieldset>
