@@ -1,57 +1,62 @@
 <template>
-    <div class="row justify-content-center">
-        <div class="col-md-6">
+    <div>
             <!-- Update Student content -->
-            <h3 class="text-center">Update Event</h3>
+            <h1>Update Event</h1>
+            
             <form @submit.prevent="UpdateEvent">
+                <fieldset class='form-control mb-5'>
+                
+                <div class='row mb-4'>
+                <div class='col-sm-4'>
+                    <label for="" class='form-label'>Name</label>
+                    <input type="text" class='form-control' v-model="event.ev_name" required>
+                </div>
+                
+                <div class='col-sm-4'>
+                    <label for="" class='form-label'>Host</label>
+                    <input type="text" class='form-control' v-model="event.ev_host" required>
+                </div>
+                
+                <div class='col-sm-4'>
+                    <label for="" class='form-label'>Date</label>
+                    <input type="date" class='form-control' v-model="event.ev_date" required>
+                </div>
+            </div>
+        </fieldset>
 
-                <div class="form-group">
-                    <label>ID #{{ev_list[0].evid}}</label>
+        <fieldset class='form-control mb-5'>
+            <legend>Address</legend>
+                <div class='row mb-3'>
+                    <div class='col-sm-6'>
+                        <label for="" class='form-label'>Street</label>
+                        <input type="text" class='form-control' v-model='event.addr' required>
+                    </div>
+                    <div class='col-sm-3'>
+                        <label for="" class='form-label'>City</label>
+                        <input type="text" class='form-control' v-model='event.city' required>
+                    </div>
+                    <div class='col-sm-3'>
+                        <label for="" class='form-label'>State</label>
+                        <input type="text" class='form-control' v-model='event.st' required>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" class="form-control" v-model="ev_list[0].ev_name" required>
-                </div>
+                <div class='row mb-3'>
+                    <div class='col-sm-6'>
+                        <label for="" class='form-label'>Country</label>
+                        <input type="text" class='form-control' v-model='event.country' required>
+                    </div>
+                    <div class='col-sm-3'>
+                        <label for="" class='form-label'>Zip</label>
+                        <input type="text" class='form-control' v-model='event.zip' required>
+                    </div>
 
-                <div class="form-group">
-                    <label>Host</label>
-                    <input type="text" class="form-control" v-model="ev_list[0].ev_host" required>
                 </div>
-
-                <div class="form-group">
-                    <label>Date</label>
-                    <input type="text" class="form-control" v-model="ev_list[0].ev_date" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Street</label>
-                    <input type="text" class="form-control" v-model="ev_list[0].addr" required>
-                </div>
-
-                <div class="form-group">
-                    <label>City</label>
-                    <input type="text" class="form-control" v-model="ev_list[0].city" required>
-                </div>
-
-                <div class="form-group">
-                    <label>State</label>
-                    <input type="text" class="form-control" v-model="ev_list[0].st" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Country</label>
-                    <input type="text" class="form-control" v-model="ev_list[0].country" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Zip Code</label>
-                    <input type="text" class="form-control" v-model="ev_list[0].st" required>
-                </div>
-
-                <button class="btn btn-danger mt-3">Update</button>
-            </form>
-        </div>
+        </fieldset>
+        <button class="btn mb-5" id="create">Update</button>
+        </form>
+       
+        
     </div>
 </template>
 
@@ -61,13 +66,13 @@
 export default {
     data() {
         return {
-            ev_list: {}
+            event: {}
         }
     },
     created() {
         let apiURL = `http://localhost:8080/events/find/${this.$route.params.id}`;
         axios.get(apiURL).then(res => {
-            this.ev_list = res.data;
+            this.event = res.data[0];
         }).catch(error =>{
             console.log(error)
         });
@@ -76,7 +81,7 @@ export default {
         UpdateEvent() {
             let apiURL = `http://localhost:8080/events/update/${this.$route.params.id}`;
 
-            axios.put(apiURL, this.ev_list[0]).then((res) => {
+            axios.put(apiURL, this.event).then((res) => {
                 console.log(res)
                 this.$router.push('/events')
             }).catch(error => {
@@ -86,3 +91,21 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+h1 {
+  font-size: 26px;
+  text-align: center;
+  margin-top: 80px;
+}
+form {
+  margin-top: 50px;
+}
+#create{
+  background-color: #A6A7A8;
+}
+#create:hover{
+  background-color: #2E5902;
+  color: white;
+}
+</style>

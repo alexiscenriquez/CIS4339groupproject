@@ -51,13 +51,13 @@ let eventSchema = new Schema(
       vid:[
         {
           type:Number,
-          unique:true
+          
         }
       ],
       employeeID:[
         {
           type:Number,
-          unique:true
+          
         }
       ]
     }
