@@ -1,7 +1,7 @@
 <template>
     <div>
             <!-- Update Student content -->
-            <h1>Update Event#{{event.evid}}</h1>
+            <h1>Update Event#{{event.evid}} {{x}}</h1>
             
             <form @submit.prevent="UpdateEvent">
                 <fieldset class='form-control mb-5'>
@@ -66,13 +66,17 @@
 export default {
     data() {
         return {
-            event: {}
+            event: {},
+            x:''
         }
     },
     created() {
         let apiURL = `http://localhost:8080/events/find/${this.$route.params.id}`;
         axios.get(apiURL).then(res => {
             this.event = res.data[0];
+            this.x = res.data[0].ev_date.slice(0, 10)
+            
+            console.log(res.data[0].ev_date.slice(0, 10))
         }).catch(error =>{
             console.log(error)
         });

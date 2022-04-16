@@ -134,7 +134,7 @@
 
                 if(window.confirm('Delete?')){
                     axios.delete(apiURL).then(()=>{
-                        this.$rout.push('/volunteers')
+                        this.$router.push('/volunteers')
                     }).catch(error => {
                         console.log(error)
                     })
