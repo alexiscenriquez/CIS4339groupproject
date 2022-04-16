@@ -17,6 +17,7 @@
           />
         </div>
       </div>
+      
       <div class="row mb-4">
         <div class="col">
           <label for="fName" class="form-label">First Name</label>
@@ -39,6 +40,7 @@
           />
         </div>
       </div>
+      
       <div class="row mb-4">
         <div class="col-sm-4">
           <label for="Birthday" class="form-label">Birthday</label>
