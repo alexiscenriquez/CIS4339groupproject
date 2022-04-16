@@ -99,7 +99,7 @@
 
             <div class='row-mb-4'>
                 <div class='col-sm-4'>
-            <form @submit.prevent='add_applicant' class='form-inline'>
+            <form @submit.prevent='add_applicant'>
                     <div class='form-group'>
                         <input type="number" class='form-control' v-model='new_cid.id'  required>
                         <div class='form-helper'>CID#</div>
