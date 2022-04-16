@@ -5,18 +5,7 @@
   <form @submit.prevent="handleSubmitForm">
     <fieldset class="form-control mb-5">
       <legend>Personal Information</legend>
-      <div class="row mb-4">
-        <div class="col-6">
-          <label for="id" class="form-label">ID</label>
-          <input
-            v-model="employees.employeeID"
-            type="text"
-            class="form-control"
-            name="ID"
-            aria-label="First name"
-          />
-        </div>
-      </div>
+   
       
       <div class="row mb-4">
         <div class="col">

@@ -1,21 +1,10 @@
 <template>
   <h1>Edit Employee</h1>
   <form @submit.prevent="handleSubmitForm">
-     <fieldset class="form-control mb-5">
+    <fieldset class="form-control mb-5">
       <legend>Personal Information</legend>
+
       <div class="row mb-4">
-        <div class="col-6">
-          <label for="id" class="form-label">ID</label>
-          <input
-            v-model="employees.employeeID"
-            type="text"
-            class="form-control"
-            name="ID"
-            aria-label="First name"
-          />
-        </div>
-        </div>
-     <div class="row mb-4">
         <div class="col">
           <label for="fName" class="form-label">First Name</label>
           <input
@@ -215,9 +204,13 @@
           <input type="email" class="form-control" v-model="employees.sEmail" />
         </div>
       </div>
-    </fieldset> 
+    </fieldset>
 
-    <fieldset class="form-control mb-5" v-for="eContacts in employees.eContact" :key="eContacts.fName">
+    <fieldset
+      class="form-control mb-5"
+      v-for="eContacts in employees.eContact"
+      :key="eContacts.fName"
+    >
       <legend>Emergency Contact</legend>
       <label>Contact 1</label>
       <div class="row mb-4">
@@ -230,7 +223,7 @@
             v-model="employees.eContact[0].fName"
           />
         </div>
-         <div class="col-sm-4">
+        <div class="col-sm-4">
           <label for="elName" class="form-label">Last Name</label
           ><input
             type="text"
@@ -278,7 +271,7 @@
             v-model="employees.eContact[1].phone"
           />
         </div>
-      </div> 
+      </div>
     </fieldset>
     <fieldset class="form-control mb-5">
       <legend>Employment Information</legend>
@@ -368,11 +361,8 @@
             name="l3"
             v-model="employees.language[2]"
           />
-          
         </div>
-
       </div>
-    
     </fieldset>
     <button class="btn mb-5" id="create">Create</button>
   </form>

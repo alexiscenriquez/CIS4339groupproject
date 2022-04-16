@@ -26,6 +26,7 @@ export default {
   },
   methods: {
     addClient() {
+      let cid = this.new_cid.id;
       let apiURL = `http://localhost:8080/employees/add-client/${this.$route.params.id}`;
       axios
         .post(apiURL, this.new_cid)
@@ -34,6 +35,17 @@ export default {
           this.new_cid = {
             id: "",
           };
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      let apiURL2 = `http://localhost:8080/clients/add-emp/${cid}`;
+
+      axios
+        .post(apiURL2, this.new_eid)
+        .then(() => {
+          //changing the view to the list
         })
         .catch((error) => {
           console.log(error);
@@ -56,17 +68,20 @@ export default {
           });
       }
     },
-    // addEvent(){
-    // let apiURL = `http://localhost:8080/employees/add-event/${this.$route.params.id}`;
-    //   axios.post(apiURL,this.new_evid).then(()=>{
-
-    //     this.new_evid={
-    //       id:''
-    //     }
-    //   }).catch(error=>{
-    //     console.log(error)
-    //   })
-    // }
+    addEvent() {
+      let apiURL = `http://localhost:8080/employees/add-event/${this.$route.params.id}`;
+      axios
+        .post(apiURL, this.new_evid)
+        .then(() => {
+          this.$router.push("/employees");
+          this.new_evid = {
+            id: "",
+          };
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   },
 };
 </script>
@@ -96,6 +111,7 @@ export default {
             <th>Client ID</th>
             <th>First Name</th>
             <th>Last Name</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -113,16 +129,37 @@ export default {
       </table>
     </div>
 
-    <form action="">
+    <form @submit.prevent="addEvent" class="mb-5">
       <fieldset class="form-control">
         <legend class="mb-3">Events</legend>
         <div class="col-sm-3">
           <label for="" class="form-label">Enter the Event ID</label>
-          <input type="text" class="form-control mb-3" />
+          <input type="number" class="form-control mb-3" v-model="new_evid.id"/>
           <button class="btn btn-primary">Add Event</button>
         </div>
       </fieldset>
     </form>
+
+    <div class="table-responsive mb">
+      <table class="table table-light">
+        <thead class="table-light">
+          <tr>
+            <th>Event ID</th>
+            <th>Event Name</th>
+            <th>Event Host</th>
+           
+          </tr>
+        </thead>
+        <tbody>
+           <tr v-for="e in event" :key="e.evid">
+            <td>{{ e.evid }}</td>
+            <td>{{ e.ev_name }}</td>
+            <td>{{ e.ev_host }}</td>
+           
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </main>
 </template>
 <style scoped>

@@ -1,14 +1,9 @@
-const uuid = require('uuid');
-const mongoose = require('mongoose');
+const uuid = require("uuid");
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
+const autoIncrement = require("mongoose-sequence")(mongoose);
 let employeesSchema = new Schema(
-  {
-    employeeID: {
-      type: Number,
-      required: true,
-      unique: true,
-    },
+ {
     firstName: {
       type: String,
       required: true,
@@ -89,18 +84,13 @@ let employeesSchema = new Schema(
     degree: {
       type: String,
     },
-    events: 
-      {
-        eventID: [
-        {  type: Number,
-          
-      }]}
-    ,
+    events: {
+      eventID: [{ type: Number }],
+    },
     clients: {
       clientID: [
         {
           type: Number,
-          
         },
       ],
     },
@@ -109,4 +99,5 @@ let employeesSchema = new Schema(
     collection: "employees",
   }
 );
+employeesSchema.plugin(autoIncrement, { inc_field: "employeeID" });
 module.exports = mongoose.model("employee", employeesSchema);

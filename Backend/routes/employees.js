@@ -163,26 +163,6 @@ router.post("/del-client/:employeeID", (req, res, next) => {
   );
 });
 
-router.post("/add-event/:employeeID", (req, res, next) => {
-  var action = req.body.action;
-  //add clients to employees
-  if (action == "add") {
-    empModel.findOneAndUpdate(
-      { employeeID: parseInt(req.params.employeeID) },
-      {
-        $push: { "events.eventID": req.body.id },
-      },
-      (error, results) => {
-        if (error) {
-          return next(error);
-        } else {
-          res.send("added event to employee");
-          console.log("added event to employee");
-        }
-      }
-    );
-  }
-});
 
 //remove events from employees
 router.post("/del-event/:employeeID", (req, res, next) => {
@@ -217,24 +197,9 @@ router.post('/add-event/:employeeID', (req, res, next) =>{
         console.log('added event to employee')
       }
     }
-  )
-})
+  )}
 
-router.post('/del-event/:employeeID', (req, res, next) =>{
-  empModel.findOneAndUpdate(
-    {employeeID: parseInt(req.params.employeeID)},
-    {
-      $pull: {'events.eventID':req.body.eventID}
-    },
-    (error, results)  =>{
-      if(error){
-        return next(error);
-      }else{
-        res.send('removed event to employee')
-        console.log('removed event to employee')
-      }
-    }
-  )
-})
+)
+  
 
 module.exports = router;
