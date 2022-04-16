@@ -2,7 +2,7 @@
   <main>
     <h1 class="text-center mb-5">Employees</h1>
     <div class="table-responsive">
-      <table class="table table-striped">
+      <table class="table table-light">
         <thead class="table-light">
           <tr>
             <th>Employee ID</th>
@@ -30,9 +30,7 @@
             <th>Highest Grade</th>
             <th>Degree</th>
             <th>Languages</th>
-            <th>Events</th>
-            <th>Clients</th>
-            <th colspan="2">Actions</th>
+            <th colspan="3">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -63,10 +61,8 @@
             <td>{{ employee.degree }}</td>
             <td>{{ employee.language.join(", ") }}</td>
             <td>
-              {{ employee.events }}
+              <router-link :to="{name:'events-clients',params:{id:employee.employeeID}}" class="btn btn-success">Events/Clients</router-link>
             </td>
-            <td>{{ employee.clients }}</td>
-
             <td>
               <router-link
                 :to="{ name: 'edit-emp', params: { id: employee.employeeID } }"
@@ -133,9 +129,14 @@ export default {
 </script>
 <style scoped>
 .btn {
-  width: 80px;
+  width: fit-content;
+
 }
 th {
   text-align: center;
 }
+.table-light tr:nth-of-type(2n) td {
+  background-color: rgba(0, 0, 0, 0.137);
+}
+
 </style>

@@ -48,22 +48,7 @@
                     })
                 }
             },
-            // rem_client(ID){
-            //     let data = {
-            //         "id":ID,
-            //     }
-            //     let apiURL = `http://localhost:8080/events/del-client/${this.$route.params.id}`
-            //     let indexOfArrayItem = this.client.findIndex(i=>i.cid === ID);
-                
-            //     if(window.confirm('Remove Client from event?')){
-            //         axios.post(apiURL, data
-            //         ).then(()=>{
-            //             this.client.splice(indexOfArrayItem, 1);
-            //         }).catch(error => {
-            //             console.log(error)
-            //         })
-            //     }
-            // },
+            //remove employees from events
             rem_employee(ID){
                 let data = {"id":ID}
                 let data2 = {"id":this.$route.params.id}
@@ -88,6 +73,7 @@
                     })
                 }
             },
+            // add volunteers to events
             add_volunteer() {
                 
                 let idv = this.new_vid.id
@@ -112,20 +98,7 @@
                     console.log(error)
                 })
             },
-            // add_client() {
-            //     let idc = this.new_cid.id
-            //     let apiURL = `http://localhost:8080/events/add-client/${this.$route.params.id}`;
-                
-            //     axios.post(apiURL, this.new_cid).then(() => {
-            //         //changing the view to the list
-            //       this.$router.push('/events')
-            //       this.new_cid = {
-            //         id: ''
-            //       }
-            //     }).catch(error => {
-            //         console.log(error)
-            //     });
-            // },
+            //add employees to events
             add_employee() {
                 let ide = this.new_eid.id
                 let data2 = {"id":this.$route.params.id}
@@ -150,51 +123,67 @@
             }
         } 
     }
-    
 </script>
 
 <template>
-    <main>
-        <div class="row justify-content-center">
-            
-            <table class="table table-light table-hover">
-                <thead class="table-dark">
-                    <tr>
-                        <th>Event</th>
-                        <th>Name</th>
-                        <th>Host</th>
-                        <th>Date</th>
-                        <th>City</th> 
-                        <th>State</th>
-                        <th>Zip code</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{{event.evid }}</td>
-                        <td>{{event.ev_name }}</td>
-                        <td>{{event.ev_host }}</td>
-                        <td>{{event.ev_date }}</td>
-                        <td>{{event.city }}</td>
-                        <td>{{event.st }}</td>
-                        <td>{{event.zip }}</td>
-                        <td><router-link :to="{name: 'events_edit', params: { id: event.evid }}" class="btn btn-secondary ">Edit</router-link></td>
-                    </tr> 
-                </tbody>
-            </table>
-        </div>
+    <div>
+        <h1>Event #{{event.evid}}</h1>
+        <br>
+        <fieldset class='form-control mb-5'>
+            <legend><strong>{{event.ev_name}}</strong></legend>
+                <div class='row mb-3'>
+                    <div class='col-sm-3'>
+                        <label for="" class='form-label'>Host</label>
+                        <input type="text" class='form-control' v-model='event.ev_host' disabled>
+                    </div>
+                    <div class='col-sm-3'>
+                        <label for="" class='form-label'>Date</label>
+                        <input type="text" class='form-control' v-model='event.ev_date' disabled>
+                    </div>
+                    <div class='col-sm-2'>
+                        <label for="" class='form-label'>City</label>
+                        <input type="text" class='form-control' v-model='event.city' disabled>
+                    </div>
+                    <div class='col-sm-2'>
+                        <label for="" class='form-label'>State</label>
+                        <input type="text" class='form-control' v-model='event.st' disabled>
+                    </div>
+
+                    <div class='col-sm-2'>
+                        <label for="" class='form-label'>Zip</label>
+                        <input type="text" class='form-control' v-model='event.zip' disabled>
+                    </div>
+                </div>
+                <router-link :to="{name: 'events_edit', params: { id: event.evid }}" class="btn btn-secondary ">Edit</router-link>
+                <hr>
+                <div class='row mb-4'>
+                    <div class='col-sm-4'>
+                        <form @submit.prevent='add_volunteer'>
+                            <div class='form-outline'>
+                                <input type="number" id='form14' class='form-control' v-model='new_vid.id'  required>
+                                <div class='form-helper'>VID#</div>
+                                <button class='btn btn-secondary'>Add Volunteer</button>
+                            </div>
+                        </form> 
+                    </div>
+                    
+                    <div class='col-sm-4'>
+                        <form @submit.prevent='add_employee'>
+                        <div class='form-group'>
+                            <input type="number" class='form-control' v-model='new_eid.id'  required>
+                            <div class='form-helper'>EID#</div>
+                            <button class='btn btn-secondary'>Add Employee</button>
+                        </div>
+                        </form> 
+                    </div>
+                    
+                </div>
+        </fieldset> 
+
         <!-- Volunteer table -->
         <div class="row justify-content-center">
-            <h2 class='text-center'>Volunteers</h2>
-            <form @submit.prevent='add_volunteer' class='form-inline'>
-                    <div class='form-group'>
-                        <label for="">VID#</label>
-                        <input type="number" v-model='new_vid.id'  required>
-                        <button class='btn btn-secondary'>Add Volunteer</button>
-                    </div>
-            </form> 
-            <table class="table table-light table-hover">
+            <table class="table table-light table-hover caption-top">
+                <caption><strong>Volunteers</strong></caption>
                 <thead class="table-dark">
                     <tr>
                         <th>VID#</th>
@@ -216,47 +205,11 @@
                 </tbody>
             </table>
         </div>
-
-        <!-- <div class="row justify-content-center">
-            <h2 class='text-center'>Clients</h2>
-            <form @submit.prevent='add_client' class='form-inline'>
-                    <div class='form-group'>
-                        <label for="">CID#</label>
-                        <input type="number" v-model='new_cid.id'  required>
-                        <button class='btn btn-secondary'>Add Client</button>
-                    </div>
-            </form> 
-                <table class="table table-light table-hover">
-                    <thead class="table-dark">
-                        <tr>
-                        <th>CID#</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Phone#</th>    
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="c in client" :key="c.cid">
-                            <td>{{c.cid }}</td>
-                            <td>{{c.first_name }}</td>
-                            <td>{{c.last_name }}</td>
-                            <td>{{c.phone_number }}</td>
-                            <td><button @click.prevent="rem_client(c.cid)" class="btn btn-secondary">Remove</button></td>
-                        </tr> 
-                    </tbody>
-                </table>
-            </div> -->
     
         <div class="row justify-content-center">
-            <h2 class='text-center'>Employees</h2>
-            <form @submit.prevent='add_employee' class='form-inline'>
-                    <div class='form-group'>
-                        <label for="">EID#</label>
-                        <input type="number" v-model='new_eid.id'  required>
-                        <button class='btn btn-secondary'>Add Employee</button>
-                    </div>
-            </form> 
-            <table class="table table-light table-hover">
+           
+            <table class="table table-light table-hover caption-top">
+                <caption><strong>Employees</strong></caption>
                 <thead class="table-dark">
                     <tr>
                         <th>Emp#</th>
@@ -277,7 +230,24 @@
                 </tbody>
             </table>
         </div>
-    </main>
+    </div>
 </template>
 
+<style scoped>
+h1 {
+  font-size: 26px;
+  text-align: center;
+  margin-top: 80px;
+}
+form {
+  margin-top: 50px;
+}
+#create{
+  background-color: #A6A7A8;
+}
+#create:hover{
+  background-color: #2E5902;
+  color: white;
+}
+</style>
 
