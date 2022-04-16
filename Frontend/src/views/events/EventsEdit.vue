@@ -1,7 +1,7 @@
 <template>
     <div>
             <!-- Update Student content -->
-            <h1>Update Event#{{event.evid}} {{x}}</h1>
+            <h1>Update Event#{{event.evid}} {{date}}</h1>
             
             <form @submit.prevent="UpdateEvent">
                 <fieldset class='form-control mb-5'>
@@ -19,7 +19,7 @@
                 
                 <div class='col-sm-4'>
                     <label for="" class='form-label'>*Date</label>
-                    <input type="date" class='form-control' v-model="event.ev_date" required>
+                    <input type="date" class='form-control' v-model="date" required>
                 </div>
             </div>
         </fieldset>
@@ -66,23 +66,22 @@
 export default {
     data() {
         return {
-            event: {},
-            x:''
+            event: {}, 
+            date:''
         }
     },
     created() {
         let apiURL = `http://localhost:8080/events/find/${this.$route.params.id}`;
         axios.get(apiURL).then(res => {
             this.event = res.data[0];
-            this.x = res.data[0].ev_date.slice(0, 10)
-            
-            console.log(res.data[0].ev_date.slice(0, 10))
+            this.date = res.data[0].ev_date.slice(0, 10)
         }).catch(error =>{
             console.log(error)
         });
     },
     methods: {
         UpdateEvent() {
+            this.event.ev_date=this.date
             let apiURL = `http://localhost:8080/events/update/${this.$route.params.id}`;
 
             axios.put(apiURL, this.event).then((res) => {
