@@ -174,10 +174,10 @@
                             <label>College Graduation Status</label>
                                 <fieldset class="form-control mb-5">
                                     <select v-model="clients.graduate">
-                                    <option disabled value="">Select option</option>
-                                    <option value="true">True</option>
-                                    <option value="false">False</option>
-                                </select>
+                                        <option disabled value="">Select option</option>
+                                        <option value="true">True</option>
+                                        <option value="false">False</option>
+                                    </select>
                                 </fieldset>
                         </div>
                         <div class="col-sm-4">
