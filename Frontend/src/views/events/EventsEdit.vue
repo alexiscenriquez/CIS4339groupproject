@@ -1,7 +1,7 @@
 <template>
     <div>
             <!-- Update Student content -->
-            <h1>Update Event#{{event.evid}} {{date}}</h1>
+            <h1>Update Event#{{event.evid}} </h1>
             
             <form @submit.prevent="UpdateEvent">
                 <fieldset class='form-control mb-5'>
@@ -53,17 +53,22 @@
 
                 </div>
         </fieldset>
+        
         <button class="btn mb-5" id="create">Update</button>
         </form>
-       
+       <Footers />
         
     </div>
 </template>
 
 <script>
     import axios from "axios";
+    import Footers from '../../components/footer.vue'
 
 export default {
+    components:{
+        Footers
+    },
     data() {
         return {
             event: {}, 
