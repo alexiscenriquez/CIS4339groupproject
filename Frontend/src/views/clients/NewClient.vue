@@ -412,7 +412,7 @@
                 
                 axios.post(apiURL, this.clients).then(() => {
                     //changing the view to the list
-                  this.$router.push('/view')
+                  this.$router.push('/clients')
                   this.clients = {
                    cid: '',
                    first_Name: '',
