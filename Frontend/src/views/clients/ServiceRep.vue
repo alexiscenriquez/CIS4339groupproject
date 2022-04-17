@@ -6,6 +6,7 @@
                 client:[],
                 //employee:[],
                 service:[],
+                fullservices:[],
                 new_sid:{id:''},
                 //new_eid:{id:''},
                 active: false
@@ -14,6 +15,7 @@
         },
         created(){
             let apiURL = `http://localhost:8080/clients/client-history/${this.$route.params.id}`;
+            let apiURL2 = `http://localhost:8080/services`;
             axios.get(apiURL).then(res => {
                 this.client = res.data[0];
                 //this.employee = res.data[0].employees;
@@ -21,6 +23,13 @@
             }).catch(error=>{
                 console.log(error)
             });
+
+            axios.get(apiURL2).then(res =>{
+                    this.fullservices = res.data
+                    console.log(this.fullservices)
+                }).catch(error =>{
+                    console.log(error)
+                })
         },
         methods:{
            /* rem_employee(ID){
@@ -170,9 +179,9 @@
                     <div class='form-group'>
                         <label for="">SID#</label>
                         <!--<input type="number" v-model='new_sid.id'  required>-->
-                        <select>
-                        <option></option>
-                        <option v-for="services in client" :key="services.name">{{services.name}}</option>
+                        <select v-model='new_sid.id'>
+                        <option value="" selected disabled>Choose a Service</option>
+                        <option v-for="x in fullservices" :value="x.sid" :key="x.sid">{{x.sid}}{{" - "}}{{x.name}}</option>
                         </select>
                         <button class='btn btn-secondary'>Apply for Service</button>
                     </div>
