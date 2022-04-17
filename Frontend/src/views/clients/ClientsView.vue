@@ -162,12 +162,3 @@
     }
 </script>
 
-<style>
-.flex {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-items: space-between;
-}
-
-</style>

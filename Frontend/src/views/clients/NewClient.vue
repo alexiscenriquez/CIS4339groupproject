@@ -28,20 +28,28 @@
                         <div class="col-sm-4">
                             <label>Gender</label>
                             <fieldset class="form-control mb-5">
-                                <input type="radio" class="form-check-input" id="Male" value="Male" v-model='clients.gender'>Male
-                                <label class="form-check-label" for="Male"></label>
-                                <br>
-                                <input type="radio" class="form-check-input" id="Female" value="Female" v-model='clients.gender'>Female
-                                <label class="form-check-label" for="Female"></label>
-                                <br>
-                                <input type="radio" class="form-check-input" id="Other" value="Other" v-model='clients.gender'>Other
-                                <label class="form-check-label" for="Other"></label>
+                                <select v-model="clients.gender">
+                                    <option disabled value="">Select option</option>
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                    <option>Other</option>
+                                    <option>Do not wish to disclose</option>
+                                </select>
                             </fieldset>
                         </div>
                         <div class="col-sm-4">
                             <label>Ethnicity</label>
                             <fieldset class="form-control mb-5">
-                                <input type="radio" class="form-check-input" id="White" value="White" v-model='clients.ethnicity'>White
+                                <select v-model="clients.ethnicity">
+                                    <option disabled value="">Select option</option>
+                                    <option value="White">White</option>
+                                    <option>Black/African American</option>
+                                    <option>American Indian or Alaska Native</option>
+                                    <option>Asian</option>
+                                    <option>Native Hawaiian or Other Pacific Islander</option>
+                                    <option>Other</option>
+                                </select>
+                                <!--input type="radio" class="form-check-input" id="White" value="White" v-model='clients.ethnicity'>White
                                 <label class="form-check-label" for="White"></label>
                                 <br>
                                 <input type="radio" class="form-check-input" id="Black or African American" value="Black or African American" v-model='clients.ethnicity'>Black or African American
@@ -57,7 +65,7 @@
                                 <label class="form-check-label" for="Native Hawaiian or Other Pacific Islander"></label>
                                 <br>
                                 <input type="radio" class="form-check-input" id="Other" value="Other" v-model='clients.ethnicity'>Other
-                                <label class="form-check-label" for="Other"></label>
+                                <label class="form-check-label" for="Other"></label>-->
                             </fieldset>
                         </div>
                         <div class="col-sm-4">
@@ -71,32 +79,25 @@
                         <div class="col-sm-4">
                             <label>Marital Status</label>
                             <fieldset class="form-control mb-5">
-                                <input type="radio" class="form-check-input" id="Married" value="Married" v-model='clients.marital_status'>Married
-                                <label class="form-check-label" for="Married"></label>
-                                <br>
-                                <input type="radio" class="form-check-input" id="Widowed" value="Widowed" v-model='clients.marital_status'>Widowed
-                                <label class="form-check-label" for="Widowed"></label>
-                                <br>
-                                <input type="radio" class="form-check-input" id="Separated" value="Separated" v-model='clients.marital_status'>Separated
-                                <label class="form-check-label" for="Separated"></label>
-                                <br>
-                                <input type="radio" class="form-check-input" id="Divorced" value="Divorced" v-model='clients.marital_status'>Divorced
-                                <label class="form-check-label" for="Divorced"></label>
-                                <br>
-                                <input type="radio" class="form-check-input" id="Single" value="Single" v-model='clients.marital_status'>Single
-                                <label class="form-check-label" for="Single"></label>
-                                <br>
+                                <select v-model="clients.marital_status">
+                                    <option disabled value="">Select option</option>
+                                    <option>Married</option>
+                                    <option>Widowed</option>
+                                    <option>Separated</option>
+                                    <option>Single</option>
+                                    <option>Divorced</option>
+                                    <option>Other</option>
+                                </select>
                             </fieldset>
                         </div>
                         <div class="col-sm-4">
                             <label>Veteran Status</label>
                             <fieldset class="form-control mb-5">
-                                <input type="radio" class="form-check-input" id="Veteran" value="Veteran" v-model='clients.veteran_status'>Veteran
-                                <label class="form-check-label" for="Veteran"></label>
-                                <br>
-                                <input type="radio" class="form-check-input" id="Not a Veteran" value="Not a Veteran" v-model='clients.veteran_status'>Not a Veteran
-                                <label class="form-check-label" for="Not a Veteran"></label>
-                                <br>
+                                <select v-model="clients.veteran_status">
+                                    <option disabled value="">Select option</option>
+                                    <option>Veteran</option>
+                                    <option>Not a Veteran</option>
+                                </select>
                             </fieldset>
                         </div>
                     </div>
@@ -158,30 +159,30 @@
                     <legend>Education Information</legend>
                     <div class="row mb-4">
                         <div class="col-sm-4">
-                            <label>Highest Grade Completed</label>
+                            <label>Highest Completed Education</label>
                             <fieldset class="form-control mb-5">
-                                <input type="radio" class="form-check-input" id="Highschool" value="Highschool" v-model='clients.highest_grade'>Highschool
-                                <label class="form-check-label" for="Highschool"></label>
-                                <br>
-                                <input type="radio" class="form-check-input" id="College" value="College" v-model='clients.highest_grade'>College
-                                <label class="form-check-label" for="College"></label>
-                                <br>
+                                <select v-model="clients.highest_grade">
+                                    <option disabled value="">Select option</option>
+                                    <option>Highschool Diploma</option>
+                                    <option>GED</option>
+                                    <option>Associate's Degree</option>
+                                    <option>Bachelor's Degree</option>
+                                </select>
                             </fieldset>
                         </div>
                         <div class="col-sm-4">
-                            <label>Graduation Status</label>
+                            <label>College Graduation Status</label>
                                 <fieldset class="form-control mb-5">
-                                    <input type="radio" class="form-check-input" id="true" value="true" v-model='clients.graduate'>True
-                                    <label class="form-check-label" for="true"></label>
-                                    <br>
-                                    <input type="radio" class="form-check-input" id="false" value="false" v-model='clients.graduate'>False
-                                    <label class="form-check-label" for="false"></label>
-                                    <br>
+                                    <select v-model="clients.graduate">
+                                        <option disabled value="">Select option</option>
+                                        <option value="true">True</option>
+                                        <option value="false">False</option>
+                                    </select>
                                 </fieldset>
                         </div>
                         <div class="col-sm-4">
                             <label>Degree Name</label>
-                            <input type="text" class="form-control" placeholder="Please put 'none' if you don't have a College Degree" v-model="clients.degree_name" required>
+                            <input type="text" class="form-control" v-model="clients.degree_name" required>
                         </div>
                     </div>
                 </fieldset>
@@ -262,17 +263,16 @@
                     <legend>Employment Information</legend>
                     <div class="row mb-4">
                         <label>Employment Status</label>
-                        <div class="col-sm-4">
+                        <div class="col-sm-3">
                             <fieldset class="form-control mb-5">
-                                <input type="radio" class="form-check-input" id="Employed" value="Employed" v-model='clients.employment_status'>Employed
-                                <label class="form-check-label" for="Employed"></label>
-                                <br>
-                                <input type="radio" class="form-check-input" id="Unemployed" value="Unemployed" v-model='clients.employment_status'>Unemployed
-                                <label class="form-check-label" for="Unemployed"></label>
-                                <br>
+                                <select v-model="clients.employment_status">
+                                    <option disabled value="">Select option</option>
+                                    <option>Employed</option>
+                                    <option>Unemployed</option>
+                                </select>
                             </fieldset>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-3">
                             <label>Employer Name</label>
                             <input type="text" class="form-control" v-model="clients.employer_name" required>
                         </div>
@@ -293,12 +293,11 @@
                         <label>Health Insurance Status</label>
                         <div class="col-sm-4">
                             <fieldset class="form-control mb-5">
-                                <input type="radio" class="form-check-input" id="true" value="true" v-model='clients.health_insurance'>True
-                                <label class="form-check-label" for="true"></label>
-                                <br>
-                                <input type="radio" class="form-check-input" id="false" value="false" v-model='clients.health_insurance'>False
-                                <label class="form-check-label" for="false"></label>
-                                <br>
+                                <select v-model="clients.health_insurance">
+                                    <option disabled value="">Select option</option>
+                                    <option value="true">True</option>
+                                    <option value="false">False</option>
+                                </select>
                             </fieldset>
                         </div>
                         <div class="col-sm-4">
@@ -312,32 +311,24 @@
                         <div class="col-sm-4">
                             <label>Priority Population</label>
                             <fieldset class="form-control mb-5">
-                                <input type="radio" class="form-check-input" id="Pregnant" value="Pregnant" v-model='clients.priority_population'>Pregnant
-                                <label class="form-check-label" for="Pregnant"></label>
-                                <br>
-                                <input type="radio" class="form-check-input" id="Single Parent" value="Single Parent" v-model='clients.priority_population'>Single Parent
-                                <label class="form-check-label" for="Single Parent"></label>
-                                <br>
-                                <input type="radio" class="form-check-input" id="Disabled" value="Disabled" v-model='clients.priority_population'>Disabled
-                                <label class="form-check-label" for="Disabled"></label>
-                                <br>
-                                <input type="radio" class="form-check-input" id="Homeless" value="Homeless" v-model='clients.priority_population'>Homeless
-                                <label class="form-check-label" for="Homeless"></label>
-                                <br>
-                                <input type="radio" class="form-check-input" id="None" value="None" v-model='clients.priority_population'>None
-                                <label class="form-check-label" for="None"></label>
-                                <br>
+                                <select v-model="clients.priority_population">
+                                    <option disabled value="">Select option</option>
+                                    <option>Pregnant</option>
+                                    <option>Single Parent</option>
+                                    <option>Disabled</option>
+                                    <option>Homeless</option>
+                                    <option>None</option>
+                                </select>
                             </fieldset>
                         </div>
                         <div class="col-sm-4">
                             <label>Covid Status</label>
                             <fieldset class="form-control mb-5">
-                                <input type="radio" class="form-check-input" id="true" value="true" v-model='clients.covid_status'>True
-                                <label class="form-check-label" for="true"></label>
-                                <br>
-                                <input type="radio" class="form-check-input" id="false" value="false" v-model='clients.covid_status'>False
-                                <label class="form-check-label" for="false"></label>
-                                <br>
+                                <select v-model="clients.covid_status">
+                                    <option disabled value="">Select option</option>
+                                    <option value="true">True</option>
+                                    <option value="false">False</option>
+                                </select>
                             </fieldset>
                         </div>
             </div>
@@ -412,7 +403,7 @@
                 
                 axios.post(apiURL, this.clients).then(() => {
                     //changing the view to the list
-                  this.$router.push('/view')
+                  this.$router.push('/clients')
                   this.clients = {
                    cid: '',
                    first_Name: '',
