@@ -26,7 +26,7 @@
                         <td>{{evee.evid }}</td>
                         <td>{{evee.ev_name }}</td>
                         <td>{{evee.ev_host }}</td>
-                        <td>{{evee.ev_date }}</td>
+                        <td>{{evee.ev_date}}</td>
                         <td>{{evee.addr }}</td>
                         <td>{{evee.city }}</td>
                         <td>{{evee.st }}</td>
@@ -48,7 +48,6 @@
         data(){
             return{
                 allevents:[],
-                active: false
 
             }
         },
@@ -56,6 +55,7 @@
             let apiURL = 'http://localhost:8080/events';
             axios.get(apiURL).then(res => {
                 this.allevents = res.data;
+                
             }).catch(error=>{
                 console.log(error)
             });

@@ -21,7 +21,7 @@
                 <div class='row mb-4'>
                     <div class="col-sm-4">
                         <label>*Birthday</label>
-                        <input type="date" class="form-control" v-model="volunteers.b_day" required>
+                        <input type="date" class="form-control" v-model="date" required>
                     </div>
 
                     <div class="col-sm-4">
@@ -119,7 +119,8 @@ import Footer from '../../components/footer.vue'
 export default {
      data() {
         return {
-            volunteers: {}
+            volunteers: {},
+            date:''
         }
     },
     created() {
@@ -127,12 +128,14 @@ export default {
 
         axios.get(apiURL).then(res => {
             this.volunteers = res.data[0];
+            this.date = res.data[0].b_day.slice(0, 10)
         }).catch(error =>{
             console.log(error)
         });
     },
     methods: {
         UpdateVolunteers() {
+            this.volunteers.b_day=this.date
             let apiURL = `http://localhost:8080/volunteers/update/${this.$route.params.id}`;
 
             axios.put(apiURL, this.volunteers).then((res) => {
