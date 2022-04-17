@@ -187,10 +187,11 @@ router.post('/add-event/:employeeID', (req, res, next) =>{
   empModel.findOneAndUpdate(
     {employeeID: parseInt(req.params.employeeID)},
     {
-      $push: {'events.eventID':req.body.eventID}
+      $push: {'events.eventID':req.body.id}
     },
     (error, results)  =>{
       if(error){
+        console.log(error)
         return next(error);
       }else{
         res.send('added event to employee')

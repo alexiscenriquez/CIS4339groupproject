@@ -27,7 +27,11 @@ export default {
   methods: {
     addClient() {
       let cid = this.new_cid.id;
+      let data = {
+        id: this.$route.params.id,
+      };
       let apiURL = `http://localhost:8080/employees/add-client/${this.$route.params.id}`;
+      let apiURL2 = `http://localhost:8080/clients/add-emp/${cid}`;
       axios
         .post(apiURL, this.new_cid)
         .then(() => {
@@ -40,13 +44,9 @@ export default {
           console.log(error);
         });
 
-      let apiURL2 = `http://localhost:8080/clients/add-emp/${cid}`;
-
       axios
-        .post(apiURL2, this.new_eid)
-        .then(() => {
-          //changing the view to the list
-        })
+        .post(apiURL2, data)
+        .then(() => {})
         .catch((error) => {
           console.log(error);
         });
@@ -55,7 +55,9 @@ export default {
       let data = {
         id: clientID,
       };
+      let data2 = { id: this.$route.params.id };
       let apiURL = `http://localhost:8080/employees/del-client/${this.$route.params.id}`;
+      let apiURL2 = `http://localhost:8080/clients/del-emp/${clientID}`;
       let indexOfArrayItem = this.client.findIndex((i) => i.cid === clientID);
       if (window.confirm("Are you sure?")) {
         axios
@@ -66,10 +68,19 @@ export default {
           .catch((error) => {
             console.log(error);
           });
+
+        axios
+          .post(apiURL2, data2)
+          .then(() => {})
+          .catch((error) => {
+            console.log(error);
+          });
       }
     },
     addEvent() {
+      let eid = this.new_evid.id;
       let apiURL = `http://localhost:8080/employees/add-event/${this.$route.params.id}`;
+      let apiURL2 = `http://localhost:8080/event/add-employee/${eid}`;
       axios
         .post(apiURL, this.new_evid)
         .then(() => {
@@ -81,6 +92,32 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+
+      axios
+        .post(apiURL2, this.$route.params.id)
+        .then(() => {})
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+
+    delEvent(eventID) {
+      let data = {
+        id: eventID,
+      };
+      let apiURL = `http://localhost:8080/employees/del-event/${this.$route.params.id}`;
+      let indexOfArrayItem = this.client.findIndex((i) => i.evid === eventID);
+      if (window.confirm("Are you sure?")) {
+        axios
+          .post(apiURL, data)
+          .then(() => {
+            this.$router.push("/employees");
+            this.client.splice(indexOfArrayItem, 1);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
     },
   },
 };
@@ -134,7 +171,7 @@ export default {
         <legend class="mb-3">Events</legend>
         <div class="col-sm-3">
           <label for="" class="form-label">Enter the Event ID</label>
-          <input type="number" class="form-control mb-3" v-model="new_evid.id"/>
+          <input type="text" class="form-control mb-3" v-model="new_evid.id" />
           <button class="btn btn-primary">Add Event</button>
         </div>
       </fieldset>
@@ -147,15 +184,19 @@ export default {
             <th>Event ID</th>
             <th>Event Name</th>
             <th>Event Host</th>
-           
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-           <tr v-for="e in event" :key="e.evid">
+          <tr v-for="e in event" :key="e.evid">
             <td>{{ e.evid }}</td>
             <td>{{ e.ev_name }}</td>
             <td>{{ e.ev_host }}</td>
-           
+            <td>
+              <button @click.prevent="delEvent(e.evid)" class="btn btn-danger">
+                Remove
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>
