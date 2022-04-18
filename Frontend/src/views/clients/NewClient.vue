@@ -137,19 +137,21 @@
 
                 <fieldset class="form-control mb-5">
                     <legend>Contact Information</legend>
-                    <div class="row mb-4">
-                        <div class="col-sm-6">
+                    <div class="row mb-3">
+                        <div class="col-sm-4">
                             <label class="form-label">Phone Number</label>
                             <input type="text" class="form-control" placeholder="XXX-XXX-XXXX" v-model="clients.phone_number" required>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             <label class="form-label">Home Phone Number</label>
                             <input type="text" class="form-control" placeholder="XXX-XXX-XXXX" v-model="clients.home_phone_number">
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             <label class="form-label">Emergency Contact Phone Number</label>
                             <input type="text" class="form-control" placeholder="XXX-XXX-XXXX" v-model="clients.emergency_contact_phone_number" required>
                         </div>
+                        </div>
+  <div class="row mb-3">
                         <div class="col-sm-6">
                             <label class="form-label">Email</label>
                             <input type="email" class="form-control" placeholder="Primary Email Address" v-model="clients.primary_email" required>
@@ -158,7 +160,7 @@
                             <label class="form-label">Secondary Email</label>
                             <input type="email" class="form-control" v-model="clients.secondary_email">
                         </div>
-                    </div>
+  </div>
                 </fieldset>
 
                 <fieldset class="form-control mb-5">
@@ -208,6 +210,8 @@
                             <label class="form-label">Living Arrangements</label>
                             <input type="text" class="form-control" v-model="clients.living_arrangements"  required>
                         </div>
+                    </div>
+                     <div class="row mb-4">
                         <div class="col-sm-4">
                             <label class="form-label">No. of Children</label>
                             <input type="text" class="form-control" placeholder="Number of Children living in residence" v-model="clients.number_of_children" required>
@@ -234,6 +238,8 @@
                             <label class="form-label">Spousal Income Support</label>
                             <input type="text" class="form-control" v-model="clients.spousal_income_support" required>
                         </div>
+                    </div>
+                     <div class="row mb-4">
                         <div class="col-sm-4">
                             <label class="form-label">Worker Compensation Benefits</label>
                             <input type="text" class="form-control" v-model="clients.worker_compensation" required>
@@ -246,7 +252,11 @@
                             <label class="form-label">TANF Benefits</label>
                             <input type="text" class="form-control" placeholder="Texas Temporarry Assistance for Needy Families" v-model="clients.tanf" required>
                         </div>
-                        <div class="col-sm-4">
+                        </div>
+                      
+                       
+                         <div class="row mb-4">
+                               <div class="col-sm-4">
                             <label class="form-label">Food Stamp Benefits</label>
                             <input type="text" class="form-control" placeholder="Total monetary amount of food stamps" v-model="clients.food_stamps" required>
                         </div>
@@ -258,11 +268,14 @@
                             <label class="form-label">Unemployment Benefits</label>
                             <input type="text" class="form-control" placeholder="Total monetary amount of Unemployment benefits" v-model="clients.unemployment" required>
                         </div>
+                        </div>
+                         <div class="row mb-4">
                         <div class="col-sm-4">
                             <label>Other Income</label>
                             <input type="text" class="form-control" v-model="clients.other_income" required>
                         </div>
-                    </div>
+                        </div>
+                    
                 </fieldset>
 
                 <fieldset class="form-control mb-5">
@@ -286,6 +299,8 @@
                             <label class="form-label">Occupation</label>
                             <input type="text" class="form-control" placeholder="Job Title" v-model="clients.occupation" required>
                         </div>
+                    </div>
+                           <div class="row mb-4">
                         <div class="col-sm-4">
                             <label class="form-label">Length of Employment</label>
                             <input type="text" class="form-control" v-model="clients.length_of_employment" required>
@@ -296,9 +311,9 @@
                 <fieldset class="form-control mb-5">
                     <legend>Health Information</legend>
                     <div class="row mb-4">
-                        <label class="form-label">Health Insurance Status</label>
+                       
                         <div class="col-sm-4">
-                           
+                                <label class="form-label">Health Insurance Status</label>
                                 <select v-model="clients.health_insurance" class="form-control">
                                     <option disabled value="">Select option</option>
                                     <option value="true">True</option>
@@ -314,6 +329,8 @@
                             <label class="form-label">Health Insurance Desc</label>
                             <input type="text" class="form-control" placeholder="Type of health insurance" v-model="clients.health_insurance_desc" required>
                         </div>
+                    </div>
+                    <div class="row mb-4">
                         <div class="col-sm-4">
                             <label class="form-label">Priority Population</label>
                            
