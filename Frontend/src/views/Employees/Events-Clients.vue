@@ -101,12 +101,14 @@ export default {
         });
     },
 
-    delEvent(eventID) {
+    delEvent(id) {
       let data = {
-        id: eventID,
+        "id": id,
       };
+      let data2 = { "id": this.$route.params.id };
       let apiURL = `http://localhost:8080/employees/del-event/${this.$route.params.id}`;
-      let indexOfArrayItem = this.client.findIndex((i) => i.evid === eventID);
+      let apiURL2 = `http://localhost:8080/events/del-employee/${id}`;
+      let indexOfArrayItem = this.client.findIndex((i) => i.evid === id);
       if (window.confirm("Are you sure?")) {
         axios
           .post(apiURL, data)
@@ -114,6 +116,12 @@ export default {
             this.$router.push("/employees");
             this.client.splice(indexOfArrayItem, 1);
           })
+          .catch((error) => {
+            console.log(error);
+          });
+        axios
+          .post(apiURL2, data2)
+          .then(() => {})
           .catch((error) => {
             console.log(error);
           });
@@ -166,7 +174,7 @@ export default {
       </table>
     </div>
 
-    <form @submit.prevent="addEvent" class="mb-5">
+    <form @submit.prevent="addEvent" class="mb-5 col-sm-6">
       <fieldset class="form-control">
         <legend class="mb-3">Events</legend>
         <div class="col-sm-3">

@@ -149,7 +149,10 @@ const router = createRouter({
       path:'/volunteer-info',
       name:'volunteer-info',
       component:()=>import('../views/volunteers/VolunteerInfo.vue')
-    }
+    },
+    {path:'/seemore-emp',
+  name:'seemore-emp',
+component:()=>import('../views/Employees/SeeMore-emp.vue')}
   ]
 })
 

@@ -4,7 +4,7 @@
         <br>
         <fieldset class='form-control mb-5'>
             <div class='row-mb-3'>
-                <div id="flex" class='col-sm-6'>
+                <div  class='container col-sm-6'>
                     <td><router-link :to="{name: 'clients', params: { id: clients.cid }}" id="flex" class="btn btn-secondary ">Clients View</router-link></td>
                     <td><router-link :to="{name: 'clients_edit', params: { id: clients.cid }}" id="flex" class="btn btn-secondary ">Edit Client</router-link></td>
                     <td><button @click.prevent="del_client(clients.cid)" id="flex" class="btn btn-secondary">Delete Client</button></td>
@@ -254,7 +254,7 @@
 </script>
 
 <style>
-.flex {
+#flex {
     padding:10px 3px 10px 3px;
     background-color:#FEC7FD;
     display:inline-block;
