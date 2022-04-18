@@ -183,6 +183,11 @@ const router = createRouter({
       path:'/graphs',
       name:'graphs',
       component:()=>import('../components/graph.vue')
+    },
+    {
+      path:'/applicants',
+      name:'applicants',
+      component: ()=>import('../views/services/applicants.vue')
     }
   ]
 })

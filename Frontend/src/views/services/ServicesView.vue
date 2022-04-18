@@ -23,7 +23,7 @@
                 <td>{{service.renewal}}</td>
                 <td><textarea name="" id="" cols="50" rows="3" v-model='service.notes' readonly></textarea></td>
                 
-                <td><router-link :to="{name: 'applicants', params: { id: service.sid }}" class="btn btn-secondary ">Applicants</router-link></td>
+                <td><router-link :to="{name: 'applicants', params: { id: service.sid }}" class="btn btn-secondary">Applicants</router-link></td>
                 <td><router-link :to="{name: 'services_edit', params: { id: service.sid }}" class="btn btn-secondary ">Edit</router-link></td>
                 <td><button @click.prevent="del_event(service.sid)" class="btn btn-secondary">Delete</button></td>
                 <td v-if="active">hello</td>
