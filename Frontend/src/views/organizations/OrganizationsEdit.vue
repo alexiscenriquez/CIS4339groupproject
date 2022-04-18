@@ -1,13 +1,13 @@
 <template>
     <div>
-        <h1>Update Organization#{{org.orgid}}</h1>
-        <form @submit.prevent="UpdateOrg">
+        <h1>Update Organization#{{organization.orgid}}</h1>
+        <form @submit.prevent="UpdateOrganization">
             <fieldset class="form-control mb-5">
                 <legend>Organization Information</legend>
                 <div class="row mb-4">
                         <div class="col-sm-4">
                             <label>Organization Name</label>
-                            <input type="text" class="form-control" v-model="org.org_name" required>
+                            <input type="text" class="form-control" v-model="organization.org_name" required>
                         </div>
                 </div>
             </fieldset>
@@ -26,27 +26,24 @@ export default {
     },
     data() {
         return {
-            event: {}, 
-            date:''
+            organization: {}, 
         }
     },
     created() {
-        let apiURL = `http://localhost:8080/events/find/${this.$route.params.id}`;
+        let apiURL = `http://localhost:8080/organizations/find/${this.$route.params.id}`;
         axios.get(apiURL).then(res => {
-            this.event = res.data[0];
-            this.date = res.data[0].ev_date.slice(0, 10)
+            this.organization = res.data[0];
         }).catch(error =>{
             console.log(error)
         });
     },
     methods: {
-        UpdateEvent() {
-            this.event.ev_date=this.date
-            let apiURL = `http://localhost:8080/events/update/${this.$route.params.id}`;
+        UpdateOrganization() {
+            let apiURL = `http://localhost:8080/organizations/update/${this.$route.params.id}`;
 
-            axios.put(apiURL, this.event).then((res) => {
+            axios.put(apiURL, this.organization).then((res) => {
                 console.log(res)
-                this.$router.push('/events')
+                this.$router.push('/organizations')
             }).catch(error => {
                 console.log(error)
             });
