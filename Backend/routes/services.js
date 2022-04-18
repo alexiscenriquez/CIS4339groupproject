@@ -68,6 +68,39 @@ router.post('/del-applicant/:sid',(req, res, next) =>{
         
 });
 
+//add organization to services
+router.post('/add-org/:sid',(req, res, next) =>{
+    servicesModel.findOneAndUpdate(
+        {
+            sid:parseInt(req.params.sid)
+        },
+        {
+        $push:{'organizations.sid':parseInt(req.body.id)}
+        },
+        (error, results)=>{
+            if(error){
+                return next(error);
+            }else{
+                res.send('added service to organization')
+                console.log('added service to organization')
+        }
+    })
+});
+
+router.post('/del-org/:sid',(req, res, next) =>{
+    servicesModel.findOneAndUpdate({sid:parseInt(req.params.sid)},{
+        $pull:{'organizations.sid':parseInt(req.body.id)}
+    },(error, results)=>{
+        if(error){
+            return next(error);
+        }else{
+            res.send('removed service from organizations')
+            console.log('removed service from organizations')
+        }
+    });
+        
+});
+
 //get all services with applicant basic info
 //join documents to compare data with clients
 router.get('/all-applicants/:sid', (req, res, next)=>{
