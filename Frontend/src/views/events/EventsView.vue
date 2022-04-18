@@ -14,7 +14,7 @@
                         <th>Street</th>
                         <th>City</th> 
                         <th>State</th>
-                        <th>Countyr</th>
+                        <th>Country</th>
                         <th>Zip code</th>
                         <th></th>
                         <th></th>
