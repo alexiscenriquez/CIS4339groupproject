@@ -55,22 +55,35 @@
                   </li>
                 </ul>
               </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Reports</a>
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                  <li>
+                    <a class="dropdown-item"><router-link class="nav-link" to="/graphs">Graph</router-link></a>
+                  </li>
+                  
+                  <!-- <li>
+                    <a class="dropdown-item"><router-link class="nav-link" to="/volunteers">View</router-link></a>
+                  </li> -->
+                </ul>
+              </li>
             
             <li class="nav-item">
                 <a class="nav-link" href="#">About</a>
               </li>
             </ul>
+          
           </div>
         
         </div>
       </div>
     
     </nav>
-
     <!-- Router view - our main view below the navigation -->
     <div class="container mt-5">
       <RouterView></RouterView>
     </div>
+
   </div>
 </template>
 

@@ -1,7 +1,6 @@
 <template>
     <div>
             <h1>Create Volunteer</h1>
-            
             <form @submit.prevent="handleSubmitForm" class='was-validated' nonvalidate>
                 <fieldset class='form-control mb-5'>
                     <legend>Personal Information</legend>
