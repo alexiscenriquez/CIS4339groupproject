@@ -5,6 +5,7 @@ const volunteerModel = require('../models/volunteers')
 const clientsModel = require('../models/clients')
 
 router.get('/ethnicity', (req, res, next) =>{
+    //currently count how many of each ethnicity
     clientsModel.aggregate([
         {
             '$group':{
@@ -24,6 +25,7 @@ router.get('/ethnicity', (req, res, next) =>{
             }
     
         }
+        //,
         
         // {
         //     $lookup:{
