@@ -74,7 +74,15 @@ let volunteerSchema = new Schema({
               type:Number
             }
           ]
-      }
+      },
+    organizations:{
+      orgid:
+      [
+        {
+          type:Number
+        }
+      ]
+    }
     
   }, {
     collection: 'volunteers'
