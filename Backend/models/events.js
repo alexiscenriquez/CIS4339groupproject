@@ -60,6 +60,15 @@ let eventSchema = new Schema(
           
         }
       ]
+    },
+    organizations:
+    {
+      orgid:
+        [
+          {
+            type:Number
+          }
+        ]
     }
 },
 {
