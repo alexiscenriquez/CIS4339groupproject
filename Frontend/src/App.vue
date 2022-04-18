@@ -41,12 +41,17 @@
                   <li>
                     <a class="dropdown-item"><router-link class="nav-link" to="/clients">View</router-link></a>
                   </li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Organizations</a>
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                   <li>
-                    <a class="dropdown-item">
-                      <router-link class="nav-link" to="/new-org">
-                        Organizations</router-link
-                      >
-                    </a>
+                    <a class="dropdown-item"><router-link class="nav-link" to="/new-org">Create</router-link></a>
+                  </li>
+                  
+                  <li>
+                    <a class="dropdown-item"><router-link class="nav-link" to="/organizations">View</router-link></a>
                   </li>
                 </ul>
               </li>
