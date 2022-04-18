@@ -1,13 +1,15 @@
 <template>
     <div>
             <h1>Create Volunteer</h1>
-            <form @submit.prevent="handleSubmitForm">
+            
+            <form @submit.prevent="handleSubmitForm" class='was-validated' nonvalidate>
                 <fieldset class='form-control mb-5'>
                     <legend>Personal Information</legend>
                     <div class='row mb-4'>
                         <div class='col-sm-4'>
-                                <label>*First Name</label>
-                                <input type="text" class="form-control" v-model="volunteers.first_name" required>
+                                <label for='fName' class='form-label'>*First Name</label>
+                                <input type="text" id='fName' class="form-control is-invalid" v-model="volunteers.first_name" required>
+                                <div class='invalid-feedback'>nice!</div>
                         </div>
                         <div class='col-sm-4'>
                                 <label>Middle Name</label>
@@ -16,6 +18,7 @@
                         <div class='col-sm-4'>
                                 <label>*Last Name</label>
                                 <input type="text" class="form-control" v-model="volunteers.last_name" required>
+                                <div class='valid-feedback'></div>
                         </div>
                     </div>
                     <div class='row mb-4'>
@@ -116,90 +119,116 @@
 
 <script>
    import axios from "axios";
-import Footer from '../../components/footer.vue'
-import AboutView from '../AboutView.vue';
+    import Footer from '../../components/footer.vue'
+    import AboutView from '../AboutView.vue';
 
-export default {
-    components:{
-        Footer,
-        AboutView
-    },
-        data() {
-            return {
-                volunteers: {
-                   vid: '',
-                    first_name: '',
-                    mid_name: '',
-                    last_name: '',
-                    b_day:'',
-                    ssn:'',
-                    DL:'',
-                    gender:'',
-                    ethnicity:'',
-                    phone_num:'',
-                    emer_num:'',
-                    email:'',
-                    email2:'',
-                    prim_language:'',
-                    addr:'',
-                    city:'',
-                    st:'',
-                    zip:'',
-                    country:''
-                }
-            }
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+        console.log('hello')
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+
+
+
+    export default {
+        components:{
+            Footer,
+            AboutView
         },
-        methods: {
-            handleSubmitForm() {
-                let apiURL = 'http://localhost:8080/volunteers/new-user';
-                
-                axios.post(apiURL, this.volunteers).then(() => {
-                    //changing the view to the list
-                  this.$router.push('/volunteers')
-                  this.volunteers = {
+            data() {
+                return {
+                    volunteers: {
                     vid: '',
-                    first_name: '',
-                    mid_name: '',
-                    last_name: '',
-                    b_day:'',
-                    ssn:'',
-                    DL:'',
-                    gender:'',
-                    ethnicity:'',
-                    phone_num:'',
-                    emer_num:'',
-                    email:'',
-                    email2:'',
-                    prim_language:'',
-                    addr:'',
-                    city:'',
-                    st:'',
-                    zip:'',
-                    country:''
-                  }
-                }).catch(error => {
-                    console.log(error)
-                });
-            }
-        } 
-           
-    }
-</script>
+                        first_name: '',
+                        mid_name: '',
+                        last_name: '',
+                        b_day:'',
+                        ssn:'',
+                        DL:'',
+                        gender:'',
+                        ethnicity:'',
+                        phone_num:'',
+                        emer_num:'',
+                        email:'',
+                        email2:'',
+                        prim_language:'',
+                        addr:'',
+                        city:'',
+                        st:'',
+                        zip:'',
+                        country:''
+                    }
+                }
+            },
+            created(){
 
-<style scoped>
-h1 {
-  font-size: 26px;
-  text-align: center;
-  margin-top: 80px;
-}
-form {
-  margin-top: 50px;
-}
-#create{
-  background-color: #A6A7A8;
-}
-#create:hover{
-  background-color: #2E5902;
-  color: white;
-}
+            },
+            methods: {
+                handleSubmitForm() {
+                    let apiURL = 'http://localhost:8080/volunteers/new-user';
+                    
+                    axios.post(apiURL, this.volunteers).then(() => {
+                        //changing the view to the list
+                    this.$router.push('/volunteers')
+                    this.volunteers = {
+                        vid: '',
+                        first_name: '',
+                        mid_name: '',
+                        last_name: '',
+                        b_day:'',
+                        ssn:'',
+                        DL:'',
+                        gender:'',
+                        ethnicity:'',
+                        phone_num:'',
+                        emer_num:'',
+                        email:'',
+                        email2:'',
+                        prim_language:'',
+                        addr:'',
+                        city:'',
+                        st:'',
+                        zip:'',
+                        country:''
+                    }
+                    }).catch(error => {
+                        console.log(error)
+                    });
+                }
+            } 
+            
+        }
+    </script>
+
+    <style scoped>
+    h1 {
+    font-size: 26px;
+    text-align: center;
+    margin-top: 80px;
+    }
+    form {
+    margin-top: 50px;
+    }
+    #create{
+    background-color: #A6A7A8;
+    }
+    #create:hover{
+    background-color: #2E5902;
+    color: white;
+    }
 </style>
