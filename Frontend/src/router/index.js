@@ -115,9 +115,9 @@ const router = createRouter({
         component: ()=> import('../views/organizations/peoples.vue')
       },
       {
-        path:'/applicants',
-        name:'applicants',
-        component: ()=> import('../views/services/applicants.vue')
+        path:'/client-orgs',
+        name:'client-orgs',
+        component: ()=> import('../views/clients/ClientOrgs.vue')
       },
       {
         path:'/servicereps',
