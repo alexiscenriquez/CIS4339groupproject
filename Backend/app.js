@@ -13,6 +13,7 @@ const employeeRouter = require('./routes/employees')
 const volunteerRouter = require('./routes/volunteers')
 const eventRouter = require('./routes/events')
 const servicesRouter = require('./routes/services')
+const reportsRouter = require('./routes/reports')
 
 // set up connection to mongodb with atlas
 mongoose
@@ -35,6 +36,7 @@ app.use('/employees', employeeRouter)
 app.use('/volunteers', volunteerRouter) 
 app.use('/events', eventRouter)
 app.use('/services', servicesRouter)
+app.use('/reports', reportsRouter)
 
 //Declare the port number
 const PORT = process.env.PORT || 8080; 
