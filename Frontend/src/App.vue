@@ -68,6 +68,30 @@
                 </ul>
               </li>
               <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Events</a>
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                  <li>
+                    <a class="dropdown-item"><router-link class="nav-link" to="/new-event">Create</router-link></a>
+                  </li>
+                  
+                  <li>
+                    <a class="dropdown-item"><router-link class="nav-link" to="/events">View</router-link></a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services</a>
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                  <li>
+                    <a class="dropdown-item"><router-link class="nav-link" to="/new-service">Create</router-link></a>
+                  </li>
+                  
+                  <li>
+                    <a class="dropdown-item"><router-link class="nav-link" to="/services">View</router-link></a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Reports</a>
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                   <li>
