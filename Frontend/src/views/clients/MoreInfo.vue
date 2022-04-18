@@ -2,15 +2,15 @@
     <main>
         <h1>Client #{{clients.cid}}</h1>
         <br>
-        <fieldset class='form-control mb-5'>
-            <div class='row-mb-3'>
-                <div  class='container col-sm-6'>
-                    <td><router-link :to="{name: 'clients', params: { id: clients.cid }}" id="flex" class="btn btn-secondary ">Clients View</router-link></td>
-                    <td><router-link :to="{name: 'clients_edit', params: { id: clients.cid }}" id="flex" class="btn btn-secondary ">Edit Client</router-link></td>
-                    <td><button @click.prevent="del_client(clients.cid)" id="flex" class="btn btn-secondary">Delete Client</button></td>
+        
+           
+                <div class='wrapper'>
+                    <td><router-link :to="{name: 'clients', params: { id: clients.cid }}" id="" class="btn btn-secondary ">Clients View</router-link></td>
+                    <td><router-link :to="{name: 'clients_edit', params: { id: clients.cid }}" id="" class="btn btn-secondary ">Edit Client</router-link></td>
+                    <td><button @click.prevent="del_client(clients.cid)" id="" class="btn btn-secondary">Delete Client</button></td>
                 </div>  
-            </div>
-        </fieldset>
+          
+   
     
         <div class="row justify-content-center">
             
@@ -254,12 +254,11 @@
 </script>
 
 <style>
-#flex {
-    padding:10px 3px 10px 3px;
-    background-color:#FEC7FD;
-    display:inline-block;
-    border-radius: 10px;
-    margin-bottom: 10px;
+.wrapper {
+
+    display:flex;
+    justify-content: space-between;
+   
 
 }
 
