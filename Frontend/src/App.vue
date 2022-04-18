@@ -41,6 +41,13 @@
                   <li>
                     <a class="dropdown-item"><router-link class="nav-link" to="/clients">View</router-link></a>
                   </li>
+                  <li>
+                    <a class="dropdown-item">
+                      <router-link class="nav-link" to="/new-org">
+                        Organizations</router-link
+                      >
+                    </a>
+                  </li>
                 </ul>
               </li>
               <li class="nav-item dropdown">
