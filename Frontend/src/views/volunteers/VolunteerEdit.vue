@@ -36,7 +36,7 @@
                 </div>
                 <div class='row mb-4'>
                     <div class="col-sm-4">
-                        <label>Gender</label>
+                        <label>*Gender</label>
                         <select class='form-select' v-model="volunteers.gender" required>
                                     <option disabled value=''>Select option</option>
                                     <option>Male</option>
@@ -47,7 +47,7 @@
                     </div>
 
                     <div class="col-sm-4">
-                        <label>Ethnicity</label>
+                        <label>*Ethnicity</label>
                         <select class='form-select' v-model="volunteers.ethnicity" required>
                                     <option disabled value="">Select option</option>
                                     <option>White</option>
