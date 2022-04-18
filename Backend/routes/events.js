@@ -157,6 +157,45 @@ router.post('/del-client/:evid', (req, res, next) =>{
   )
 })
 
+//adds organization to event
+router.post('/add-org/:evid', (req, res, next) =>{
+  eventsModel.findOneAndUpdate(
+      {
+          evid:parseInt(req.params.evid)
+      },
+      {
+          $push:{'organizations.orgid':req.body.id}
+      },
+      (error, results) => {
+          if(error){
+              return next(error)
+          }else{
+              res.send('Added organization to event')
+              console.log('Added organization to event')
+          }
+      }
+  )
+})
+
+//remove client from event
+router.post('/del-org/:evid', (req, res, next) =>{
+  eventsModel.findOneAndUpdate(
+      {
+          evid:parseInt(req.params.evid)
+      },
+      {
+          $pull:{'organizations.orgid':req.body.id}
+      },
+      (error, results) =>{
+          if(error){
+              return next(error)
+          }else{
+              res.send('Removed organization from event')
+              console.log('Removed organization from event')
+          }
+      }
+  )
+})
 //get event and attendee information
 router.get("/event-attendees/:evid", (req, res, next) => {
   //join documents to get volunteers, clients, employees data
