@@ -36,13 +36,28 @@
                 </div>
                 <div class='row mb-4'>
                     <div class="col-sm-4">
-                        <label>Gender</label>
-                        <input type="text" class="form-control" v-model="volunteers.gender">
+                        <label>*Gender</label>
+                        <select class='form-select' v-model="volunteers.gender" required>
+                                    <option disabled value=''>Select option</option>
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                    <option>Other</option>
+                                    <option>Prefer not to disclose</option>
+                            </select>
                     </div>
 
                     <div class="col-sm-4">
-                        <label>Ethnicity</label>
-                        <input type="text" class="form-control" v-model="volunteers.ethnicity">
+                        <label>*Ethnicity</label>
+                        <select class='form-select' v-model="volunteers.ethnicity" required>
+                                    <option disabled value="">Select option</option>
+                                    <option>White</option>
+                                    <option>Black/African American</option>
+                                    <option>American Indian or Alaska Native</option>
+                                    <option>Asian</option>
+                                    <option>Native Hawaiian or Other Pacific Islander</option>
+                                    <option>Other</option>
+                                    <option>Prefer not to disclose</option>
+                            </select>
                     </div>
                     <div class="col-sm-4">
                         <label>Primary Language</label>
