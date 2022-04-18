@@ -231,6 +231,15 @@ let clientSchema = new Schema({
             type:Number
           }
         ]
+      },
+      organizations:
+      {
+        orgid:
+        [
+          {
+            type: Number
+          }
+        ]
       }
     }, {
       //Client Health Information
