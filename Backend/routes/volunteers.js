@@ -75,6 +75,43 @@ router.post('/del-event/:vid', (req, res, next) =>{
     )
 })
 
+router.post('/add-org/:vid', (req, res, next) =>{
+    volunteerModel.findOneAndUpdate(
+        {
+            vid:parseInt(req.params.vid)
+        },
+        {
+            $push:{'organizations.vid':parseInt(req.body.orgid)}
+        },(error, results)=>{
+            if(error){
+                return next(error)
+            }else{
+                res.send('added organization to volunteer')
+                console.log('added organization to volunteer')
+            }
+        }
+    )
+})
+
+// Remove Organization from Volunteer
+router.post('/del-org/:vid', (req, res, next) =>{
+    volunteerModel.findOneAndUpdate(
+        {
+            vid:parseInt(req.params.vid)
+        },
+        {
+            $pull:{'organizations.vid':parseInt(req.body.orgid)}
+        },(error, results)=>{
+            if(error){
+                return next(error)
+            }else{
+                res.send('deleted organization from volunteer')
+                console.log('deleted organization from volunteer')
+            }
+        }
+    )
+})
+
 
 
 //get volunteer-event attendees
