@@ -66,6 +66,13 @@
                       ></a
                     >
                   </li>
+                  <li>
+                    <a class="dropdown-item">
+                      <router-link class="nav-link" to="/new-org">
+                        Organizations</router-link
+                      >
+                    </a>
+                  </li>
                 </ul>
               </li>
               <!-- view dropdown -->
@@ -113,6 +120,13 @@
                     <a class="dropdown-item"
                       ><router-link class="nav-link" to="/events"
                         >Events</router-link
+                      ></a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item"
+                      ><router-link class="nav-link" to="/organizations"
+                        >Organizations</router-link
                       ></a
                     >
                   </li>

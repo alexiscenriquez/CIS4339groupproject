@@ -85,9 +85,34 @@ const router = createRouter({
         component: ()=> import('../views/volunteers/NewVolunteer.vue')
       },
       {
+        path:'/organizations',
+        name:'organizations',
+        component: ()=> import('../views/organizations/OrganizationsView.vue')
+      },
+      {
+        path: "/org_edit",
+        name: "org_edit",
+        component: () => import("../views/organizations/OrganizationsEdit.vue"),
+      },
+      {
+        path:'/new-org',
+        name:'new-org',
+        component: ()=> import('../views/organizations/NewOrganization.vue')
+      },
+      {
         path:'/attendees',
         name:'attendees',
         component: ()=> import('../views/events/attendees.vue')
+      },
+      {
+        path:'/offers',
+        name:'offers',
+        component: ()=> import('../views/organizations/offers.vue')
+      },
+      {
+        path:'/peoples',
+        name:'peoples',
+        component: ()=> import('../views/organizations/peoples.vue')
       },
       {
         path:'/applicants',
@@ -151,8 +176,8 @@ const router = createRouter({
       component:()=>import('../views/volunteers/VolunteerInfo.vue')
     },
     {path:'/seemore-emp',
-  name:'seemore-emp',
-component:()=>import('../views/Employees/SeeMore-emp.vue')}
+    name:'seemore-emp',
+    component:()=>import('../views/Employees/SeeMore-emp.vue')}
   ]
 })
 

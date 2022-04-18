@@ -3,7 +3,7 @@ const router = express.Router();
 const eventsModel = require("../models/events");
 const volunteerModel = require('../models/volunteers')
 
-//{CREATE} get all info from events
+//{READ} get all info from events
 router.get("/", (req, res, next) => {
   eventsModel.find({}, (err, data) => {
     if (err) {
