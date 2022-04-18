@@ -23,6 +23,15 @@ let servicesSchema = new Schema({
             type:Number
           }
         ]
+    },
+    organizations:
+    {
+      orgid:
+        [
+          {
+            type:Number
+          }
+        ]
     }
   }, {
     collection: 'services'
