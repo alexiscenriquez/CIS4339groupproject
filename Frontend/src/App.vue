@@ -20,120 +20,51 @@
             <ul class="navbar-nav">
               
               <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarDarkDropdownMenuLink"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Create
-                </a>
-                <ul
-                  class="dropdown-menu dropdown-menu-dark"
-                  aria-labelledby="navbarDarkDropdownMenuLink"
-                >
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Employees</a>
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                   <li>
-                    <a class="dropdown-item" href="#">
-                      <router-link class="nav-link" to="/new-client">
-                        Client</router-link
-                      ></a
-                    >
+                    <a class="dropdown-item"><router-link class="nav-link" to="/new-emp">Create</router-link></a>
                   </li>
+                  
                   <li>
-                    <a class="dropdown-item">
-                      <router-link class="nav-link" to="/new-emp">Employees</router-link>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item">
-                      <router-link class="nav-link" to="/new-volunteers">
-                        Volunteers</router-link
-                      >
-                    </a>
-                  </li>
-
-                  <li><a class="dropdown-item" href="#">
-                    <router-link class="nav-link" to="/new-service">
-                    Services
-                    </router-link></a>
-                    </li>
-                  <li>
-                    <a class="dropdown-item"
-                      ><router-link class="nav-link" to="/new-event"
-                        >Events</router-link
-                      ></a
-                    >
+                    <a class="dropdown-item"><router-link class="nav-link" to="/employees">View</router-link></a>
                   </li>
                 </ul>
               </li>
-              <!-- view dropdown -->
               <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarDarkDropdownMenuLink"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  View
-                </a>
-                <ul
-                  class="dropdown-menu dropdown-menu-dark"
-                  aria-labelledby="navbarDarkDropdownMenuLink"
-                >
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Clients</a>
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                   <li>
-                    <a class="dropdown-item"
-                      ><router-link class="nav-link" to="/clients"
-                        >Clients</router-link
-                      ></a
-                    >
+                    <a class="dropdown-item"><router-link class="nav-link" to="/new-client">Create</router-link></a>
                   </li>
-                  <li><a class="dropdown-item" >
-                   <router-link class="nav-link" to="/employees"
-                        >Employees</router-link
-                      ></a></li>
+                  
                   <li>
-                    <a class="dropdown-item"
-                      ><router-link class="nav-link" to="/volunteers"
-                        >Volunteers</router-link
-                      ></a
-                    >
-                  </li>
-                  <li>
-                    <a class="dropdown-item"
-                      ><router-link class="nav-link" to="/services"
-                        >Services</router-link
-                      ></a
-                    >
-                  </li>
-                  <li>
-                    <a class="dropdown-item"
-                      ><router-link class="nav-link" to="/events"
-                        >Events</router-link
-                      ></a
-                    >
+                    <a class="dropdown-item"><router-link class="nav-link" to="/clients">View</router-link></a>
                   </li>
                 </ul>
               </li>
-              
-              <li class="nav-item">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Volunteers</a>
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                  <li>
+                    <a class="dropdown-item"><router-link class="nav-link" to="/new-volunteers">Create</router-link></a>
+                  </li>
+                  
+                  <li>
+                    <a class="dropdown-item"><router-link class="nav-link" to="/volunteers">View</router-link></a>
+                  </li>
+                </ul>
+              </li>
+            
+            <li class="nav-item">
                 <a class="nav-link" href="#">About</a>
               </li>
-              <!-- search bar -->
-              <!-- <div class="input-group">
-            <div class="form-outline">
-              <input type="search" id="form1" class="form-control" />
-              <label class="form-label" for="form1">Search</label>
-            </div>
-            <button type="button" class="btn btn-primary">Search</button>    
-          </div> -->
             </ul>
           </div>
+        
         </div>
       </div>
+    
     </nav>
 
     <!-- Router view - our main view below the navigation -->
