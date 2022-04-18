@@ -201,6 +201,45 @@ router.post('/add-event/:employeeID', (req, res, next) =>{
   )}
 
 )
+
+router.post('/add-org/:employeeID', (req, res, next) =>{
+  empModel.findOneAndUpdate(
+    {employeeID: parseInt(req.params.employeeID)},
+    {
+      $push: {'organizations.orgid':req.body.id}
+    },
+    (error, results)  =>{
+      if(error){
+        console.log(error)
+        return next(error);
+      }else{
+        res.send('added organization to employee')
+        console.log('added organization to employee')
+      }
+    }
+  )}
+
+)
+
+router.post("/del-org/:employeeID", (req, res, next) => {
+  empModel.findOneAndUpdate(
+    { employeeID: parseInt(req.params.employeeID) },
+    {
+      $pull: { "organizations.orgid": req.body.id },
+    },
+    (error, results) => {
+      if (error) {
+        console.log(error);
+        return next(error);
+      } else {
+        res.send("Removed organization from employee.");
+        console.log("Removed organization from employee.");
+      }
+    }
+  );
+});
+
+
   
 
 module.exports = router;
