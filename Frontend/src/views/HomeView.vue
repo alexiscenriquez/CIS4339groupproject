@@ -22,7 +22,7 @@ export default {
     <div class="wrapper">
       
       <!-- <HelloWorld msg="You did it!" /> -->
-      <HelloWorld :msg="msg" />
+      <!-- <HelloWorld :msg="msg" /> -->
       
     </div>
     <!-- <Footer /> -->
