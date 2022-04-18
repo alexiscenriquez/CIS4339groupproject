@@ -109,6 +109,51 @@ router.get('/client-history/:cid', (req, res, next)=>{
     });
 });
 
+// get specified history of clients organizations
+router.get('/client-orgs/:cid', (req, res, next)=>{
+    //joining the data for employees and services
+    clientsModel.aggregate(
+    [
+        {
+            $match:{
+              cid:parseInt(req.params.cid)
+            }
+          },
+        {
+            $lookup:
+                {
+                from:'organizations',
+                localField:'organizations.orgid',
+                foreignField:'orgid',
+                as:"organizations",
+                }
+        
+             
+        },
+
+             {
+            //project allows for data retrieval specification (0 = no, 1= yes)
+            $project:{
+                '_id':0,
+                'cid':1, 
+                'employeedID':1,
+                'first_name':1,
+                'mid_name':1,
+                'last_name':1,
+                'phone_number':1,
+                'organizations.orgid':1,
+                'organizations.org_name':1, 
+            }
+        } 
+    ],(error, results)=>{
+        if(error){
+            return next(error)
+        }else{
+            res.json(results)
+        }
+    });
+});
+
 
 //{UPDATE} Updates Client Data
 router.put('/update/:cid', (req, res)=>{
@@ -209,8 +254,48 @@ router.post('/add-service/:cid', (req, res, next) =>{
             if(error){
                 return next(error)
             }else{
-                res.send('Removed service from event')
-                console.log('Removed service from event')
+                res.send('Removed service from client')
+                console.log('Removed service from client')
+            }
+        }
+    )
+  })
+
+  //adding a client to a organization
+router.post('/add-org/:cid', (req, res, next) =>{
+    clientsModel.findOneAndUpdate(
+        {
+            cid:parseInt(req.params.cid)
+        },
+        {
+            $push:{'organizations.orgid':req.body.id}
+        },
+        (error, results) => {
+            if(error){
+                return next(error)
+            }else{
+                res.send('Added client to organization')
+                console.log('Added client to organization')
+            }
+        }
+    )
+  })
+
+  //Remove Client from Organization
+  router.post('/del-org/:cid', (req, res, next) =>{
+    clientsModel.findOneAndUpdate(
+        {
+            cid:parseInt(req.params.cid)
+        },
+        {
+            $pull:{'organizations.orgid':req.body.id}
+        },
+        (error, results) =>{
+            if(error){
+                return next(error)
+            }else{
+                res.send('Removed client from orrganization')
+                console.log('Removed client from organizations')
             }
         }
     )
