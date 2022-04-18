@@ -1,6 +1,6 @@
 <template>
   <h1>Edit Employee</h1>
-  <form @submit.prevent="handleSubmitForm">
+  <form @submit.prevent="handleUpdateForm">
     <fieldset class="form-control mb-5">
       <legend>Personal Information</legend>
 
@@ -35,7 +35,7 @@
             type="date"
             class="form-control"
             name="Birthday"
-            v-model="employees.birthday"
+            v-model="date"
             required
           />
         </div>
@@ -208,8 +208,7 @@
 
     <fieldset
       class="form-control mb-5"
-      v-for="eContacts in employees.eContact"
-      :key="eContacts.fName"
+  
     >
       <legend>Emergency Contact</legend>
       <label>Contact 1</label>
@@ -364,7 +363,7 @@
         </div>
       </div>
     </fieldset>
-    <button class="btn mb-5" id="create">Create</button>
+    <button class="btn mb-5" id="create">Update</button>
   </form>
 </template>
 
@@ -375,6 +374,7 @@ export default {
   data() {
     return {
       employees: {},
+      date: ""
     };
   },
   created() {
@@ -384,7 +384,8 @@ export default {
       .get(apiURL)
       .then((res) => {
         this.employees = res.data[0];
-        console.log(this.employees[0]);
+        this.date = res.data[0].birthday.slice(0, 10);
+       
       })
       .catch((error) => {
         console.log(error);
@@ -392,6 +393,8 @@ export default {
   },
   methods: {
     handleUpdateForm() {
+      this.employees.birthday = this.date;
+      
       let apiURL = `http://localhost:8080/employees/update/${this.$route.params.id}`;
 
       axios

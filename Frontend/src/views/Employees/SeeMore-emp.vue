@@ -1,0 +1,196 @@
+<template>
+  <main>
+    <h1 class="mb-5">{{ employees.firstName }} {{ employees.lastName }}</h1>
+    <div class="container mb-5">
+      <td>
+        <router-link
+          :to="{ name: 'employees', params: { id: employees.employeeID } }"
+          class="btn btn-success"
+          >View All Employees</router-link
+        >
+      </td>
+      <td>
+        <router-link
+          :to="{ name: 'edit-emp', params: { id: employees.employeeID } }"
+          class="btn btn-success"
+          >Edit Employee</router-link
+        >
+      </td>
+      <td>
+        <button
+          @click.prevent="deleteEmp(employees.employeeID)"
+          class="btn btn-danger"
+        >
+          Delete Employee
+        </button>
+      </td>
+    </div>
+ <div class="table1">
+        <table class="table table-light table-hover caption-top">
+          <caption>
+            <strong>Client Information</strong>
+          </caption>
+          <tbody>
+            <tr>
+              <th>Employee ID</th>
+              <td>{{ employees.employeeID }}</td>
+            </tr>
+            <tr>
+              <th>First Name</th>
+              <td>{{ employees.firstName }}</td>
+            </tr>
+            <tr>
+              <th>Last Name</th>
+              <td>{{ employees.lastName }}</td>
+            </tr>
+            <tr>
+              <th>Department</th>
+              <td>{{ employees.dept }}</td>
+            </tr>
+            <tr>
+              <th>Job Title</th>
+              <td>{{ employees.jdesc }}</td>
+            </tr>
+            <tr>
+              <th>Mobile Number</th>
+              <td>{{ employees.phone }}</td>
+            </tr>
+            <tr>
+              <th>Home Number</th>
+              <td>{{ employees.home }}</td>
+            </tr>
+            <tr>
+              <th>Primary Email</th>
+              <td>{{ employees.pEmail }}</td>
+            </tr>
+            <tr>
+              <th>Secondary Email</th>
+              <td>{{ employees.sEmail }}</td>
+            </tr>
+            <tr>
+              <th>Address</th>
+              <td>{{ employees.address }}</td>
+            </tr>
+            <tr>
+              <th>City</th>
+              <td>{{ employees.city }}</td>
+            </tr>
+            <tr>
+              <th>State</th>
+              <td>{{ employees.state }}</td>
+            </tr>
+            <tr>
+              <th>County</th>
+              <td>{{ employees.county }}</td>
+            </tr>
+            <tr>
+              <th>Zip Code</th>
+              <td>{{ employees.zip }}</td>
+            </tr>
+            <tr>
+              <th>Gender</th>
+              <td>{{ employees.gender }}</td>
+            </tr>
+            <tr>
+              <th>Race</th>
+              <td>{{ employees.race }}</td>
+            </tr>
+            <tr>
+              <th>Hispanic</th>
+              <td>{{ employees.hispanic ? "Yes" : "No" }}</td>
+            </tr>
+    
+            <tr>
+              <th>Language(s)</th>
+              <td>{{ employees.language.join(", ") }}</td>
+            </tr>
+            <tr>
+              <th>Highest Grade</th>
+              <td>{{ employees.hGrade }}</td>
+            </tr>
+            <tr>
+              <th>Degree</th>
+              <td>{{ employees.degree }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+    <table class="table table-light table-sm caption-top">
+      <caption>
+        <strong>Emergency Contacts</strong>
+      </caption>
+
+      <thead class="thead-dark">
+        <th>Name</th>
+        <th>Phone Number</th>
+      </thead>
+      <tbody>
+        <tr
+          v-for="(contacts, index) in employees.eContact"
+          :index="index"
+          :key="index"
+        >
+          <td>{{ contacts.fName }} {{ contacts.lName }}</td>
+          <td>{{ contacts.phone }}</td>
+        </tr>
+      </tbody>
+    </table>
+ </div>
+  </main>
+</template>
+
+<script>
+import axios from "axios";
+
+export default {
+  data() {
+    return {
+      employees: {},
+    };
+  },
+  created() {
+    let apiURL = `http://localhost:8080/employees/find/${this.$route.params.id}`;
+    axios
+      .get(apiURL)
+      .then((res) => {
+        this.employees = res.data[0];
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
+  methods: {
+    deleteEmp(id) {
+      let apiURL = `http://localhost:8080/employees/del/${id}`;
+    
+      if (window.confirm("Are you sure you want to delete?")) {
+        axios
+          .delete(apiURL)
+
+          .then(() => {
+            this.$router.push("/employees");
+          
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+    },
+  },
+};
+</script>
+<style scoped>
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+.table1  th, .table1    td{
+  background-color: rgba(27, 27, 27, 0.021);
+}
+
+tr,
+th,
+td {
+  border: none;
+}
+</style>

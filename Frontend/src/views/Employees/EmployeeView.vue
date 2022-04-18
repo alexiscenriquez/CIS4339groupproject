@@ -1,6 +1,8 @@
 <template>
   <main>
     <h1 class="text-center mb-5">Employees</h1>
+
+ <router-link class="btn btn-primary" to="/new-emp">Create new employee</router-link>
     <div class="table-responsive">
       <table class="table table-light">
         <thead class="table-light">
@@ -12,10 +14,9 @@
             <th>Phone</th>
            
    
-            <th>Primary Email</th>
          
             <th>Department</th>
-            <th>Job Description</th>
+          
            
             <th colspan="3">Actions</th>
           </tr>
@@ -31,11 +32,13 @@
             <td>{{ employee.phone }}</td>
          
            
-            <td>{{ employee.pEmail }}</td>
+          
            
             <td>{{ employee.dept }}</td>
-            <td>{{ employee.jDesc }}</td>
-        
+         
+        <td>
+          <router-link :to="{name:'seemore-emp',params:{id:employee.employeeID}}" class="btn btn-success">See More</router-link>
+        </td>
             <td>
               <router-link :to="{name:'events-clients',params:{id:employee.employeeID}}" class="btn btn-success">Events/Clients</router-link>
             </td>
@@ -107,6 +110,10 @@ export default {
 .btn {
   width: fit-content;
 
+}
+
+.btn router-link{
+  color: white;
 }
 th {
   text-align: center;
