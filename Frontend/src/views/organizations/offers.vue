@@ -1,0 +1,228 @@
+<script>
+    import axios from 'axios'
+    export default{
+        data(){
+            return{
+                organization:[],
+                service:[],
+                event:[],
+                new_sid:{id:''},
+                new_evid:{id:''},
+                active: false
+            }
+        },
+        created(){
+            let apiURL = `http://localhost:8080/organizations/organization-offers/${this.$route.params.id}`;
+            axios.get(apiURL).then(res => {
+                this.organization = res.data[0];
+                this.service = res.data[0].services;
+                this.event = res.data[0].events;
+                
+            }).catch(error=>{
+                console.log(error)
+            });
+        },
+        methods:{
+            rem_service(ID){
+                let data = {"id":ID}
+                let data2 = {"id":this.$route.params.id}
+                let apiURL = `http://localhost:8080/organizations/del-service/${this.$route.params.id}`
+                let indexOfArrayItem = this.service.findIndex(i=>i.sid === ID);
+                
+                if(window.confirm('Remove service from organization?')){
+                    axios.post(apiURL, data
+                    ).then(()=>{
+                        this.service.splice(indexOfArrayItem, 1);
+                    }).catch(error => {
+                        console.log(error)
+                    })
+                    //remove from organizations table
+                    let apiURL2 = `http://localhost:8080/services/del-org/${ID}`
+                    axios.post(apiURL2, data2).then(()=>{
+                        
+                    }).catch(error =>{
+                        console.log(error)
+                    })
+                }
+            },
+            rem_event(ID){
+                let data = {"id":ID}
+                let data2 = {"id":this.$route.params.id}
+                let apiURL = `http://localhost:8080/organizations/del-event/${this.$route.params.id}`
+                let indexOfArrayItem = this.event.findIndex(i=>i.evid === ID);
+                let apiURL2 = `http://localhost:8080/events/del-org/${ID}`
+                
+                if(window.confirm('Remove event from organization?')){
+                    //remove from events collection
+                    axios.post(apiURL, data
+                    ).then(()=>{
+                        this.event.splice(indexOfArrayItem, 1);
+                    }).catch(error => {
+                        console.log(error)
+                    })
+
+                    //remove from employees table
+                    axios.post(apiURL2, data2).then(()=>{
+                        
+                    }).catch(error =>{
+                        console.log(error)
+                    })
+                }
+            },
+            // add volunteers to events
+            add_service() {
+                
+                let dis = this.new_sid.id
+                let data2 = {"id":this.$route.params.id}
+                let apiURL = `http://localhost:8080/organizations/add-service/${this.$route.params.id}`;
+                let apiURL2 = `http://localhost:8080/services/add-org/${dis}`
+                axios.post(apiURL, this.new_sid).then(() => {
+                    //changing the view to the list
+                    this.$router.push('/organizations')
+                    // this.volunteer.push(idv)
+                  this.new_vid = {
+                    id: ''
+                  }
+                }).catch(error => {
+                    console.log('line 59 attendees')
+                    console.log(error)
+                });
+                axios.post(apiURL2, data2).then(()=>{
+                    
+                }).catch(error =>{
+                    console.log(error)
+                })
+            },
+            //add employees to events
+            add_event() {
+                let vide = this.new_evid.id
+                let data2 = {"id":this.$route.params.id}
+                let apiURL = `http://localhost:8080/organizations/add-event/${this.$route.params.id}`;
+                
+                axios.post(apiURL, this.new_evid).then(() => {
+                    //changing the view to the list
+                    this.$router.push('/organizations')
+                  this.new_evid = {
+                    id: ''
+                  }
+                }).catch(error => {
+                    console.log(error)
+                });
+
+                let apiURL2 = `http://localhost:8080/events/add-org/${vide}`
+                axios.post(apiURL2, data2).then(()=>{
+                    // this.employee.push(ide)
+                }).catch(error =>{
+                    console.log(error)
+                })
+            },
+        } 
+    }
+</script>
+
+<template>
+    <div>
+        <h1>Organization #{{organization.orgid}}</h1>
+        <br>
+        <fieldset class='form-control mb-5'>
+            <legend><strong>{{organization.org_name}}</strong></legend>
+                <div class='row mb-3'>
+                    <div class='col-sm-3'>
+                        <label for="" class='form-label'>Organization</label>
+                        <input type="text" class='form-control' v-model='organization.org_name' disabled>
+                    </div>
+                    <div class='col-sm-4'>
+                        <form @submit.prevent='add_service'>
+                            <div class='form-outline'>
+                                <input type="number" id='form14' class='form-control' v-model='new_sid.id'  required>
+                                <div class='form-helper'>SID#</div>
+                                <button class='btn btn-secondary'>Add service</button>
+                            </div>
+                        </form> 
+                    </div>
+                    
+                    <div class='col-sm-4'>
+                        <form @submit.prevent='add_event'>
+                        <div class='form-group'>
+                            <input type="number" class='form-control' v-model='new_evid.id'  required>
+                            <div class='form-helper'>EVID#</div>
+                            <button class='btn btn-secondary'>Add Event</button>
+                        </div>
+                        </form> 
+                    </div>
+                </div>
+        </fieldset> 
+
+        <!-- Volunteer table -->
+        <div class="row justify-content-center">
+            <table class="table table-light table-hover caption-top">
+                <caption><strong>Services</strong></caption>
+                <thead class="table-dark">
+                    <tr>
+                        <th>SID#</th>
+                        <th>Name</th>
+                        <th>Renewal</th>
+                        <th>Notes</th>
+                        <th></th>    
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="s in service" :key="s.vid">
+                        <td>{{s.sid }}</td>
+                        <td>{{s.name }}</td>
+                        <td>{{s.renewal }}</td>
+                        <td>{{s.notes }}</td>
+                        <td><button @click.prevent="rem_service(s.sid)" class="btn btn-secondary">Remove</button></td>
+                
+                    </tr> 
+                </tbody>
+            </table>
+        </div>
+    
+        <div class="row justify-content-center">
+           
+            <table class="table table-light table-hover caption-top">
+                <caption><strong>Events</strong></caption>
+                <thead class="table-dark">
+                    <tr>
+                        <th>EVID#</th>
+                        <th>Name</th>
+                        <th>Last Name</th>
+                        <th>Date</th>
+                        <th></th>    
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="ev in event" :key="ev.evid">
+                        <td>{{ev.evid }}</td>
+                        <td>{{ev.ev_name }}</td>
+                        <td>{{ev.ev_host }}</td>
+                        <td>{{ev.ev_date}}</td>
+                        <td><button @click.prevent="rem_event(ev.evid)" class="btn btn-secondary">Remove</button></td>
+                    </tr> 
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    
+</template>
+
+<style scoped>
+h1 {
+  font-size: 26px;
+  text-align: center;
+  margin-top: 80px;
+}
+form {
+  margin-top: 50px;
+}
+#create{
+  background-color: #A6A7A8;
+}
+#create:hover{
+  background-color: #2E5902;
+  color: white;
+}
+</style>
+
