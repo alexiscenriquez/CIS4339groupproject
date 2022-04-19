@@ -111,7 +111,7 @@
                     <div class="col-sm-4">
                         <form @submit.prevent='add_organization'>
                             <div class="form-outline">
-                                <select v-model='new_orgid.id'>
+                                <select v-model='new_orgid.id' class="form-control">
                                     <option value="" selected disabled>Choose an Organization</option>
                                     <option v-for="x in fullorganizations" :value="x.orgid" :key="x.orgid">{{x.orgid}}{{" - "}}{{x.org_name}}</option>
                                 </select>
