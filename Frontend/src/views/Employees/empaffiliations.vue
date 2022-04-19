@@ -172,7 +172,7 @@ export default {
       };
        let data2 = { id: this.$route.params.id };
       let apiURL = `http://localhost:8080/employees/del-org/${this.$route.params.id}`;
-      let apiURL2=`http://localhost:8080/employees/del-emp/${id}`
+      let apiURL2=`http://localhost:8080/organizations/del-emp/${id}`
       if (window.confirm("Are you sure?")) {
         axios
           .post(apiURL, data)
