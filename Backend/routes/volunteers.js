@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router()
 const volunteerModel = require('../models/volunteers');
 const eventsModel = require('../models/events')
-const axios = require("axios")
+
 
 //get all data for volunteers
 router.get('/', (req, res, next) =>{
@@ -180,5 +180,7 @@ router.get('/events/:vid', (req, res, next)=>{
         }
     )
 })
+
+
 
 module.exports = router
