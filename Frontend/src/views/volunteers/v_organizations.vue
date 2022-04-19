@@ -1,24 +1,28 @@
 <script>
     import axios from 'axios'
+    import Footer from '../../components/footer.vue'
+
     export default{
+        components:{
+            Footer
+        },
         data(){
             return{
-                client:[],
-                //employee:[],
+                volunteer:[],
                 organization:[],
                 fullorganizations:[],
                 new_orgid:{id:''},
-                //new_eid:{id:''},
-                active: false
+                //fullorganizations:[],
+                //organization:[],
+                active: false,
 
             }
         },
         created(){
-            let apiURL = `http://localhost:8080/clients/client-orgs/${this.$route.params.id}`;
+            let apiURL = `http://localhost:8080/volunteers/events/${this.$route.params.id}`;
             let apiURL2 = `http://localhost:8080/organizations`;
             axios.get(apiURL).then(res => {
-                this.client = res.data[0];
-                //this.employee = res.data[0].employees;
+                this.volunteer = res.data[0];
                 this.organization = res.data[0].organizations;
             }).catch(error=>{
                 console.log(error)
@@ -32,41 +36,39 @@
                 })
         },
         methods:{
-            rem_organization(ID){
-                let data = {
-                    "id":ID,
-                }
+            
+            del_organization(id){
+                let data = {"id":id}
                 let data2 = {"id":this.$route.params.id}
-                let apiURL = `http://localhost:8080/clients/del-org/${this.$route.params.id}`
-                let apiURL2 = `http://localhost:8080/organizations/del-client/${ID}`
-                let indexOfArrayItem = this.organization.findIndex(i=>i.orgid === ID);
                 
-                if(window.confirm('Remove Organization from Client?')){
-                    axios.post(apiURL, data
-                    ).then(()=>{
+                let apiURL = `http://localhost:8080/volunteers/del-org/${this.$route.params.id}`
+                let apiURL2 = `http://localhost:8080/organizations/del-vol/${id}`
+                let indexOfArrayItem = this.events.findIndex(i=>i.orgid === id);
+                
+                //delete form volunteers collection
+                if(window.confirm('Delete Organization from Client?')){
+                    axios.post(apiURL, data).then(()=>{
                         this.organization.splice(indexOfArrayItem, 1);
                     }).catch(error => {
                         console.log(error)
                     })
-
+                //delete from events table
                     axios.post(apiURL2, data2).then(()=>{
-                        
                     }).catch(error =>{
                         console.log(error)
                     })
-                }
 
-                
+                }
             },
-            add_organization() {
-                let rog = this.new_orgid.id
+            add_organization(){
+                let orgeee = this.new_orgid.id
                 let data = {"id":this.$route.params.id}
-                let apiURL = `http://localhost:8080/clients/add-org/${this.$route.params.id}`;
-                let apiURL2 = `http://localhost:8080/organizations/add-client/${rog}`
+                let apiURL = `http://localhost:8080/volunteers/add-org/${this.$route.params.id}`;
+                let apiURL2 = `http://localhost:8080/organizations/add-vol/${orgeee}`
                 
                 axios.post(apiURL, this.new_orgid).then(() => {
                     //changing the view to the list
-                  this.$router.push('/clients')
+                  this.$router.push('/volunteers')
                   this.new_orgid = {
                     id: ''
                   }
@@ -79,33 +81,33 @@
                 }).catch(error =>{
                     console.log(error)
                 })
+                
             }
-        } 
+        }
     }
-    
 </script>
 
 <template>
     <div>
-        <h1>Client #{{client.cid}}</h1>
+        <h1>Organizations for Volunteer#{{volunteer.vid}}</h1>
         <br>
         <fieldset class="form-control mb-5">
-            <legend><strong>{{client.first_name}}{{" "}}{{client.last_name}}</strong></legend>
+            <legend><strong>{{volunteer.first_name}}{{" "}}{{volunteer.last_name}}</strong></legend>
                 <div class="'row mb-3">
                     <div class="col-sm-2">
                         <label for="" class="form-label">First Name</label>
-                        <input type="text" class="'form-control" v-model="client.first_name" disabled>
+                        <input type="text" class="'form-control" v-model="volunteer.first_name" disabled>
                     </div>
                     <div class="col-sm-2">
                         <label for="" class="form-label">Last Name</label>
-                        <input type="text" class="'form-control" v-model="client.last_name" disabled>
+                        <input type="text" class="'form-control" v-model="volunteer.last_name" disabled>
                     </div>
                     <div class="col-sm-2">
                         <label for="" class="form-label">Phone Number</label>
-                        <input type="text" class="'form-control" v-model="client.phone_number" disabled>
+                        <input type="text" class="'form-control" v-model="volunteer.phone_num" disabled>
                     </div>
                 </div>
-                <td><router-link :to="{name: 'clients_edit', params: { id: client.cid }}" class="btn btn-secondary ">Edit</router-link></td>
+                <td><router-link :to="{name: 'volunteers_edit', params: { id: volunteer.vid }}" class="btn btn-secondary ">Edit</router-link></td>
                 <hr>
                 <div class="row mb-4">
                     <div class="col-sm-4">
@@ -126,7 +128,7 @@
             <caption><strong>Organizations</strong></caption>
             <thead class="table-dark">
                 <tr>
-                <th>Organization#</th>
+                <th>ORGANIZATION#</th>
                 <th>Name</th>
                 <th>Action</th>
                 </tr>
