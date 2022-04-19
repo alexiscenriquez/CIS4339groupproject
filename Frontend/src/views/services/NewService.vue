@@ -8,8 +8,28 @@
                     name: '',
                     renewal:'',
                     notes: ''
-                }
+                },
+                list:[],
+                two:[],
+                data:{}
             }
+        },
+        created(){
+            let id = ''
+            let apiURL = `http://localhost:8080/organizations`
+            axios.get(apiURL).then(res =>{
+                    this.list = res.data
+                }).catch(error =>{
+                    console.log(error)
+                })
+        
+            let api3 = `http://localhost:8080/events/last_id`
+                axios.get(api3).then(res =>{
+                    id = res.data[0].evid
+                    this.data.id = parseInt(id)+1
+                }).catch(error => {
+                    console.log(error)
+                });
         },
         methods: {
             handleSubmitForm() {
@@ -26,6 +46,15 @@
                 }).catch(error => {
                     console.log(error)
                 });
+
+                let apiURL2 = `http://localhost:8080/organizations/new-org/${this.two[1]}`
+                axios.post(apiURL2, this.data).then(res =>{
+                    console.log('line 52 newservice', this.data)
+                    this.data={}
+                }).catch(error => {
+                    console.log(error)
+                });
+            
             }
         } 
            
@@ -60,10 +89,9 @@
                     <label for="" class='form-label'>*Host</label>
                     <select class="form-select" aria-label="Default select example" v-model='two'>
                             <option value="" selected disabled>Choose an Organization</option>
-                            <option v-for="x in organizations" :value="[x.org_name,x.orgid]" :key="x.orgid">{{x.orgid}}{{" - "}}{{x.org_name}}</option>
+                            <option v-for="x in list" :value="[x.org_name,x.orgid]" :key="x.orgid">{{x.orgid}}{{" - "}}{{x.org_name}}</option>
                     </select>
-                    
-                </div>
+                    </div>
                 </div>
             </div>
                 <div class='col'>

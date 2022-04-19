@@ -169,5 +169,16 @@ router.delete('/del/:sid', (req, res, next)=> {
     })
 })
 
+router.get("/last_id", (req, res, next) => {
+    eventsModel.find({}, (err, data) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(data);
+        res.json(data);
+      }
+    }).sort({sid:-1}).limit(1);
+  });
+
 
 module.exports = router
