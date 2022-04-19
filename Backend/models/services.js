@@ -15,6 +15,9 @@ let servicesSchema = new Schema({
     notes:{
       type:String
     },
+    host:{
+      type:String
+    },
     applicants:
     {
       cid:

@@ -34,7 +34,7 @@
         methods: {
             handleSubmitForm() {
                 let apiURL = 'http://localhost:8080/services/new-service';
-                
+                this.services.host=this.two[0]
                 axios.post(apiURL, this.services).then(() => {
                     //changing the view to the list
                   this.$router.push('/services')
@@ -42,12 +42,13 @@
                     name: '',
                     renewal: '',
                     notes: ''
-                  }
+                  },
+                  this.two=[]
                 }).catch(error => {
                     console.log(error)
                 });
-
-                let apiURL2 = `http://localhost:8080/organizations/new-org/${this.two[1]}`
+                //add service to organization
+                let apiURL2 = `http://localhost:8080/organizations/add-service/${this.two[1]}`
                 axios.post(apiURL2, this.data).then(res =>{
                     console.log('line 52 newservice', this.data)
                     this.data={}
@@ -75,7 +76,7 @@
                 <div class='col'>
                     <label>*Renewal</label>
                     <div class="form-check">
-                    <input type="radio" class="form-check-input" id="Monthly" value="Monthly" v-model="services.renewal" checked>Monthly
+                    <input type="radio" class="form-check-input" id="Monthly" value="Monthly" v-model="services.renewal">Monthly
                     <label class="form-check-label" for="Monthly"></label>
                     <br>
                     <input type="radio" class="form-check-input" id="SemiAnually" value="SemiAnnually" v-model="services.renewal">SemiAnnually

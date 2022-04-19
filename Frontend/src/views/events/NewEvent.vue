@@ -36,12 +36,8 @@
                 });
         },
         methods: {
-             
             handleSubmitForm() {
-
                 this.event.ev_host=this.two[0]
-                console.log('line 42 NewEvent',this.two[1])
-                
                 this.event['organizations.orgid']=parseInt(this.two[1])
                 let apiURL = 'http://localhost:8080/events/new-event';
                 
@@ -61,8 +57,8 @@
                 }).catch(error => {
                     console.log(error)
                 });
+                //add event to organization
                 let apiURL2 = `http://localhost:8080/organizations/add-event/${this.two[1]}`
-                
                 axios.post(apiURL2, this.data).then(res =>{
                     console.log('line 65', this.data)
                     this.data={}
