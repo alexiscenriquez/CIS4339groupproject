@@ -143,6 +143,7 @@ export default {
     },
     addOrg() {
       let orgid = this.new_orgid.id;
+      console.log('line 140 empaffil', orgid, typeof(orgid))
       let data = { id: this.$route.params.id };
       let apiURL = `http://localhost:8080/employees/add-org/${this.$route.params.id}`;
       let apiURL2 = `http://localhost:8080/organizations/add-emp/${orgid}`;
@@ -265,7 +266,7 @@ export default {
         </tbody>
       </table>
     </div>
-    <form @submit-prevent="addOrg" class="mb-5 col-sm-6">
+    <form @submit.prevent="addOrg" class="mb-5 col-sm-6">
       <fieldset class="form-control">
         <legend>Organization</legend>
         <div>

@@ -11,30 +11,32 @@
                 },
                 list:[],
                 two:[],
-                data:{}
+                data:{},
+                num:''
             }
         },
         created(){
-            let id = ''
             let apiURL = `http://localhost:8080/organizations`
             axios.get(apiURL).then(res =>{
-                    this.list = res.data
+                this.list = res.data
                 }).catch(error =>{
                     console.log(error)
                 })
         
-            let api3 = `http://localhost:8080/events/last_id`
+            let api3 = `http://localhost:8080/counters/last_sid`
                 axios.get(api3).then(res =>{
-                    id = res.data[0].evid
-                    this.data.id = parseInt(id)+1
+                    this.num = res.data[0].seq+1
                 }).catch(error => {
                     console.log(error)
                 });
         },
         methods: {
             handleSubmitForm() {
-                let apiURL = 'http://localhost:8080/services/new-service';
                 this.services.host=this.two[0]
+                this.services['organizations.orgid']=parseInt(this.two[1])
+                this.data.id=this.num
+                let apiURL = 'http://localhost:8080/services/new-service';
+                
                 axios.post(apiURL, this.services).then(() => {
                     //changing the view to the list
                   this.$router.push('/services')
@@ -42,16 +44,18 @@
                     name: '',
                     renewal: '',
                     notes: ''
-                  },
-                  this.two=[]
+                  }
                 }).catch(error => {
                     console.log(error)
                 });
                 //add service to organization
                 let apiURL2 = `http://localhost:8080/organizations/add-service/${this.two[1]}`
+                
                 axios.post(apiURL2, this.data).then(res =>{
                     console.log('line 52 newservice', this.data)
-                    this.data={}
+                    this.data={},
+                    this.two=[]
+
                 }).catch(error => {
                     console.log(error)
                 });
