@@ -126,9 +126,7 @@ router.get('/client-orgs/:cid', (req, res, next)=>{
                 localField:'organizations.orgid',
                 foreignField:'orgid',
                 as:"organizations",
-                }
-        
-             
+                }  
         },
 
              {
