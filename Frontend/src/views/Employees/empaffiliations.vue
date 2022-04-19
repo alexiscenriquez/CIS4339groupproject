@@ -7,7 +7,7 @@ export default {
       client: [],
       event: [],
       organization: [],
-      fullorganization:[],
+      fullorganizations: [],
       new_cid: { id: "" },
       new_evid: { id: "" },
       new_orgid: { id: "" },
@@ -16,6 +16,7 @@ export default {
   },
   created() {
     let apiURL = `http://localhost:8080/employees/employee-clients-events/${this.$route.params.id}`;
+    let apiURL2 = `http://localhost:8080/organizations`;
     axios
       .get(apiURL)
       .then((res) => {
@@ -23,6 +24,15 @@ export default {
         this.client = res.data[0].clients;
         this.event = res.data[0].events;
         this.organization = res.data[0].organizations;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    axios
+      .get(apiURL2)
+      .then((res) => {
+        this.fullorganizations = res.data;
+        console.log(this.fullorganizations);
       })
       .catch((error) => {
         console.log(error);
