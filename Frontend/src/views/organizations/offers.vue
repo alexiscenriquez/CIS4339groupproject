@@ -6,6 +6,7 @@
                 organization:[],
                 service:[],
                 event:[],
+                fullservices:[],
                 new_sid:{id:''},
                 new_evid:{id:''},
                 active: false
@@ -13,14 +14,22 @@
         },
         created(){
             let apiURL = `http://localhost:8080/organizations/organization-offers/${this.$route.params.id}`;
+            let apiURL2 = `http://localhost:8080/services`;
             axios.get(apiURL).then(res => {
                 this.organization = res.data[0];
+                //this.employee = res.data[0].employees;
                 this.service = res.data[0].services;
                 this.event = res.data[0].events;
-                
             }).catch(error=>{
                 console.log(error)
             });
+
+            axios.get(apiURL2).then(res =>{
+                    this.fullservices = res.data
+                    console.log(this.fullservices)
+                }).catch(error =>{
+                    console.log(error)
+                })
         },
         methods:{
             rem_service(ID){
@@ -128,15 +137,19 @@
             <legend><strong>{{organization.org_name}}</strong></legend>
                 <div class='row mb-3'>
                     <div class='col-sm-3'>
-                        <label for="" class='form-label'>Organization</label>
+                        <label for="" class='form-label'>Organization Name</label>
                         <input type="text" class='form-control' v-model='organization.org_name' disabled>
+                        <router-link :to="{name: 'org_edit', params: { id: organization.orgid }}" class="btn btn-secondary ">Edit</router-link>
                     </div>
                     <div class='col-sm-4'>
                         <form @submit.prevent='add_service'>
-                            <div class='form-outline'>
-                                <input type="number" id='form14' class='form-control' v-model='new_sid.id'  required>
-                                <div class='form-helper'>SID#</div>
-                                <button class='btn btn-secondary'>Add service</button>
+                            <div>
+                                <select v-model='new_sid.id' class="form-control">
+                                    <option value="" selected disabled>Choose a Service</option>
+                                    <option v-for="x in fullservices" :value="x.sid" :key="x.sid">{{x.sid}}{{" - "}}{{x.name}}</option>
+                                </select>
+                                <div class='form-helper'>SID# - Name</div>
+                                <button class='btn btn-secondary'>Apply for Service</button>
                             </div>
                         </form> 
                     </div>
