@@ -7,35 +7,66 @@
                 event: {
                    ev_name: '',
                    ev_host: '',
-                   ev_date: '',
                    addr: '',
                    city:'',
                    st:'',
                    country:'',
                    zip:''
-                }
+                },
+                organizations:[],
+                two:[]
+                
             }
+        },
+        created(){
+            
+            let apiURL = `http://localhost:8080/organizations`
+            axios.get(apiURL).then(res =>{
+                    this.organizations = res.data
+                }).catch(error =>{
+                    console.log(error)
+                })
         },
         methods: {
             handleSubmitForm() {
+                this.event.ev_host=this.two[0]
                 let apiURL = 'http://localhost:8080/events/new-event';
-                
+                let data={'id':''}
+                let last_id = ''
+
                 axios.post(apiURL, this.event).then(() => {
                     //changing the view to the list
-                  this.$router.push('/events')
+                  
                   this.event = {
                     ev_name: '',
-                    ev_host: '',
                     ev_date: '',
                     addr: '',
                     city:'',
                     st:'',
                     country:'',
-                    zip:''
+                    zip:'',  
                   }
+                  this.two = []
                 }).catch(error => {
                     console.log(error)
                 });
+
+                let api3 = `http://localhost:8080/events/last_id`
+                axios.get(api3).then(res =>{
+                    last_id = res.data[0].evid
+                    data.id = parseInt(last_id)
+                }).catch(error => {
+                    console.log(error)
+                });
+
+                let apiURL2 = `http://localhost:8080/organizations/add-event/${this.two[1]}`
+                axios.post(apiURL2, data).then(res =>{
+                    console.log('line 65', data)
+                    this.$router.push('/events')
+                }).catch(error => {
+                    console.log(error)
+                });
+            
             }
         } 
            
@@ -55,8 +86,11 @@
                 </div>
                 
                 <div class='col-sm-4'>
-                    <label for="" class='form-label'>*Host</label>
-                    <input type="text" class='form-control' v-model="event.ev_host" required>
+                    <label for="" class='form-label'>*Host(Organization)</label>
+                        <select class="form-select" aria-label="Default select example" v-model='two'>
+                                <option value="" selected disabled>Choose an Organization</option>
+                                <option v-for="x in organizations" :value="[x.org_name,x.orgid]" :key="x.orgid">{{x.orgid}}{{" - "}}{{x.org_name}}</option>
+                        </select>
                 </div>
                 
                 <div class='col-sm-4'>
