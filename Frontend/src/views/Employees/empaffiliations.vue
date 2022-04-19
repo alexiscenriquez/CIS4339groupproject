@@ -171,7 +171,9 @@ export default {
       let data = {
         id: id,
       };
+       let data2 = { id: this.$route.params.id };
       let apiURL = `http://localhost:8080/employees/del-org/${this.$route.params.id}`;
+      let apiURL2=`http://localhost:8080/organizations/del-emp/${id}`
       if (window.confirm("Are you sure?")) {
         axios
           .post(apiURL, data)
@@ -179,6 +181,12 @@ export default {
             this.$router.push("/employees");
             this.organization.splice(indexOfArrayItem, 1);
           })
+          .catch((error) => {
+            console.log(error);
+          });
+               axios
+          .post(apiURL2, data2)
+          .then(() => {})
           .catch((error) => {
             console.log(error);
           });
@@ -271,7 +279,7 @@ export default {
         <legend>Organization</legend>
         <div>
           <label for="" class="form-label">Enter the Organization ID</label>
-          <select v-model="new_orgid.id" class="form-control">
+          <select v-model="new_orgid.id" class="form-control mb-3">
             <option value="" selected disabled>Choose an Organization</option>
             <option
               v-for="x in fullorganizations"
@@ -281,21 +289,22 @@ export default {
               {{ x.orgid }}{{ " - " }}{{ x.org_name }}
             </option>
           </select>
-          <button class="btn btn-primary">Add Organization</button>
+          <button class="btn btn-primary mb-3">Add Organization</button>
         </div>
       </fieldset>
     </form>
 
-    <div class="table-responsive mb">
+    <div class="table-responsive mb-3">
       <table class="table table-light">
         <thead class="table-dark">
           <tr>
             <th>Organization ID</th>
             <th>Organization Name</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="o in organization" :key="o.orgid">
+          <tr v-for="o in organization" :key="o.orgid" >
             <td>{{ o.orgid }}</td>
             <td>{{ o.org_name }}</td>
 

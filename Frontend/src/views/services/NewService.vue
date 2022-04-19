@@ -71,14 +71,14 @@
         <h1 class="text-center">Create Service</h1>
         <form @submit.prevent="handleSubmitForm">
         <fieldset class='form-control mb-5'>
-                <div>
-                    <label class='form-label' for="">*Name</label>
+                <div class="col-sm-4">
+                    <label class='form-label ' for="">*Name</label>
                     <input type="text" class='form-control' v-model='services.name' required>
                 </div>
             <br>
             <div class='row mb-4'>
-                <div class='col'>
-                    <label>*Renewal</label>
+                <div class='col mb-4 '>
+                    <label class="form-label">*Renewal</label>
                     <div class="form-check">
                     <input type="radio" class="form-check-input" id="Monthly" value="Monthly" v-model="services.renewal">Monthly
                     <label class="form-check-label" for="Monthly"></label>
@@ -86,11 +86,11 @@
                     <input type="radio" class="form-check-input" id="SemiAnually" value="SemiAnnually" v-model="services.renewal">SemiAnnually
                     <label class="form-check-label" for="SemiAnually"></label>
                     <br>
-                    <input type="radio" class="form-check-input" id="Annually" value="Yearly" v-model="services.renewal">Yearly  
+                    <input type="radio" class="form-check-input " id="Annually" value="Yearly" v-model="services.renewal">Yearly  
                     <label class="form-check-label" for="Annually"></label>
                 </div>
                 <div class='col'>
-                    <div class='col-sm-4'>
+                    <div class='col-sm-4 mt-4'>
                     <label for="" class='form-label'>*Host</label>
                     <select class="form-select" aria-label="Default select example" v-model='two'>
                             <option value="" selected disabled>Choose an Organization</option>

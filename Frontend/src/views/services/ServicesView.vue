@@ -13,8 +13,7 @@
                 <th>Host</th>
                 <th>Notes</th>
                 <th colspan="3">Actions</th>
-                <th></th>
-                <th></th>
+             
                 </tr>
             </thead>
             <tbody>

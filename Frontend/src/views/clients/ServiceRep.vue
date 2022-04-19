@@ -110,11 +110,12 @@
                 <div class="row mb-4">
                     <div class="col-sm-4">
                         <form @submit.prevent='add_service'>
-                            <div class="form-outline">
-                                <select v-model='new_sid.id'>
+                            <div>
+                                <select v-model='new_sid.id' class="form-control">
                                     <option value="" selected disabled>Choose a Service</option>
                                     <option v-for="x in fullservices" :value="x.sid" :key="x.sid">{{x.sid}}{{" - "}}{{x.name}}</option>
                                 </select>
+                                <div class='form-helper'>SID# - Name</div>
                                 <button class='btn btn-secondary'>Apply for Service</button>
                             </div>
                         </form>

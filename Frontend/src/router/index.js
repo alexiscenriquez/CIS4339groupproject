@@ -168,6 +168,11 @@ const router = createRouter({
         name:'v_events',
         component: ()=> import('../views/volunteers/v_events.vue')
       },
+      {
+        path:'/v_organizations',
+        name:'v_organizations',
+        component: ()=> import('../views/volunteers/v_organizations.vue')
+      },
     {
       path:'/events-clients',
       name:'events-clients',

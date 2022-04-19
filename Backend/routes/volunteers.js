@@ -75,6 +75,44 @@ router.post('/del-event/:vid', (req, res, next) =>{
     )
 })
 
+//ADD Organization to Volunteer
+router.post('/add-org/:vid', (req, res, next) =>{
+    volunteerModel.findOneAndUpdate(
+        {
+            vid:parseInt(req.params.vid)
+        },
+        {
+            $push:{'organizations.orgid':parseInt(req.body.id)}
+        },(error, results)=>{
+            if(error){
+                return next(error)
+            }else{
+                res.send('added organization to volunteer')
+                console.log('added organization to volunteer')
+            }
+        }
+    )
+})
+
+// REMOVES Organization from Volunteer
+router.post('/del-org/:vid', (req, res, next) =>{
+    volunteerModel.findOneAndUpdate(
+        {
+            vid:parseInt(req.params.vid)
+        },
+        {
+            $pull:{'organizations.orgid':parseInt(req.body.id)}
+        },(error, results)=>{
+            if(error){
+                return next(error)
+            }else{
+                res.send('deleted Organization from volunteer')
+                console.log('deleted Organization from volunteer')
+            }
+        }
+    )
+})
+
 //get volunteer-event attendees
 router.get('/event-attendees', (req, res, next)=>{
     //join documents to get events data
@@ -114,6 +152,45 @@ router.get('/event-attendees', (req, res, next)=>{
     });
 });
 
+//AGG Joins the Volunteer and Organization data
+router.get('/org-attendees/:vid', (req, res, next)=>{
+    //join documents to get organizations data
+    volunteerModel.aggregate([
+
+        {
+            $match:{
+              vid:parseInt(req.params.vid)
+            }
+          },
+        {
+            $lookup:{
+                from:'organizations',
+                localField:'organizations.orgid',
+                foreignField:'orgid',
+                as:'organizations'
+            }
+
+        },{
+            //get only specific fields
+        $project:{
+            'vid':1,
+            'first_name':1,
+            'mid_name':1,
+            'last_name':1,
+            'phone_num':1,
+            //'events':{$size:'$events'},
+            'organizations.orgid':1,
+            'organizations.org_name':1
+            }
+        }
+    ],(error, results)=>{
+        if(error){
+            return next(error)
+        }else{
+            res.json(results)
+        }
+    });
+});
 
 //{UPDATE} volunteer data
 router.put('/update/:vid', (req, res)=>{

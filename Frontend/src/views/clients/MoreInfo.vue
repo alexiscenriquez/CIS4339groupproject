@@ -1,13 +1,13 @@
 <template>
     <main>
-        <h1>Client #{{clients.cid}}</h1>
+        <h1>{{clients.first_name}} {{clients.last_name}} #{{clients.cid}}</h1>
         <br>
         
            
                 <div class='wrapper'>
                     <td><router-link :to="{name: 'clients', params: { id: clients.cid }}" id="" class="btn btn-secondary ">Clients View</router-link></td>
                     <td><router-link :to="{name: 'clients_edit', params: { id: clients.cid }}" id="" class="btn btn-secondary ">Edit Client</router-link></td>
-                    <td><button @click.prevent="del_client(clients.cid)" id="" class="btn btn-secondary">Delete Client</button></td>
+                    <td><button @click.prevent="del_client(clients.cid)" id="" class="btn btn-danger">Delete Client</button></td>
                 </div>  
           
    

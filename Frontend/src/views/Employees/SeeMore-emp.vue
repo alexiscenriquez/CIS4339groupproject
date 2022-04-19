@@ -43,6 +43,12 @@
               <th>Last Name</th>
               <td>{{ employees.lastName }}</td>
             </tr>
+            <tr><th>SSN</th>
+            <td>{{employees.SSN}}</td></tr>
+            <tr>
+              <th>Drivers license</th>
+              <td>{{employees.dLicense}}</td>
+            </tr>
             <tr>
               <th>Department</th>
               <td>{{ employees.dept }}</td>
