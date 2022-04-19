@@ -1,0 +1,89 @@
+.greetings {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.greetings h1 {
+  font-weight: 500;
+  font-size: 2.6rem;
+  top: -50px;
+}
+
+.greetings h1,
+.greetings h3 {
+  text-align: center;
+}
+caption{
+    color: black;
+}
+
+
+h1 {
+  color: hsla(160, 100%, 37%, 1);
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+h2 {
+  font-size: 26px;
+}
+body {
+  background: linear-gradient(
+      100deg,
+      rgba(58, 58, 158, 0.8),
+      rgba(136, 136, 206, 0.7)
+    ),
+    url("../assets/two.svg") no-repeat center top 10px fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: contain;
+  -o-background-size: cover;
+}
+th{
+    text-align: center;
+}
+app {
+  height: 100vh;
+}
+.create {
+  background-color: #a6a7a8;
+}
+.create:hover {
+  background-color: hsla(160, 100%, 37%, 1);
+  color: white;
+}
+
+.caption {
+  color: black;
+}
+fieldset {
+
+  background: rgba(255, 255, 255, 0.459);
+}
+nav {
+    padding: 20px;
+  }
+  li a:hover {
+    font-size: 18px;
+    padding-bottom: 0px;
+  }
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+  .table1  th, .table1    td{
+    background-color: rgba(27, 27, 27, 0.116);
+  }
+  
+  tr,
+  th,
+  td {
+    border: none;
+  }
+@media (min-width: 1024px) {
+  .greetings h1,
+  .greetings h3 {
+    top: 150px;
+  }
+}

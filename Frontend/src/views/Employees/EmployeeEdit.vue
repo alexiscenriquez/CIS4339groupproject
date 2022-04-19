@@ -412,19 +412,5 @@ export default {
 </script>
 
 <style>
-h1 {
-  font-size: 26px;
-  text-align: center;
-  margin-top: 80px;
-}
-form {
-  margin-top: 50px;
-}
-#create {
-  background-color: #a6a7a8;
-}
-#create:hover {
-  background-color: #2e5902;
-  color: white;
-}
+ @import "../../assets/app.css";
 </style>

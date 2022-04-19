@@ -124,11 +124,5 @@
 </template>
 
 <style>
-nav {
-  padding: 20px;
-}
-li a:hover {
-  font-size: 18px;
-  padding-bottom: 0px;
-}
+@import "assets/app.css";
 </style>

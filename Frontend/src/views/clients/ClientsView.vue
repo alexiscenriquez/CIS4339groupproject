@@ -1,7 +1,7 @@
 <template>
     <main>
-        <div class="row justify-content-center">
-            <router-link :to="{path:'new-client'}" class="btn btn-secondary">Create New Client</router-link>
+        <div class="row ">
+            <router-link :to="{path:'new-client'}" class="btn btn-secondary col-md-3">Create New Client</router-link>
             <table class="table table-light table-hover">
             <thead class="table-dark">
                 <tr>
@@ -54,10 +54,8 @@
                 <!--<th>Insurance Program</th>-->
                 <!--<th>Health Insurance Description</th>-->
                 <!--<th>Covid Status</th>-->
-                <th>Actions</th>
-                <th>Actions</th>
-                <th>Actions</th>
-                <th>Actions</th>
+                <th colspan="5">Actions</th>
+  
                 </tr>
             </thead>
             <tbody>
@@ -115,14 +113,13 @@
                 <td><router-link :to="{name: 'servicereps', params: { id: cls.cid }}" class="btn btn-secondary ">Services</router-link></td>
                 <td><router-link :to="{name: 'custinfo', params: { id: cls.cid }}" class="btn btn-secondary ">More..</router-link></td>
                 <td><router-link :to="{name: 'clients_edit', params: { id: cls.cid }}" class="btn btn-secondary ">Edit</router-link></td>
-                <td><button @click.prevent="del_client(cls.cid)" class="btn btn-secondary">Delete</button></td>
+                <td><button @click.prevent="del_client(cls.cid)" class="btn btn-danger">Delete</button></td>
                 <td v-if="active">hello</td>
                 
                 </tr>
             </tbody>
             </table>
           </div>
-  
 
     </main>
 </template>

@@ -6,8 +6,10 @@ export default {
       employee: [],
       client: [],
       event: [],
+      organization:[],
       new_cid: { id: "" },
       new_evid: { id: "" },
+      new_orgid:{id:""},
       active: false,
     };
   },
@@ -19,6 +21,7 @@ export default {
         this.employee = res.data[0];
         this.client = res.data[0].clients;
         this.event = res.data[0].events;
+        this.organization=res.data[0].organizations;
       })
       .catch((error) => {
         console.log(error);
@@ -108,13 +111,13 @@ export default {
       let data2 = { "id": this.$route.params.id };
       let apiURL = `http://localhost:8080/employees/del-event/${this.$route.params.id}`;
       let apiURL2 = `http://localhost:8080/events/del-employee/${id}`;
-      let indexOfArrayItem = this.client.findIndex((i) => i.evid === id);
+      let indexOfArrayItem = this.event.findIndex((i) => i.evid === id);
       if (window.confirm("Are you sure?")) {
         axios
           .post(apiURL, data)
           .then(() => {
             this.$router.push("/employees");
-            this.client.splice(indexOfArrayItem, 1);
+            this.event.splice(indexOfArrayItem, 1);
           })
           .catch((error) => {
             console.log(error);
@@ -127,8 +130,49 @@ export default {
           });
       }
     },
+    addOrg(){
+let organid=this.new_orgid.id;
+let data={"id":this.$route.params.id}
+let apiURL=`http://localhost:8080/employees/add-org/${this.$route.params.id}`;
+ let apiURL2 = `http://localhost:8080/organizations/add-emp/${organid}`
+
+  axios
+        .post(apiURL, this.new_orgid)
+        .then(() => {
+          this.$router.push("/employees");
+          this.new_orgid = {
+            id: ""
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      axios.post(apiURL2, data).then(()=>{
+                    
+                }).catch(error =>{
+                    console.log(error)
+                })
+
   },
-};
+  delOrg(id){
+  let data = {
+        "id": id,
+      };
+      let apiURL=`http://localhost:8080/employees/del-org/${this.$route.params.id}`;
+      if (window.confirm("Are you sure?")) {
+        axios
+          .post(apiURL, data)
+          .then(() => {
+            this.$router.push("/employees");
+            this.organization.splice(indexOfArrayItem, 1);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+  }
+  }
+}};
 </script>
 <template>
   <main>
@@ -137,7 +181,7 @@ export default {
     <form @submit.prevent="addClient" class="mb-5 col-sm-6">
       <fieldset class="form-control">
         <legend class="mb-3">Clients</legend>
-        <div class="col-sm-3">
+        <div >
           <label class="form-label">Enter the Client ID</label>
           <input
             type="number"
@@ -177,7 +221,7 @@ export default {
     <form @submit.prevent="addEvent" class="mb-5 col-sm-6">
       <fieldset class="form-control">
         <legend class="mb-3">Events</legend>
-        <div class="col-sm-3">
+        <div>
           <label for="" class="form-label">Enter the Event ID</label>
           <input type="text" class="form-control mb-3" v-model="new_evid.id" />
           <button class="btn btn-primary">Add Event</button>
@@ -209,13 +253,43 @@ export default {
         </tbody>
       </table>
     </div>
+      <form @submit-prevent="addOrg" class="mb-5 col-sm-6">
+        <fieldset class="form-control">
+          <legend>Organization</legend>
+           <div >
+          <label for="" class="form-label">Enter the Organization ID</label>
+          <input type="text" class="form-control mb-3" v-model="new_orgid.id" />
+          <button class="btn btn-primary">Add Organization</button>
+        </div>
+        </fieldset>
+      </form>
+
+       <div class="table-responsive mb">
+      <table class="table table-light">
+        <thead class="table-light">
+          <tr>
+            <th>Organization ID</th>
+            <th>Organization Name</th>
+        
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="o in organization" :key="o.orgid">
+            <td>{{ o.orgid }}</td>
+            <td>{{ o.org_name }}</td>
+            
+            <td>
+              <button @click.prevent="delOrg(o.orgid)" class="btn btn-danger">
+                Remove
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
   </main>
 </template>
 <style scoped>
-h1 {
-  font-size: 26px;
-}
-h2 {
-  font-size: 22px;
-}
+ @import "../../assets/app.css";
 </style>

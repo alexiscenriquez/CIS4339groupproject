@@ -2,8 +2,8 @@
     <main>
         <h1>All Volunteers</h1>
         <br>
-        <div class="row justify-content-center">
-            <router-link :to="{path:'new-volunteers'}" class="btn btn-secondary">Create New Volunteer</router-link>
+        <div class="row ">
+            <router-link :to="{path:'new-volunteers'}" class="btn btn-secondary col-md-3">Create New Volunteer</router-link>
             <table class="table table-light table-hover">
                 <thead class="table-dark">
                     <tr>
@@ -13,10 +13,8 @@
                         <th>Last Name</th>
                         <th>Birthday</th>
                         <th>Phone#</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
+                        <th colspan="4">Actions</th>
+                       
                     </tr>
                 </thead>
                 <tbody>
@@ -30,7 +28,7 @@
                         <td><router-link :to="{name: 'volunteer-info', params: { id: volunteer.vid }}" class="btn btn-secondary ">More...</router-link></td>
                         <td><router-link :to="{name: 'v_events', params: { id: volunteer.vid }}" class="btn btn-secondary ">Events</router-link></td>
                         <td><router-link :to="{name: 'volunteers_edit', params: { id: volunteer.vid }}" class="btn btn-secondary ">Edit</router-link></td>
-                        <td><button @click.prevent="del_event(volunteer.vid)" class="btn btn-secondary">Delete</button></td>
+                        <td><button @click.prevent="del_event(volunteer.vid)" class="btn btn-danger">Delete</button></td>
                     </tr>
                 </tbody>
             </table>
@@ -82,3 +80,6 @@
     }
 </script>
 
+<style scoped>
+ @import "../../assets/app.css";
+</style>

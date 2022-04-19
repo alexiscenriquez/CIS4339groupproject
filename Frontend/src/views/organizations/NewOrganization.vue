@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Create Organization</h1>
+        <h1 class="text-center">Create Organization</h1>
         <form @submit.prevent="handleSubmitForm">
             <fieldset class="form-control mb-5">
                 <legend>Organization Information</legend>
@@ -11,7 +11,7 @@
                         </div>
                 </div>
             </fieldset>
-            <button class="btn btn-danger mt-3">Create</button>
+            <button class="btn mt-3 create">Create</button>
         </form>
     </div>
 </template>
@@ -48,19 +48,5 @@
 </script>
 
 <style scoped>
-h1 {
-  font-size: 26px;
-  text-align: center;
-  margin-top: 80px;
-}
-form {
-  margin-top: 50px;
-}
-#create{
-  background-color: #A6A7A8;
-}
-#create:hover{
-  background-color: #2E5902;
-  color: white;
-}
+ @import "../../assets/app.css";
 </style>

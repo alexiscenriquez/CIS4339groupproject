@@ -1,6 +1,6 @@
 <template>
     <div>
-            <h1>Create Client</h1>
+            <h1 class="text-center">Create Client</h1>
             <form @submit.prevent="handleSubmitForm">
                 <fieldset class="form-control mb-5">
                     <legend>Personal Information</legend>
@@ -357,7 +357,7 @@
             </div>
         </fieldset>
                 
-                <button class="btn btn-danger mt-3">Create</button>
+                <button class="btn mt-3 create">Create</button>
         </form>
     </div>
 </template>
@@ -485,3 +485,6 @@
            
     }
 </script>
+<style scoped>
+ @import "../../assets/app.css";
+</style>

@@ -168,7 +168,7 @@ const router = createRouter({
     {
       path:'/events-clients',
       name:'events-clients',
-      component:()=>import('../views/Employees/Events-Clients.vue')
+      component:()=>import('../views/Employees/empaffiliations.vue')
     },
     {
       path:'/volunteer-info',
