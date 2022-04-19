@@ -1,9 +1,9 @@
 <template>
     <main>
         <h1>All Services</h1>
-        <br>
-        <div class="row justify-content-center">
-            <router-link :to="{path:'new-service'}" class="btn btn-secondary">Create New Service</router-link>
+       
+        <div class="row ">
+            <router-link :to="{path:'new-service'}" class="btn btn-secondary col-md-3">Create New Service</router-link>
             <table class="table table-light table-hover">
             <thead class="table-dark">
                 <tr>
@@ -11,7 +11,7 @@
                 <th>Name</th>
                 <th>Renewal</th>
                 <th>Notes</th>
-                <th></th>
+                <th colspan="3">Actions</th>
                 <th></th>
                 <th></th>
                 </tr>
@@ -25,7 +25,7 @@
                 
                 <td><router-link :to="{name: 'applicants', params: { id: service.sid }}" class="btn btn-secondary">Applicants</router-link></td>
                 <td><router-link :to="{name: 'services_edit', params: { id: service.sid }}" class="btn btn-secondary ">Edit</router-link></td>
-                <td><button @click.prevent="del_event(service.sid)" class="btn btn-secondary">Delete</button></td>
+                <td><button @click.prevent="del_event(service.sid)" class="btn btn-danger">Delete</button></td>
                 <td v-if="active">hello</td>
                 
                 </tr>
@@ -72,3 +72,6 @@
     }
 </script>
 
+<style scoped>
+ @import "../../assets/app.css";
+</style>

@@ -96,6 +96,14 @@ router.get("/employee-clients-events/:employeeID", (req, res, next) => {
         },
       },
       {
+        $lookup:{
+          from:"organizations",
+          localField:"organizations.orgid",
+          foreignField:"orgid",
+          as:"organizations"
+        },
+      },
+      {
         $project: {
           _id: 0,
           employeeID: 1,
@@ -109,6 +117,8 @@ router.get("/employee-clients-events/:employeeID", (req, res, next) => {
           "events.ev_name": 1,
           "events.ev_host": 1,
           "events.ev_date": 1,
+          "organizations.orgid":1,
+          "organizations.org_name":1
         },
       },
     ],

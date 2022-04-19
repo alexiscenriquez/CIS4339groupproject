@@ -2,17 +2,15 @@
     <div>
         <h1>All Organizations</h1>
         <br>
-        <div class="row justify-content-center">
-            <router-link :to="{path:'new-org'}" class="btn btn-secondary">Create New Organization</router-link>
-            <table class="table table-light table-hover">
+        <div class="row ">
+            <router-link :to="{path:'new-org'}" class="btn btn-secondary col-md-3">Create New Organization</router-link>
+            <table class="table table-light table-hover ">
                 <thead class="table-dark">
                     <tr>
                         <th>Organization</th>
                         <th>Name</th>
-                        <th>Action</th>
-                        <th>Action</th>
-                        <th>Action</th>
-                        <th>Action</th>
+                        <th colspan="4">Action</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -22,7 +20,7 @@
                         <td><router-link :to="{name:'offers', params: {id: orgee.orgid}}" class= "btn btn-secondary"> Offers</router-link></td>
                         <td><router-link :to="{name:'peoples', params: {id: orgee.orgid}}" class= "btn btn-secondary"> Peoples</router-link></td>
                         <td><router-link :to="{name: 'org_edit', params: { id: orgee.orgid }}" class="btn btn-secondary ">Edit</router-link></td>
-                        <td><button @click.prevent="del_org(orgee.orgid)" class="btn btn-secondary">Delete</button></td>
+                        <td><button @click.prevent="del_org(orgee.orgid)" class="btn btn-danger">Delete</button></td>
                     </tr>
                 </tbody>
             </table>
@@ -64,3 +62,7 @@
         }
     }
 </script>
+
+<style scoped>
+ @import "../../assets/app.css";
+</style>

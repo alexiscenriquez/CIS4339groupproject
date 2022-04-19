@@ -26,7 +26,7 @@
       </td>
     </div>
  <div class="table1">
-        <table class="table table-light table-hover caption-top">
+        <table class="table table-light caption-top">
           <caption>
             <strong>Client Information</strong>
           </caption>
@@ -135,6 +135,8 @@
         </tr>
       </tbody>
     </table>
+
+    
  </div>
   </main>
 </template>
@@ -180,17 +182,5 @@ export default {
 };
 </script>
 <style scoped>
-.wrapper {
-  display: flex;
-  justify-content: space-between;
-}
-.table1  th, .table1    td{
-  background-color: rgba(27, 27, 27, 0.021);
-}
-
-tr,
-th,
-td {
-  border: none;
-}
+ @import "../../assets/app.css";
 </style>

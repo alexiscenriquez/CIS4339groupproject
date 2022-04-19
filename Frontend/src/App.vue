@@ -105,7 +105,7 @@
               </li>
             
             <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
+                <a class="nav-link" href="/about">About</a>
               </li>
             </ul>
           
@@ -124,11 +124,5 @@
 </template>
 
 <style>
-nav {
-  padding: 20px;
-}
-li a:hover {
-  font-size: 18px;
-  padding-bottom: 0px;
-}
+@import "assets/app.css";
 </style>

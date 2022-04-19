@@ -16,7 +16,7 @@
                         <th>State</th>
                         <th>Country</th>
                         <th>Zip code</th>
-                        <th></th>
+                        <th colspan="3">Actions</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -34,7 +34,7 @@
                         <td>{{evee.zip }}</td>
                         <td><router-link :to="{name:'attendees', params: {id: evee.evid}}" class= "btn btn-secondary"> Attendees</router-link></td>
                         <td><router-link :to="{name: 'events_edit', params: { id: evee.evid }}" class="btn btn-secondary ">Edit</router-link></td>
-                        <td><button @click.prevent="del_event(evee.evid)" class="btn btn-secondary">Delete</button></td>
+                        <td><button @click.prevent="del_event(evee.evid)" class="btn btn-danger">Delete</button></td>
                     </tr>
                 </tbody>
             </table>
@@ -75,4 +75,6 @@
             }
         }
     }
-</script>
+</script><style scoped>
+ @import "../../assets/app.css";
+</style>

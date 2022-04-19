@@ -34,7 +34,7 @@
 
 <template>
     <div>
-        <h1>Create Service</h1>
+        <h1 class="text-center">Create Service</h1>
         <form @submit.prevent="handleSubmitForm">
         <fieldset class='form-control mb-5'>
                 <div>
@@ -68,26 +68,12 @@
             </div>
 
         </fieldset>
-        <button class="btn mb-5" id="create">Create</button>
+        <button class="btn mb-5 create">Create</button>
         </form>
     </div>  
 
 </template>
 
 <style scoped>
-h1 {
-  font-size: 26px;
-  text-align: center;
-  margin-top: 80px;
-}
-form {
-  margin-top: 50px;
-}
-#create{
-  background-color: #A6A7A8;
-}
-#create:hover{
-  background-color: #2E5902;
-  color: white;
-}
+ @import "../../assets/app.css";
 </style>
