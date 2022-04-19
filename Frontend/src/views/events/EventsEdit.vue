@@ -14,7 +14,11 @@
                 
                 <div class='col-sm-4'>
                     <label for="" class='form-label'>*Host</label>
-                    <input type="text" class='form-control' v-model="event.ev_host" required>
+                    <select class="form-select" aria-label="Default select example" v-model='two'>
+                            <option value="" selected disabled>Choose an Organization</option>
+                            <option v-for="x in organizations" :value="[x.org_name,x.orgid]" :key="x.orgid">{{x.orgid}}{{" - "}}{{x.org_name}}</option>
+                    </select>
+                    
                 </div>
                 
                 <div class='col-sm-4'>
@@ -72,7 +76,11 @@ export default {
     data() {
         return {
             event: {}, 
-            date:''
+            date:'',
+            organizations:[],
+            two:[],
+            cur_host:'',
+            cur_host_num:''
         }
     },
     created() {
@@ -80,21 +88,57 @@ export default {
         axios.get(apiURL).then(res => {
             this.event = res.data[0];
             this.date = res.data[0].ev_date.slice(0, 10)
+            this.cur_host = res.data[0].ev_host
+            this.cur_host_num = res.data[0].organizations.orgid
+
         }).catch(error =>{
             console.log(error)
         });
+        let apiURL2 = `http://localhost:8080/organizations`
+            axios.get(apiURL2).then(res =>{
+                    this.organizations = res.data
+                }).catch(error =>{
+                    console.log(error)
+                })
     },
     methods: {
         UpdateEvent() {
+            
+            let data = {'id':this.$route.params.id}
             this.event.ev_date=this.date
+            this.event.ev_host=this.two[0]
+            this.event.organizations.orgid=parseInt(this.two[1])
+            
+            //update events table and host id and array
             let apiURL = `http://localhost:8080/events/update/${this.$route.params.id}`;
-
             axios.put(apiURL, this.event).then((res) => {
                 console.log(res)
-                this.$router.push('/events')
+                
             }).catch(error => {
                 console.log(error)
             });
+            //if no changes to host
+            if(this.cur_host == this.two[0]){
+                this.$router.push('/events')
+            }else{
+                //delete current organization from event
+                let api3 = `http://localhost:8080/organizations/del-event/${this.cur_host_num}`
+                axios.post(api3, data).then((res)=>{
+                    console.log(res)
+                }).catch(error=>{
+                    console.log(error)
+                })
+
+                //add event to organization
+                let api4 = `http://localhost:8080/organizations/add-event/${this.two[1]}`
+                axios.post(api4, data).then(res =>{
+                    this.$router.push('/events')
+                }).catch(error => {
+                    console.log(error)
+                });
+
+            }
+        
         }
     }
 }

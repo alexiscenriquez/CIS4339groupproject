@@ -82,12 +82,32 @@ router.post('/del-service/:orgid', (req, res, next) =>{
 
   //{ADD} event to organization
 router.post('/add-event/:orgid', (req, res, next) =>{
+
     organizationsModel.findOneAndUpdate(
         {
             orgid:parseInt(req.params.orgid)
         },
         {
-            $push:{'offers.evid':req.body.id}
+            $push:{'offers.evid':id}
+        },
+        (error, results) => {
+            if(error){
+                return next(error)
+            }else{
+                res.send('Added new event to organization')
+                console.log('Added new event to organization')
+            }
+        }
+    )
+  })
+  //replace current event 
+  router.put('/replace-event/:orgid', (req, res, next) =>{
+    organizationsModel.findOneAndUpdate(
+        {
+            orgid:parseInt(req.params.orgid)
+        },
+        {
+            $set:{'offers.evid':id}
         },
         (error, results) => {
             if(error){

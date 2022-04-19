@@ -55,15 +55,22 @@
                     <input type="radio" class="form-check-input" id="Annually" value="Yearly" v-model="services.renewal">Yearly  
                     <label class="form-check-label" for="Annually"></label>
                 </div>
+                <div class='col'>
+                    <div class='col-sm-4'>
+                    <label for="" class='form-label'>*Host</label>
+                    <select class="form-select" aria-label="Default select example" v-model='two'>
+                            <option value="" selected disabled>Choose an Organization</option>
+                            <option v-for="x in organizations" :value="[x.org_name,x.orgid]" :key="x.orgid">{{x.orgid}}{{" - "}}{{x.org_name}}</option>
+                    </select>
                     
                 </div>
+                </div>
+            </div>
                 <div class='col'>
                     <div class='form-group'>
                         <label for="">Notes</label>
                         <textarea class='form-control'  cols="5" rows="5" v-model="services.notes"></textarea>
-
                     </div>
-                   
                 </div>
             </div>
 
