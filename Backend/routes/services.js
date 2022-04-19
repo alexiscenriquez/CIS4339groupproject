@@ -170,7 +170,7 @@ router.delete('/del/:sid', (req, res, next)=> {
 })
 
 router.get("/last_id", (req, res, next) => {
-    eventsModel.find({}, (err, data) => {
+    servicesModel.find({}, (err, data) => {
       if (err) {
         console.log(err);
       } else {

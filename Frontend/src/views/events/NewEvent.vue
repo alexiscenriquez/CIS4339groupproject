@@ -15,11 +15,11 @@
                 },
                 list:[],
                 two:[],
-                data:{}
+                data:{},
+                num:''
             }
         },
         created(){
-            let id = ''
             let apiURL = `http://localhost:8080/organizations`
             axios.get(apiURL).then(res =>{
                     this.list = res.data
@@ -27,10 +27,9 @@
                     console.log(error)
                 })
         
-            let api3 = `http://localhost:8080/events/last_id`
+            let api3 = `http://localhost:8080/counters/last_evid`
                 axios.get(api3).then(res =>{
-                    id = res.data[0].evid
-                    this.data.id = parseInt(id)+1
+                    this.num = res.data[0].seq + 1
                 }).catch(error => {
                     console.log(error)
                 });
@@ -39,38 +38,33 @@
             handleSubmitForm() {
                 this.event.ev_host=this.two[0]
                 this.event['organizations.orgid']=parseInt(this.two[1])
+                this.data.id=this.num
                 let apiURL = 'http://localhost:8080/events/new-event';
                 
                 axios.post(apiURL, this.event).then(() => {
                     //changing the view to the list
                     this.$router.push('/events')
-                  this.event = {
-                    ev_name: '',
-                    ev_date: '',
-                    addr: '',
-                    city:'',
-                    st:'',
-                    country:'',
-                    zip:''
-                  }
-                  this.two = []
+                    this.event = {
+                        ev_name: '',
+                        ev_date: '',
+                        addr: '',
+                        city:'',
+                        st:'',
+                        country:'',
+                        zip:''
+                    }
                 }).catch(error => {
                     console.log(error)
                 });
-                //add event to organization
                 let apiURL2 = `http://localhost:8080/organizations/add-event/${this.two[1]}`
                 axios.post(apiURL2, this.data).then(res =>{
-                    console.log('line 65', this.data)
-                    this.data={}
-                    
+                    this.data={},
+                    this.two = []
                 }).catch(error => {
                     console.log(error)
                 });
-            
-                
-            }}
-           
-           
+            }
+        }     
     }
 </script>
 
