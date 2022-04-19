@@ -2,7 +2,7 @@
   <div class="mb-5">
     <!-- Using pie-chart tag to display pie chart on /reports/graph -->
     <!-- 'graph' represents json data from backend from route /reports/graph-->
-    <bar-chart :data="graph"></bar-chart>
+    <pie-chart :data="graph"></pie-chart>
   </div>
 </template>
 

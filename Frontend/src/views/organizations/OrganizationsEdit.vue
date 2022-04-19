@@ -11,7 +11,7 @@
                         </div>
                 </div>
             </fieldset>
-            <button class="btn btn-danger mt-3">Create</button>
+            <button class="btn btn-danger mt-3">Update</button>
         </form>
     </div>
 </template>
