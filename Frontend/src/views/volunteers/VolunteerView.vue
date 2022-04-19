@@ -13,7 +13,7 @@
                         <th>Last Name</th>
                         <th>Birthday</th>
                         <th>Phone#</th>
-                        <th colspan="4">Actions</th>
+                        <th colspan="6">Actions</th>
                        
                     </tr>
                 </thead>
@@ -27,6 +27,7 @@
                         <td>{{volunteer.phone_num}}</td>
                         <td><router-link :to="{name: 'volunteer-info', params: { id: volunteer.vid }}" class="btn btn-secondary ">More...</router-link></td>
                         <td><router-link :to="{name: 'v_events', params: { id: volunteer.vid }}" class="btn btn-secondary ">Events</router-link></td>
+                        <td><router-link :to="{name: 'v_organizations', params: { id: volunteer.vid }}" class="btn btn-secondary ">Organizations</router-link></td>
                         <td><router-link :to="{name: 'volunteers_edit', params: { id: volunteer.vid }}" class="btn btn-secondary ">Edit</router-link></td>
                         <td><button @click.prevent="del_event(volunteer.vid)" class="btn btn-danger">Delete</button></td>
                     </tr>
