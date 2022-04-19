@@ -2,7 +2,7 @@
   <div class="mb-5">
     <!-- Using pie-chart tag to display pie chart on /reports/graph -->
     <!-- 'graph' represents json data from backend from route /reports/graph-->
-    <pie-chart :data="graph"></pie-chart>
+    <bar-chart :data="graph"></bar-chart>
   </div>
 </template>
 
@@ -30,5 +30,7 @@ export default {
         })
     }
 }
+
 </script>
+
 

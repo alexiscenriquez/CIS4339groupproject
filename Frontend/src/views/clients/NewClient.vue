@@ -6,7 +6,7 @@
                     <legend>Personal Information</legend>
                     <div class="row mb-3">
                         <div class="col-sm-4">
-                            <label class="form-label">First Name</label>
+                            <label class="form-label">First Name*</label>
                             <input type="text" class="form-control" v-model="clients.first_name" required>
                         </div>
                         <div class="col-sm-4">
@@ -14,23 +14,23 @@
                             <input type="text" class="form-control" v-model="clients.mid_name" required>
                         </div>
                         <div class="col-sm-4">
-                            <label class="form-label">Last Name</label>
+                            <label class="form-label">Last Name*</label>
                             <input type="text" class="form-control" v-model="clients.last_name"  required>
                         </div>
                          </div>
                            <div class="row mb-3">
                         <div class="col-sm-4">
-                            <label class="form-label">Date of Birth</label>
+                            <label class="form-label">Date of Birth*</label>
                             <input type="date" class="form-control" placeholder='YYYY-MM-DD' v-model="clients.b_day" required>
                         </div>
                         <div class="col-sm-4">
-                            <label class="form-label">Drivers License Number</label>
+                            <label class="form-label">Drivers License Number*</label>
                             <input type="text" class="form-control" v-model="clients.DL"><br>
                         </div>
                         <div class="col-sm-4">
-                            <label class="form-label">Gender</label>
+                            <label class="form-label">Gender*</label>
                             
-                                <select v-model="clients.gender" class="form-control">
+                                <select v-model="clients.gender" class="form-control" required>
                                     <option disabled value="">Select option</option>
                                     <option>Male</option>
                                     <option>Female</option>
@@ -41,9 +41,9 @@
                         </div> </div> <div class="row mb-3">
 
                         <div class="col-sm-4">
-                            <label class="form-label">Ethnicity</label>
+                            <label class="form-label">Ethnicity*</label>
  
-                                <select v-model="clients.ethnicity" class="form-control" >
+                                <select v-model="clients.ethnicity" class="form-control" required>
                                     <option disabled value="">Select option</option>
                                     <option value="White">White</option>
                                     <option>Black/African American</option>
@@ -76,14 +76,14 @@
                             <input type="text" class="form-control" v-model="clients.language">
                         </div>
                         <div class="col-sm-4">
-                            <label class="form-label">Social Security Number</label>
+                            <label class="form-label">Social Security Number*</label>
                             <input type="text" class="form-control" v-model="clients.social_security" required>
                         </div>
                         </div>   <div class="row mb-3">
                         <div class="col-sm-4">
-                            <label class="form-label">Marital Status</label>
+                            <label class="form-label">Marital Status*</label>
     
-                                <select v-model="clients.marital_status" class="form-control">
+                                <select v-model="clients.marital_status" class="form-control" required>
                                     <option disabled value="">Select option</option>
                                     <option>Married</option>
                                     <option>Widowed</option>
@@ -95,7 +95,7 @@
                         
                         </div>
                         <div class="col-sm-4">
-                            <label class="form-label">Veteran Status</label>
+                            <label class="form-label">Veteran Status*</label>
    
                                 <select v-model="clients.veteran_status" class="form-control">
                                     <option disabled value="">Select option</option>
@@ -111,25 +111,25 @@
                     <legend>Address</legend>
                     <div class="row mb-3">
                         <div class="col-sm-6">
-                            <label class="form-label">Home Address</label>
+                            <label class="form-label">Home Address*</label>
                             <input type="text" class="form-control" v-model="clients.address" required>
                         </div>
                         <div class="col-sm-3">
-                            <label class="form-label">City</label>
+                            <label class="form-label">City*</label>
                             <input type="text" class="form-control" v-model="clients.city" required>
                         </div>
                         <div class="col-sm-3">
-                            <label class="form-label">State</label>
+                            <label class="form-label">State*</label>
                             <input type="text" class="form-control" v-model="clients.state" required>
                         </div>
                     </div>
                       <div class="row mb-3">
                         <div class="col-sm-6">
-                            <label class="form-label">Country</label>
+                            <label class="form-label">Country*</label>
                             <input type="text" class="form-control" v-model="clients.country" required>
                         </div>
                         <div class="col-sm-3">
-                            <label class="form-label">Zip Code</label>
+                            <label class="form-label">Zip Code*</label>
                             <input type="text" class="form-control" v-model="clients.zip_code"  required>
                         </div>
                     </div>
@@ -139,7 +139,7 @@
                     <legend>Contact Information</legend>
                     <div class="row mb-3">
                         <div class="col-sm-4">
-                            <label class="form-label">Phone Number</label>
+                            <label class="form-label">Phone Number*</label>
                             <input type="text" class="form-control" placeholder="XXX-XXX-XXXX" v-model="clients.phone_number" required>
                         </div>
                         <div class="col-sm-4">
@@ -147,13 +147,13 @@
                             <input type="text" class="form-control" placeholder="XXX-XXX-XXXX" v-model="clients.home_phone_number">
                         </div>
                         <div class="col-sm-4">
-                            <label class="form-label">Emergency Contact Phone Number</label>
+                            <label class="form-label">Emergency Contact Phone Number*</label>
                             <input type="text" class="form-control" placeholder="XXX-XXX-XXXX" v-model="clients.emergency_contact_phone_number" required>
                         </div>
                         </div>
   <div class="row mb-3">
                         <div class="col-sm-6">
-                            <label class="form-label">Email</label>
+                            <label class="form-label">Email*</label>
                             <input type="email" class="form-control" placeholder="Primary Email Address" v-model="clients.primary_email" required>
                         </div>
                         <div class="col-sm-6">
@@ -167,9 +167,9 @@
                     <legend>Education Information</legend>
                     <div class="row mb-4">
                         <div class="col-sm-4">
-                            <label class="form-label">Highest Completed Education</label>
+                            <label class="form-label">Highest Completed Education*</label>
                            
-                                <select v-model="clients.highest_grade" class="form-control">
+                                <select v-model="clients.highest_grade" class="form-control" required>
                                     <option disabled value="">Select option</option>
                                     <option>Highschool Diploma</option>
                                     <option>GED</option>
@@ -179,9 +179,9 @@
                            
                         </div>
                         <div class="col-sm-4">
-                            <label class="form-label">College Graduation Status</label>
+                            <label class="form-label">College Graduation Status*</label>
                                
-                                    <select v-model="clients.graduate" class="form-control">
+                                    <select v-model="clients.graduate" class="form-control" required>
                                         <option disabled value="">Select option</option>
                                         <option value="true">True</option>
                                         <option value="false">False</option>
