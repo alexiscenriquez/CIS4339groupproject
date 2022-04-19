@@ -2,8 +2,8 @@
     <div>
         <h1>All Events</h1>
         <br>
-        <div class="row justify-content-center">
-            <router-link :to="{path:'new-event'}" class="btn btn-secondary">Create New Event</router-link>
+        <div class="row ">
+            <router-link :to="{path:'new-event'}" class="btn btn-secondary col-md-4">Create New Event</router-link>
             <table class="table table-light table-hover">
                 <thead class="table-dark">
                     <tr>
@@ -17,8 +17,7 @@
                         <th>Country</th>
                         <th>Zip code</th>
                         <th colspan="3">Actions</th>
-                        <th></th>
-                        <th></th>
+                       
                     </tr>
                 </thead>
                 <tbody>
