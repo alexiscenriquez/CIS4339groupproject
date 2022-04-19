@@ -8,13 +8,33 @@
                     name: '',
                     renewal:'',
                     notes: ''
-                }
+                },
+                list:[],
+                two:[],
+                data:{}
             }
+        },
+        created(){
+            let id = ''
+            let apiURL = `http://localhost:8080/organizations`
+            axios.get(apiURL).then(res =>{
+                    this.list = res.data
+                }).catch(error =>{
+                    console.log(error)
+                })
+        
+            let api3 = `http://localhost:8080/events/last_id`
+                axios.get(api3).then(res =>{
+                    id = res.data[0].evid
+                    this.data.id = parseInt(id)+1
+                }).catch(error => {
+                    console.log(error)
+                });
         },
         methods: {
             handleSubmitForm() {
                 let apiURL = 'http://localhost:8080/services/new-service';
-                
+                this.services.host=this.two[0]
                 axios.post(apiURL, this.services).then(() => {
                     //changing the view to the list
                   this.$router.push('/services')
@@ -22,10 +42,20 @@
                     name: '',
                     renewal: '',
                     notes: ''
-                  }
+                  },
+                  this.two=[]
                 }).catch(error => {
                     console.log(error)
                 });
+                //add service to organization
+                let apiURL2 = `http://localhost:8080/organizations/add-service/${this.two[1]}`
+                axios.post(apiURL2, this.data).then(res =>{
+                    console.log('line 52 newservice', this.data)
+                    this.data={}
+                }).catch(error => {
+                    console.log(error)
+                });
+            
             }
         } 
            
@@ -46,7 +76,7 @@
                 <div class='col'>
                     <label>*Renewal</label>
                     <div class="form-check">
-                    <input type="radio" class="form-check-input" id="Monthly" value="Monthly" v-model="services.renewal" checked>Monthly
+                    <input type="radio" class="form-check-input" id="Monthly" value="Monthly" v-model="services.renewal">Monthly
                     <label class="form-check-label" for="Monthly"></label>
                     <br>
                     <input type="radio" class="form-check-input" id="SemiAnually" value="SemiAnnually" v-model="services.renewal">SemiAnnually
@@ -60,10 +90,9 @@
                     <label for="" class='form-label'>*Host</label>
                     <select class="form-select" aria-label="Default select example" v-model='two'>
                             <option value="" selected disabled>Choose an Organization</option>
-                            <option v-for="x in organizations" :value="[x.org_name,x.orgid]" :key="x.orgid">{{x.orgid}}{{" - "}}{{x.org_name}}</option>
+                            <option v-for="x in list" :value="[x.org_name,x.orgid]" :key="x.orgid">{{x.orgid}}{{" - "}}{{x.org_name}}</option>
                     </select>
-                    
-                </div>
+                    </div>
                 </div>
             </div>
                 <div class='col'>

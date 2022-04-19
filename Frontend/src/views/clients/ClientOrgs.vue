@@ -111,7 +111,7 @@
                     <div class="col-sm-4">
                         <form @submit.prevent='add_organization'>
                             <div class="form-outline">
-                                <select v-model='new_orgid.id' class="form-control">
+                                <select v-model='new_orgid.id'>
                                     <option value="" selected disabled>Choose an Organization</option>
                                     <option v-for="x in fullorganizations" :value="x.orgid" :key="x.orgid">{{x.orgid}}{{" - "}}{{x.org_name}}</option>
                                 </select>
@@ -142,20 +142,5 @@
 </template>
 
 <style scoped>
-h1{
-  font-size: 26px;
-  text-align: center;
-  margin-top: 80px;
-}
-form {
-  margin-top: 50px;
-}
-#create{
-  background-color: #A6A7A8;
-}
-#create:hover{
-  background-color: #2E5902;
-  color: white;
-}
-
+ @import "../../assets/app.css";
 </style>

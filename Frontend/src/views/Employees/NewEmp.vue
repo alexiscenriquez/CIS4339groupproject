@@ -1,6 +1,6 @@
 <template>
 <div>
-  <h1>Create Employee</h1>
+  <h1 class="text-center">Create Employee</h1>
 
   <form @submit.prevent="handleSubmitForm">
     <fieldset class="form-control mb-5">
