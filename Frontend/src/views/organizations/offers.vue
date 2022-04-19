@@ -136,7 +136,7 @@
         <fieldset class='form-control mb-5'>
             <legend><strong>{{organization.org_name}}</strong></legend>
                 <div class='row mb-3'>
-                    <div class='col-sm-3'>
+                    <div class='col-sm-4'>
                         <label for="" class='form-label'>Organization Name</label>
                         <input type="text" class='form-control' v-model='organization.org_name' disabled>
                         <router-link :to="{name: 'org_edit', params: { id: organization.orgid }}" class="btn btn-secondary ">Edit</router-link>
@@ -144,6 +144,7 @@
                     <div class='col-sm-4'>
                         <form @submit.prevent='add_service'>
                             <div>
+                                 <label for="" class='form-label'>Organization Name</label>
                                 <select v-model='new_sid.id' class="form-control">
                                     <option value="" selected disabled>Choose a Service</option>
                                     <option v-for="x in fullservices" :value="x.sid" :key="x.sid">{{x.sid}}{{" - "}}{{x.name}}</option>
