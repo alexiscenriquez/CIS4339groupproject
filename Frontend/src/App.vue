@@ -3,21 +3,18 @@
     <!-- Nav bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
+        <!-- title -->
         <a class="navbar-brand" href="/">Community Life Center</a>
         <div>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNavDarkDropdown"
-            aria-controls="navbarNavDarkDropdown"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
+          <!-- dropdown button-->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown"
+            aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
+
           <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
             <ul class="navbar-nav">
+              <!-- Employee views and creation -->
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Employees</a>
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
@@ -30,6 +27,8 @@
                   </li>
                 </ul>
               </li>
+
+              <!-- Client views and creation -->
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Clients</a>
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
@@ -42,6 +41,8 @@
                   </li>
                 </ul>
               </li>
+
+              <!-- Organization views and creation -->
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Organizations</a>
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
@@ -54,6 +55,8 @@
                   </li>
                 </ul>
               </li>
+
+              <!-- Volunteer views and creation -->
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Volunteers</a>
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
@@ -66,6 +69,8 @@
                   </li>
                 </ul>
               </li>
+
+              <!-- Events views and creation -->
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Events</a>
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
@@ -78,6 +83,8 @@
                   </li>
                 </ul>
               </li>
+
+              <!-- Service views and creation -->
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services</a>
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
@@ -90,25 +97,26 @@
                   </li>
                 </ul>
               </li>
-            <li class="nav-item">
+
+              <!-- graph of reports -->
+              <li class="nav-item">
                 <a class="nav-link" href="/graphs">Reports</a>
               </li>
-            <li class="nav-item">
+
+              <!-- About page-->
+              <li class="nav-item">
                 <a class="nav-link" href="/about">About</a>
               </li>
+            
             </ul>
-          
           </div>
-        
         </div>
       </div>
-    
     </nav>
     <!-- Router view - our main view below the navigation -->
     <div class="container mt-5">
       <RouterView></RouterView>
     </div>
-
   </div>
 </template>
 
