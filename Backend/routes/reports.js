@@ -3,7 +3,9 @@ const router = express.Router();
 const eventsModel = require('../models/events')
 const volunteerModel = require('../models/volunteers')
 const clientsModel = require('../models/clients')
-const org = require('../models/organizations')
+const empModel=require('../models/employees')
+const org = require('../models/organizations');
+const organizations = require('../models/organizations');
 
 router.get('/ethnicity', (req, res, next) =>{
     //currently count how many of each ethnicity
@@ -102,4 +104,35 @@ router.get('/organizations', (req, res, next) =>{
       })
 
 });
+
+router.get('/departments',(req,res,next)=>{
+    empModel.aggregate([
+        {
+           
+            $group:{
+                "_id": "$dept", 'count':{'$sum':1}
+            }
+        },
+            {
+                '$group':{
+                    '_id':null,
+                    'counts':{
+                        '$push':{'k':'$_id', 'v':'$count'}
+                    }
+                }
+            },  {'$replaceRoot':{
+                'newRoot':{'$arrayToObject':'$counts'}
+            }
+    
+        }
+    ]).exec((error, data) => {
+        if (error) {
+          return next(error)
+        } else {
+          res.json(data)
+          console.log(data);
+        }
+      })
+        
+})
 module.exports = router;
