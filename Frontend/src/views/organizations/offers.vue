@@ -198,7 +198,7 @@
                         <td>{{s.name }}</td>
                         <td>{{s.renewal }}</td>
                         <td>{{s.notes }}</td>
-                        <td><button @click.prevent="rem_service(s.sid)" class="btn btn-danger">Remove</button></td>
+                        <td><router-link :to="{name: 'services_edit', params: { id: s.sid }}" class="btn btn-secondary ">Edit</router-link></td>
                 
                     </tr> 
                 </tbody>
@@ -206,7 +206,6 @@
         </div>
     
         <div class="row justify-content-center">
-           
             <table class="table table-light table-hover caption-top">
                 <caption><strong>Events</strong></caption>
                 <thead class="table-dark">
@@ -215,7 +214,7 @@
                         <th>Name</th>
                         <th>Last Name</th>
                         <th>Date</th>
-                        <th>Action</th>    
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -224,8 +223,6 @@
                         <td>{{ev.ev_name }}</td>
                         <td>{{ev.ev_host }}</td>
                         <td>{{ev.ev_date}}</td>
-                        <!-- <td><button @click.prevent="rem_event(ev.evid)" class="btn btn-danger">Remove</button></td> -->
-                        <!--<td><button @click.prevent="rem_event(ev.evid)" class="btn btn-secondary">Remove</button></td>-->
                         <td><router-link :to="{name: 'events_edit', params: { id: ev.evid }}" class="btn btn-secondary ">Edit</router-link></td>
                     </tr> 
                 </tbody>
