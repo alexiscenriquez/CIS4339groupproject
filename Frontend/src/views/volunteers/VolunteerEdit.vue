@@ -121,7 +121,7 @@
                     </div>
                 </div>
             </fieldset>
-            <button class="btn mb-5" id="create">Update</button>
+            <button class="btn mb-5 create" >Update</button>
         </form>
        
     </div>
@@ -167,5 +167,7 @@ export default {
 
 
 <style scoped>
+
+@import "../../assets/app.css";
 
 </style>

@@ -147,3 +147,6 @@
     }
 </script>
 
+<style scoped>
+@import "../../assets/app.css";
+</style>
