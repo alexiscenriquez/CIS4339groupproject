@@ -1,18 +1,18 @@
 <template>
   <main>
-    <h1 class="mb-5">{{ employees.firstName }} {{ employees.lastName }}</h1>
+    <h1 class="mb-5">{{ employees.firstName }} {{ employees.lastName }}{{" #"}}{{employees.employeeID}}</h1>
     <div class="wrapper mb-5 ">
       <td>
         <router-link
           :to="{ name: 'employees', params: { id: employees.employeeID } }"
-          class="btn btn-success"
+          class="btn btn-secondary"
           >View All Employees</router-link
         >
       </td>
       <td>
         <router-link
           :to="{ name: 'edit-emp', params: { id: employees.employeeID } }"
-          class="btn btn-success"
+          class="btn btn-secondary"
           >Edit Employee</router-link
         >
       </td>
