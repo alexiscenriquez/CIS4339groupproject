@@ -25,7 +25,7 @@
             //GET method is used on var
             axios.get(apiURL).then(res => {
                 //Used to store data from the client table into the newly created client array
-                this.client = res.data[0];
+                this.client = res.data[0];  
                 //this.employee = res.data[0].employees;
                 //Used to store data from the organization table into the newly created organization array
                 this.organization = res.data[0].organizations;

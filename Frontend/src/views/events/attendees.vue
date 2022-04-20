@@ -1,5 +1,7 @@
 <script>
     import axios from 'axios'
+
+    //exports arrays and objects
     export default{
         data(){
             return{
@@ -13,8 +15,10 @@
                 active: false
             }
         },
+        //grab attendees info before mounting dom
         created(){
-            let apiURL = `http://localhost:8080/events/event-attendees/${this.$route.params.id}`;
+            //get and set arrays
+            let apiURL = `http://localhost:8080/events/event-attendees/${this.$route.params.id}`; //backend api
             axios.get(apiURL).then(res => {
                 this.event = res.data[0];
                 this.volunteer = res.data[0].volunteers;
@@ -25,36 +29,40 @@
                 console.log(error)
             });
         },
+        //define functions
         methods:{
+            //remove volunteer from volunteer and event collections
             rem_volunteer(ID){
-                let data = {"id":ID}
-                let data2 = {"id":this.$route.params.id}
-                let apiURL = `http://localhost:8080/events/del-volunteer/${this.$route.params.id}`
-                let indexOfArrayItem = this.volunteer.findIndex(i=>i.vid === ID);
+                let data = {"id":ID}    //store vid
+                let data2 = {"id":this.$route.params.id}    //store evid
+                let apiURL = `http://localhost:8080/events/del-volunteer/${this.$route.params.id}`  //backend api
+                let indexOfArrayItem = this.volunteer.findIndex(i=>i.vid === ID);   //store vid from array
                 
+                //remove only if true
                 if(window.confirm('Remove Volunteer from Event?')){
-                    axios.post(apiURL, data
-                    ).then(()=>{
+                    //remove volunteer from events collection
+                    axios.post(apiURL, data).then(()=>{
                         this.volunteer.splice(indexOfArrayItem, 1);
                     }).catch(error => {
                         console.log(error)
                     })
-                    //remove from volunteers table
+
+                    //remove from volunteers collection
                     let apiURL2 = `http://localhost:8080/volunteers/del-event/${ID}`
                     axios.post(apiURL2, data2).then(()=>{
-                        
                     }).catch(error =>{
                         console.log(error)
                     })
                 }
             },
-            //remove employees from events
+            //remove employees from employee and event collections
             rem_employee(ID){
-                let data = {"id":ID}
-                let data2 = {"id":this.$route.params.id}
-                let apiURL = `http://localhost:8080/events/del-employee/${this.$route.params.id}`
+                let data = {"id":ID}    //store employeeID
+                let data2 = {"id":this.$route.params.id}    //store evid
+                let apiURL = `http://localhost:8080/events/del-employee/${this.$route.params.id}`//backend api
                 let indexOfArrayItem = this.employee.findIndex(i=>i.employeeID === ID);
                 
+                //remove only if true
                 if(window.confirm('Remove employee from event?')){
                     //remove from events collection
                     axios.post(apiURL, data
@@ -64,8 +72,8 @@
                         console.log(error)
                     })
 
-                    //remove from employees table
-                    let apiURL2 = `http://localhost:8080/employees/del-event/${ID}`
+                    //remove from employees collection
+                    let apiURL2 = `http://localhost:8080/employees/del-event/${ID}`//backend api
                     axios.post(apiURL2, data2).then(()=>{
                         
                     }).catch(error =>{
@@ -73,16 +81,14 @@
                     })
                 }
             },
-            // add volunteers to events
+            // add volunteer to event and volunteer collections
             add_volunteer() {
-                
-                let idv = this.new_vid.id
-                let data2 = {"id":this.$route.params.id}
-                let apiURL = `http://localhost:8080/events/add-volunteer/${this.$route.params.id}`;
+                let idv = this.new_vid.id   //store vid in object
+                let data2 = {"id":this.$route.params.id}    //store evid
+                let apiURL = `http://localhost:8080/events/add-volunteer/${this.$route.params.id}`;//backend api
                 axios.post(apiURL, this.new_vid).then(() => {
-                    //changing the view to the list
-                  this.$router.push('/events')
-                    // this.volunteer.push(idv)
+                  this.$router.push('/events')  //back to events home page
+                //reset 
                   this.new_vid = {
                     id: ''
                   }
@@ -90,23 +96,23 @@
                     console.log('line 59 attendees')
                     console.log(error)
                 });
-
-                let apiURL2 = `http://localhost:8080/volunteers/add-event/${idv}`
+                
+                //add volunteer to event
+                let apiURL2 = `http://localhost:8080/volunteers/add-event/${idv}`//backend api
                 axios.post(apiURL2, data2).then(()=>{
-                    // this.$router.push('/events')
                 }).catch(error =>{
                     console.log(error)
                 })
             },
-            //add employees to events
+            //add employee to employee and event collections
             add_employee() {
                 let ide = this.new_eid.id
                 let data2 = {"id":this.$route.params.id}
                 let apiURL = `http://localhost:8080/events/add-employee/${this.$route.params.id}`;
                 
+                //add employee to event collection
                 axios.post(apiURL, this.new_eid).then(() => {
-                    //changing the view to the list
-                  this.$router.push('/events')
+                  this.$router.push('/events') //back to events home page
                   this.new_eid = {
                     id: ''
                   }
@@ -114,9 +120,9 @@
                     console.log(error)
                 });
 
+                //add event to employees collection
                 let apiURL2 = `http://localhost:8080/employees/add-event/${ide}`
                 axios.post(apiURL2, data2).then(()=>{
-                    // this.employee.push(ide)
                 }).catch(error =>{
                     console.log(error)
                 })
@@ -129,8 +135,10 @@
     <div>
         <h1>Event #{{event.evid}}</h1>
         <br>
+        <!-- display event information and allow editing of event, and addition of volunteers and employees -->
         <fieldset class='form-control mb-5'>
             <legend><strong>{{event.ev_name}}</strong></legend>
+                <!-- show event information -->
                 <div class='row mb-3'>
                     <div class='col-sm-3'>
                         <label for="" class='form-label'>Host</label>
@@ -154,8 +162,10 @@
                         <input type="text" class='form-control' v-model='event.zip' disabled>
                     </div>
                 </div>
+                <!-- go to events edit page -->
                 <router-link :to="{name: 'events_edit', params: { id: event.evid }}" class="btn create ">Edit</router-link>
                 <hr>
+                <!-- add volunteer to event -->
                 <div class='row mb-4'>
                     <div class='col-sm-4'>
                         <form @submit.prevent='add_volunteer'>
@@ -166,7 +176,8 @@
                             </div>
                         </form> 
                     </div>
-                    
+
+                    <!-- add employee to event -->
                     <div class='col-sm-4'>
                         <form @submit.prevent='add_employee'>
                         <div class='form-group'>
@@ -180,10 +191,10 @@
                 </div>
         </fieldset> 
 
-        <!-- Volunteer table -->
+        <!-- display volunteers table and allow removal -->
         <div class="row justify-content-center">
             <table class="table table-light table-hover caption-top">
-                <caption><strong>Volunteers</strong></caption>
+                <caption><strong>Volunteers</strong></caption>  
                 <thead class="table-dark">
                     <tr>
                         <th>VID#</th>
@@ -194,20 +205,19 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- display information for each volunteer in array, allow user to remove volunteer by vid -->
                     <tr v-for="v in volunteer" :key="v.vid">
                         <td>{{v.vid }}</td>
                         <td>{{v.first_name }}</td>
                         <td>{{v.last_name }}</td>
                         <td>{{v.phone_num }}</td>
                         <td><button @click.prevent="rem_volunteer(v.vid)" class="btn btn-danger">Remove</button></td>
-                
                     </tr> 
                 </tbody>
             </table>
         </div>
-    
+        <!-- display employees table and allow removal -->
         <div class="row justify-content-center">
-           
             <table class="table table-light table-hover caption-top">
                 <caption><strong>Employees</strong></caption>
                 <thead class="table-dark">
@@ -220,6 +230,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                     <!-- display information for each employee in array, allow user to remove employee by employeeID -->
                     <tr v-for="e in employee" :key="e.employeeID">
                         <td>{{e.employeeID }}</td>
                         <td>{{e.firstName }}</td>

@@ -20,6 +20,7 @@
                 num:''
             }
         },
+        //
         created(){
             let apiURL = `http://localhost:8080/organizations`
             axios.get(apiURL).then(res =>{
@@ -36,6 +37,7 @@
                     console.log(error)
                 });
         },
+
         methods: {
             handleSubmitForm() {
                 //need
@@ -79,7 +81,6 @@
         <h1 class="text-center">Create Event</h1>
         <form @submit.prevent="handleSubmitForm">
         <fieldset class='form-control mb-5'>
-            
             <div class='row mb-4'>
                 <div class='col-sm-4'>
                     <label for="" class='form-label'>*Name</label>
