@@ -49,7 +49,7 @@
             <table class="table table-light table-hover">
                 <thead class="table-dark">
                     <tr>
-                        <th>Event</th>
+                        <th>#</th>
                         <th>Name</th>
                         <th>Host</th>
                         <th>Date</th>

@@ -7,7 +7,7 @@
       <table class="table table-light">
         <thead class="table-dark">
           <tr>
-            <th>Employee ID</th>
+            <th>#</th>
             <th>First Name</th>
             <th>Last Name</th>
        
