@@ -2,7 +2,7 @@
     <div>
             <!--Title-->
             <h1 class="text-center">Create Client</h1>
-            <!--Submit Button-->
+            <!--When submit button is pressed, this function is executed-->
             <form @submit.prevent="handleSubmitForm">
                 <!--Personal Information Fieldset (Divider)-->
                 <fieldset class="form-control mb-5">
@@ -14,7 +14,7 @@
                             <input type="text" class="form-control" v-model="clients.first_name" required>
                         </div>
                         <div class="col-sm-4">
-                            <label class="form-label">Middle Name</label>
+                            <label class="form-label">Middle Name*</label>
                             <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" v-model="clients.mid_name" required>
                         </div>
@@ -392,7 +392,7 @@
                         </div>
             </div>
         </fieldset>
-                
+                <!-- Button that creates client -->
                 <button class="btn mt-3 create">Create</button>
         </form>
     </div>
@@ -404,7 +404,7 @@
     export default {
         //Storing the data being exported in a function
         data() {
-            //What the function is returning (Method for adding client)
+            //What the function is returning (Method for adding client) in postman
             return {
                 clients: {
                    cid: '',

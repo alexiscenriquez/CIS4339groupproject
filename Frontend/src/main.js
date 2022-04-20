@@ -7,8 +7,9 @@ import router from './router'
 import VueChartkick from 'vue-chartkick'
 // import 'chartkick/highcharts'
 import 'chartkick/chart.js'
-
+// import bootstrap css
 import "bootstrap/dist/css/bootstrap.min.css";
+// import bootstrap
 import "bootstrap";
 
 const app = createApp(App)

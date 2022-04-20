@@ -1,12 +1,16 @@
 <template>
     <main>
+        <!-- Displays the clients id, first and last name -->
         <h1>{{clients.first_name}} {{clients.last_name}} #{{clients.cid}}</h1>
         <br>
         
            
                 <div class='wrapper'>
+                    <!-- Button that routs back to the clients view -->
                     <td><router-link :to="{name: 'clients', params: { id: clients.cid }}" id="" class="btn btn-secondary ">Clients View</router-link></td>
+                    <!-- Button that routes back to the client edit page for specific client -->
                     <td><router-link :to="{name: 'clients_edit', params: { id: clients.cid }}" id="" class="btn btn-secondary ">Edit Client</router-link></td>
+                    <!-- Button that deletes a client -->
                     <td><button @click.prevent="del_client(clients.cid)" id="" class="btn btn-danger">Delete Client</button></td>
                 </div>  
           
@@ -15,12 +19,15 @@
         <div class="row justify-content-center">
             
             <table class="table table-light table-hover caption-top">
+                <!-- title -->
                 <caption><strong>All Client Information</strong></caption>
                 <thead class="table-dark">
                     <tr>
                     
                     </tr>
                 </thead>
+                <!-- This comment will apply for the entire body -->
+                <!-- Every row is pulling data from the clients table specified after the "." -->
                 <tbody>
                     <tr>
                         <th>First Name</th>
@@ -214,6 +221,7 @@
                         <th>Covid Status</th>
                         <td>{{clients.covid_status}}</td>
                     </tr>
+                    <!-- Every row is pulling data from the clients table specified after the "." -->
                 </tbody>
             </table>
     </div>
@@ -222,27 +230,39 @@
 
 <script>
     import axios from 'axios'
-
+    //Used to export modujles, objects, functions and variables to be used elsewhere
     export default{
+        //Storing the data being exported in a function
         data(){
+            //What the function is returning
             return{
+                //clients array
                 clients:{}
             }
         },
+        //created function
         created(){
+            //VAR that stores the "find specific client" route
             let apiURL = `http://localhost:8080/clients/find/${this.$route.params.id}`;
             axios.get(apiURL).then(res => {
+                //populates the clients array with data using the route in "apiURL"
                 this.clients = res.data[0];
             }).catch(error=>{
                 console.log(error)
             });
         },
         methods:{
+            //Function for removing a client
+            //The ID variable holds the selected "id" of the client and the function iis performed
             del_client(id){
+                //Var storing route for deleting specified client
                 let apiURL = `http://localhost:8080/clients/del/${id}`
-
+                //if the confirm button is clicked, this happens
+                //ALERT MESSAGE
                 if(window.confirm('Delete Client?')){
+                    //DELETE method used on variable
                     axios.delete(apiURL).then(()=>{
+                        //changes view to all clients view
                         this.$router.push('/clients')
                     }).catch(error => {
                         console.log(error)

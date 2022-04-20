@@ -2,6 +2,7 @@
     <div>
             <!--Displays Title and the associated Client #-->
             <h1>Edit Client{{" #"}}{{clients.cid}}</h1>
+            <!--When submit button is pressed, this function is executed-->
             <form @submit.prevent="UpdateClient">
                 <!--Creates a field that separates from other parts of the page-->
                 <fieldset class="form-control mb-5">
@@ -9,27 +10,34 @@
                     <div class="row mb-4">
                         <div class="col-sm-4">
                             <label>First Name</label>
+                            <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" v-model="clients.first_name" required>
                         </div>
                         <div class="col-sm-4">
                             <label>Middle Name</label>
+                            <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" v-model="clients.mid_name" required>
                         </div>
                         <div class="col-sm-4">
                             <label>Last Name</label>
+                            <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" v-model="clients.last_name"  required>
                         </div>
                         <div class="col-sm-4">
                             <label>Date of Birth</label>
+                            <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="date" class="form-control" placeholder='YYYY-MM-DD' v-model="date" required>
                         </div>
                         <div class="col-sm-4">
                             <label>Drivers License Number</label>
+                            <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" v-model="clients.DL"><br>
                         </div>
                         <div class="col-sm-4">
                             <label>Gender</label>
                             <fieldset class="form-control mb-5">
+                                <!--Drop down menu with hard coded options-->
+                                <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                                 <select v-model="clients.gender">
                                     <option disabled value="">Select option</option>
                                     <option>Male</option>
@@ -42,6 +50,8 @@
                         <div class="col-sm-4">
                             <label>Ethnicity</label>
                             <fieldset class="form-control mb-5">
+                                <!--Drop down menu with hard coded options-->
+                                <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                                 <select v-model="clients.ethnicity">
                                     <option disabled value="">Select option</option>
                                     <option value="White">White</option>
@@ -55,15 +65,18 @@
                         </div>
                         <div class="col-sm-4">
                             <label>Language</label>
+                            <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" v-model="clients.language">
                         </div>
                         <div class="col-sm-4">
                             <label>Social Security Number</label>
+                            <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" v-model="clients.social_security" required>
                         </div>
                         <div class="col-sm-4">
                             <label>Marital Status</label>
                             <fieldset class="form-control mb-5">
+                                <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                                 <select v-model="clients.marital_status">
                                     <option disabled value="">Select option</option>
                                     <option>Married</option>
@@ -79,6 +92,8 @@
                             <label>Veteran Status</label>
                             <fieldset class="form-control mb-5">
                                 <select v-model="clients.veteran_status">
+                                    <!--Drop down menu with hard coded options (boolean)-->
+                                <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                                     <option disabled value="">Select option</option>
                                     <option>Veteran</option>
                                     <option>Not a Veteran</option>
@@ -87,59 +102,69 @@
                         </div>
                     </div>
                 </fieldset>
-
+                <!--Address Information Fieldset (Divider)-->
                 <fieldset class="form-control mb-5">
                     <legend>Address</legend>
                     <div class="row mb-4">
                         <div class="col-sm-6">
                             <label>Home Address</label>
+                            <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" v-model="clients.address" required>
                         </div>
                         <div class="col-sm-3">
                             <label>City</label>
+                            <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" v-model="clients.city" required>
                         </div>
                         <div class="col-sm-3">
                             <label>State</label>
+                            <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" v-model="clients.state" required>
                         </div>
                         <div class="col-sm-6">
                             <label>Country</label>
+                            <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" v-model="clients.country" required>
                         </div>
                         <div class="col-sm-3">
                             <label>Zip Code</label>
+                            <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" v-model="clients.zip_code"  required>
                         </div>
                     </div>
                 </fieldset>
-
+                <!--Contact Information Fieldset (Divider)-->
                 <fieldset class="form-control mb-5">
                     <legend>Contact Information</legend>
                     <div class="row mb-4">
                         <div class="col-sm-6">
                             <label>Phone Number</label>
+                            <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" placeholder="XXX-XXX-XXXX" v-model="clients.phone_number" required>
                         </div>
                         <div class="col-sm-6">
                             <label>Home Phone Number</label>
+                            <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" placeholder="XXX-XXX-XXXX" v-model="clients.home_phone_number">
                         </div>
                         <div class="col-sm-6">
                             <label>Emergency Contact Phone Number</label>
+                            <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" placeholder="XXX-XXX-XXXX" v-model="clients.emergency_contact_phone_number" required>
                         </div>
                         <div class="col-sm-6">
                             <label>Email</label>
+                            <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="email" class="form-control" placeholder="Primary Email Address" v-model="clients.primary_email" required>
                         </div>
                         <div class="col-sm-6">
                             <label>Secondary Email</label>
+                            <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="email" class="form-control" v-model="clients.secondary_email">
                         </div>
                     </div>
                 </fieldset>
-
+                <!--Education Information Fieldset (Divider)-->
                 <fieldset class="form-control mb-5">
                     <legend>Education Information</legend>
                     <div class="row mb-4">
@@ -147,6 +172,8 @@
                             <label>Highest Grade Completed</label>
                             <fieldset class="form-control mb-5">
                                 <select v-model="clients.highest_grade">
+                                    <!--Drop down menu with hard coded options-->
+                                    <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                                     <option disabled value="">Select option</option>
                                     <option>Highschool Diploma</option>
                                     <option>GED</option>
@@ -158,6 +185,8 @@
                         <div class="col-sm-4">
                             <label>College Graduation Status</label>
                                 <fieldset class="form-control mb-5">
+                                    <!--Drop down menu with hard coded options(boolean)-->
+                                <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                                     <select v-model="clients.graduate">
                                         <option disabled value="">Select option</option>
                                         <option value="true">True</option>
@@ -167,89 +196,107 @@
                         </div>
                         <div class="col-sm-4">
                             <label>Degree Name</label>
+                            <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" placeholder="Please put 'none' if you don't have a College Degree" v-model="clients.degree_name" required>
                         </div>
                     </div>
                 </fieldset>
-
+                <!--Housing Information Fieldset (Divider)-->
                 <fieldset class="form-control mb-5">
                     <legend>Housing Information</legend>
                     <div class="row mb-4">
                         <div class="col-sm-4">
                             <label>Residency</label>
+                            <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" placeholder="Amount of time spent in place of residence" v-model="clients.residency" required>
                         </div>
                         <div class="col-sm-4">
                             <label>Head of Household</label>
+                            <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" v-model="clients.head_of_household" required>
                         </div>
                         <div class="col-sm-4">
                             <label>Living Arrangements</label>
+                            <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" v-model="clients.living_arrangements"  required>
                         </div>
                         <div class="col-sm-4">
                             <label>No. of Children</label>
+                            <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" placeholder="Number of Children living in residence" v-model="clients.number_of_children" required>
                         </div>
                         <div class="col-sm-4">
                             <label>No. of Adults 65+</label>
+                            <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" placeholder="Number of Adults over the age of 65 living in residence" v-model="clients.number_of_adults_over_65" required>
                         </div>
                     </div>
                 </fieldset>
-
+                <!--Financial Information Fieldset (Divider)-->
                 <fieldset class="form-control mb-5">
                     <legend>Financial Information</legend>
                     <div class="row mb-4">
                         <div class="col-sm-4">
                             <label>Rent</label>
+                            <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" v-model="clients.rent" required>
                         </div>
                         <div class="col-sm-4">
                             <label>Monthly Income</label>
+                            <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" v-model="clients.monthly_income" required>
                         </div>
                         <div class="col-sm-4">
                             <label>Spousal Income Support</label>
+                            <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" v-model="clients.spousal_income_support" required>
                         </div>
                         <div class="col-sm-4">
                             <label>Worker Compensation Benefits</label>
+                            <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" v-model="clients.worker_compensation" required>
                         </div>
                         <div class="col-sm-4">
                             <label>Child Support Benefits</label>
+                            <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" v-model="clients.child_support" required>
                         </div>
                         <div class="col-sm-4">
                             <label>TANF Benefits</label>
+                            <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" placeholder="Texas Temporarry Assistance for Needy Families" v-model="clients.tanf" required>
                         </div>
                         <div class="col-sm-4">
                             <label>Food Stamp Benefits</label>
+                            <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" placeholder="Total monetary amount of food stamps" v-model="clients.food_stamps" required>
                         </div>
                         <div class="col-sm-4">
                             <label>SSI Benefits</label>
+                            <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" placeholder="Supplemental Security Income" v-model="clients.ssi" required>
                         </div>
                         <div class="col-sm-4">
                             <label>Unemployment Benefits</label>
+                            <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" placeholder="Total monetary amount of Unemployment benefits" v-model="clients.unemployment" required>
                         </div>
                         <div class="col-sm-4">
                             <label>Other Income</label>
+                            <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" v-model="clients.other_income" required>
                         </div>
                     </div>
                 </fieldset>
-
+                <!--Employment Information Fieldset (Divider)-->
                 <fieldset class="form-control mb-5">
                     <legend>Employment Information</legend>
                     <div class="row mb-4">
                         <label>Employment Status</label>
                         <div class="col-sm-4">
                             <fieldset class="form-control mb-5">
+                                <!--Drop down menu with hard coded options-->
+                                <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                                 <select v-model="clients.employment_status">
                                     <option disabled value="">Select option</option>
                                     <option>Employed</option>
@@ -259,25 +306,30 @@
                         </div>
                         <div class="col-sm-4">
                             <label>Employer Name</label>
+                            <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" v-model="clients.employer_name" required>
                         </div>
                         <div class="col-sm-4">
                             <label>Occupation</label>
+                            <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" placeholder="Job Title" v-model="clients.occupation" required>
                         </div>
                         <div class="col-sm-4">
                             <label>Length of Employment</label>
+                            <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" v-model="clients.length_of_employment" required>
                         </div>
                     </div>
                 </fieldset>
-
+                <!--Health Information Fieldset (Divider)-->
                 <fieldset class="form-control mb-5">
                     <legend>Health Information</legend>
                     <div class="row mb-4">
                         <label>Health Insurance Status</label>
                         <div class="col-sm-4">
                             <fieldset class="form-control mb-5">
+                                <!--Drop down menu with hard coded options (boolean)-->
+                                <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                                 <select v-model="clients.health_insurance">
                                     <option disabled value="">Select option</option>
                                     <option value="true">True</option>
@@ -287,15 +339,19 @@
                         </div>
                         <div class="col-sm-4">
                             <label>Insurance Program</label>
+                            <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" placeholder="Name of Healthcare Provider" v-model="clients.insurance_program" required>
                         </div>
                         <div class="col-sm-4">
                             <label>Health Insurance Desc</label>
+                            <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" placeholder="Type of health insurance" v-model="clients.health_insurance_desc" required>
                         </div>
                         <div class="col-sm-4">
                             <label>Priority Population</label>
                             <fieldset class="form-control mb-5">
+                                 <!--Drop down menu with hard coded options-->
+                                <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                                 <select v-model="clients.priority_population">
                                     <option disabled value="">Select option</option>
                                     <option>Pregnant</option>
@@ -309,6 +365,8 @@
                         <div class="col-sm-4">
                             <label>Covid Status</label>
                             <fieldset class="form-control mb-5">
+                                <!--Drop down menu with hard coded options (boolean)-->
+                                <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                                 <select v-model="clients.covid_status">
                                     <option disabled value="">Select option</option>
                                     <option value="true">True</option>
@@ -326,31 +384,41 @@
 
 <script>
 import axios from "axios";
-
+//Used to export modujles, objects, functions and variables to be used elsewhere
 export default {
+    //Storing the data being exported in a function
      data() {
+         //Function returning
+        // arrays for holding data
         return {
             //clients_list:{}
             clients: {}
         }
     },
     created() {
+        //VAR that holds the find a specific client route
         let apiURL = `http://localhost:8080/clients/find/${this.$route.params.id}`;
-
+        //GET method is used on var
         axios.get(apiURL).then(res => {
+            //Used to store data from the client table into the newly created clients array
             this.clients = res.data[0];
+            //Stores the date picked upon creation when you edit a client
             this.date = res.data[0].b_day.slice(0, 10)
         }).catch(error =>{
             console.log(error)
         });
     },
     methods: {
+        //function for updating a clients information
         UpdateClient() {
+            //Stores the date picked upon creation when you edit a client
             this.clients.b_day=this.date
+            //VAR stores route to update/edit a specific clients information
             let apiURL = `http://localhost:8080/clients/update/${this.$route.params.id}`;
-
+            //PUT method is used on the vars
             axios.put(apiURL, this.clients).then((res) => {
                 console.log(res)
+                //changes view to clients view
                 this.$router.push('/clients')
             }).catch(error => {
                 console.log(error)
