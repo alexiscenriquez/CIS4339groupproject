@@ -1,6 +1,6 @@
 <template>
   <main>
-    <h1 class="text-center mb-5">Employees</h1>
+    <h1 class="text-center mb-5">All Employees</h1>
 
  <router-link class="btn btn-secondary" to="/new-emp">Create new employee</router-link>
     <div class="table-responsive">

@@ -1,6 +1,6 @@
 <template>
     <main>
-        <h1>All Volunteers</h1>
+        <h1 class="text-center mb-5">All Volunteers</h1>
         <br>
         <div class="row ">
             <router-link :to="{path:'new-volunteers'}" class="btn btn-secondary col-md-3">Create New Volunteer</router-link>

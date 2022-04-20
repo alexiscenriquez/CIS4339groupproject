@@ -40,7 +40,7 @@
 
 <template>
     <main>
-        <h1>All Services</h1>
+        <h1 class="text-center mb-5">All Services</h1>
        <!-- display service table -->
         <div class="row ">
             <router-link :to="{path:'new-service'}" class="btn btn-secondary col-md-3">Create New Service</router-link>
