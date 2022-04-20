@@ -18,7 +18,6 @@
                             <option value="" selected disabled>Choose an Organization</option>
                             <option v-for="x in organizations" :value="[x.org_name,x.orgid]" :key="x.orgid">{{x.orgid}}{{" - "}}{{x.org_name}}</option>
                     </select>
-                    
                 </div>
                 
                 <div class='col-sm-4'>
