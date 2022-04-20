@@ -186,6 +186,8 @@
                     <div class='col-sm-3'>
                         <label for="" class='form-label'>Organization</label>
                         <input type="text" class='form-control' v-model='organization.org_name' disabled>
+                        <br>
+                        <td><router-link :to="{name: 'org_edit', params: { id: organization.orgid }}" class="btn btn-secondary ">Edit</router-link></td>
                     </div>
                     <div class='col-sm-4'>
                         <form @submit.prevent='add_volunteer'>

@@ -81,11 +81,12 @@ export default {
                 </div>
 
                 <div class='col-sm-4'>
-                    <label for="" class='form-label'>*Host</label>
+                    <label for="" class='form-label'>*Current Host: {{services.host}}</label>
                     <select class="form-select" aria-label="Default select example" v-model='two'>
                             <option value="" selected disabled>Choose an Organization</option>
                             <option v-for="x in organizations" :value="[x.org_name,x.orgid]" :key="x.orgid">{{x.orgid}}{{" - "}}{{x.org_name}}</option>
                     </select>
+                    <p>Select current or change host</p>
                 </div>
 
             </div>
