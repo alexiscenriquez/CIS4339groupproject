@@ -19,7 +19,7 @@
             }
         },
         created(){
-            let apiURL = `http://localhost:8080/volunteers/events/${this.$route.params.id}`;
+            let apiURL = `http://localhost:8080/volunteers/org-attendees/${this.$route.params.id}`;
             let apiURL2 = `http://localhost:8080/organizations`;
             axios.get(apiURL).then(res => {
                 this.volunteer = res.data[0];
@@ -43,7 +43,7 @@
                 
                 let apiURL = `http://localhost:8080/volunteers/del-org/${this.$route.params.id}`
                 let apiURL2 = `http://localhost:8080/organizations/del-vol/${id}`
-                let indexOfArrayItem = this.events.findIndex(i=>i.orgid === id);
+                let indexOfArrayItem = this.organization.findIndex(i=>i.orgid === id);
                 
                 //delete form volunteers collection
                 if(window.confirm('Delete Organization from Client?')){
@@ -137,7 +137,7 @@
                 <tr v-for="organizations in organization" :key="organizations.orgid">
                     <td>{{organizations.orgid }}</td>
                     <td>{{organizations.org_name }}</td>
-                    <td><button @click.prevent="rem_organization(organizations.orgid)" class="btn btn-secondary">Remove</button></td>
+                    <td><button @click.prevent="del_organization(organizations.orgid)" class="btn btn-secondary">Remove</button></td>
                 </tr> 
             </tbody>
         </table>
