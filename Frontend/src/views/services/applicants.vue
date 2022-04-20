@@ -1,5 +1,7 @@
 <script>
     import axios from 'axios'
+    
+    //exports arrays and objects
     export default{
         data(){
             return{
@@ -8,6 +10,7 @@
                 new_cid:{id:''}
             }
         },
+        //grab applicants data info before mounting dom
         created(){
             let apiURL = `http://localhost:8080/services/all-applicants/${this.$route.params.id}`;
             axios.get(apiURL).then(res => {
@@ -17,18 +20,19 @@
                 console.log(error)
             });
         },
+        //define functions
         methods:{
+            //add client to client and event collection
             add_applicant(){
-                let idc = this.new_cid.id
-                let data = {"id":this.$route.params.id}
+                let idc = this.new_cid.id //add cid to obj
+                let data = {"id":this.$route.params.id} //store sid
+                //apis required from backend
                 let apiURL = `http://localhost:8080/services/add-applicant/${this.$route.params.id}`;
                 let apiURL2 = `http://localhost:8080/clients/add-service/${idc}`
                 
-                ///add client to applicants
+                ///add client to 
                 axios.post(apiURL, this.new_cid).then(() => {
-                    
                   this.$router.push('/services')
-                    
                   this.new_cid = {
                     id: ''
                   }
