@@ -381,6 +381,7 @@
                         </div>
                         <div class="col-sm-4">
                             <label class="form-label">Covid Status*</label>
+                                <!--Drop down menu with hard coded options (boolean)-->
                                 <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                                 <select v-model="clients.covid_status" class="form-control" required>
                                     <option disabled value="">Select option</option>
@@ -399,9 +400,11 @@
 
 <script>
    import axios from "axios";
-
+    //Used to export modujles, objects, functions and variables to be used elsewhere
     export default {
+        //Storing the data being exported in a function
         data() {
+            //What the function is returning (Method for adding client)
             return {
                 clients: {
                    cid: '',
@@ -456,9 +459,11 @@
             }
         },
         methods: {
+            //Function executed when "submit" is clicked (Used in line 6)
             handleSubmitForm() {
+                //Storing a route to add clients in "apiURL"
                 let apiURL = 'http://localhost:8080/clients/new-client';
-                
+                //Recreating the POST Route from our back end ^^^^
                 axios.post(apiURL, this.clients).then(() => {
                     //changing the view to the list
                   this.$router.push('/clients')

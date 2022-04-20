@@ -1,7 +1,11 @@
 <script>
     import axios from 'axios'
+    //Used to export modujles, objects, functions and variables to be used elsewhere
     export default{
+        //Storing the data being exported in a function
         data(){
+            //Function returning
+            //Several arrays for holding data
             return{
                 client:[],
                 //employee:[],
@@ -14,17 +18,23 @@
             }
         },
         created(){
+            //Storing the route that gets a clients history (Services/Employees) in a var
             let apiURL = `http://localhost:8080/clients/client-history/${this.$route.params.id}`;
+            //Storing the route that gets all services in a variable
             let apiURL2 = `http://localhost:8080/services`;
+            //GET Method is used on the var
             axios.get(apiURL).then(res => {
+                //Used to store data from the client table into the newly created client array
                 this.client = res.data[0];
                 //this.employee = res.data[0].employees;
+                //Used to store data from the service table into the newly created service array
                 this.service = res.data[0].services;
             }).catch(error=>{
                 console.log(error)
             });
-
+            //GET method is used on var
             axios.get(apiURL2).then(res =>{
+                    //Used to store ALL data into fullservices array
                     this.fullservices = res.data
                     console.log(this.fullservices)
                 }).catch(error =>{
