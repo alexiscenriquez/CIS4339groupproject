@@ -1,7 +1,7 @@
 <template>
   <div>
     <fieldset class='form-control mb-5'>
-      <legend>Services based on Ethnicity</legend>
+      <legend>Services Provided by Ethnicity</legend>
     <!-- Using pie-chart tag to display pie chart on /reports/graph -->
     <!-- 'graph' represents json data from backend from route /reports/graph-->
     <bar-chart :data="graph"></bar-chart>
@@ -9,7 +9,7 @@
     </fieldset>
 
     <fieldset class='form-control mb-5'>
-      <legend>Services based on Gender</legend>
+      <legend>Services Provided by Gender</legend>
     <!-- Using pie-chart tag to display pie chart on /reports/graph -->
     <!-- 'graph' represents json data from backend from route /reports/graph-->
     <pie-chart :data="graph2"></pie-chart>
