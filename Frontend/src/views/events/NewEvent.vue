@@ -13,14 +13,13 @@
                    country:'',
                    zip:''
                 },
-                //need
                 list:[],
                 two:[],
                 data:{},
                 num:''
             }
         },
-        //grab id and organization data before mouting dom
+        //grab id and organization data before mounting dom
         created(){
             //get list of organizations
             let apiURL = `http://localhost:8080/organizations`
@@ -40,6 +39,7 @@
         },
         //define functions
         methods: {
+            //create new event
             handleSubmitForm() {
                 this.event.ev_host=this.two[0] //add host name to event object
                 this.event['organizations.orgid']=parseInt(this.two[1]) //add host # to event object
