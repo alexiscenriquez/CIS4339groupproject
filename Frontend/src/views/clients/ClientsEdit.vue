@@ -28,7 +28,7 @@
                         <div class="col-sm-4">
                             <label class="form-label">Date of Birth*</label>
                             <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
-                            <input type="date" class="form-control" v-model="clients.b_day" required>
+                            <input type="date" class="form-control" v-model="date" required>
                         </div>
                         <div class="col-sm-4">
                             <label class="form-label">Drivers License Number*</label>
@@ -406,7 +406,8 @@ export default {
         // arrays for holding data
         return {
             //clients_list:{}
-            clients: {}
+            clients: {},
+            date:''
         }
     },
     created() {
