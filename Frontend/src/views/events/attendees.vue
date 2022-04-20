@@ -36,7 +36,7 @@
                 let data = {"id":ID}    //store vid
                 let data2 = {"id":this.$route.params.id}    //store evid
                 let apiURL = `http://localhost:8080/events/del-volunteer/${this.$route.params.id}`  //backend api
-                let indexOfArrayItem = this.volunteer.findIndex(i=>i.vid === ID);   //store vid from array
+                let indexOfArrayItem = this.volunteer.findIndex(i=>i.vid === ID);   //store vid index from array
                 
                 //remove only if true
                 if(window.confirm('Remove Volunteer from Event?')){
@@ -186,8 +186,7 @@
                             <button class='btn create'>Add Employee</button>
                         </div>
                         </form> 
-                    </div>
-                    
+                    </div>  
                 </div>
         </fieldset> 
 
@@ -211,11 +210,13 @@
                         <td>{{v.first_name }}</td>
                         <td>{{v.last_name }}</td>
                         <td>{{v.phone_num }}</td>
+                        <!-- call function to remove volunteer from events collection -->
                         <td><button @click.prevent="rem_volunteer(v.vid)" class="btn btn-danger">Remove</button></td>
                     </tr> 
                 </tbody>
             </table>
         </div>
+        
         <!-- display employees table and allow removal -->
         <div class="row justify-content-center">
             <table class="table table-light table-hover caption-top">
