@@ -236,6 +236,7 @@
                         <td>{{e.firstName }}</td>
                         <td>{{e.lastName }}</td>
                         <td>{{e.phone}}</td>
+                        <!-- call function to remove employee from events collection -->
                         <td><button @click.prevent="rem_employee(e.employeeID)" class="btn btn-danger">Remove</button></td>
                     </tr> 
                 </tbody>

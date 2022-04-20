@@ -1,6 +1,7 @@
 <script>
 import axios from 'axios'
 import Footer from '../components/footer.vue'
+//exports objects
 export default {
   props: {
     msg: {
@@ -40,6 +41,7 @@ export default {
     </div>
   </div>
 </div>
+<!-- displaying footer -->
 <Footer />
 <br>
 </fieldset>
