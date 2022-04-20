@@ -14,6 +14,13 @@
     <p></p>
     </fieldset>
 
+    <fieldset class='form-control mb-5'>
+      <legend>Services Provided by Veteran Status</legend>
+    <!-- pie chart that shows servicing by Veteran Status -->
+    <column-chart :data="graph69 "></column-chart>
+    <p></p>
+    </fieldset>
+
   </div>
 </template>
 
@@ -25,6 +32,7 @@ export default {
         return {
             graph:{}, 
             graph2:{},
+            graph69:{},
             chartData:{
             'White':2,
             'Black/African-American':5,
@@ -39,12 +47,16 @@ export default {
     created() {
         let apiURL = `http://localhost:8080/reports/ethnicity`; 
         let apiUrl2 = `http://localhost:8080/reports/gender`;
+        let apiURL69 = `http://localhost:8080/reports/veteran`
 
         axios.get(apiURL).then((res) => {
             this.graph = res.data[0]; 
         })
         axios.get(apiUrl2).then((res)=>{
           this.graph2 = res.data[0]
+        })
+        axios.get(apiURL69).then((res)=>{
+          this.graph69 = res.data[0]
         })
     }
 }
