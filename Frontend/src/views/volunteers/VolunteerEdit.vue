@@ -141,7 +141,7 @@
             </fieldset>
             <button class="btn mb-5 create" >Update</button>
         </form>
-       
+       <Footer />
     </div>
 </template>
 
@@ -150,6 +150,9 @@ import axios from "axios"
 import Footer from '../../components/footer.vue'
 
 export default {
+    components:{
+            Footer
+        },
      data() {
         return {
             volunteers: {},

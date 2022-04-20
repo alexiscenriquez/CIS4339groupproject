@@ -15,16 +15,18 @@
             </fieldset>
             <button class="btn create mt-3">Update</button>
         </form>
+        <br>
+        <Footer />
     </div>
 </template>
 
 <script>
     import axios from "axios";
-    import Footers from '../../components/footer.vue'
+    import Footer from '../../components/footer.vue'
 //exports arrays and objects
 export default {
     components:{
-        Footers
+        Footer
     },
     data() {
         return {

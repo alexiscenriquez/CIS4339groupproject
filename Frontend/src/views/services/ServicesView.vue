@@ -1,7 +1,11 @@
 <script>
     import axios from 'axios'
+    import Footer from '../../components/footer.vue'
     //export array
     export default{
+        components:{
+            Footer
+        },
         data(){
             return{
                 services:[]
@@ -74,6 +78,7 @@
             </tbody>
             </table>
         </div>
+        <Footer />
     </main>
 </template>
 
