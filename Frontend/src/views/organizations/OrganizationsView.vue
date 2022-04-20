@@ -9,7 +9,7 @@
             <table class="table table-light table-hover ">
                 <thead class="table-dark">
                     <tr>
-                        <th>Organization</th>
+                        <th>#</th>
                         <th>Name</th>
                         <th colspan="4">Action</th>
                         
