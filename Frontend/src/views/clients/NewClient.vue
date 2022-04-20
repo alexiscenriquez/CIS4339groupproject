@@ -144,16 +144,25 @@
                             <label class="form-label">Phone Number*</label>
                             <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" placeholder="XXX-XXX-XXXX" v-model="clients.phone_number" required>
+                            <small id="phoneHelpBlock" class="form-text text-muted">
+                                10 digit phone number should be entered with dashes
+                            </small>
                         </div>
                         <div class="col-sm-4">
                             <label class="form-label">Home Phone Number</label>
                             <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" placeholder="XXX-XXX-XXXX" v-model="clients.home_phone_number">
+                            <small id="phoneHelpBlock" class="form-text text-muted">
+                                10 digit phone number should be entered with dashes
+                            </small>
                         </div>
                         <div class="col-sm-4">
                             <label class="form-label">Emergency Contact Phone Number*</label>
                             <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" placeholder="XXX-XXX-XXXX" v-model="clients.emergency_contact_phone_number" required>
+                            <small id="phoneHelpBlock" class="form-text text-muted">
+                                10 digit phone number should be entered with dashes
+                            </small>
                         </div>
                         </div>
                     <div class="row mb-3">
@@ -228,12 +237,12 @@
                         <div class="col-sm-4">
                             <label class="form-label">No. of Children*</label>
                             <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
-                            <input type="text" class="form-control" placeholder="Number of Children living in residence" v-model="clients.number_of_children" required>
+                            <input type="number" class="form-control" placeholder="Number of Children living in residence" v-model="clients.number_of_children" required>
                         </div>
                         <div class="col-sm-4">
                             <label class="form-label">No. of Adults 65+*</label>
                             <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
-                            <input type="text" class="form-control" placeholder="Number of Adults over the age of 65 living in residence" v-model="clients.number_of_adults_over_65" required>
+                            <input type="number" class="form-control" placeholder="Number of Adults over the age of 65 living in residence" v-model="clients.number_of_adults_over_65" required>
                         </div>
                     </div>
                 </fieldset>
@@ -244,34 +253,34 @@
                         <div class="col-sm-4">
                             <label class="form-label">Rent*</label>
                             <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
-                            <input type="text" class="form-control" v-model="clients.rent" required>
+                            <input type="number" class="form-control" v-model="clients.rent" required>
                         </div>
                         <div class="col-sm-4">
                             <label class="form-label">Monthly Income*</label>
                             <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
-                            <input type="text" class="form-control" v-model="clients.monthly_income" required>
+                            <input type="number" class="form-control" v-model="clients.monthly_income" required>
                         </div>
                         <div class="col-sm-4">
                             <label class="form-label">Spousal Income Support*</label>
                             <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
-                            <input type="text" class="form-control" v-model="clients.spousal_income_support" required>
+                            <input type="number" class="form-control" v-model="clients.spousal_income_support" required>
                         </div>
                     </div>
                      <div class="row mb-4">
                         <div class="col-sm-4">
                             <label class="form-label">Worker Compensation Benefits*</label>
                             <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
-                            <input type="text" class="form-control" v-model="clients.worker_compensation" required>
+                            <input type="number" class="form-control" v-model="clients.worker_compensation" required>
                         </div>
                         <div class="col-sm-4">
                             <label class="form-label">Child Support Benefits*</label>
                             <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
-                            <input type="text" class="form-control" v-model="clients.child_support" required>
+                            <input type="number" class="form-control" v-model="clients.child_support" required>
                         </div>
                         <div class="col-sm-4">
                             <label class="form-label">TANF Benefits*</label>
                             <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
-                            <input type="text" class="form-control" placeholder="Texas Temporarry Assistance for Needy Families" v-model="clients.tanf" required>
+                            <input type="number" class="form-control" placeholder="Texas Temporarry Assistance for Needy Families" v-model="clients.tanf" required>
                         </div>
                         </div>
                       
@@ -280,24 +289,24 @@
                                <div class="col-sm-4">
                             <label class="form-label">Food Stamp Benefits*</label>
                             <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
-                            <input type="text" class="form-control" placeholder="Total monetary amount of food stamps" v-model="clients.food_stamps" required>
+                            <input type="number" class="form-control" placeholder="Total monetary amount of food stamps" v-model="clients.food_stamps" required>
                         </div>
                         <div class="col-sm-4">
                             <label class="form-label">SSI Benefits*</label>
                             <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
-                            <input type="text" class="form-control" placeholder="Supplemental Security Income" v-model="clients.ssi" required>
+                            <input type="number" class="form-control" placeholder="Supplemental Security Income" v-model="clients.ssi" required>
                         </div>
                         <div class="col-sm-4">
                             <label class="form-label">Unemployment Benefits*</label>
                             <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
-                            <input type="text" class="form-control" placeholder="Total monetary amount of Unemployment benefits" v-model="clients.unemployment" required>
+                            <input type="number" class="form-control" placeholder="Total monetary amount of Unemployment benefits" v-model="clients.unemployment" required>
                         </div>
                         </div>
                          <div class="row mb-4">
                         <div class="col-sm-4">
                             <label>Other Income*</label>
                             <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
-                            <input type="text" class="form-control" v-model="clients.other_income" required>
+                            <input type="number" class="form-control" v-model="clients.other_income" required>
                         </div>
                         </div>
                     
