@@ -1,5 +1,6 @@
 <template>
     <main>
+        <h1 class='text-center mb-5'>All Clients</h1>
         <div class="row ">
             <!-- Button that routes to create client view -->
             <router-link :to="{path:'new-client'}" class="btn btn-secondary col-md-3">Create New Client</router-link>
@@ -92,4 +93,5 @@
         }
     }
 </script>
+
 
