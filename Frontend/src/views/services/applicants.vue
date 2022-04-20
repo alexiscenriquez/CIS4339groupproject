@@ -73,7 +73,7 @@
 
 <template>
     <div>
-        <h1>Service #{{service.sid}}</h1>
+        <h1>{{service.name}} #{{service.sid}}</h1>
         <br>
     <fieldset class='form-control mb-5'>
         <div>
@@ -142,19 +142,5 @@
 </template>
 
 <style scoped>
-h1 {
-  font-size: 26px;
-  text-align: center;
-  margin-top: 80px;
-}
-form {
-  margin-top: 50px;
-}
-#create{
-  background-color: #A6A7A8;
-}
-#create:hover{
-  background-color: #2E5902;
-  color: white;
-}
+@import "../../assets/app.css";
 </style>
