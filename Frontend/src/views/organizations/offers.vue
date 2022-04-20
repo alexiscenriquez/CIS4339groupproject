@@ -82,13 +82,14 @@
                     })
                 }
             },
-            // add volunteers to events
+            // add service to service and org collections
             add_service() {
                 
                 let dis = this.new_sid.id
                 let data2 = {"id":this.$route.params.id}
                 let apiURL = `http://localhost:8080/organizations/add-service/${this.$route.params.id}`;
                 let apiURL2 = `http://localhost:8080/services/add-org/${dis}`
+                //add service to organization collection
                 axios.post(apiURL, this.new_sid).then(() => {
                     //changing the view to the list
                     this.$router.push('/organizations')
@@ -100,18 +101,19 @@
                     console.log('line 59 attendees')
                     console.log(error)
                 });
+                //add organization to service collection
                 axios.post(apiURL2, data2).then(()=>{
                     
                 }).catch(error =>{
                     console.log(error)
                 })
             },
-            //add employees to events
+            //add events to events and organziation collections
             add_event() {
                 let vide = this.new_evid.id
                 let data2 = {"id":this.$route.params.id}
                 let apiURL = `http://localhost:8080/organizations/add-event/${this.$route.params.id}`;
-                
+                //add event to organization collection
                 axios.post(apiURL, this.new_evid).then(() => {
                     //changing the view to the list
                     this.$router.push('/organizations')
@@ -121,7 +123,7 @@
                 }).catch(error => {
                     console.log(error)
                 });
-
+                // add organization to event collection
                 let apiURL2 = `http://localhost:8080/events/add-org/${vide}`
                 axios.post(apiURL2, data2).then(()=>{
                     // this.employee.push(ide)
@@ -139,17 +141,18 @@
     <br>
     <div id="forms">
    <form class="col-sm-3 view-form">
-            <fieldset class='form-control mb-5 '>
-                <legend class="mb-3"><strong>Organization</strong></legend>
-                  
-                        <div>
-
-                            <input type="text" class='form-control mb-3' v-model='organization.org_name' disabled>
-                            <router-link :to="{name: 'org_edit', params: { id: organization.orgid }}" class="btn create ">Edit</router-link>
-                        </div>
-                            </fieldset>
+       <!-- display event information and allow editing of organization, current events, current services, and addition of services and events -->
+        <fieldset class='form-control mb-5 '>
+            <legend class="mb-3"><strong>Organization</strong></legend>
+                <!-- show organization info -->
+                <div>
+                    <input type="text" class='form-control mb-3' v-model='organization.org_name' disabled>
+                    <!-- go to organization edits page -->
+                    <router-link :to="{name: 'org_edit', params: { id: organization.orgid }}" class="btn create ">Edit</router-link>
+                </div>
+        </fieldset>
    </form>
-
+                    <!-- add service to organization -->
                     <div class='col-sm-3 view-form '>
                         <form @submit.prevent='add_service'>
                            
@@ -167,7 +170,7 @@
                         </form> 
                     </div>
                     
-                   
+                        <!-- add event to organization -->
                         <form @submit.prevent='add_event' class="col-sm-3 view-form">
                            
                         <fieldset class="form-control">
@@ -183,7 +186,7 @@
                 </div>
     
 
-        <!-- Volunteer table -->
+        <!-- display services table and allow for editing -->
         <div class="row justify-content-center">
             <table class="table table-light table-hover caption-top">
                 <caption><strong>Services</strong></caption>
@@ -202,13 +205,15 @@
                         <td>{{s.name }}</td>
                         <td>{{s.renewal }}</td>
                         <td>{{s.notes }}</td>
+                        <!-- go to services edit page -->
                         <td><router-link :to="{name: 'services_edit', params: { id: s.sid }}" class="btn btn-secondary ">Edit</router-link></td>
                 
                     </tr> 
                 </tbody>
             </table>
         </div>
-    
+
+        <!-- display events table and allow for editing -->
         <div class="row justify-content-center">
             <table class="table table-light table-hover caption-top">
                 <caption><strong>Events</strong></caption>
@@ -227,6 +232,7 @@
                         <td>{{ev.ev_name }}</td>
                         <td>{{ev.ev_host }}</td>
                         <td>{{ev.ev_date}}</td>
+                        <!-- go to events edit page -->
                         <td><router-link :to="{name: 'events_edit', params: { id: ev.evid }}" class="btn btn-secondary ">Edit</router-link></td>
                     </tr> 
                 </tbody>

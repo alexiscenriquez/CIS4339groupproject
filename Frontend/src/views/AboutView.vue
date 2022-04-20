@@ -1,13 +1,13 @@
 <script>
 // import child component
 import AboutUs from '../components/AboutUs.vue'
-// import Footer from '../components/footer.vue'
+import Footer from '../components/footer.vue'
 
 export default {
   // register child component
   components: {
     AboutUs,
-    //Footer
+    Footer
   },
   data() {
     return {

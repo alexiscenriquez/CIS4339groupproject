@@ -81,6 +81,38 @@ router.get('/gender', (req, res, next) =>{
 
 });
 
+router.get('/veteran', (req, res, next) =>{
+    //currently count how many of each veteran
+    clientsModel.aggregate([
+        {
+            '$group':{
+                '_id':'$veteran_status', 'count':{'$sum':1}
+            }
+        },
+        {
+            '$group':{
+                '_id':null,
+                'counts':{
+                    '$push':{'k':'$_id', 'v':'$count'}
+                }
+            }
+        },
+        {'$replaceRoot':{
+                'newRoot':{'$arrayToObject':'$counts'}
+            }
+    
+        }
+    ]).exec((error, data) => {
+        if (error) {
+          return next(error)
+        } else {
+          res.json(data)
+          console.log(data);
+        }
+      })
+
+});
+
 //ignore this one
 router.get('/organizations', (req, res, next) =>{
     //currently count how many of each ethnicity
