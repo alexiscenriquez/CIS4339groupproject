@@ -107,23 +107,35 @@
                 <div class='row mb-4'>
                     <div class="col-sm-6">
                         <label>*Phone #</label>
-                        <input type="text" class="form-control" v-model="volunteers.phone_num" required>
+                        <input type="text" class="form-control" placeholder='XXX-XXX-XXX' model="volunteers.phone_num" required>
+                        <small id="phoneHelpBlock" class="form-text text-muted">
+                        9 digit phone number should be entered with dashes
+                        </small>
                     </div>
 
                     <div class="col-sm-6">
                         <label>Emergency #</label>
-                        <input type="text" class="form-control" v-model="volunteers.emer_num">
+                        <input type="text" class="form-control" placeholder="XXX-XXX-XXXX" v-model="volunteers.emer_num">
+                        <small id="phoneHelpBlock" class="form-text text-muted">
+                        9 digit phone number should be entered with dashes
+                        </small>
                     </div>
                 </div>
                 <div class='row mb-4'>
                     <div class="col-sm-6">
                         <label>*Primary Email</label>
                         <input type="email" class="form-control" v-model="volunteers.email" required>
+                        <small id="phoneHelpBlock" class="form-text text-muted">
+                        example@email.com
+                        </small>
                     </div>
 
                     <div class="col-sm-6">
                         <label>Seconadary Email</label>
                         <input type="email" class="form-control" v-model="volunteers.email2">
+                        <small id="phoneHelpBlock" class="form-text text-muted">
+                        example@email.com
+                        </small>
                     </div>
                 </div>
             </fieldset>
