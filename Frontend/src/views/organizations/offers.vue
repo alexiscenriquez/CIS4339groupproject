@@ -1,8 +1,12 @@
 <script>
     import axios from 'axios'
+    //Used to export modujles, objects, functions and variables to be used elsewhere
     export default{
+        //Storing the data being exported in a function
         data(){
             return{
+                //Function returning
+            //Several arrays for holding data
                 organization:[],
                 service:[],
                 event:[],
@@ -130,9 +134,9 @@
 </script>
 
 <template>
-
-        <h1>Organization #{{organization.orgid}}</h1>
-        <br>
+<div>
+    <h1>Organization #{{organization.orgid}}</h1>
+    <br>
     <div id="forms">
    <form class="col-sm-3 view-form">
             <fieldset class='form-control mb-5 '>
@@ -228,8 +232,7 @@
                 </tbody>
             </table>
         </div>
- 
-    
+    </div>
 </template>
 
 <style scoped>

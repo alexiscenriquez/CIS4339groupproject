@@ -94,7 +94,10 @@ export default {
     addEvent() {
       let eid = this.new_evid.id;
       let apiURL = `http://localhost:8080/employees/add-event/${this.$route.params.id}`;
-      let apiURL2 = `http://localhost:8080/event/add-employee/${eid}`;
+      let apiURL2 = `http://localhost:8080/events/add-employee/${eid}`;
+        let data = {
+        id: this.$route.params.id,
+      };
       axios
         .post(apiURL, this.new_evid)
         .then(() => {
@@ -108,7 +111,7 @@ export default {
         });
 
       axios
-        .post(apiURL2, this.$route.params.id)
+        .post(apiURL2,data)
         .then(() => {})
         .catch((error) => {
           console.log(error);
