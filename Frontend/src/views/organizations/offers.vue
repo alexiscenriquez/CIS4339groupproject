@@ -177,7 +177,7 @@
                         <th>Name</th>
                         <th>Renewal</th>
                         <th>Notes</th>
-                        <th></th>    
+                        <th>Action</th>    
                     </tr>
                 </thead>
                 <tbody>
@@ -186,7 +186,8 @@
                         <td>{{s.name }}</td>
                         <td>{{s.renewal }}</td>
                         <td>{{s.notes }}</td>
-                        <td><button @click.prevent="rem_service(s.sid)" class="btn btn-secondary">Remove</button></td>
+                        <!--<td><button @click.prevent="rem_service(s.sid)" class="btn btn-secondary">Remove</button></td>-->
+                        <td><router-link :to="{name: 'services_edit', params: { id: s.sid }}" class="btn btn-secondary ">Edit</router-link></td>
                 
                     </tr> 
                 </tbody>
@@ -203,7 +204,7 @@
                         <th>Name</th>
                         <th>Last Name</th>
                         <th>Date</th>
-                        <th></th>    
+                        <th>Action</th>    
                     </tr>
                 </thead>
                 <tbody>
