@@ -142,6 +142,7 @@
                 </tr> 
             </tbody>
         </table>
+        <Footer />
     </div>
 </template>
 

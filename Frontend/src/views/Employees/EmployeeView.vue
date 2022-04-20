@@ -62,13 +62,18 @@
         </tbody>
       </table>
     </div>
+    <Footer />
   </main>
 </template>
 
 <script>
 import axios from "axios";
+import Footer from '../../components/footer.vue'
 
 export default {
+  components:{
+            Footer
+        },
   data() {
     return {
       Employees: [],

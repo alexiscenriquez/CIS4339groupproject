@@ -414,13 +414,18 @@
       </fieldset>
       <button class="btn mb-5 create">Create</button>
     </form>
+    <Footer />
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import Footer from '../../components/footer.vue'
 
 export default {
+  components:{
+            Footer
+        },
   data() {
     return {
       employees: {

@@ -1,7 +1,11 @@
 <script>
+    import Footer from '../../components/footer.vue'
    import axios from "axios";
     //exports arrays, objects and variables
     export default {
+        components:{
+            Footer
+        },
         data() {
             return {
                 services: {
@@ -118,6 +122,7 @@
             </fieldset>
             <button class="btn mb-5 create">Create</button>
         </form>
+        <Footer />
     </div>  
 </template>
 

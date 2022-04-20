@@ -170,11 +170,17 @@
                             <label class="form-label">Email*</label>
                             <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="email" class="form-control" placeholder="Primary Email Address" v-model="clients.primary_email" required>
+                            <small id="phoneHelpBlock" class="form-text text-muted">
+                                example@email.com
+                            </small>
                         </div>
                         <div class="col-sm-6">
                             <label class="form-label">Secondary Email</label>
                             <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="email" class="form-control" v-model="clients.secondary_email">
+                            <small id="phoneHelpBlock" class="form-text text-muted">
+                                example@email.com
+                            </small>
                         </div>
                     </div>
                 </fieldset>
@@ -207,9 +213,12 @@
                               
                         </div>
                         <div class="col-sm-4">
-                            <label class="form-label">Degree Name</label>\
+                            <label class="form-label">Degree Name</label>
                             <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" v-model="clients.degree_name" required>
+                            <small id="phoneHelpBlock" class="form-text text-muted">
+                                    If false, input "none"
+                                </small>
                         </div>
                     </div>
                 </fieldset>
@@ -331,11 +340,17 @@
                             <label class="form-label">Employer Name*</label>
                             <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" v-model="clients.employer_name" required>
+                            <small id="phoneHelpBlock" class="form-text text-muted">
+                                    If unemployed, input "none"
+                                </small>
                         </div>
                         <div class="col-sm-4">
                             <label class="form-label">Occupation*</label>
                             <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" placeholder="Job Title" v-model="clients.occupation" required>
+                            <small id="phoneHelpBlock" class="form-text text-muted">
+                                    If unemployed, input "none"
+                                </small>
                         </div>
                     </div>
                            <div class="row mb-4">
@@ -343,6 +358,9 @@
                             <label class="form-label">Length of Employment*</label>
                             <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" v-model="clients.length_of_employment" required>
+                            <small id="phoneHelpBlock" class="form-text text-muted">
+                                    If unemployed, input "none"
+                                </small>
                         </div>
                     </div>
                 </fieldset>
@@ -366,11 +384,17 @@
                             <label class="form-label">Insurance Program*</label>
                             <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" placeholder="Name of Healthcare Provider" v-model="clients.insurance_program" required>
+                            <small id="phoneHelpBlock" class="form-text text-muted">
+                                    If false, input "none"
+                                </small>
                         </div>
                         <div class="col-sm-4">
                             <label class="form-label">Health Insurance Desc*</label>
                             <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" placeholder="Type of health insurance" v-model="clients.health_insurance_desc" required>
+                            <small id="phoneHelpBlock" class="form-text text-muted">
+                                    If false, input "none"
+                                </small>
                         </div>
                     </div>
                     <div class="row mb-4">
@@ -401,14 +425,23 @@
                         </div>
             </div>
                 </fieldset>
+                <button class="btn mt-3 create">Update</button>
+                <br>
         </form>
+        <br>
+        <Footer />
     </div>
 </template>
 
 <script>
+import Footer from '../../components/footer.vue'
 import axios from "axios";
 //Used to export modujles, objects, functions and variables to be used elsewhere
 export default {
+    components:{
+        //footer
+            Footer
+        },
     //Storing the data being exported in a function
      data() {
          //Function returning

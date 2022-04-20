@@ -1,6 +1,10 @@
 <script>
+import Footer from '../../components/footer.vue'
 import axios from "axios";
 export default {
+  components:{
+            Footer
+        },
   data() {
     return {
       employee: [],
@@ -327,6 +331,7 @@ export default {
         </tbody>
       </table>
     </div>
+    <Footer />
   </main>
 </template>
 <style scoped>
