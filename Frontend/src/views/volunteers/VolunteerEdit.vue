@@ -26,12 +26,18 @@
 
                     <div class="col-sm-4">
                         <label>Social Security</label>
-                        <input type="text" class="form-control" v-model="volunteers.ssn">
+                        <input type="text" class="form-control" placeholder="XXX-XX-XXXX" v-model="volunteers.ssn">
+                        <small id="phoneHelpBlock" class="form-text text-muted">
+                            9 digit number with dashes
+                        </small>
                     </div>
 
                     <div class="col-sm-4">
                         <label>Drivers License</label>
-                        <input type="text" class="form-control" v-model="volunteers.DL">
+                        <input type="text" class="form-control" placeholder="XXXXXXXX" v-model="volunteers.DL">
+                        <small id="phoneHelpBlock" class="form-text text-muted">
+                            8 digit number
+                        </small>
                     </div>
                 </div>
                 <div class='row mb-4'>

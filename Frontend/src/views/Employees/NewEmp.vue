@@ -194,6 +194,9 @@
               v-model="employees.phone"
               placeholder="XXX-XXX-XXXX"
             />
+          <small id="phoneHelpBlock" class="form-text text-muted">
+              10 digit phone number should be entered with dashes
+            </small>
           </div>
           <div class="col-sm-6">
             <label for="home" class="form-label">Home Number</label>
