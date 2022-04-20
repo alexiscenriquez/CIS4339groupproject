@@ -447,7 +447,7 @@ export default {
           
         }
       
-        form.classList.add('was-validated')
+      //  form.classList.add('was-validated')
         
        
       }, false)
@@ -494,9 +494,12 @@ export default {
         .catch((error) => {
           console.log(error);
         });
-    
+    //  forms.classList.remove('was-validated')
     },
+     
+       
   },
+  
 };
 </script>
 
