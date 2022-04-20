@@ -224,7 +224,9 @@
                         <td>{{ev.ev_name }}</td>
                         <td>{{ev.ev_host }}</td>
                         <td>{{ev.ev_date}}</td>
-                        <td><button @click.prevent="rem_event(ev.evid)" class="btn btn-danger">Remove</button></td>
+                        <!-- <td><button @click.prevent="rem_event(ev.evid)" class="btn btn-danger">Remove</button></td> -->
+                        <!--<td><button @click.prevent="rem_event(ev.evid)" class="btn btn-secondary">Remove</button></td>-->
+                        <td><router-link :to="{name: 'events_edit', params: { id: ev.evid }}" class="btn btn-secondary ">Edit</router-link></td>
                     </tr> 
                 </tbody>
             </table>

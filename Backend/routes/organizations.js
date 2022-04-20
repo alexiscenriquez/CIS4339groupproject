@@ -82,13 +82,12 @@ router.post('/del-service/:orgid', (req, res, next) =>{
 
   //{ADD} event to organization
 router.post('/add-event/:orgid', (req, res, next) =>{
-
     organizationsModel.findOneAndUpdate(
         {
             orgid:parseInt(req.params.orgid)
         },
         {
-            $push:{'offers.evid':id}
+            $push:{'offers.evid':req.body.id}
         },
         (error, results) => {
             if(error){

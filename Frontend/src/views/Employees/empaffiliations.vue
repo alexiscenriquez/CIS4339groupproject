@@ -143,6 +143,7 @@ export default {
     },
     addOrg() {
       let orgid = this.new_orgid.id;
+      console.log('line 140 empaffil', orgid, typeof(orgid))
       let data = { id: this.$route.params.id };
       let apiURL = `http://localhost:8080/employees/add-org/${this.$route.params.id}`;
       let apiURL2 = `http://localhost:8080/organizations/add-emp/${orgid}`;
