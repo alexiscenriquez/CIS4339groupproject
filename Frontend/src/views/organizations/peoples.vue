@@ -243,11 +243,11 @@
                 <caption><strong>Volunteers</strong></caption>
                 <thead class="table-dark">
                     <tr>
-                        <th>VID#</th>
+                        <th>#</th>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Phone#</th>
-                        <th></th>    
+                        <th colspan="6">Actions</th>    
                     </tr>
                 </thead>
                 <tbody>
@@ -271,11 +271,11 @@
                 <caption><strong>Employees</strong></caption>
                 <thead class="table-dark">
                     <tr>
-                        <th>Emp#</th>
+                        <th>#</th>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Phone#</th>
-                        <th></th>    
+                        <th colspan="6">Actions</th>    
                     </tr>
                 </thead>
                 <tbody>
@@ -286,7 +286,7 @@
                         <td>{{e.lastName }}</td>
                         <td>{{e.phone}}</td>
                         <!-- call function to remove employee from organizations collection -->
-                        <td><button @click.prevent="rem_employee(e.employeeID)" class="btn btn-secondary">Remove</button></td>
+                        <td><router-link :to="{name: 'edit-emp', params: { id: e.employeeID }}" class="btn btn-secondary ">Edit</router-link></td>
                     </tr> 
                 </tbody>
             </table>
@@ -297,11 +297,11 @@
                 <caption><strong>Clients</strong></caption>
                 <thead class="table-dark">
                     <tr>
-                        <th>Client#</th>
+                        <th>#</th>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Phone#</th>
-                        <th></th>    
+                        <th colspan="6">Actions</th>    
                     </tr>
                 </thead>
                 <tbody>
