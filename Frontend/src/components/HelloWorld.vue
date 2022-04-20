@@ -1,4 +1,5 @@
 <script>
+//exports objects
 export default {
   props: {
     msg: {

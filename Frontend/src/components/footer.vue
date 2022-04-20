@@ -104,7 +104,7 @@
               <a href="#" ><router-link class="text-white" to="/volunteers">Volunteers</router-link></a>
             </p>
             <p>
-              <a href="#!" class="text-white">About</a>
+              <a href="#" ><router-link class="text-white" to="/about">About</router-link></a>
             </p>
           </div>
           <!-- Grid column -->

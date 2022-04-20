@@ -16,40 +16,44 @@
                 active: false
             }
         },
+        //grab organizations, events, and services data before mounting dom
         created(){
             let apiURL = `http://localhost:8080/organizations/organization-offers/${this.$route.params.id}`;
             let apiURL2 = `http://localhost:8080/services`;
+            //add eevent or service from organization collection
             axios.get(apiURL).then(res => {
-                this.organization = res.data[0];
+                this.organization = res.data[0]; //store org data
                 //this.employee = res.data[0].employees;
-                this.service = res.data[0].services;
-                this.event = res.data[0].events;
+                this.service = res.data[0].services; // store service data
+                this.event = res.data[0].events; // store event data
             }).catch(error=>{
                 console.log(error)
             });
-
+            //display all services in organization collection
             axios.get(apiURL2).then(res =>{
-                    this.fullservices = res.data
+                    this.fullservices = res.data //store service data
                     console.log(this.fullservices)
                 }).catch(error =>{
                     console.log(error)
                 })
         },
         methods:{
+            // remove service from service and organization collection
             rem_service(ID){
                 let data = {"id":ID}
                 let data2 = {"id":this.$route.params.id}
                 let apiURL = `http://localhost:8080/organizations/del-service/${this.$route.params.id}`
                 let indexOfArrayItem = this.service.findIndex(i=>i.sid === ID);
-                
+                //remove if true
                 if(window.confirm('Remove service from organization?')){
+                    //remove service from organization collection
                     axios.post(apiURL, data
                     ).then(()=>{
                         this.service.splice(indexOfArrayItem, 1);
                     }).catch(error => {
                         console.log(error)
                     })
-                    //remove from organizations table
+                    //remove organization from service collection
                     let apiURL2 = `http://localhost:8080/services/del-org/${ID}`
                     axios.post(apiURL2, data2).then(()=>{
                         
@@ -58,6 +62,7 @@
                     })
                 }
             },
+            // remove event from event and organization collection
             rem_event(ID){
                 let data = {"id":ID}
                 let data2 = {"id":this.$route.params.id}
@@ -158,7 +163,7 @@
                            
                       <fieldset class="form-control">
                                     <legend class="mb-3"><strong>Service</strong></legend> 
-                                    
+                                    <!-- display information for each services in array -->
                                     <select v-model='new_sid.id' class="form-control mb-3">
                                         <option value="" selected disabled>Choose a Service</option>
                                         <option v-for="x in fullservices" :value="x.sid" :key="x.sid">{{x.sid}}{{" - "}}{{x.name}}</option>
@@ -200,6 +205,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- display information for each volunteer in array, allow user to remove volunteer by vid -->
                     <tr v-for="s in service" :key="s.vid">
                         <td>{{s.sid }}</td>
                         <td>{{s.name }}</td>
@@ -227,6 +233,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- display information for each event in array, allow user to remove event by evid -->
                     <tr v-for="ev in event" :key="ev.evid">
                         <td>{{ev.evid }}</td>
                         <td>{{ev.ev_name }}</td>

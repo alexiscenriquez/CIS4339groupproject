@@ -16,7 +16,7 @@
 
     <fieldset class='form-control mb-5'>
       <legend>Services Provided by Veteran Status</legend>
-    <!-- pie chart that shows servicing by Veteran Status -->
+    <!-- column chart that shows servicing by Veteran Status -->
     <column-chart :data="graph69 "></column-chart>
     <p></p>
     </fieldset>
