@@ -34,7 +34,7 @@
            
           
            
-            <td>{{ employee.dept }}</td>
+            <td>{{ employee.org_name }}</td>
          
         <td>
           <router-link :to="{name:'seemore-emp',params:{id:employee.employeeID}}" class="btn btn-secondary">See More</router-link>

@@ -313,7 +313,7 @@
       <fieldset class="form-control mb-5">
         <legend>Employment Information</legend>
         <div class="row mb-4">
-          <div class="col-sm-6">
+          <div class="col-sm-4">
             <label for="lEmployment" class="form-label"
               >Length of Employment</label
             ><input
@@ -324,7 +324,7 @@
             />
           </div>
 
-          <div class="col-sm-6">
+          <div class="col-sm-4">
             <label for="dept" class="form-label">Department</label>
             <select
               name="dept"
@@ -339,6 +339,16 @@
               <option value="Marketing">Marketing</option>
             </select>
           </div>
+
+          <div class="col-sm-4">
+            <label for="lEmployment" class="form-label">Organization</label>
+            <select class="form-select" aria-label="Default select example" v-model='two'>
+              <option value="" selected disabled>Choose an Organization</option>
+              <!-- display organizations list, store in array -->
+              <option v-for="x in list" :value="[x.org_name,x.orgid]" :key="x.orgid">{{x.orgid}}{{" - "}}{{x.org_name}}</option>
+            </select>
+          </div>
+
         </div>
         <div class="row mb-4">
           <div class="col-sm-4">
@@ -437,14 +447,39 @@ export default {
         jDesc: "",
         hGrade: "",
         degree: "",
+        org_name:'',
         eContact: [
           { fName: "", lName: "", phone: "" },
           { fName: "", lName: "", phone: "" },
         ],
         language: [],
       },
+        list:[],
+        two:[],
+        data:{},
+        num:''
     };
   },
+  //grab id and organization data before mounting dom
+        created(){
+            //get list of organizations
+            let apiURL = `http://localhost:8080/organizations`
+            axios.get(apiURL).then(res =>{
+                    this.list = res.data
+                }).catch(error =>{
+                    console.log(error)
+                })
+
+            //get seq number from counters collection and add one 
+            let api3 = `http://localhost:8080/counters/last_eid`
+                axios.get(api3).then(res =>{
+                    this.num = res.data[0].seq + 1
+                }).catch(error => {
+                    console.log(error)
+                });
+        },
+
+
   methods: {
 
     handleSubmitForm() {
@@ -469,8 +504,9 @@ export default {
        
       }, false)
     })
-
-    
+      this.employees.org_name=this.two[0]
+      this.employees['organizations.orgid']=parseInt(this.two[1]) //add host # to event object
+      this.data.id=this.num //add next vid to data obj
       let apiURL = "http://localhost:8080/employees/newemp";
       console.log(this.employees);
       axios
@@ -511,6 +547,15 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+
+        //add event to organizations collection
+                let apiURL2 = `http://localhost:8080/organizations/add-emp/${this.two[1]}`
+                axios.post(apiURL2, this.data).then(res =>{
+                    this.data={},
+                    this.two = []
+                }).catch(error => {
+                    console.log(error)
+                });
     //  forms.classList.remove('was-validated')
     },
      

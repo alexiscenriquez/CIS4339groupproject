@@ -298,7 +298,7 @@
     <fieldset class="form-control mb-5">
       <legend>Employment Information</legend>
       <div class="row mb-4">
-        <div class="col-sm-6">
+        <div class="col-sm-4">
           <label for="lEmployment" class="form-label"
             >Length of Employment</label
           ><input
@@ -308,7 +308,7 @@
             v-model="employees.lEmployment"
           />
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-4">
           <label for="dept" class="form-label">Department</label>
           <select
             name="dept"
@@ -323,6 +323,17 @@
             <option value="Marketing">Marketing</option>
           </select>
         </div>
+      
+      <div class="col-sm-4">
+            <label for="lEmployment" class="form-label">Current:{{employees.org_name}}</label>
+            <select class="form-select" aria-label="Default select example" v-model='two'>
+              <option value="" selected disabled>Choose an Organization</option>
+              <!-- display organizations list, store in array -->
+              <option v-for="x in list" :value="[x.org_name,x.orgid]" :key="x.orgid">{{x.orgid}}{{" - "}}{{x.org_name}}</option>
+            </select>
+            <p>Select current or change organization</p>
+          </div>
+      
       </div>
       <div class="row mb-4">
         <div class="col-sm-4">
@@ -398,7 +409,11 @@ export default {
   data() {
     return {
       employees: {},
-      date: ""
+      date: "",
+      list:[],
+      two:[],
+      cur_host:'',
+      cur_host_num:''
     };
   },
   created() {
@@ -409,15 +424,31 @@ export default {
       .then((res) => {
         this.employees = res.data[0];
         this.date = res.data[0].birthday.slice(0, 10);
+        this.cur_host = res.data[0].org_name //store current host name
+        this.cur_host_num = res.data[0].organizations.orgid //store host number
+
        
       })
       .catch((error) => {
         console.log(error);
       });
+
+        //get organization list
+        let apiURL2 = `http://localhost:8080/organizations`
+            axios.get(apiURL2).then(res =>{
+                    this.list = res.data
+                }).catch(error =>{
+                    console.log(error)
+                })
+
   },
   methods: {
     handleUpdateForm() {
       this.employees.birthday = this.date;
+      let data = {'id':this.$route.params.id} //add evid to obj
+      this.employees.org_name=this.two[0]  //add host to event object
+      this.employees.organizations.orgid=parseInt(this.two[1])  //add orgid to event object
+
       
       let apiURL = `http://localhost:8080/employees/update/${this.$route.params.id}`;
 
@@ -430,6 +461,29 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+
+      //if no changes to host
+            if(this.cur_host == this.two[0]){
+                this.$router.push('/employees')
+            }else{
+                //delete current organization from event
+                let api3 = `http://localhost:8080/organizations/del-emp/${this.cur_host_num}`
+                axios.post(api3, data).then((res)=>{
+                    console.log(res)
+                }).catch(error=>{
+                    console.log(error)
+                })
+
+                //add event to organization
+                let api4 = `http://localhost:8080/organizations/add-emp/${this.two[1]}`
+                axios.post(api4, data).then(res =>{
+                    this.$router.push('/employees')
+                }).catch(error => {
+                    console.log(error)
+                });
+
+            }
+
     },
   },
 };

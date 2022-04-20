@@ -87,6 +87,9 @@ let employeesSchema = new Schema(
     events: {
       eventID: [{ type: Number }],
     },
+    org_name:{
+      type:String
+    },
     organizations:{
       orgid:
       [
