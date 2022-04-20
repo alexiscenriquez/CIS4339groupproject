@@ -2,6 +2,7 @@
     import axios from 'axios'
     import Footer from '../../components/footer.vue'
 
+    //export arrays, objects, components
     export default{
         components:{
             Footer
@@ -11,13 +12,10 @@
                 volunteer:[],
                 organization:[],
                 fullorganizations:[],
-                new_orgid:{id:''},
-                //fullorganizations:[],
-                //organization:[],
-                active: false,
-
+                new_orgid:{id:''}
             }
         },
+        //get volunteer and organization data before the mounting dom
         created(){
             let apiURL = `http://localhost:8080/volunteers/org-attendees/${this.$route.params.id}`;
             let apiURL2 = `http://localhost:8080/organizations`;

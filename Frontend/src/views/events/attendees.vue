@@ -84,6 +84,8 @@
             add_volunteer() {
                 let idv = this.new_vid.id   //store vid in object
                 let data2 = {"id":this.$route.params.id}    //store evid
+                
+                //add volunteer to event collection
                 let apiURL = `http://localhost:8080/events/add-volunteer/${this.$route.params.id}`;//backend api
                 axios.post(apiURL, this.new_vid).then(() => {
                   this.$router.push('/events')  //back to events home page
@@ -96,7 +98,7 @@
                     console.log(error)
                 });
                 
-                //add volunteer to event
+                //add volunteer to volunteer collection
                 let apiURL2 = `http://localhost:8080/volunteers/add-event/${idv}`//backend api
                 axios.post(apiURL2, data2).then(()=>{
                 }).catch(error =>{
@@ -161,7 +163,7 @@
                         <input type="text" class='form-control' v-model='event.zip' disabled>
                     </div>
                 </div>
-                <!-- go to events edit page -->
+                <!-- go to events edit view -->
                 <router-link :to="{name: 'events_edit', params: { id: event.evid }}" class="btn create ">Edit</router-link>
                 <hr>
                 <!-- add volunteer to event -->
@@ -209,7 +211,7 @@
                         <td>{{v.first_name }}</td>
                         <td>{{v.last_name }}</td>
                         <td>{{v.phone_num }}</td>
-                        <!-- call function to remove volunteer from events collection -->
+                        <!-- call function to remove volunteer from collections -->
                         <td><button @click.prevent="rem_volunteer(v.vid)" class="btn btn-danger">Remove</button></td>
                     </tr> 
                 </tbody>
