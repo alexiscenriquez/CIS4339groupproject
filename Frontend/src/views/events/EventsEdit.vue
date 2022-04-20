@@ -143,26 +143,12 @@ export default {
                     </div>
             </fieldset>
             <!-- submit form -->
-            <button class="btn mb-5" id="create">Update</button>
+            <button class="btn mb-5 create" >Update</button>
         </form>
         <Footers />
     </div>
 </template>
 
 <style scoped>
-h1 {
-  font-size: 26px;
-  text-align: center;
-  margin-top: 80px;
-}
-form {
-  margin-top: 50px;
-}
-#create{
-  background-color: #A6A7A8;
-}
-#create:hover{
-  background-color: #2E5902;
-  color: white;
-}
+@import "../../assets/app.css";
 </style>

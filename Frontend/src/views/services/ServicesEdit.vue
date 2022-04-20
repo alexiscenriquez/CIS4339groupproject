@@ -82,7 +82,7 @@ export default {
         <form @submit.prevent="UpdateService">
         <!-- display and allow changes to name, host, renewal, notes data w/ v-model -->
         <fieldset class='form-control mb-5'>
-            <div class='form-control mb-4'>
+            <div class=' mb-4'>
                 <div>
                     <label class='form-label' for="">*Name</label>
                     <input type="text" class='form-control' v-model='services.name' required>
@@ -123,26 +123,12 @@ export default {
                 </div>
             </div>
         </fieldset>
-        <button class="btn mb-5" id="create">Update</button>
+        <button class="btn mb-5 create">Update</button>
         </form>
     </div>  
 
 </template>
 
 <style scoped>
-h1 {
-  font-size: 26px;
-  text-align: center;
-  margin-top: 80px;
-}
-form {
-  margin-top: 50px;
-}
-#create{
-  background-color: #A6A7A8;
-}
-#create:hover{
-  background-color: #2E5902;
-  color: white;
-}
+@import "../../assets/app.css";
 </style>
