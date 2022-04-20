@@ -13,6 +13,7 @@
                    country:'',
                    zip:''
                 },
+                //need
                 list:[],
                 two:[],
                 data:{},
@@ -26,7 +27,8 @@
                 }).catch(error =>{
                     console.log(error)
                 })
-        
+
+            //need
             let api3 = `http://localhost:8080/counters/last_evid`
                 axios.get(api3).then(res =>{
                     this.num = res.data[0].seq + 1
@@ -36,9 +38,12 @@
         },
         methods: {
             handleSubmitForm() {
+                //need
                 this.event.ev_host=this.two[0]
                 this.event['organizations.orgid']=parseInt(this.two[1])
                 this.data.id=this.num
+
+
                 let apiURL = 'http://localhost:8080/events/new-event';
                 
                 axios.post(apiURL, this.event).then(() => {
@@ -56,6 +61,7 @@
                 }).catch(error => {
                     console.log(error)
                 });
+                //need
                 let apiURL2 = `http://localhost:8080/organizations/add-event/${this.two[1]}`
                 axios.post(apiURL2, this.data).then(res =>{
                     this.data={},
