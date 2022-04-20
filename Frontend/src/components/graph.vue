@@ -2,16 +2,14 @@
   <div>
     <fieldset class='form-control mb-5'>
       <legend>Services Provided by Ethnicity</legend>
-    <!-- Using pie-chart tag to display pie chart on /reports/graph -->
-    <!-- 'graph' represents json data from backend from route /reports/graph-->
+    <!-- bar chart that shows services by ethnicity-->
     <bar-chart :data="graph"></bar-chart>
     <p></p>
     </fieldset>
 
     <fieldset class='form-control mb-5'>
       <legend>Services Provided by Gender</legend>
-    <!-- Using pie-chart tag to display pie chart on /reports/graph -->
-    <!-- 'graph' represents json data from backend from route /reports/graph-->
+    <!-- pie chart that shows services by gender -->
     <pie-chart :data="graph2"></pie-chart>
     <p></p>
     </fieldset>
@@ -21,6 +19,7 @@
 
 <script>
 import axios from "axios"; 
+//exports objects of graph data
 export default {
     data() {
         return {
@@ -36,6 +35,7 @@ export default {
       },
         }
     },
+    // api's to get graph before dom is mounted
     created() {
         let apiURL = `http://localhost:8080/reports/ethnicity`; 
         let apiUrl2 = `http://localhost:8080/reports/gender`;
