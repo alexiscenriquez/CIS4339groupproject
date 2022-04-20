@@ -47,7 +47,7 @@
             <table class="table table-light table-hover">
             <thead class="table-dark">
                 <tr>
-                    <th>ID#</th>
+                    <th>#</th>
                     <th>Name</th>
                     <th>Renewal</th>
                     <th>Host</th>

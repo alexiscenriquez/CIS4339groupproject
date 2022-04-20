@@ -8,7 +8,7 @@
             <thead class="table-dark">
                 <tr>
                 <!-- Table headers -->
-                <th>Client</th>    
+                <th>#</th>    
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Birth Date</th>

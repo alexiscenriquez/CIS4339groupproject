@@ -54,8 +54,12 @@
               class="form-control"
               name="ssn"
               v-model="employees.SSN"
+              placeholder="XXX-XX-XXXX"
               required
             />
+            <small id="phoneHelpBlock" class="form-text text-muted">
+              9 digit phone number should be entered with dashes
+            </small>
             <div class="invalid-feedback">SSN is required</div>
           </div>
           <div class="col-sm-4">
@@ -65,8 +69,12 @@
               class="form-control"
               name="dl"
               v-model="employees.dLicense"
+              placeholder="XXXXXXXX"
               required
             />
+            <small id="phoneHelpBlock" class="form-text text-muted">
+              8 digit number
+            </small>
             <div class="invalid-feedback">Drivers License is required</div>
           </div>
         </div>
@@ -194,6 +202,9 @@
               v-model="employees.phone"
               placeholder="XXX-XXX-XXXX"
             />
+          <small id="phoneHelpBlock" class="form-text text-muted">
+              10 digit phone number should be entered with dashes
+            </small>
           </div>
           <div class="col-sm-6">
             <label for="home" class="form-label">Home Number</label>
@@ -218,6 +229,9 @@
               class="form-control"
               v-model="employees.pEmail"
             />
+            <small id="phoneHelpBlock" class="form-text text-muted">
+              example@email.com
+            </small>
           </div>
           <div class="col-sm-6">
             <label for="sEmail" class="form-label">Secondary Email</label>
@@ -226,6 +240,9 @@
               class="form-control"
               v-model="employees.sEmail"
             />
+            <small id="phoneHelpBlock" class="form-text text-muted">
+              example@email.com
+            </small>
           </div>
         </div>
       </fieldset>
