@@ -1,5 +1,6 @@
 <template>
     <main>
+        <div>
         <h1 class='text-center mb-5'>All Clients</h1>
         <div class="row ">
             <!-- Button that routes to create client view -->
@@ -42,14 +43,20 @@
             </tbody>
             </table>
           </div>
-
+          <Footer />
+        </div>
     </main>
 </template>
 
 <script>
+    import Footer from '../../components/footer.vue'
     import axios from 'axios'
     //Used to export modujles, objects, functions and variables to be used elsewhere
     export default{
+        components:{
+            //footer
+            Footer
+        },
         //Storing the data being exported in a function
         data(){
             //Function returning

@@ -18,13 +18,19 @@
             <!-- Button that creates org -->
             <button class="btn mt-3 create">Create</button>
         </form>
+        <br>
+        <Footer />
     </div>
 </template>
 
 <script>
+    import Footer from '../../components/footer.vue'
     import axios from "axios";
     //Used to export modujles, objects, functions and variables to be used elsewhere
     export default {
+        components:{
+            Footer
+        },
         //Storing the data being exported in a function
         data() {
             //What the function is returning (Method for adding org) in postman

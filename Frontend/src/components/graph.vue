@@ -27,14 +27,18 @@
     <bar-chart :data="graph3"></bar-chart>
     <p></p>
     </fieldset>
-
+  <Footer />
   </div>
 </template>
 
 <script>
+import Footer from '../components/footer.vue'
 import axios from "axios"; 
 //exports objects of graph data
 export default {
+  components:{
+            Footer
+        },
     data() {
         return {
             graph:{}, 

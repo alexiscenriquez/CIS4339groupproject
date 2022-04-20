@@ -225,13 +225,19 @@
                 </tbody>
             </table>
     </div>
+    <Footer />
         </main>
 </template>
 
 <script>
+    import Footer from '../../components/footer.vue'
     import axios from 'axios'
     //Used to export modujles, objects, functions and variables to be used elsewhere
     export default{
+        //footer
+        components:{
+            Footer
+        },
         //Storing the data being exported in a function
         data(){
             //What the function is returning
