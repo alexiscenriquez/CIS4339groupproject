@@ -108,7 +108,7 @@
     
             <tr>
               <th>Language(s)</th>
-              <td>{{ employees.language.join(", ") }}</td>
+              <td>{{lang}}</td>
             </tr>
             <tr>
               <th>Highest Grade</th>
@@ -154,6 +154,7 @@ export default {
   data() {
     return {
       employees: {},
+      lang:''
     };
   },
   created() {
@@ -162,6 +163,8 @@ export default {
       .get(apiURL)
       .then((res) => {
         this.employees = res.data[0];
+        this.lang = this.employees.language.join(',')
+        console.log('line 167',this.lang)
       })
       .catch((error) => {
         console.log(error);

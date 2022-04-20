@@ -16,9 +16,9 @@
           
    
     
-        <div class="row justify-content-center">
+        <div class="table1">
             
-            <table class="table table-light table-hover caption-top">
+            <table class="table table-light  caption-top">
                 <!-- title -->
                 <caption><strong>All Client Information</strong></caption>
                 <thead class="table-dark">
