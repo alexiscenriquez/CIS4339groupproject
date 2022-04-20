@@ -12,7 +12,7 @@
                 <th>Last Name</th>
                 <th>Birth Date</th>
                 <th>Phone Number</th>
-                <th colspan="5">Actions</th>
+                <th colspan="6">Actions</th>
   
                 </tr>
             </thead>
@@ -28,7 +28,7 @@
                 <!-- button that routes to clients-org view (shows which clients are related to organizations) -->
                 <td><router-link :to="{name: 'client-orgs', params: { id: cls.cid }}" class="btn btn-secondary ">Organizations</router-link></td>
                 <!-- button that routes to servicereps view (shows which clients are related to services) -->
-                <td><router-link :to="{name: 'servicereps', params: { id: cls.cid }}" class="btn btn-secondary ">Services</router-link></td>'
+                <td><router-link :to="{name: 'servicereps', params: { id: cls.cid }}" class="btn btn-secondary ">Services</router-link></td>
                 <!-- button that routes to custinfo view (shows all information pertaining to client) -->
                 <td><router-link :to="{name: 'custinfo', params: { id: cls.cid }}" class="btn btn-secondary ">More..</router-link></td>
                 <!-- button that routes to clients_edit (Allows specific client info to be edited) -->

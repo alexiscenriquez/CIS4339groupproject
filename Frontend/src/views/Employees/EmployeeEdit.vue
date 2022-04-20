@@ -1,4 +1,5 @@
 <template>
+<div>
   <h1>Edit Employee</h1>
   <form @submit.prevent="handleUpdateForm">
     <fieldset class="form-control mb-5">
@@ -365,6 +366,7 @@
     </fieldset>
     <button class="btn mb-5 create" >Update</button>
   </form>
+  </div>
 </template>
 
 <script>

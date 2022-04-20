@@ -134,9 +134,9 @@
 </script>
 
 <template>
-
-        <h1>Organization #{{organization.orgid}}</h1>
-        <br>
+<div>
+    <h1>Organization #{{organization.orgid}}</h1>
+    <br>
     <div id="forms">
    <form class="col-sm-3 view-form">
             <fieldset class='form-control mb-5 '>
@@ -232,8 +232,7 @@
                 </tbody>
             </table>
         </div>
- 
-    
+    </div>
 </template>
 
 <style scoped>
