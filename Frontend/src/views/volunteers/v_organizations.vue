@@ -19,20 +19,23 @@
         created(){
             let apiURL = `http://localhost:8080/volunteers/org-attendees/${this.$route.params.id}`;
             let apiURL2 = `http://localhost:8080/organizations`;
+            
+            //get list of attendees by organization
             axios.get(apiURL).then(res => {
-                this.volunteer = res.data[0];
-                this.organization = res.data[0].organizations;
+                this.volunteer = res.data[0]; //store volunteer data in array
+                this.organization = res.data[0].organizations; //store organization data in array
             }).catch(error=>{
                 console.log(error)
             });
-
+            
+            //get list of organizations
             axios.get(apiURL2).then(res =>{
-                    this.fullorganizations = res.data
-                    console.log(this.fullorganizations)
+                    this.fullorganizations = res.data //store organizations in array
                 }).catch(error =>{
                     console.log(error)
                 })
         },
+        //define functions
         methods:{
             
             del_organization(id){
