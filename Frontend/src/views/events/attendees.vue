@@ -81,7 +81,7 @@
                 let apiURL = `http://localhost:8080/events/add-volunteer/${this.$route.params.id}`;
                 axios.post(apiURL, this.new_vid).then(() => {
                     //changing the view to the list
-                //   this.$router.push('/events')
+                  this.$router.push('/events')
                     // this.volunteer.push(idv)
                   this.new_vid = {
                     id: ''
@@ -93,7 +93,7 @@
 
                 let apiURL2 = `http://localhost:8080/volunteers/add-event/${idv}`
                 axios.post(apiURL2, data2).then(()=>{
-                    
+                    // this.$router.push('/events')
                 }).catch(error =>{
                     console.log(error)
                 })
@@ -106,7 +106,7 @@
                 
                 axios.post(apiURL, this.new_eid).then(() => {
                     //changing the view to the list
-                //   this.$router.push('/events')
+                  this.$router.push('/events')
                   this.new_eid = {
                     id: ''
                   }
@@ -225,7 +225,7 @@
                         <td>{{e.firstName }}</td>
                         <td>{{e.lastName }}</td>
                         <td>{{e.phone}}</td>
-                        <td><button @click.prevent="rem_employee(e.employeeID)" class="btn danger">Remove</button></td>
+                        <td><button @click.prevent="rem_employee(e.employeeID)" class="btn btn-danger">Remove</button></td>
                     </tr> 
                 </tbody>
             </table>
