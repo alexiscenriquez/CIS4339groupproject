@@ -144,16 +144,25 @@
                             <label class="form-label">Phone Number*</label>
                             <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" placeholder="XXX-XXX-XXXX" v-model="clients.phone_number" required>
+                            <small id="phoneHelpBlock" class="form-text text-muted">
+                                10 digit phone number should be entered with dashes
+                            </small>
                         </div>
                         <div class="col-sm-4">
                             <label class="form-label">Home Phone Number</label>
                             <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" placeholder="XXX-XXX-XXXX" v-model="clients.home_phone_number">
+                            <small id="phoneHelpBlock" class="form-text text-muted">
+                                10 digit phone number should be entered with dashes
+                            </small>
                         </div>
                         <div class="col-sm-4">
                             <label class="form-label">Emergency Contact Phone Number*</label>
                             <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" placeholder="XXX-XXX-XXXX" v-model="clients.emergency_contact_phone_number" required>
+                            <small id="phoneHelpBlock" class="form-text text-muted">
+                                10 digit phone number should be entered with dashes
+                            </small>
                         </div>
                         </div>
                     <div class="row mb-3">
