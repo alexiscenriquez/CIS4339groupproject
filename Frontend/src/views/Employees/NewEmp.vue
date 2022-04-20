@@ -554,13 +554,13 @@ export default {
         });
 
         //add event to organizations collection
-                let apiURL2 = `http://localhost:8080/organizations/add-emp/${this.two[1]}`
-                axios.post(apiURL2, this.data).then(res =>{
-                    this.data={},
-                    this.two = []
-                }).catch(error => {
-                    console.log(error)
-                });
+          let apiURL2 = `http://localhost:8080/organizations/add-emp/${this.two[1]}`
+          axios.post(apiURL2, this.data).then(res =>{
+              this.data={},
+              this.two = []
+          }).catch(error => {
+              console.log(error)
+          });
     //  forms.classList.remove('was-validated')
     },
      
