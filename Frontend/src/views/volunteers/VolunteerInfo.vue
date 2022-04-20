@@ -9,15 +9,11 @@
                     <td><button @click.prevent="del_event(volunteer.vid)" class="btn btn-danger">Delete</button></td>
                 </div>
  
-        <div class="row justify-content-center">
-            <table class="table table-light table-hover caption-top">
+        <div class="table1">
+            <table class="table table-light caption-top">
                 <caption><strong>Information</strong></caption>
                 <thead>
-                    <tr>
-                        
-                        
-                       
-                    </tr>
+                    <tr></tr>
                 </thead>
                 <tbody>
                     <tr>
@@ -141,3 +137,6 @@
     }
 </script>
 
+<style scoped>
+    @import "../../assets/app.css";
+</style>
