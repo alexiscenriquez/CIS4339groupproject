@@ -16,6 +16,7 @@ export default {
 </script>
 
 <template>
+<div>
 <fieldset class="form-control mb-5">
 <div class="w3-content" style="max-width:1100px">
 <div class="w3-row w3-padding-64" id="about">
@@ -41,10 +42,11 @@ export default {
     </div>
   </div>
 </div>
-<!-- displaying footer -->
-<Footer />
 <br>
 </fieldset>
+<!-- displaying footer -->
+ <Footer />
+</div>
 </template>
 
 <style scoped>
