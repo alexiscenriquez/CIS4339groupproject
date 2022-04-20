@@ -15,16 +15,15 @@
                 active: false
             }
         },
-        //grab attendees info before mounting dom
+        //grab attendees data before mounting dom
         created(){
-            //get and set arrays
+            //get attendee data from event
             let apiURL = `http://localhost:8080/events/event-attendees/${this.$route.params.id}`; //backend api
             axios.get(apiURL).then(res => {
-                this.event = res.data[0];
-                this.volunteer = res.data[0].volunteers;
-                this.client = res.data[0].clients;
-                this.employee = res.data[0].employees;
-                
+                this.event = res.data[0]; //store event data
+                this.volunteer = res.data[0].volunteers; //store volunteer data
+                this.client = res.data[0].clients; //store client data
+                this.employee = res.data[0].employees; //store employee data
             }).catch(error=>{
                 console.log(error)
             });
