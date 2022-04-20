@@ -216,7 +216,7 @@
                         <td>{{s.renewal }}</td>
                         <td>{{s.notes }}</td>
                         <!-- go to services edit page -->
-                        <td><router-link :to="{name: 'services_edit', params: { id: s.sid }}" class="btn btn-secondary ">Edit</router-link></td>
+                        <td><router-link :to="{name: 'services_edit', params: { id: s.sid }}" class="btn btn-secondary ">Change Service</router-link></td>
                 
                     </tr> 
                 </tbody>
@@ -244,7 +244,7 @@
                         <td>{{ev.ev_host }}</td>
                         <td>{{ev.ev_date}}</td>
                         <!-- go to events edit page -->
-                        <td><router-link :to="{name: 'events_edit', params: { id: ev.evid }}" class="btn btn-secondary ">Edit</router-link></td>
+                        <td><router-link :to="{name: 'events_edit', params: { id: ev.evid }}" class="btn btn-secondary ">Change Event</router-link></td>
                     </tr> 
                 </tbody>
             </table>

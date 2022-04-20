@@ -21,9 +21,9 @@
                         <td>{{orgee.orgid }}</td>
                         <td>{{orgee.org_name }}</td>
                         <!-- go to offers page based on orgid -->
-                        <td><router-link :to="{name:'offers', params: {id: orgee.orgid}}" class= "btn btn-secondary"> Offers</router-link></td>
+                        <td><router-link :to="{name:'offers', params: {id: orgee.orgid}}" class= "btn btn-secondary"> Event/Service</router-link></td>
                         <!-- go to peoples page based on orgid -->
-                        <td><router-link :to="{name:'peoples', params: {id: orgee.orgid}}" class= "btn btn-secondary"> Peoples</router-link></td>
+                        <td><router-link :to="{name:'peoples', params: {id: orgee.orgid}}" class= "btn btn-secondary"> Client/Emp/Vol</router-link></td>
                         <!-- go to organizationg edit page based on orgid -->
                         <td><router-link :to="{name: 'org_edit', params: { id: orgee.orgid }}" class="btn btn-secondary ">Edit</router-link></td>
                         <!-- call delete function and remove org from organization collection -->
