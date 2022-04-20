@@ -42,7 +42,6 @@ export default {
     </div>
   </div>
 </div>
-<br>
 </fieldset>
 <!-- displaying footer -->
  <Footer />
