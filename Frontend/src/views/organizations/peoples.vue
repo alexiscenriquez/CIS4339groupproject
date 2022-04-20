@@ -185,56 +185,61 @@
 
 <template>
     <div>
-        <h1>Organization #{{organization.orgid}}</h1>
+        <h1>{{organization.org_name}} #{{organization.orgid}}</h1>
         <br>
         <!-- display organization information and allow editing of organization, and addition of volunteers, clients, and employees -->
-        <fieldset class='form-control mb-5'>
-            <legend><strong>{{organization.org_name}}</strong></legend>
-                <!-- show oganization information -->
-                <div class='row mb-3'>
-                    <div class='col-sm-3'>
-                        <label for="" class='form-label'>Organization</label>
-                        <input type="text" class='form-control' v-model='organization.org_name' disabled>
-                        <br>
-                        <!-- go to organizations edit page -->
-                        <td><router-link :to="{name: 'org_edit', params: { id: organization.orgid }}" class="btn btn-secondary ">Edit</router-link></td>
-                    </div>
-                    <div class='col-sm-4'>
-                        <!-- add volunteer to organization -->
-                        <form @submit.prevent='add_volunteer'>
-                            <div class='form-outline'>
-                                <input type="number" id='form14' class='form-control' v-model='new_vid.id'  required>
-                                <div class='form-helper'>VID#</div>
-                                <button class='btn btn-secondary'>Add Volunteer</button>
+<div id="forms">
+          
+                        <div class='col-sm-3'> 
+                            <!-- add volunteer to organization -->
+                            <form @submit.prevent='add_volunteer'>
+                                     <fieldset class="form-control"> 
+                                         <legend>Volunteers</legend>
+                                <div class='form-outline'>
+                                    <input type="number" id='form14' class='form-control mb-3' v-model='new_vid.id' placeholder="Enter volunteer ID"  required>
+                                   
+                                    <button class='btn btn-secondary'>Add Volunteer</button>
+                                </div>
+                                     </fieldset>
+                            </form> 
+                        </div>
+                        <!-- add employee to organizaiton -->
+                        
+                        <div class='col-sm-3'>
+                            <form @submit.prevent='add_employee'>
+                                <fieldset class="form-control">
+                                    <legend>Employees</legend>
+                            <div class='form-group'>
+                                <input type="number" class='form-control mb-3' v-model='new_eid.id' placeholder="Enter employee ID" required>
+
+                                <button class='btn btn-secondary'>Add Employee</button>
                             </div>
-                        </form> 
-                    </div>
-                    <!-- add employee to organizaiton -->
-                    <div class='col-sm-4'>
-                        <form @submit.prevent='add_employee'>
-                        <div class='form-group'>
-                            <input type="number" class='form-control' v-model='new_eid.id'  required>
-                            <div class='form-helper'>EID#</div>
-                            <button class='btn btn-secondary'>Add Employee</button>
+                                </fieldset>
+                            </form> 
                         </div>
-                        </form> 
-                    </div>
-                    <!-- add client to organization -->
-                    <div class='col-sm-4'>
-                        <form @submit.prevent='add_client'>
-                        <div class='form-group'>
-                            <input type="number" class='form-control' v-model='new_cid.id'  required>
-                            <div class='form-helper'>CID#</div>
-                            <button class='btn btn-secondary'>Add Client</button>
-                        </div>
-                        </form> 
-                    </div>
-                    
-                </div>
-        </fieldset> 
+
+                        <!-- add client to organization -->
+    
+                            <div class='col-sm-3'>
+                                <form @submit.prevent='add_client' >
+                                    <fieldset class="form-control">
+                                        <legend>Clients</legend>
+                                <div class='form-group'>
+                                    <input type="number" placeholder="Enter Client ID" class='form-control mb-3' v-model='new_cid.id'  required>
+                            
+                                    <button class='btn btn-secondary' >Add Client</button>
+                                </div>
+                                </fieldset>
+                                </form> 
+                            </div>
+                            
+           
+</div>
+    
+   
 
         <!-- display volunteer table and allow removal -->
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mt-5">
             <table class="table table-light table-hover caption-top">
                 <caption><strong>Volunteers</strong></caption>
                 <thead class="table-dark">
@@ -319,20 +324,6 @@
 </template>
 
 <style scoped>
-h1 {
-  font-size: 26px;
-  text-align: center;
-  margin-top: 80px;
-}
-form {
-  margin-top: 50px;
-}
-#create{
-  background-color: #A6A7A8;
-}
-#create:hover{
-  background-color: #2E5902;
-  color: white;
-}
+ @import "../../assets/app.css";
 </style>
 
