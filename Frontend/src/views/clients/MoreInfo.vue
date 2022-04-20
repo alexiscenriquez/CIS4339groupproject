@@ -255,10 +255,7 @@
 
 <style>
 .wrapper {
-
-    display:flex;
-    justify-content: space-between;
-   
+@import "../../assets/app.css";
 
 }
 

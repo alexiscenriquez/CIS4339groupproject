@@ -154,7 +154,7 @@
                         <input type="text" class='form-control' v-model='event.zip' disabled>
                     </div>
                 </div>
-                <router-link :to="{name: 'events_edit', params: { id: event.evid }}" class="btn btn-secondary ">Edit</router-link>
+                <router-link :to="{name: 'events_edit', params: { id: event.evid }}" class="btn create ">Edit</router-link>
                 <hr>
                 <div class='row mb-4'>
                     <div class='col-sm-4'>
@@ -162,7 +162,7 @@
                             <div class='form-outline'>
                                 <input type="number" id='form14' class='form-control' v-model='new_vid.id'  required>
                                 <div class='form-helper'>VID#</div>
-                                <button class='btn btn-secondary'>Add Volunteer</button>
+                                <button class='btn create'>Add Volunteer</button>
                             </div>
                         </form> 
                     </div>
@@ -172,7 +172,7 @@
                         <div class='form-group'>
                             <input type="number" class='form-control' v-model='new_eid.id'  required>
                             <div class='form-helper'>EID#</div>
-                            <button class='btn btn-secondary'>Add Employee</button>
+                            <button class='btn create'>Add Employee</button>
                         </div>
                         </form> 
                     </div>
@@ -199,7 +199,7 @@
                         <td>{{v.first_name }}</td>
                         <td>{{v.last_name }}</td>
                         <td>{{v.phone_num }}</td>
-                        <td><button @click.prevent="rem_volunteer(v.vid)" class="btn btn-secondary">Remove</button></td>
+                        <td><button @click.prevent="rem_volunteer(v.vid)" class="btn btn-danger">Remove</button></td>
                 
                     </tr> 
                 </tbody>
@@ -225,7 +225,7 @@
                         <td>{{e.firstName }}</td>
                         <td>{{e.lastName }}</td>
                         <td>{{e.phone}}</td>
-                        <td><button @click.prevent="rem_employee(e.employeeID)" class="btn btn-secondary">Remove</button></td>
+                        <td><button @click.prevent="rem_employee(e.employeeID)" class="btn danger">Remove</button></td>
                     </tr> 
                 </tbody>
             </table>
@@ -234,20 +234,6 @@
 </template>
 
 <style scoped>
-h1 {
-  font-size: 26px;
-  text-align: center;
-  margin-top: 80px;
-}
-form {
-  margin-top: 50px;
-}
-#create{
-  background-color: #A6A7A8;
-}
-#create:hover{
-  background-color: #2E5902;
-  color: white;
-}
+ @import "../../assets/app.css";
 </style>
 

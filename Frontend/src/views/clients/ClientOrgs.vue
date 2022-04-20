@@ -105,7 +105,7 @@
                         <input type="text" class="'form-control" v-model="client.phone_number" disabled>
                     </div>
                 </div>
-                <td><router-link :to="{name: 'clients_edit', params: { id: client.cid }}" class="btn btn-secondary ">Edit</router-link></td>
+                <td><router-link :to="{name: 'clients_edit', params: { id: client.cid }}" class="btn create ">Edit</router-link></td>
                 <hr>
                 <div class="row mb-4">
                     <div class="col-sm-4">
@@ -116,7 +116,7 @@
                                     <option v-for="x in fullorganizations" :value="x.orgid" :key="x.orgid">{{x.orgid}}{{" - "}}{{x.org_name}}</option>
                                 </select>
                                 <div class='form-helper'>ORGID# - Name</div>
-                                <button class='btn btn-secondary'>Add Organization</button>
+                                <button class='btn create'>Add Organization</button>
                             </div>
                         </form>
                     </div>
@@ -135,7 +135,7 @@
                 <tr v-for="organizations in organization" :key="organizations.orgid">
                     <td>{{organizations.orgid }}</td>
                     <td>{{organizations.org_name }}</td>
-                    <td><button @click.prevent="rem_organization(organizations.orgid)" class="btn btn-secondary">Remove</button></td>
+                    <td><button @click.prevent="rem_organization(organizations.orgid)" class="btn btn-danger">Remove</button></td>
                 </tr> 
             </tbody>
         </table>

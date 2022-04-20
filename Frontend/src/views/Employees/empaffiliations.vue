@@ -170,9 +170,9 @@ export default {
       let data = {
         id: id,
       };
-       let data2 = { id: this.$route.params.id };
+      let data2 = { id: this.$route.params.id };
       let apiURL = `http://localhost:8080/employees/del-org/${this.$route.params.id}`;
-      let apiURL2=`http://localhost:8080/organizations/del-emp/${id}`
+      let apiURL2 = `http://localhost:8080/organizations/del-emp/${id}`;
       if (window.confirm("Are you sure?")) {
         axios
           .post(apiURL, data)
@@ -183,7 +183,7 @@ export default {
           .catch((error) => {
             console.log(error);
           });
-               axios
+        axios
           .post(apiURL2, data2)
           .then(() => {})
           .catch((error) => {
@@ -196,23 +196,58 @@ export default {
 </script>
 <template>
   <main>
-    <h1 class="text-center mb-5 text-md">Employee Clients and Events</h1>
+    <h1 class="text-center mb-5 text-md">Employee Affiliations</h1>
+<div id="forms">
+  
+      <form @submit.prevent="addClient" class="mb-5 col-sm-3 view-form mr-4">
+        <fieldset class="form-control">
+          <legend class="mb-3">Clients</legend>
+          <div>
+            <label class="form-label">Enter the Client ID</label>
+            <input
+              type="number"
+              class="form-control mb-3"
+              v-model="new_cid.id"
+              required
+            />
+          </div>
+          <button class="btn btn-success">Add Client</button>
+        </fieldset>
+      </form>
+  
+      <form @submit.prevent="addEvent" class="mb-5 col-sm-3 view-form">
+        <fieldset class="form-control">
+          <legend class="mb-3">Events</legend>
+          <div>
+            <label for="" class="form-label">Enter the Event ID</label>
+            <input type="text" class="form-control mb-3" v-model="new_evid.id" />
+            <button class="btn btn-success">Add Event</button>
+          </div>
+        </fieldset>
+      </form>
+  
+      <form @submit.prevent="addOrg" class="mb-5 col-sm-3 view-form">
+        <fieldset class="form-control">
+          <legend class="mb-3">Organization</legend>
+          <div>
+            <label for="" class="form-label">Choose An Organization</label>
+            <select v-model="new_orgid.id" class="form-control mb-3">
+              <option value="" selected disabled></option>
+              <option
+                v-for="x in fullorganizations"
+                :value="x.orgid"
+                :key="x.orgid"
+              >
+                {{ x.orgid }}{{ " - " }}{{ x.org_name }}
+              </option>
+            </select>
+            <button class="btn btn-success">Add Organization</button>
+          </div>
+        </fieldset>
+      </form>
 
-    <form @submit.prevent="addClient" class="mb-5 col-sm-6">
-      <fieldset class="form-control">
-        <legend class="mb-3">Clients</legend>
-        <div>
-          <label class="form-label">Enter the Client ID</label>
-          <input
-            type="number"
-            class="form-control mb-3"
-            v-model="new_cid.id"
-            required
-          />
-        </div>
-        <button class="btn btn-primary">Add Client</button>
-      </fieldset>
-    </form>
+</div>
+<h2>Clients</h2>
     <div class="table-responsive mb-5">
       <table class="table table-light">
         <thead class="table-dark">
@@ -238,17 +273,7 @@ export default {
       </table>
     </div>
 
-    <form @submit.prevent="addEvent" class="mb-5 col-sm-6">
-      <fieldset class="form-control">
-        <legend class="mb-3">Events</legend>
-        <div>
-          <label for="" class="form-label">Enter the Event ID</label>
-          <input type="text" class="form-control mb-3" v-model="new_evid.id" />
-          <button class="btn btn-primary">Add Event</button>
-        </div>
-      </fieldset>
-    </form>
-
+<h2>Events</h2>
     <div class="table-responsive mb-5">
       <table class="table table-light">
         <thead class="table-dark">
@@ -273,26 +298,8 @@ export default {
         </tbody>
       </table>
     </div>
-    <form @submit.prevent="addOrg" class="mb-5 col-sm-6">
-      <fieldset class="form-control">
-        <legend>Organization</legend>
-        <div>
-          <label for="" class="form-label">Enter the Organization ID</label>
-          <select v-model="new_orgid.id" class="form-control mb-3">
-            <option value="" selected disabled>Choose an Organization</option>
-            <option
-              v-for="x in fullorganizations"
-              :value="x.orgid"
-              :key="x.orgid"
-            >
-              {{ x.orgid }}{{ " - " }}{{ x.org_name }}
-            </option>
-          </select>
-          <button class="btn btn-primary mb-3">Add Organization</button>
-        </div>
-      </fieldset>
-    </form>
 
+<h2>Organizations</h2>
     <div class="table-responsive mb-3">
       <table class="table table-light">
         <thead class="table-dark">
@@ -303,7 +310,7 @@ export default {
           </tr>
         </thead>
         <tbody>
-          <tr v-for="o in organization" :key="o.orgid" >
+          <tr v-for="o in organization" :key="o.orgid">
             <td>{{ o.orgid }}</td>
             <td>{{ o.org_name }}</td>
 
