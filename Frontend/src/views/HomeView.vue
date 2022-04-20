@@ -27,19 +27,6 @@ export default {
   </main>
 </template>
 
-<!--<style>
-/* default styling */
-@import "../assets/base.css";
-</style>
--->
-
-
   <style scoped>
  @import "../assets/app.css";
-/* footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  background-color: #333;
-  color:#fff; }*/
 </style>
