@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const eventsModel = require("../models/events");
-const volunteerModel = require('../models/volunteers')
 
 //{READ} get all info from events
 router.get("/", (req, res, next) => {
@@ -298,17 +297,5 @@ router.delete("/del/:evid", (req, res, next) => {
   });
 });
 
-
-
-router.get("/last_id", (req, res, next) => {
-  eventsModel.find({}, (err, data) => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log(data);
-      res.json(data);
-    }
-  }).sort({evid:-1}).limit(1);
-});
 
 module.exports = router;

@@ -130,42 +130,54 @@
 </script>
 
 <template>
-    <div>
+
         <h1>Organization #{{organization.orgid}}</h1>
         <br>
-        <fieldset class='form-control mb-5'>
-            <legend><strong>{{organization.org_name}}</strong></legend>
-                <div class='row mb-3'>
-                    <div class='col-sm-4'>
-                        <label for="" class='form-label'>Organization Name</label>
-                        <input type="text" class='form-control' v-model='organization.org_name' disabled>
-                        <router-link :to="{name: 'org_edit', params: { id: organization.orgid }}" class="btn btn-secondary ">Edit</router-link>
-                    </div>
-                    <div class='col-sm-4'>
+    <div id="forms">
+   <form class="col-sm-3 view-form">
+            <fieldset class='form-control mb-5 '>
+                <legend class="mb-3"><strong>Organization</strong></legend>
+                  
+                        <div>
+
+                            <input type="text" class='form-control mb-3' v-model='organization.org_name' disabled>
+                            <router-link :to="{name: 'org_edit', params: { id: organization.orgid }}" class="btn create ">Edit</router-link>
+                        </div>
+                            </fieldset>
+   </form>
+
+                    <div class='col-sm-3 view-form '>
                         <form @submit.prevent='add_service'>
-                            <div>
-                                 <label for="" class='form-label'>Organization Name</label>
-                                <select v-model='new_sid.id' class="form-control">
-                                    <option value="" selected disabled>Choose a Service</option>
-                                    <option v-for="x in fullservices" :value="x.sid" :key="x.sid">{{x.sid}}{{" - "}}{{x.name}}</option>
-                                </select>
-                                <div class='form-helper'>SID# - Name</div>
-                                <button class='btn btn-secondary'>Apply for Service</button>
-                            </div>
+                           
+                      <fieldset class="form-control">
+                                    <legend class="mb-3"><strong>Service</strong></legend> 
+                                    
+                                    <select v-model='new_sid.id' class="form-control mb-3">
+                                        <option value="" selected disabled>Choose a Service</option>
+                                        <option v-for="x in fullservices" :value="x.sid" :key="x.sid">{{x.sid}}{{" - "}}{{x.name}}</option>
+                                    </select>
+  
+                                    <button class='btn create'>Apply for Service</button>
+                              
+                      </fieldset>
                         </form> 
                     </div>
                     
-                    <div class='col-sm-4'>
-                        <form @submit.prevent='add_event'>
-                        <div class='form-group'>
-                            <input type="number" class='form-control' v-model='new_evid.id'  required>
-                            <div class='form-helper'>EVID#</div>
-                            <button class='btn btn-secondary'>Add Event</button>
-                        </div>
+                   
+                        <form @submit.prevent='add_event' class="col-sm-3 view-form">
+                           
+                        <fieldset class="form-control">
+                            <legend class="mb-3"><strong>Events</strong></legend>
+                            <div class='form-group'>
+                                
+                                <input type="number" class='form-control mb-3' v-model='new_evid.id' placeholder="Enter the Event ID" required>
+                                <button class='btn create'>Add Event</button>
+                            </div>
+                        </fieldset>
                         </form> 
-                    </div>
+                  
                 </div>
-        </fieldset> 
+    
 
         <!-- Volunteer table -->
         <div class="row justify-content-center">
@@ -186,8 +198,7 @@
                         <td>{{s.name }}</td>
                         <td>{{s.renewal }}</td>
                         <td>{{s.notes }}</td>
-                        <!--<td><button @click.prevent="rem_service(s.sid)" class="btn btn-secondary">Remove</button></td>-->
-                        <td><router-link :to="{name: 'services_edit', params: { id: s.sid }}" class="btn btn-secondary ">Edit</router-link></td>
+                        <td><button @click.prevent="rem_service(s.sid)" class="btn btn-danger">Remove</button></td>
                 
                     </tr> 
                 </tbody>
@@ -213,32 +224,18 @@
                         <td>{{ev.ev_name }}</td>
                         <td>{{ev.ev_host }}</td>
                         <td>{{ev.ev_date}}</td>
+                        <!-- <td><button @click.prevent="rem_event(ev.evid)" class="btn btn-danger">Remove</button></td> -->
                         <!--<td><button @click.prevent="rem_event(ev.evid)" class="btn btn-secondary">Remove</button></td>-->
                         <td><router-link :to="{name: 'events_edit', params: { id: ev.evid }}" class="btn btn-secondary ">Edit</router-link></td>
                     </tr> 
                 </tbody>
             </table>
         </div>
-    </div>
-
+ 
     
 </template>
 
 <style scoped>
-h1 {
-  font-size: 26px;
-  text-align: center;
-  margin-top: 80px;
-}
-form {
-  margin-top: 50px;
-}
-#create{
-  background-color: #A6A7A8;
-}
-#create:hover{
-  background-color: #2E5902;
-  color: white;
-}
+ @import "../../assets/app.css";
 </style>
 

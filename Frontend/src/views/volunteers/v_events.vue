@@ -1,13 +1,13 @@
 <template>
     <main>
-        <h1>Events for Volunteer#{{volunteer.vid}}</h1>
+        <h1>Events for Volunteer #{{volunteer.vid}}</h1>
         <br>
         <div class="row justify-content-center">
             <!-- <router-link :to="{path:'new-volunteers'}" class="btn btn-secondary">Create New Volunteer</router-link> -->
             <!-- allows table to scroll horizontally -->
             <!-- table-hover adds gray hover -->
                 <fieldset class="form-control mb-5">
-                <legend><strong>{{volunteer.first_name}}{{" "}}{{volunteer.last_name}}</strong></legend>
+                <legend><strong>{{volunteer.first_name}} {{volunteer.last_name}}</strong></legend>
                     <div class="'row mb-3">
                         <div class="col-sm-2">
                             <label for="" class="form-label">First Name</label>
@@ -56,7 +56,7 @@
                         <td>{{event.ev_date}}</td>
                         <td>{{event.city}}</td>
                         <td>{{event.st}}</td>
-                        <td><button @click.prevent="del_event(event.evid)" class="btn btn-secondary">Delete</button></td>
+                        <td><button @click.prevent="del_event(event.evid)" class="btn btn-danger">Delete</button></td>
                     </tr>
                 </tbody>
             </table>

@@ -1,7 +1,7 @@
 <template>
   <main>
     <h1 class="mb-5">{{ employees.firstName }} {{ employees.lastName }}</h1>
-    <div class="wrapper mb-5">
+    <div class="wrapper mb-5 ">
       <td>
         <router-link
           :to="{ name: 'employees', params: { id: employees.employeeID } }"
