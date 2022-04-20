@@ -70,7 +70,6 @@
                     <td><router-link :to="{name: 'services_edit', params: { id: service.sid }}" class="btn btn-secondary ">Edit</router-link></td>
                     <!-- call function to remove service from collection -->
                     <td><button @click.prevent="del_service(service.sid)" class="btn btn-danger">Delete</button></td>
-                    <td v-if="active">hello</td>
                 </tr>
             </tbody>
             </table>
@@ -78,6 +77,6 @@
     </main>
 </template>
 
-<style scoped>
+<style>
  @import "../../assets/app.css";
 </style>

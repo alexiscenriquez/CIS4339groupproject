@@ -13,7 +13,6 @@
             let apiURL = 'http://localhost:8080/events';
             axios.get(apiURL).then(res => {
                 this.allevents = res.data;
-                
             }).catch(error=>{
                 console.log(error)
             });
