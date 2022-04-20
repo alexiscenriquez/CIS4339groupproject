@@ -274,9 +274,9 @@
 </script>
 
 <style>
-.wrapper {
+
 @import "../../assets/app.css";
 
-}
+
 
 </style>
