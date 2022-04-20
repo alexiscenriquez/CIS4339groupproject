@@ -40,7 +40,7 @@
 
 <template>
     <div>
-        <h1>All Events</h1>
+        <h1 class="text-center mb-5">All Events</h1>
         <br>
         <!-- display event table -->
         <div class="row ">

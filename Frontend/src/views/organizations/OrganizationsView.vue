@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>All Organizations</h1>
+        <h1 class="text-center mb-5">All Organizations</h1>
         <br>
         <!-- display organization table -->
         <div class="row ">
