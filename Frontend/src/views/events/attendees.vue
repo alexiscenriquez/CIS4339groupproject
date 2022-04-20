@@ -56,7 +56,7 @@
             },
             //remove employees from employee and event collections
             rem_employee(ID){
-                let data = {"id":ID}    //store employeeID
+                let data = {"id":ID}    //store employeeID in obj
                 let data2 = {"id":this.$route.params.id}    //store evid
                 let apiURL = `http://localhost:8080/events/del-employee/${this.$route.params.id}`//backend api
                 let indexOfArrayItem = this.employee.findIndex(i=>i.employeeID === ID);

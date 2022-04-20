@@ -41,16 +41,15 @@ export default {
     methods: {
         //update event data on db
         UpdateEvent() {
-            let data = {'id':this.$route.params.id} //store evid
+            let data = {'id':this.$route.params.id} //add evid to obj
             this.event.ev_date=this.date    //add date to event object
             this.event.ev_host=this.two[0]  //add host to event object
             this.event.organizations.orgid=parseInt(this.two[1])  //add orgid to event object
             
-            //update events table and host id and array
+            //update event in events collection 
             let apiURL = `http://localhost:8080/events/update/${this.$route.params.id}`;
             axios.put(apiURL, this.event).then((res) => {
                 console.log(res)
-                
             }).catch(error => {
                 console.log(error)
             });
