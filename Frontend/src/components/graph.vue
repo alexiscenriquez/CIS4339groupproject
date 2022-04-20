@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>2022 Reports</h1>
     <fieldset class='form-control mb-5'>
       <legend>Services Provided by Ethnicity</legend>
     <!-- bar chart that shows services by ethnicity-->
@@ -74,4 +75,6 @@ export default {
 
 </script>
 
-
+<style>
+ @import "../assets/app.css";
+</style>
