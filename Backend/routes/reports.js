@@ -68,16 +68,6 @@ router.get('/gender', (req, res, next) =>{
             }
     
         }
-        //,
-        
-        // {
-        //     $lookup:{
-        //         from:'services',
-        //         localField:'services.sid',
-        //         foreignField:'sid',
-        //         as:'services'
-        //     }
-        // }
     ]).exec((error, data) => {
         if (error) {
           return next(error)
@@ -89,4 +79,27 @@ router.get('/gender', (req, res, next) =>{
 
 });
 
+//ignore this one
+router.get('/organizations', (req, res, next) =>{
+    //currently count how many of each ethnicity
+    org.aggregate([
+        {
+            '$project':{
+                'one': {'$size':'$offers.sid'},
+                'two': {'$size':'$offers.evid'},
+                'total':{'$sum':['$one', '$two']},
+            }
+        }
+            
+
+    ]).exec((error, data) => {
+        if (error) {
+          return next(error)
+        } else {
+          res.json(data)
+          console.log(data);
+        }
+      })
+
+});
 module.exports = router;

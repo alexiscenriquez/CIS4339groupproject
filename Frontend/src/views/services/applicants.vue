@@ -26,9 +26,9 @@
                 
                 ///add client to applicants
                 axios.post(apiURL, this.new_cid).then(() => {
-                    //changing the view to the list
-                //   this.$router.push('/services')
-                    // this.volunteer.push(idv)
+                    
+                  this.$router.push('/services')
+                    
                   this.new_cid = {
                     id: ''
                   }
