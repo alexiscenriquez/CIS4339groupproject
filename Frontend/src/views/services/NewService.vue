@@ -74,7 +74,7 @@
         <h1 class="text-center">Create Service</h1>
         <!-- create new service -->
         <form @submit.prevent="handleSubmitForm">
-            <!-- display fields for form creation: name, renewal, host, notes with v-model-->
+            <!-- display fields for form creation and edit name, renewal, host, notes with v-model-->
             <fieldset class='form-control mb-5'>
                 <div class="col-sm-4">
                     <label class='form-label ' for="">*Name</label>
