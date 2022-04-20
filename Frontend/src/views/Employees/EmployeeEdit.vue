@@ -48,7 +48,11 @@
             name="ssn"
             v-model="employees.SSN"
             required
+            placeholder="XXX-XX-XXXX"
           />
+          <small id="phoneHelpBlock" class="form-text text-muted">
+              9 digit phone number should be entered with dashes
+            </small>
         </div>
         <div class="col-sm-4">
           <label for="dl" class="form-label">Drivers License</label>
@@ -57,7 +61,11 @@
             class="form-control"
             name="dl"
             v-model="employees.dLicense"
+            placeholder="XXXXXXXX"
           />
+          <small id="phoneHelpBlock" class="form-text text-muted">
+              8 digit number
+            </small>
         </div>
       </div>
       <div class="row mb-4">
@@ -182,7 +190,11 @@
             id=""
             class="form-control"
             v-model="employees.phone"
+            placeholder="XXX-XXX-XXXX"
           />
+          <small id="phoneHelpBlock" class="form-text text-muted">
+              9 digit phone number should be entered with dashes
+            </small>
         </div>
         <div class="col-sm-6">
           <label for="home" class="form-label">Home Number</label>
@@ -192,17 +204,27 @@
             id=""
             class="form-control"
             v-model="employees.home"
+            placeholder="XXX-XXX-XXXX"
           />
+          <small id="phoneHelpBlock" class="form-text text-muted">
+              9 digit phone number should be entered with dashes
+            </small>
         </div>
       </div>
       <div class="row mb-4">
         <div class="col-sm-6">
           <label for="pEmail" class="form-label">Primary Email</label>
           <input type="email" class="form-control" v-model="employees.pEmail" />
+          <small id="phoneHelpBlock" class="form-text text-muted">
+              example@email.com
+            </small>
         </div>
         <div class="col-sm-6">
           <label for="sEmail" class="form-label">Secondary Email</label>
           <input type="email" class="form-control" v-model="employees.sEmail" />
+          <small id="phoneHelpBlock" class="form-text text-muted">
+              example@email.com
+            </small>
         </div>
       </div>
     </fieldset>
