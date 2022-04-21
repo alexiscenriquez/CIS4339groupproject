@@ -636,42 +636,49 @@
 
                 if(!this.clients.living_arrangements)
                 this.errors.push("Living Arrangements is Required")
+                
 
-                if(!this.clients.number_of_children)
+
+
+                if(String(this.clients.number_of_children).length == 0)
                 this.errors.push("No. of Children is Required")
 
-                if(!this.clients.number_of_adults_over_65)
+                if(String(this.clients.number_of_adults_over_65).length == 0)
                 this.errors.push("No. of Adults 65+ is Required")
 
-                if(!this.clients.rent)
+                if(String(this.clients.rent).length == 0)
                 this.errors.push("Rent is Required")
 
-                if(!this.clients.monthly_income)
+                if(String(this.clients.monthly_income).length ==0)
                 this.errors.push("Monthly Income is Required")
 
-                if(!this.clients.spousal_income_support)
+                if(String(this.clients.spousal_income_support).length ==0)
                 this.errors.push("Spousal Income Support is Required")
 
-                if(!this.clients.worker_compensation)
+                if(String(this.clients.worker_compensation).length ==0)
                 this.errors.push("Worker Compensation Benefits are Required")
 
-                if(!this.clients.child_support)
+                if(String(this.clients.child_support).length ==0)
                 this.errors.push("Child Support Benefits are Required")
 
-                if(!this.clients.tanf)
+                if(String(this.clients.tanf).length ==0)
                 this.errors.push("TANF Benefits are Required")
 
-                if(!this.clients.food_stamps)
+                if(String(this.clients.food_stamps).length ==0)
                 this.errors.push("Food Stamp Benefits are Required")
 
-                if(!this.clients.ssi)
+                if(String(this.clients.ssi).length ==0)
                 this.errors.push("SSI Benefits are Required")
 
-                if(!this.clients.unemployment)
+                if(String(this.clients.unemployment).length ==0)
                 this.errors.push("Unemployment Benefits are Required")
 
-                if(!this.clients.other_income)
+                if(String(this.clients.other_income).length ==0)
                 this.errors.push("Other Income is Required")
+
+
+
+
 
                 if(!this.clients.employer_name)
                 this.errors.push("Employer Name is Required")
