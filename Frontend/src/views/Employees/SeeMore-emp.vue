@@ -48,7 +48,7 @@
           </tr>
           <tr>
             <th>DOB</th>
-            <td>{{ employees.birthday.slice(0,10)}}</td>
+            <td>{{ date}}</td>
           </tr>
           <tr>
             <th>SSN</th>
@@ -171,6 +171,7 @@ export default {
     return {
       employees: {},
       lang: "",
+      date:""
     };
   },
   created() {
@@ -181,6 +182,7 @@ export default {
         this.employees = res.data[0];
         this.lang = this.employees.language.join(",");
         console.log("line 167", this.lang);
+        this.date = res.data[0].birthday.slice(0, 10)
       })
       .catch((error) => {
         console.log(error);
