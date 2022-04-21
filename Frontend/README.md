@@ -3,7 +3,7 @@ project-cis_4339_project_3 created by GitHub Classroom
 
 Appendix B - Bread of Life
 
-![image](HomePagheCap.png)
+![image](https://imgur.com/1XezvU0)
 
 
 **Change Notes**
@@ -17,24 +17,14 @@ Use the front end to create and manipulate data.
 **How to Initialize backend**
 1) Move to directiory: cd backend
 2) Install modules: npm install
-3) Start script: npm start
+3) Start script: node app.js
 
 **How to Initialize frontend**
 1) Move to directiory: cd frontend
 2) Install modules: npm install
 3) Start script: npm run dev
 
-**Cloud Deployment**
 
-The cloud deployment can be accessed from asengchi.me. Please see branch cloud_deployment for environment variables.
-
-For this version, the DB instance, backend, and frontend are all hosted and initialized on the cloud server.
-
-Host: Digital Ocean
-
-OS: Ubuntu
-
-Web Server: Nginx
 
 ![image](https://user-images.githubusercontent.com/66455031/141374012-d5e3cc71-b02d-4286-a7b4-7d8eec690f9f.png)
 
