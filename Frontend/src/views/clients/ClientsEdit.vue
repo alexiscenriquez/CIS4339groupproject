@@ -7,7 +7,7 @@
             
             novalidate>
                 <!--Creates a field that separates from other parts of the page-->
-  <fieldset class="form-control mb-5">
+                    <fieldset class="form-control mb-5">
                     <legend>Personal Information</legend>
                     <div class="row mb-3">
                         <div class="col-sm-4">
