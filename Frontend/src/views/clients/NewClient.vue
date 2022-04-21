@@ -441,7 +441,7 @@
                     </ul>
                 </p>
                 <!-- Button that creates client -->
-                <button class="btn mt-3 create">Create</button>
+            <button class="btn mt-3 create">Create</button>
         </form>
         <br>
         <Footer />
@@ -554,11 +554,11 @@
                 this.errors.push("First Name Required");
                 }
 
-                if(!this.clients.ssn){
+                if(!this.clients.social_security){
                 this.errors.push("SSN Required");
                 }
 
-                if(!ssnregex.test(this.clients.ssn))
+                if(!ssnregex.test(this.clients.social_security))
                 this.errors.push("Please enter a valid ssn.");
 
 
@@ -743,7 +743,7 @@
                    food_stamps: '',
                    ssi: '',
                    unemployment: '',
-                   social_secturity: '',
+                   social_security: '',
                    other_income: '',
                    health_insurance: '',
                    health_insurance_desc: '',
