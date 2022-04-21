@@ -1,7 +1,27 @@
-# Vue 3 + Vite
+# project-cis_4339_project_28
+project-cis_4339_project_28 created by Gabino Aguirre, Taylor Bean, and Alexis Enriquez
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Appendix B - GTA Architects
 
-## Recommended IDE Setup
+![HomePagheCap](https://user-images.githubusercontent.com/70119894/164350539-21b433c5-d460-46ef-9d82-064611a1f841.PNG)
 
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+
+**Change Notes**
+
+-As of Sprint 2, all files in backend folders (models and routes) and app.js have been modified
+
+**For local deployments**
+
+-Please drop exisitng data in local mongodb database.
+
+-Use the front end to create and manipulate data.
+
+**How to Initialize backend**
+1) Move to directiory: cd backend
+2) Install modules: npm install
+3) Start script: node app.js
+
+**How to Initialize frontend**
+1) Move to directiory: cd frontend
+2) Install modules: npm install
+3) Start script: npm run dev
