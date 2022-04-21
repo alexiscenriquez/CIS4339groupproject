@@ -9,7 +9,8 @@
         },
         data(){
             return{
-                volunteers:[]
+                volunteers:[],
+                date:''
             }
         },
         //grab volunteers data before mounting dom
@@ -18,6 +19,7 @@
             let apiURL = 'http://localhost:8080/volunteers';
             axios.get(apiURL).then(res => {
                 this.volunteers = res.data; //store volunteer in array
+                this.date =  res.data[0].b_day.slice(0, 10)
             }).catch(error=>{
                 console.log(error)
             });
@@ -70,7 +72,7 @@
                         <td>{{volunteer.first_name}}</td>
                         <td>{{volunteer.mid_name}}</td>
                         <td>{{volunteer.last_name}}</td>
-                        <td>{{volunteer.b_day}}</td>
+                        <td>{{date}}</td>
                         <td>{{volunteer.phone_num}}</td>
                         <!-- go to volunteer information view -->
                         <td><router-link :to="{name: 'volunteer-info', params: { id: volunteer.vid }}" class="btn btn-secondary ">More...</router-link></td>

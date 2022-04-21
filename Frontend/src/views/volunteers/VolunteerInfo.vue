@@ -33,7 +33,7 @@
                     </tr>
                     <tr>    
                         <th>Birthday</th>
-                        <td>{{volunteer.b_day}}</td> 
+                        <td>{{date}}</td> 
                     </tr>
                     <tr>    
                         <th>Social Security</th>
@@ -111,7 +111,8 @@
         },
         data(){
             return{
-                volunteer:{}
+                volunteer:{},
+                date:''
             }
         },
         //grab volunteer data before mounting dom
@@ -120,6 +121,7 @@
             let apiURL = `http://localhost:8080/volunteers/find/${this.$route.params.id}`;
             axios.get(apiURL).then(res => {
                 this.volunteer = res.data[0]; //store volunteer data
+                this.date = res.data[0].b_day.slice(0, 10)
             }).catch(error=>{
                 console.log(error)
             });
