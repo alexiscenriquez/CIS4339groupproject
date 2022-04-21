@@ -345,7 +345,7 @@
 
           <div class="col-sm-4">
             <label for="lEmployment" class="form-label">*Organization</label>
-            <select class="form-select" aria-label="Default select example" v-model='two' required>
+            <select class="form-select" aria-label="Default select example" v-model='two'>
               <option value="" selected disabled>Choose an Organization</option>
               <!-- display organizations list, store in array -->
               <option v-for="x in list" :value="[x.org_name,x.orgid]" :key="x.orgid">{{x.orgid}}{{" - "}}{{x.org_name}}</option>
@@ -515,6 +515,7 @@ export default {
       if (!this.employees.SSN) this.errors.push("SSN is Required"); 
 
       if (!this.employees.phone && this.employees.home.length !== 0)  
+      this.errors.push("Phone is Required");
       const regex = new RegExp("^\\d{3}-\\d{3}-\\d{4}$"); //regex for phone number
       const ssnregex = /^(\d{3}-?\d{2}-?\d{4}|XXX-XX-XXXX)$/; //regex for ssn 
 
