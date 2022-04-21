@@ -4,7 +4,6 @@
 
     <form
       @submit.prevent="handleSubmitForm"
-     
       novalidate
     >
       <fieldset class="form-control mb-5">
@@ -430,15 +429,15 @@
 
 <script>
 import axios from "axios";
-import Footer from '../../components/footer.vue'
-let invalid=document.getElementById("first")
+import Footer from "../../components/footer.vue";
+
 export default {
-  components:{
-            Footer
-        },
+  components: {
+    Footer,
+  },
   data() {
     return {
-       errors: [],
+      errors: [],
       employees: {
         employeeID: "",
         firstName: "",
@@ -463,140 +462,144 @@ export default {
         jDesc: "",
         hGrade: "",
         degree: "",
-        org_name:'',
+        org_name: "",
         eContact: [
           { fName: "", lName: "", phone: "" },
           { fName: "", lName: "", phone: "" },
         ],
         language: [],
       },
-        list:[],
-        two:[],
-        data:{},
-        num:''
+      list: [],
+      two: [],
+      data: {},
+      num: "",
     };
   },
   //grab id and organization data before mounting dom
-        created(){
-            //get list of organizations
-            let apiURL = `http://localhost:8080/organizations`
-            axios.get(apiURL).then(res =>{
-                    this.list = res.data
-                }).catch(error =>{
-                    console.log(error)
-                })
+  created() {
+    //get list of organizations
+    let apiURL = `http://localhost:8080/organizations`;
+    axios
+      .get(apiURL)
+      .then((res) => {
+        this.list = res.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 
-            //get seq number from counters collection and add one 
-            let api3 = `http://localhost:8080/counters/last_eid`
-                axios.get(api3).then(res =>{
-                    this.num = res.data[0].seq + 1
-                }).catch(error => {
-                    console.log(error)
-                });
-        },
-
+    //get seq number from counters collection and add one
+    let api3 = `http://localhost:8080/counters/last_eid`;
+    axios
+      .get(api3)
+      .then((res) => {
+        this.num = res.data[0].seq + 1;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
 
   methods: {
     handleSubmitForm() {
- this.errors=[];
+      this.errors = [];
 
- if(!this.employees.firstName){
- this.errors.push("First Name Required");
- 
- }
-
-if(!this.employees.lastName)
-this.errors.push("Last Name is Required")
-
-if(!this.employees.SSN)
-this.errors.push("SSN is Required")
-
-if(!this.employees.phone && (this.employees.home.length!==0) )
-this.errors.push("Phone is Required")
-
-  const regex = new RegExp("^\\d{3}-\\d{3}-\\d{4}$");
-  const ssnregex =/^(\d{3}-?\d{2}-?\d{4}|XXX-XX-XXXX)$/
-     var re = /(.+)@(.+){2,}\.(.+){2,}/;
-const emailregex=/(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/
-
-   if (!regex.test(this.employees.phone)&&(this.employees.phone.length!==0))
-   this.errors.push("Please use correct phone number format.");
-
-  if (!regex.test(this.employees.home) && (this.employees.home.length!==0))
-   this.errors.push("Please use correct phone number format.");
-
-
-
-if(!emailregex.test(this.employees.pEmail) &&(this.employees.pEmail.length!==0))
- this.errors.push("Please enter a valid email.");
-
-if(!ssnregex.test(this.employees.SSN))
-this.errors.push("Please enter a valid ssn.");
-
-
-if(this.errors.length===0){
+      if (!this.employees.firstName) 
+        this.errors.push("First Name Required");
   
-      this.employees.org_name=this.two[0]
-      this.employees['organizations.orgid']=parseInt(this.two[1]) //add host # to event object
-      this.data.id=this.num //add next vid to data obj
-      let apiURL = "http://localhost:8080/employees/newemp";
-      console.log(this.employees);
-      axios
-        .post(apiURL, this.employees)
-        .then(() => {
-          this.$router.push("/employees");
-          this.employees = {
-            employeeID: "",
-            firstName: "",
-            lastName: "",
-            birthday: "",
-            SSN: "",
-            dLicense: "",
-            gender: "",
-            race: "",
-            hispanic: undefined,
-            phone: "",
-            home: "",
-            pEmail: "",
-            sEmail: "",
-            address: "",
-            city: "",
-            state: "",
-            county: "",
-            zip: "",
-            lEmployment: "",
-            dept: "",
-            jDesc: "",
-            hGrade: "",
-            degree: "",
-            eContact: [
-              { fName: "", lName: "", phone: "" },
-              { fName: "", lName: "", phone: "" },
-            ],
-            language: [],
-          };
-        })
-        .catch((error) => {
-           this.errors.push(
+      if (!this.employees.lastName) this.errors.push("Last Name is Required");
+
+      if (!this.employees.SSN) this.errors.push("SSN is Required");
+
+      if (!this.employees.phone && this.employees.home.length !== 0)
+        this.errors.push("Phone is Required");
+
+      const regex = new RegExp("^\\d{3}-\\d{3}-\\d{4}$");
+      const ssnregex = /^(\d{3}-?\d{2}-?\d{4}|XXX-XX-XXXX)$/;
+
+      const emailregex =
+        /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
+
+      if (
+        !regex.test(this.employees.phone) &&
+        this.employees.phone.length !== 0
+      )
+        this.errors.push("Please use correct phone number format.");
+
+      if (!regex.test(this.employees.home) && this.employees.home.length !== 0)
+        this.errors.push("Please use correct phone number format.");
+
+      if (
+        !emailregex.test(this.employees.pEmail) &&
+        this.employees.pEmail.length !== 0
+      )
+        this.errors.push("Please enter a valid email.");
+
+      if (!ssnregex.test(this.employees.SSN))
+        this.errors.push("Please enter a valid ssn.");
+
+      if (this.errors.length === 0) {
+        this.employees.org_name = this.two[0];
+        this.employees["organizations.orgid"] = parseInt(this.two[1]); //add host # to event object
+        this.data.id = this.num; //add next vid to data obj
+        let apiURL = "http://localhost:8080/employees/newemp";
+        console.log(this.employees);
+        axios
+          .post(apiURL, this.employees)
+          .then(() => {
+            this.$router.push("/employees");
+            this.employees = {
+              employeeID: "",
+              firstName: "",
+              lastName: "",
+              birthday: "",
+              SSN: "",
+              dLicense: "",
+              gender: "",
+              race: "",
+              hispanic: undefined,
+              phone: "",
+              home: "",
+              pEmail: "",
+              sEmail: "",
+              address: "",
+              city: "",
+              state: "",
+              county: "",
+              zip: "",
+              lEmployment: "",
+              dept: "",
+              jDesc: "",
+              hGrade: "",
+              degree: "",
+              eContact: [
+                { fName: "", lName: "", phone: "" },
+                { fName: "", lName: "", phone: "" },
+              ],
+              language: [],
+            };
+          })
+          .catch((error) => {
+            this.errors.push(
               "Error in form submission. " + error.response.data
             );
-          console.log(error);
-        });
+            console.log(error);
+          });
 
         //add event to organizations collection
-          let apiURL2 = `http://localhost:8080/organizations/add-emp/${this.two[1]}`
-          axios.post(apiURL2, this.data).then(res =>{
-              this.data={},
-              this.two = []
-          }).catch(error => {
-              console.log(error)
+        let apiURL2 = `http://localhost:8080/organizations/add-emp/${this.two[1]}`;
+        axios
+          .post(apiURL2, this.data)
+          .then((res) => {
+            (this.data = {}), (this.two = []);
+          })
+          .catch((error) => {
+            console.log(error);
           });
-    //  forms.classList.remove('was-validated')
-     } },
-     
-       
+        //  forms.classList.remove('was-validated')
+      }
+    },
   },
-  
 };
 </script>
 
