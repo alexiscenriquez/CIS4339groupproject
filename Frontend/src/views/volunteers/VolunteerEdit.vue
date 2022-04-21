@@ -1,7 +1,53 @@
+<script>
+import axios from "axios"
+import Footer from '../../components/footer.vue'
+
+//exports components, objects, variables
+export default {
+    components:{
+            Footer
+        },
+     data() {
+        return {
+            volunteers: {},
+            date:''
+        }
+    },
+    //grab volunteer data before mounting dom
+    created() {
+        //get single volunteer information
+        let apiURL = `http://localhost:8080/volunteers/find/${this.$route.params.id}`;
+        axios.get(apiURL).then(res => { 
+            this.volunteers = res.data[0];  //store volunteers data  
+            this.date = res.data[0].b_day.slice(0, 10) //store date without time
+        }).catch(error =>{
+            console.log(error)
+        });
+    },
+    //define functions
+    methods: {
+        //update volunteers collection
+        UpdateVolunteers() {
+            this.volunteers.b_day=this.date //add date to obj
+            //update volunteer in volunteers collection
+            let apiURL = `http://localhost:8080/volunteers/update/${this.$route.params.id}`;
+            axios.put(apiURL, this.volunteers).then((res) => {
+                console.log(res)
+                this.$router.push('/volunteers') //go to volunteers view
+            }).catch(error => {
+                console.log(error)
+            });
+        }
+    }
+    }
+</script>
+
 <template>
     <div>
         <h1>Update Volunteer#{{volunteers.vid}}</h1>
+        <!--updates volunteer information  -->
         <form @submit.prevent="UpdateVolunteers">
+            <!-- display and allow changes to personal information w/ v-model -->
             <fieldset class='form-control mb-5'>
                 <legend>Personal Information</legend>
                 <div class='row mb-4'>
@@ -43,6 +89,7 @@
                 <div class='row mb-4'>
                     <div class="col-sm-4">
                         <label>*Gender</label>
+                        <!-- allow user to pick from  dropdown-->
                         <select class='form-select' v-model="volunteers.gender" required>
                                     <option disabled value=''>Select option</option>
                                     <option>Male</option>
@@ -54,16 +101,17 @@
 
                     <div class="col-sm-4">
                         <label>*Ethnicity</label>
+                        <!-- allow user to pick from  dropdown-->
                         <select class='form-select' v-model="volunteers.ethnicity" required>
-                                    <option disabled value="">Select option</option>
-                                    <option>White</option>
-                                    <option>Black/African American</option>
-                                    <option>American Indian or Alaska Native</option>
-                                    <option>Asian</option>
-                                    <option>Native Hawaiian or Other Pacific Islander</option>
-                                    <option>Other</option>
-                                    <option>Prefer not to disclose</option>
-                            </select>
+                            <option disabled value="">Select option</option>
+                            <option>White</option>
+                            <option>Black/African American</option>
+                            <option>American Indian or Alaska Native</option>
+                            <option>Asian</option>
+                            <option>Native Hawaiian or Other Pacific Islander</option>
+                            <option>Other</option>
+                            <option>Prefer not to disclose</option>
+                        </select>
                     </div>
                     <div class="col-sm-4">
                         <label>Primary Language</label>
@@ -72,6 +120,7 @@
                 </div>
             </fieldset>
 
+            <!-- display fields for address form creation and update with v-model-->
             <fieldset class='form-control mb-5'>
                 <legend>Address</legend>
                 <div class='row mb-4'>
@@ -102,6 +151,7 @@
                 </div>
             </fieldset>
 
+            <!-- display fields for contact information form creation and update with v-model-->
             <fieldset class='form-control mb-5'>
                 <legend>Contact Information</legend>
                 <div class='row mb-4'>
@@ -145,50 +195,7 @@
     </div>
 </template>
 
-<script>
-import axios from "axios"
-import Footer from '../../components/footer.vue'
-
-export default {
-    components:{
-            Footer
-        },
-     data() {
-        return {
-            volunteers: {},
-            date:''
-        }
-    },
-    created() {
-        let apiURL = `http://localhost:8080/volunteers/find/${this.$route.params.id}`;
-
-        axios.get(apiURL).then(res => {
-            this.volunteers = res.data[0];
-            this.date = res.data[0].b_day.slice(0, 10)
-        }).catch(error =>{
-            console.log(error)
-        });
-    },
-    methods: {
-        UpdateVolunteers() {
-            this.volunteers.b_day=this.date
-            let apiURL = `http://localhost:8080/volunteers/update/${this.$route.params.id}`;
-
-            axios.put(apiURL, this.volunteers).then((res) => {
-                console.log(res)
-                this.$router.push('/volunteers')
-            }).catch(error => {
-                console.log(error)
-            });
-        }
-    }
-    }
-</script>
-
-
-
 <style scoped>
-
-@import "../../assets/app.css";
-
+    /* import css */
+    @import "../../assets/app.css";
 </style>

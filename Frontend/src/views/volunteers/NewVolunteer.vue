@@ -135,14 +135,14 @@
                         <label>*Ethnicity</label>
                         <!-- allow user to pick from  dropdown-->
                         <select class='form-select' v-model="volunteers.ethnicity" required>
-                                <option disabled value="">Select option</option>
-                                <option >White</option>
-                                <option>Black/African American</option>
-                                <option>American Indian or Alaska Native</option>
-                                <option>Asian</option>
-                                <option>Native Hawaiian or Other Pacific Islander</option>
-                                <option>Other</option>
-                                <option>Prefer not to disclose</option>
+                            <option disabled value="">Select option</option>
+                            <option >White</option>
+                            <option>Black/African American</option>
+                            <option>American Indian or Alaska Native</option>
+                            <option>Asian</option>
+                            <option>Native Hawaiian or Other Pacific Islander</option>
+                            <option>Other</option>
+                            <option>Prefer not to disclose</option>
                         </select>
                     </div>
                     <div class="col-sm-4">
@@ -228,5 +228,6 @@
 </template>
 
 <style scoped>
+    /* import css */
    @import "../../assets/app.css";
 </style>
