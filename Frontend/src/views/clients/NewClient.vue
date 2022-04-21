@@ -4,7 +4,10 @@
             <!--Title-->
             <h1 class="text-center">Create Client</h1>
             <!--When submit button is pressed, this function is executed-->
-            <form @submit.prevent="handleSubmitForm">
+            <form @submit.prevent="handleSubmitForm"
+            
+            novalidate
+            >
                 <!--Personal Information Fieldset (Divider)-->
                 <fieldset class="form-control mb-5">
                     <legend>Personal Information</legend>
@@ -35,6 +38,9 @@
                             <label class="form-label">Drivers License Number*</label>
                             <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" v-model="clients.DL"><br>
+                            <small id="phoneHelpBlock" class="form-text text-muted">
+                                8 digit Drivers License Number
+                            </small>
                         </div>
                         <div class="col-sm-4">
                             <label class="form-label">Gender*</label>
@@ -73,7 +79,10 @@
                         <div class="col-sm-4">
                             <label class="form-label">Social Security Number*</label>
                             <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
-                            <input type="text" class="form-control" v-model="clients.social_security" required>
+                            <input type="text" class="form-control" placeholder= "XXX-XX-XXXX" v-model="clients.social_security" required>
+                            <small id="phoneHelpBlock" class="form-text text-muted">
+                                9 digit phone number should be entered with dashes
+                            </small>
                         </div>
                         </div>   <div class="row mb-3">
                         <div class="col-sm-4">
@@ -424,9 +433,15 @@
                         </div>
             </div>
         </fieldset>
+
+        <p v-if="errors.length">
+                    <b>Please correct the following error(s):</b>
+                    <ul>
+                        <li v-for="error in errors" :key="error">{{ error }} </li>
+                    </ul>
+                </p>
                 <!-- Button that creates client -->
                 <button class="btn mt-3 create">Create</button>
-                <br>
         </form>
         <br>
         <Footer />
@@ -449,6 +464,7 @@
         data() {
             //What the function is returning (Method for adding client) in postman
             return {
+                errors:[],
                 clients: {
                    cid: '',
                    first_Name: '',
@@ -472,6 +488,7 @@
                    home_phone_number: '',
                    emergency_contact_phone_number: '',
                    primary_email: '',
+                   secondary_email: '',
                    marital_status: '',
                    language: '',
                    priority_population: '',
@@ -504,6 +521,178 @@
         methods: {
             //Function executed when "submit" is clicked (Used in line 6)
             handleSubmitForm() {
+                //array populated by errors
+                this.errors=[];
+
+                const regex = new RegExp("^\\d{3}-\\d{3}-\\d{4}$"); //phone number validation
+                const ssnregex =/^(\d{3}-?\d{2}-?\d{4}|XXX-XX-XXXX)$/ //social security number validation
+                //email address validatiion
+                const emailregex=/(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/
+
+                //Validating each required field
+                if(!this.clients.first_name){
+                this.errors.push("First Name Required");
+                }
+
+                if(!this.clients.mid_name){
+                this.errors.push("First Name Required");
+                }
+
+                if(!this.clients.last_name){
+                this.errors.push("Last Name Required");
+                }
+
+                if(!this.clients.DL){
+                this.errors.push("Drivers License Number Required");
+                }
+
+                if(!this.clients.gender){
+                this.errors.push("Gender Required");
+                }
+
+                if(!this.clients.ethnicity){
+                this.errors.push("First Name Required");
+                }
+
+                if(!this.clients.ssn){
+                this.errors.push("SSN Required");
+                }
+
+                if(!ssnregex.test(this.clients.ssn))
+                this.errors.push("Please enter a valid ssn.");
+
+
+                if(!this.clients.marital_status){
+                this.errors.push("Marital Status Required");
+                }
+
+                if(!this.clients.veteran_status){
+                this.errors.push("Veteran Status Required");
+                }
+
+                if(!this.clients.address){
+                this.errors.push("Home Address Required");
+                }
+
+                if(!this.clients.city){
+                this.errors.push("City Required");
+                }
+
+                if(!this.clients.state){
+                this.errors.push("State Required");
+                }
+
+                if(!this.clients.country){
+                this.errors.push("country Required");
+                }
+
+                if(!this.clients.zip_code){
+                this.errors.push("Zip Code Required");
+                }
+
+                if(!this.clients.phone_number){
+                this.errors.push("Phone Number Required");
+                }
+
+                if(!this.clients.phone_number && (this.clients.phone_number.length!==0) )
+                this.errors.push("Phone is Required")
+
+                if (!regex.test(this.clients.phone_number)&&(this.clients.phone_number.length!==0))
+                this.errors.push("Please use correct phone number format.");
+
+                if(!this.clients.emergency_contact_phone_number){
+                this.errors.push("Emergency Contact Phone Number Required");
+                }
+
+                if(!this.clients.emergency_contact_phone_number && (this.clients.emergency_contact_phone_number.length!==0) )
+                this.errors.push("Emergency Contact Phone Number Required")
+
+                if (!regex.test(this.clients.emergency_contact_phone_number)&&(this.clients.emergency_contact_phone_number.length!==0))
+                this.errors.push("Please use correct phone number format.");
+
+                if(!this.clients.primary_email)
+                this.errors.push("Email is Required")
+
+                if(!emailregex.test(this.clients.primary_email) &&(this.clients.primary_email.length!==0))
+                this.errors.push("Please enter a valid email.");
+
+                if(!emailregex.test(this.clients.secondary_email) &&(this.clients.secondary_email.length!==0))
+                this.errors.push("Please enter a valid secondary email.");
+
+                if(!this.clients.highest_grade)
+                this.errors.push("Highest Completed Education is Required")
+
+                if(!this.clients.degree_name)
+                this.errors.push("Degree Name is Required")
+
+                if(!this.clients.residency)
+                this.errors.push("Residency is Required")
+
+                if(!this.clients.head_of_household)
+                this.errors.push("Head of Household is Required")
+
+                if(!this.clients.primary_email)
+                this.errors.push("Email is Required")
+
+                if(!this.clients.living_arrangements)
+                this.errors.push("Living Arrangements is Required")
+
+                if(!this.clients.number_of_children)
+                this.errors.push("No. of Children is Required")
+
+                if(!this.clients.number_of_adults_over_65)
+                this.errors.push("No. of Adults 65+ is Required")
+
+                if(!this.clients.rent)
+                this.errors.push("Rent is Required")
+
+                if(!this.clients.monthly_income)
+                this.errors.push("Monthly Income is Required")
+
+                if(!this.clients.spousal_income_support)
+                this.errors.push("Spousal Income Support is Required")
+
+                if(!this.clients.worker_compensation)
+                this.errors.push("Worker Compensation Benefits are Required")
+
+                if(!this.clients.child_support)
+                this.errors.push("Child Support Benefits are Required")
+
+                if(!this.clients.tanf)
+                this.errors.push("TANF Benefits are Required")
+
+                if(!this.clients.food_stamps)
+                this.errors.push("Food Stamp Benefits are Required")
+
+                if(!this.clients.ssi)
+                this.errors.push("SSI Benefits are Required")
+
+                if(!this.clients.unemployment)
+                this.errors.push("Unemployment Benefits are Required")
+
+                if(!this.clients.other_income)
+                this.errors.push("Other Income is Required")
+
+                if(!this.clients.employer_name)
+                this.errors.push("Employer Name is Required")
+
+                if(!this.clients.occupation)
+                this.errors.push("Occupation is Required")
+
+                if(!this.clients.length_of_employment)
+                this.errors.push("Length of Employment is Required")
+
+                if(!this.clients.insurance_program)
+                this.errors.push("Insurance Program is Required")
+
+                if(!this.clients.health_insurance_desc)
+                this.errors.push("Health Insurance Desc is Required")
+
+                if(!this.clients.priority_population)
+                this.errors.push("Priority Population is Required")
+
+                if(this.errors.length===0){
+
                 //Storing a route to add clients in "apiURL"
                 let apiURL = 'http://localhost:8080/clients/new-client';
                 //Recreating the POST Route from our back end ^^^^
@@ -533,6 +722,7 @@
                    home_phone_number: '',
                    emergency_contact_phone_number: '',
                    primary_email: '',
+                   secondary_email: '',
                    marital_status: '',
                    language: '',
                    priority_population: '',
@@ -563,7 +753,7 @@
                 }).catch(error => {
                     console.log(error)
                 });
-            }
+             } }
         } 
            
     }

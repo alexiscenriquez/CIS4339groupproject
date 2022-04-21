@@ -10,7 +10,8 @@ export default {
      data() {
         return {
             volunteers: {},
-            date:''
+            date:'',
+            errors:[]
         }
     },
     //grab volunteer data before mounting dom
@@ -28,6 +29,61 @@ export default {
     methods: {
         //update volunteers collection
         UpdateVolunteers() {
+            const regex = new RegExp("^\\d{3}-\\d{3}-\\d{4}$"); //validate phone number regex
+            const ssnregex =/^(\d{3}-?\d{2}-?\d{4}|XXX-XX-XXXX)$/ //validate ssn regex
+            //validate email regex
+            const emailregex=/(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/
+
+            //validations for required or formatted fields
+            if(!this.volunteers.first_name){
+                this.errors.push("First Name Required");
+                }
+
+            if(!this.volunteers.last_name)
+            this.errors.push("Last Name is Required")
+
+            if(!this.volunteers.gender){
+                this.errors.push("Gender  is Required");
+                }
+            if(!this.volunteers.ethnicity){
+                this.errors.push("Ethnicity is Required");
+                }
+            
+            if(!this.volunteers.addr){
+                this.errors.push("Address is Required");
+                }
+
+            if(!this.volunteers.city){
+                this.errors.push("City is Required");
+                }
+            
+            if(!this.volunteers.st){
+                this.errors.push("State is Required");
+                }
+
+            if(!this.volunteers.country){
+                this.errors.push("Country is Required");
+                }
+            if(!this.volunteers.zip){
+                this.errors.push("Zip code is Required");
+                }
+
+            if(!ssnregex.test(this.volunteers.ssn) && (this.volunteers.ssn.length!==0))
+            this.errors.push("Please enter a valid ssn.")
+
+            if (!regex.test(this.volunteers.phone_num))
+            this.errors.push("Please use correct phone number format.");
+
+            if (!regex.test(this.volunteers.emer_num) && (this.volunteers.emer_num.length!==0))
+            this.errors.push("Please use correct phone number format.");
+
+            if(!emailregex.test(this.volunteers.email))
+            this.errors.push("Please enter a valid email.");
+
+            if(!emailregex.test(this.volunteers.email2) &&(this.volunteers.email2.length!==0))
+            this.errors.push("Please enter a valid emergency email.");
+            
+            if(this.errors.length === 0){
             this.volunteers.b_day=this.date //add date to obj
             //update volunteer in volunteers collection
             let apiURL = `http://localhost:8080/volunteers/update/${this.$route.params.id}`;
@@ -38,7 +94,8 @@ export default {
                 console.log(error)
             });
         }
-    }
+            }
+        }
     }
 </script>
 
@@ -157,7 +214,7 @@ export default {
                 <div class='row mb-4'>
                     <div class="col-sm-6">
                         <label>*Phone #</label>
-                        <input type="text" class="form-control" placeholder='XXX-XXX-XXX' model="volunteers.phone_num" required>
+                        <input type="text" class="form-control" placeholder='XXX-XXX-XXX' v-model="volunteers.phone_num" required>
                         <small id="phoneHelpBlock" class="form-text text-muted">
                         9 digit phone number should be entered with dashes
                         </small>
@@ -189,6 +246,12 @@ export default {
                     </div>
                 </div>
             </fieldset>
+            <p v-if="errors.length">
+                <b>Please correct the following error(s):</b>
+                <ul>
+                    <li v-for="error in errors" :key="error">{{ error }} </li>
+                </ul>
+            </p>
             <button class="btn mb-5 create" >Update</button>
         </form>
        <Footer />
