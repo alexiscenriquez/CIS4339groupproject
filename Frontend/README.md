@@ -3,7 +3,7 @@ project-cis_4339_project_3 created by GitHub Classroom
 
 Appendix B - Bread of Life
 
-![image](https://user-images.githubusercontent.com/66455031/141374311-132d445a-cf5a-4b35-b653-643919e07221.png)
+![image](HomePagheCap.png)
 
 
 **Change Notes**
