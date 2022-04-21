@@ -2,11 +2,13 @@
   <main>
     <h1 class="text-center mb-5">All Employees</h1>
 
- <router-link class="btn btn-secondary" to="/new-emp">Create new employee</router-link>
+<!-- router that changes view to create new employee page -->
+ <router-link class="btn btn-secondary" to="/new-emp">Create new employee</router-link> 
     <div class="table-responsive">
       <table class="table table-light">
         <thead class="table-dark">
-          <tr>
+          <!-- table headings -->
+          <tr> 
             <th>#</th>
             <th>First Name</th>
             <th>Last Name</th>
@@ -21,7 +23,7 @@
             <th colspan="4">Actions</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody> 
           <tr v-for="employee in Employees" :key="employee._id">
             <td>{{ employee.employeeID }}</td>
             <td>{{ employee.firstName }}</td>

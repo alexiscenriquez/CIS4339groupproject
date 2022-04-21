@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 class="text-center">Create Employee</h1>
-
+<!-- Form to allow employee to enter the necessary data using various input types-->
     <form
       @submit.prevent="handleSubmitForm"
       novalidate
@@ -431,6 +431,7 @@
 import axios from "axios";
 import Footer from "../../components/footer.vue";
 
+    //exports arrays, objects and variables
 export default {
   components: {
     Footer,
@@ -502,22 +503,22 @@ export default {
 
   methods: {
     handleSubmitForm() {
+
+      //Validations before Submission. Check to see if required fields are present and or in their correct format,
+      // if not, add the error message for each invalid field to the errors array
       this.errors = [];
 
       if (!this.employees.firstName) 
-        this.errors.push("First Name Required");
+        this.errors.push("First Name Required"); 
   
-      if (!this.employees.lastName) this.errors.push("Last Name is Required");
+      if (!this.employees.lastName) this.errors.push("Last Name is Required"); 
+      if (!this.employees.SSN) this.errors.push("SSN is Required"); 
 
-      if (!this.employees.SSN) this.errors.push("SSN is Required");
+      if (!this.employees.phone && this.employees.home.length !== 0)  
+      const regex = new RegExp("^\\d{3}-\\d{3}-\\d{4}$"); //regex for phone number
+      const ssnregex = /^(\d{3}-?\d{2}-?\d{4}|XXX-XX-XXXX)$/; //regex for ssn 
 
-      if (!this.employees.phone && this.employees.home.length !== 0)
-        this.errors.push("Phone is Required");
-
-      const regex = new RegExp("^\\d{3}-\\d{3}-\\d{4}$");
-      const ssnregex = /^(\d{3}-?\d{2}-?\d{4}|XXX-XX-XXXX)$/;
-
-      const emailregex =
+      const emailregex = //regex for email
         /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
 
       if (
@@ -538,7 +539,7 @@ export default {
       if (!ssnregex.test(this.employees.SSN))
         this.errors.push("Please enter a valid ssn.");
 
-      if (this.errors.length === 0) {
+      if (this.errors.length === 0) { //now able to proceed if all requirements were fulfilled
         this.employees.org_name = this.two[0];
         this.employees["organizations.orgid"] = parseInt(this.two[1]); //add host # to event object
         this.data.id = this.num; //add next vid to data obj
@@ -596,7 +597,7 @@ export default {
           .catch((error) => {
             console.log(error);
           });
-        //  forms.classList.remove('was-validated')
+      
       }
     },
   },

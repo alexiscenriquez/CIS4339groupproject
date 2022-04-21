@@ -12,11 +12,9 @@ import Footer from '../../components/footer.vue'
             //Several arrays for holding data
             return{
                 client:[],
-                //employee:[],
                 service:[],
                 fullservices:[],
                 new_sid:{id:''},
-                //new_eid:{id:''},
                 active: false
 
             }

@@ -232,7 +232,7 @@
 <script>
     import Footer from '../../components/footer.vue'
     import axios from 'axios'
-    //Used to export modujles, objects, functions and variables to be used elsewhere
+    //Used to export modules, objects, functions and variables to be used elsewhere
     export default{
         //footer
         components:{
@@ -261,7 +261,7 @@
         },
         methods:{
             //Function for removing a client
-            //The ID variable holds the selected "id" of the client and the function iis performed
+            //The ID variable holds the selected "id" of the client and the function is performed
             del_client(id){
                 //Var storing route for deleting specified client
                 let apiURL = `http://localhost:8080/clients/del/${id}`

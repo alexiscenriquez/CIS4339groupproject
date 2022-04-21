@@ -1,5 +1,6 @@
 <template>
   <main>
+  
     <h1 class="mb-5">
       {{ employees.firstName }} {{ employees.lastName }}{{ " #"
       }}{{ employees.employeeID }}
@@ -134,26 +135,28 @@
         </tbody>
       </table>
 
-      <table class="table table-light table-sm caption-top">
-        <caption>
-          <strong>Emergency Contacts</strong>
-        </caption>
-
-        <thead class="thead-dark">
-          <th>Name</th>
-          <th>Phone Number</th>
-        </thead>
-        <tbody>
-          <tr
-            v-for="(contacts, index) in employees.eContact"
-            :index="index"
-            :key="index"
-          >
-            <td>{{ contacts.fName }} {{ contacts.lName }}</td>
-            <td>{{ contacts.phone }}</td>
-          </tr>
-        </tbody>
-      </table>
+     <div>
+        <table class="table table-light table-sm caption-top">
+          <caption>
+            <strong>Emergency Contacts</strong>
+          </caption>
+  
+          <thead class="thead-dark">
+            <th>Name</th>
+            <th>Phone Number</th>
+          </thead>
+          <tbody>
+            <tr
+              v-for="(contacts, index) in employees.eContact"
+              :index="index"
+              :key="index"
+            >
+              <td>{{ contacts.fName }} {{ contacts.lName }}</td>
+              <td>{{ contacts.phone }}</td>
+            </tr>
+          </tbody>
+        </table>
+     </div>
 
       <Footer />
     </div>
@@ -163,10 +166,12 @@
 <script>
 import axios from "axios";
 import Footer from "../../components/footer.vue";
+//Used to export modules, objects, functions and variables to be used elsewhere
 export default {
   components: {
     Footer,
   },
+    //Storing the data being exported in a function
   data() {
     return {
       employees: {},
@@ -174,14 +179,16 @@ export default {
       date:""
     };
   },
+      //created function
   created() {
+   // Variable that stores the "find specific employee" route
     let apiURL = `http://localhost:8080/employees/find/${this.$route.params.id}`;
     axios
       .get(apiURL)
+      //populates the employees array with data using the route in "apiURL"
       .then((res) => {
         this.employees = res.data[0];
         this.lang = this.employees.language.join(",");
-        console.log("line 167", this.lang);
         this.date = res.data[0].birthday.slice(0, 10)
       })
       .catch((error) => {
@@ -189,15 +196,17 @@ export default {
       });
   },
   methods: {
+    //function to delete an employee
+    //The ID variable holds the selected "id" of the employees and the function is performed
     deleteEmp(id) {
       let apiURL = `http://localhost:8080/employees/del/${id}`;
-
+//confirm if the user is sure they want to delete before deleting
       if (window.confirm("Are you sure you want to delete?")) {
         axios
-          .delete(apiURL)
+          .delete(apiURL)  //DELETE method used on variable
 
           .then(() => {
-            this.$router.push("/employees");
+            this.$router.push("/employees");  //changes view to all employees view
           })
           .catch((error) => {
             console.log(error);

@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>Edit Employee{{ " #" }}{{ employees.employeeID }}</h1>
+                <!-- display current date and allow changes to all current fields-->
     <form @submit.prevent="handleUpdateForm" novalidate>
       <fieldset class="form-control mb-5">
         <legend>Personal Information</legend>
@@ -428,14 +429,14 @@
 <script>
 import axios from "axios";
 import Footer from "../../components/footer.vue";
-
+//exports arrays, objects and variables
 export default {
   components: {
     Footer,
   },
   data() {
     return {
-       errors: [],
+      errors: [],
       employees: {},
       date: "",
       list: [],
@@ -444,13 +445,15 @@ export default {
       cur_host_num: "",
     };
   },
+  //grab employee and organization data before mouting dom
   created() {
+    //get single emp information 
     let apiURL = `http://localhost:8080/employees/find/${this.$route.params.id}`;
 
     axios
       .get(apiURL)
       .then((res) => {
-        this.employees = res.data[0];
+        this.employees = res.data[0]; //store emp data
         this.date = res.data[0].birthday.slice(0, 10);
         this.cur_host = res.data[0].org_name; //store current host name
         this.cur_host_num = res.data[0].organizations.orgid; //store host number
@@ -471,12 +474,11 @@ export default {
       });
   },
   methods: {
-    handleUpdateForm() {
+    handleUpdateForm() { 
+      //custom validations before updating employee data
       this.errors = [];
 
-      if (!this.employees.firstName) 
-        this.errors.push("First Name Required");
-      
+      if (!this.employees.firstName) this.errors.push("First Name Required");
 
       if (!this.employees.lastName) this.errors.push("Last Name is Required");
 
@@ -509,12 +511,13 @@ export default {
       if (!ssnregex.test(this.employees.SSN))
         this.errors.push("Please enter a valid ssn.");
 
-      if (this.errors.length === 0) {
-        this.employees.birthday = this.date;
-        let data = { id: this.$route.params.id }; //add evid to obj
-        this.employees.org_name = this.two[0]; //add host to event object
+      if (this.errors.length === 0) { //now able to proceed if all requirements were fulfilled
+        this.employees.birthday = this.date;      //add date to event object
+        let data = { id: this.$route.params.id }; //add empid to obj
+        this.employees.org_name = this.two[0]; //taking the second element as the organization's name
         this.employees.organizations.orgid = parseInt(this.two[1]); //add orgid to event object
 
+//update employee in employees collection 
         let apiURL = `http://localhost:8080/employees/update/${this.$route.params.id}`;
 
         axios
@@ -531,7 +534,7 @@ export default {
         if (this.cur_host == this.two[0]) {
           this.$router.push("/employees");
         } else {
-          //delete current organization from event
+          //delete current organization from employee
           let api3 = `http://localhost:8080/organizations/del-emp/${this.cur_host_num}`;
           axios
             .post(api3, data)
@@ -542,7 +545,7 @@ export default {
               console.log(error);
             });
 
-          //add event to organization
+          //add employee to organization
           let api4 = `http://localhost:8080/organizations/add-emp/${this.two[1]}`;
           axios
             .post(api4, data)
