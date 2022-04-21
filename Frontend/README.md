@@ -7,6 +7,7 @@ Appendix B - GTA Architects
 
 
 **Change Notes**
+
 As of Sprint 2, all files in backend folders (models and routes) and app.js have been modified
 
 **For local deployments**
