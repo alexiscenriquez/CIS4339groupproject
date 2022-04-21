@@ -20,7 +20,7 @@
               aria-label="First name"
               required
             />
-            <div class="invalid-feedback">First Name is Required</div>
+         
           </div>
           <div class="col">
             <label for="lName" class="form-label">*Last Name</label>
@@ -32,7 +32,7 @@
               aria-label="Last name"
               required
             />
-            <div class="invalid-feedback">Last Name is required</div>
+            
           </div>
         </div>
 
@@ -60,7 +60,7 @@
             <small id="phoneHelpBlock" class="form-text text-muted">
               9 digit phone number should be entered with dashes
             </small>
-            <div class="invalid-feedback">SSN is required</div>
+          
           </div>
           <div class="col-sm-4">
             <label for="dl" class="form-label">*Drivers License</label>
@@ -75,7 +75,7 @@
             <small id="phoneHelpBlock" class="form-text text-muted">
               8 digit number
             </small>
-            <div class="invalid-feedback">Drivers License is required</div>
+            
           </div>
         </div>
         <div class="row mb-4">

@@ -7,7 +7,7 @@
 
         <div class="row mb-4">
           <div class="col">
-            <label for="fName" class="form-label">First Name</label>
+            <label for="fName" class="form-label">*First Name</label>
             <input
               v-model="employees.firstName"
               type="text"
@@ -18,7 +18,7 @@
             />
           </div>
           <div class="col">
-            <label for="lName" class="form-label">Last Name</label>
+            <label for="lName" class="form-label">*Last Name</label>
             <input
               v-model="employees.lastName"
               type="text"
@@ -41,7 +41,7 @@
             />
           </div>
           <div class="col-sm-4">
-            <label for="ssn" class="form-label">Social Security</label>
+            <label for="ssn" class="form-label">*Social Security</label>
             <input
               type="text"
               class="form-control"
@@ -55,7 +55,7 @@
             </small>
           </div>
           <div class="col-sm-4">
-            <label for="dl" class="form-label">Drivers License</label>
+            <label for="dl" class="form-label">*Drivers License</label>
             <input
               type="text"
               class="form-control"
