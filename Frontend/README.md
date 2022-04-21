@@ -8,13 +8,13 @@ Appendix B - GTA Architects
 
 **Change Notes**
 
-As of Sprint 2, all files in backend folders (models and routes) and app.js have been modified
+-As of Sprint 2, all files in backend folders (models and routes) and app.js have been modified
 
 **For local deployments**
 
-Please drop exisitng data in local mongodb database.
+-Please drop exisitng data in local mongodb database.
 
-Use the front end to create and manipulate data.
+-Use the front end to create and manipulate data.
 
 **How to Initialize backend**
 1) Move to directiory: cd backend
