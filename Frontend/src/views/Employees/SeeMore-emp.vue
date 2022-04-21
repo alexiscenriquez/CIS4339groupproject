@@ -54,6 +54,10 @@
               <td>{{ employees.dept }}</td>
             </tr>
             <tr>
+              <th>Organization</th>
+              <td>{{ employees.org_name }}</td>
+            </tr>
+            <tr>
               <th>Job Title</th>
               <td>{{ employees.jdesc }}</td>
             </tr>

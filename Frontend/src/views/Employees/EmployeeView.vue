@@ -15,7 +15,7 @@
            
    
          
-            <th>Department</th>
+            <th>Organization</th>
           
            
             <th colspan="4">Actions</th>
