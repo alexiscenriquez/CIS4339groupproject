@@ -516,11 +516,11 @@ export default {
                 this.errors.push("First Name Required");
                 }
 
-                if(!this.clients.ssn){
+                if(!this.clients.social_security){
                 this.errors.push("SSN Required");
                 }
 
-                if(!ssnregex.test(this.clients.ssn))
+                if(!ssnregex.test(this.clients.social_security))
                 this.errors.push("Please enter a valid ssn.");
 
 

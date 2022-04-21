@@ -61,7 +61,6 @@
             //arrays for holding data
             return{
                 allclients:[],
-                date:'',
                 active: false
 
             }
@@ -72,7 +71,6 @@
             //GET Method is used on the var
             axios.get(apiURL).then(res => {
                 //Used to store ALL data into allclients array
-                this.date =  res.data[0].b_day.slice(0, 10)
                 this.allclients = res.data;
             }).catch(error=>{
                 console.log(error)
