@@ -2,13 +2,16 @@
     <main>
         <h1>{{volunteer.first_name}} #{{volunteer.vid}}</h1>
         <br>
-     
-                <div class='wrapper'>
-                    <td><router-link :to="{name: 'v_events', params: { id: volunteer.vid }}" class="btn btn-secondary ">Events</router-link></td>
-                    <td><router-link :to="{name: 'volunteers_edit', params: { id: volunteer.vid }}" class="btn btn-secondary ">Edit</router-link></td>
-                    <td><button @click.prevent="del_event(volunteer.vid)" class="btn btn-danger">Delete</button></td>
-                </div>
- 
+            <!--change to differenct views or remove event-->
+            <div class='wrapper'>
+                <!-- go to volunteer event view with vid -->
+                <td><router-link :to="{name: 'v_events', params: { id: volunteer.vid }}" class="btn btn-secondary ">Events</router-link></td>
+                <!-- go to volunteer edit view with vid -->
+                <td><router-link :to="{name: 'volunteers_edit', params: { id: volunteer.vid }}" class="btn btn-secondary ">Edit</router-link></td>
+                <!-- call function to remove volunteer-->
+                <td><button @click.prevent="del_volunteer(volunteer.vid)" class="btn btn-danger">Delete</button></td>
+            </div>
+        <!-- display table with volunteer information w/ v-model-->
         <div class="table1">
             <table class="table table-light caption-top">
                 <caption><strong>Information</strong></caption>
@@ -87,14 +90,11 @@
                     <tr>    
                         <th>Country</th>
                         <td>{{volunteer.country}}</td>
-                    </tr>
-                    
+                    </tr> 
                 </tbody>
-               
             </table>
-    
-  </div>
-    <Footer />
+        </div>
+        <Footer />
     </main>
 
     
@@ -103,7 +103,8 @@
 <script>
     import axios from 'axios'
     import Footer from '../../components/footer.vue'
-
+    
+    //export components and objects
     export default{
         components:{
             Footer
@@ -113,21 +114,26 @@
                 volunteer:{}
             }
         },
+        //grab volunteer data before mounting dom
         created(){
+            //get volunteer data
             let apiURL = `http://localhost:8080/volunteers/find/${this.$route.params.id}`;
             axios.get(apiURL).then(res => {
-                this.volunteer = res.data[0];
+                this.volunteer = res.data[0]; //store volunteer data
             }).catch(error=>{
                 console.log(error)
             });
         },
+        //define functions
         methods:{
-            del_event(id){
+            //remove event from 
+            del_volunteer(id){
                 let apiURL = `http://localhost:8080/volunteers/del/${id}`
-
+                //if true
                 if(window.confirm('Delete?')){
+                    //delete volunteer from volunteers collection
                     axios.delete(apiURL).then(()=>{
-                        this.$router.push('/volunteers')
+                        this.$router.push('/volunteers') //go to volunteer home view
                     }).catch(error => {
                         console.log(error)
                     })

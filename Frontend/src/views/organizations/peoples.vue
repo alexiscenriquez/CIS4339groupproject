@@ -291,7 +291,7 @@
                         <td>{{e.lastName }}</td>
                         <td>{{e.phone}}</td>
                         <!-- call function to remove employee from organizations collection -->
-                        <td><router-link :to="{name: 'edit-emp', params: { id: e.employeeID }}" class="btn btn-secondary ">Edit</router-link></td>
+                        <td><router-link :to="{name: 'edit-emp', params: { id: e.employeeID }}" class="btn btn-secondary ">Change Org</router-link></td>
                     </tr> 
                 </tbody>
             </table>
