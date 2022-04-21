@@ -150,23 +150,20 @@ export default {
     },
     addOrg() {
       let orgid = this.new_orgid.id;
-      console.log('line 140 empaffil', orgid, typeof(orgid))
-      let data = { id: this.$route.params.id };
+      console.log('line 140 empaffil', this.new_orgid, typeof(this.new_orgid))
+      let data = { 'id': this.$route.params.id };
+      console.log(this.$route.params.id, this.new_orgid)
+      
+      
       let apiURL = `http://localhost:8080/employees/add-org/${this.$route.params.id}`;
-      let apiURL2 = `http://localhost:8080/organizations/add-emp/${orgid}`;
-
-      axios
-        .post(apiURL, this.new_orgid)
-        .then(() => {
+      axios.post(apiURL, this.new_orgid).then(() => {
           this.$router.push("/employees");
-          this.new_orgid = {
-            id: "",
-          };
-        })
-        .catch((error) => {
+          this.new_orgid = {id:''}
+        }).catch(error => {
           console.log(error);
         });
 
+      let apiURL2 = `http://localhost:8080/organizations/add-emp/${orgid}`;
       axios
         .post(apiURL2, data)
         .then(() => {})

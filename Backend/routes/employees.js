@@ -213,6 +213,7 @@ router.post('/add-event/:employeeID', (req, res, next) =>{
 )
 
 router.post('/add-org/:employeeID', (req, res, next) =>{
+  console.log(req.body.id, req.params)
   empModel.findOneAndUpdate(
     {employeeID: parseInt(req.params.employeeID)},
     {
