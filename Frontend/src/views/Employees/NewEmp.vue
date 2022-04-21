@@ -416,12 +416,12 @@
           </div>
         </div>
       </fieldset>
-                   <p v-if="errors.length">
-                    <b>Please correct the following error(s):</b>
-                    <ul>
-                        <li v-for="error in errors" :key="error">{{ error }} </li>
-                    </ul>
-                </p>
+      <p v-if="errors.length">
+        <b>Please correct the following error(s):</b>
+        <ul>
+            <li v-for="error in errors" :key="error">{{ error }} </li>
+        </ul>
+      </p>
       <button class="btn mb-5 create">Create</button>
     </form>
     <Footer />
