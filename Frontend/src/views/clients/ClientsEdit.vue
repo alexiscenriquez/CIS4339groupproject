@@ -36,6 +36,9 @@
                             <label class="form-label">Drivers License Number*</label>
                             <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
                             <input type="text" class="form-control" v-model="clients.DL"><br>
+                            <small id="phoneHelpBlock" class="form-text text-muted">
+                            8 digit Drivers License Number
+                            </small>
                         </div>
                         <div class="col-sm-4">
                             <label class="form-label">Gender*</label>
@@ -74,7 +77,10 @@
                         <div class="col-sm-4">
                             <label class="form-label">Social Security Number*</label>
                             <!--V-model creates a 2-way data binding, which gathers the input, storing it where specified-->
-                            <input type="text" class="form-control" v-model="clients.social_security" required>
+                            <input type="text" class="form-control" placeholder= "XXX-XX-XXXX" v-model="clients.social_security" required>
+                            <small id="phoneHelpBlock" class="form-text text-muted">
+                                9 digit phone number should be entered with dashes
+                            </small>
                         </div>
                         </div>   <div class="row mb-3">
                         <div class="col-sm-4">
@@ -457,7 +463,8 @@ export default {
         return {
             //clients_list:{}
             clients: {},
-            date:''
+            date:'',
+            errors:[]
         }
     },
     created() {
@@ -646,6 +653,8 @@ export default {
                 if(!this.clients.priority_population)
                 this.errors.push("Priority Population is Required")
 
+                if(this.errors.length === 0) {
+
             //Stores the date picked upon creation when you edit a client
             this.clients.b_day=this.date
             //VAR stores route to update/edit a specific clients information
@@ -658,6 +667,7 @@ export default {
             }).catch(error => {
                 console.log(error)
             });
+                }
         }
     }
     }
