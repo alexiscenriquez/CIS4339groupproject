@@ -1,5 +1,5 @@
-# project-cis_4339_project_3
-project-cis_4339_project_3 created by GitHub Classroom
+# project-cis_4339_project_28
+project-cis_4339_project_28 created by Gabino Aguirre, Taylor Bean, and Alexis Enriquez
 
 Appendix B - GTA Architects
 
@@ -23,11 +23,3 @@ Use the front end to create and manipulate data.
 1) Move to directiory: cd frontend
 2) Install modules: npm install
 3) Start script: npm run dev
-
-
-
-![image](https://user-images.githubusercontent.com/66455031/141374012-d5e3cc71-b02d-4286-a7b4-7d8eec690f9f.png)
-
-![image](https://user-images.githubusercontent.com/66455031/141373859-5434a8fa-5054-4656-aa06-06b0d2e201fd.png)
-
-![image](https://user-images.githubusercontent.com/66455031/141373931-9ec87edd-6fdc-4484-93c4-8b710ebb5fc2.png)
