@@ -22,7 +22,7 @@ Use the front end to create and manipulate data.
 **How to Initialize frontend**
 1) Move to directiory: cd frontend
 2) Install modules: npm install
-3) Start script: npm run serve
+3) Start script: npm run dev
 
 **Cloud Deployment**
 
