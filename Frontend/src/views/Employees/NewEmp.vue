@@ -4,7 +4,7 @@
 
     <form
       @submit.prevent="handleSubmitForm"
-      class="needs-validation"
+     
       novalidate
     >
       <fieldset class="form-control mb-5">
@@ -55,6 +55,7 @@
               name="ssn"
               v-model="employees.SSN"
               placeholder="XXX-XX-XXXX"
+              pattern="^\d{3}-\d{2}-\d{4}$"
               required
             />
             <small id="phoneHelpBlock" class="form-text text-muted">
@@ -201,6 +202,7 @@
               class="form-control"
               v-model="employees.phone"
               placeholder="XXX-XXX-XXXX"
+              pattern="^\d{3}-\d{3}-\d{4}$"
             />
           <small id="phoneHelpBlock" class="form-text text-muted">
               10 digit phone number should be entered with dashes
@@ -215,6 +217,7 @@
               class="form-control"
               v-model="employees.home"
               placeholder="XXX-XXX-XXXX"
+              pattern="^\d{3}-\d{3}-\d{4}$"
             />
             <small id="phoneHelpBlock" class="form-text text-muted">
               10 digit phone number should be entered with dashes
@@ -325,11 +328,12 @@
           </div>
 
           <div class="col-sm-4">
-            <label for="dept" class="form-label">Department</label>
+            <label for="dept" class="form-label">*Department</label>
             <select
               name="dept"
               id=""
               class="form-control"
+              required
               v-model="employees.dept"
             >
               <option value=""></option>
@@ -341,8 +345,8 @@
           </div>
 
           <div class="col-sm-4">
-            <label for="lEmployment" class="form-label">Organization</label>
-            <select class="form-select" aria-label="Default select example" v-model='two'>
+            <label for="lEmployment" class="form-label">*Organization</label>
+            <select class="form-select" aria-label="Default select example" v-model='two' required>
               <option value="" selected disabled>Choose an Organization</option>
               <!-- display organizations list, store in array -->
               <option v-for="x in list" :value="[x.org_name,x.orgid]" :key="x.orgid">{{x.orgid}}{{" - "}}{{x.org_name}}</option>
@@ -412,6 +416,12 @@
           </div>
         </div>
       </fieldset>
+                   <p v-if="errors.length">
+                    <b>Please correct the following error(s):</b>
+                    <ul>
+                        <li v-for="error in errors" :key="error">{{ error }} </li>
+                    </ul>
+                </p>
       <button class="btn mb-5 create">Create</button>
     </form>
     <Footer />
@@ -421,13 +431,14 @@
 <script>
 import axios from "axios";
 import Footer from '../../components/footer.vue'
-
+let invalid=document.getElementById("first")
 export default {
   components:{
             Footer
         },
   data() {
     return {
+       errors: [],
       employees: {
         employeeID: "",
         firstName: "",
@@ -486,29 +497,45 @@ export default {
 
 
   methods: {
-
     handleSubmitForm() {
-     
-  'use strict'
+ this.errors=[];
 
-  // Fetch all the forms we want to apply custom Bootstrap validation styles to
-  var forms = document.querySelectorAll('.needs-validation')
+ if(!this.employees.firstName){
+ this.errors.push("First Name Required");
+ 
+ }
 
-  // Loop over them and prevent submission
-  Array.prototype.slice.call(forms)
-    .forEach(function (form) {
-      form.addEventListener('submit', function (event) {
-        if (!form.checkValidity()) {
-          event.preventDefault()
-          event.stopPropagation()
-          
-        }
-      
-      //  form.classList.add('was-validated')
-        
-       
-      }, false)
-    })
+if(!this.employees.lastName)
+this.errors.push("Last Name is Required")
+
+if(!this.employees.SSN)
+this.errors.push("SSN is Required")
+
+if(!this.employees.phone && (this.employees.home.length!==0) )
+this.errors.push("Phone is Required")
+
+  const regex = new RegExp("^\\d{3}-\\d{3}-\\d{4}$");
+  const ssnregex =/^(\d{3}-?\d{2}-?\d{4}|XXX-XX-XXXX)$/
+     var re = /(.+)@(.+){2,}\.(.+){2,}/;
+const emailregex=/(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/
+
+   if (!regex.test(this.employees.phone)&&(this.employees.phone.length!==0))
+   this.errors.push("Please use correct phone number format.");
+
+  if (!regex.test(this.employees.home) && (this.employees.home.length!==0))
+   this.errors.push("Please use correct phone number format.");
+
+
+
+if(!emailregex.test(this.employees.pEmail) &&(this.employees.pEmail.length!==0))
+ this.errors.push("Please enter a valid email.");
+
+if(!ssnregex.test(this.employees.SSN))
+this.errors.push("Please enter a valid ssn.");
+
+
+if(this.errors.length===0){
+  
       this.employees.org_name=this.two[0]
       this.employees['organizations.orgid']=parseInt(this.two[1]) //add host # to event object
       this.data.id=this.num //add next vid to data obj
@@ -550,6 +577,9 @@ export default {
           };
         })
         .catch((error) => {
+           this.errors.push(
+              "Error in form submission. " + error.response.data
+            );
           console.log(error);
         });
 
@@ -562,7 +592,7 @@ export default {
                     console.log(error)
                 });
     //  forms.classList.remove('was-validated')
-    },
+     } },
      
        
   },
