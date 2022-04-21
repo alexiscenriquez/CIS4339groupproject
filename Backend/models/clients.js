@@ -186,7 +186,7 @@ let clientSchema = new Schema({
         required: true,
       },
       social_security: {
-        type: Number,
+        type: String,
         required: true,
       },
       other_income: {
