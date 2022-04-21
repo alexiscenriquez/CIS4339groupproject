@@ -9,8 +9,7 @@
         },
         data(){
             return{
-                volunteers:[],
-                date:''
+                volunteers:[]
             }
         },
         //grab volunteers data before mounting dom
@@ -19,7 +18,8 @@
             let apiURL = 'http://localhost:8080/volunteers';
             axios.get(apiURL).then(res => {
                 this.volunteers = res.data; //store volunteer in array
-                this.date =  res.data[0].b_day.slice(0, 10)
+                
+                console.log(res.data[0].b_day)
             }).catch(error=>{
                 console.log(error)
             });
@@ -29,7 +29,6 @@
             del_volunteer(id){
                 let apiURL = `http://localhost:8080/volunteers/del/${id}`
                 let indexOfArrayItem = this.volunteers.findIndex(i=>i.vid === id); //store vid index from array
-
                 //if true
                 if(window.confirm('Delete Volunteer?')){
                     //delete volunteer from volunteers collection
@@ -59,7 +58,6 @@
                         <th>First Name</th>
                         <th>Middle Name</th>
                         <th>Last Name</th>
-                        <th>Birthday</th>
                         <th>Phone#</th>
                         <th colspan="6">Actions</th>
                        
@@ -72,7 +70,6 @@
                         <td>{{volunteer.first_name}}</td>
                         <td>{{volunteer.mid_name}}</td>
                         <td>{{volunteer.last_name}}</td>
-                        <td>{{date}}</td>
                         <td>{{volunteer.phone_num}}</td>
                         <!-- go to volunteer information view -->
                         <td><router-link :to="{name: 'volunteer-info', params: { id: volunteer.vid }}" class="btn btn-secondary ">More...</router-link></td>
