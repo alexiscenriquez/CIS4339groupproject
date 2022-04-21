@@ -43,7 +43,7 @@
                     </tr>
                     <tr>
                         <th>Birth Date</th>
-                        <td>{{clients.b_day}}</td>
+                        <td>{{date}}</td>
                     </tr>
                     <tr>
                         <th>Driver's License Number</th>
@@ -243,7 +243,8 @@
             //What the function is returning
             return{
                 //clients array
-                clients:{}
+                clients:{},
+                date:''
             }
         },
         //created function
@@ -253,6 +254,7 @@
             axios.get(apiURL).then(res => {
                 //populates the clients array with data using the route in "apiURL"
                 this.clients = res.data[0];
+                this.date =  res.data[0].b_day.slice(0, 10)
             }).catch(error=>{
                 console.log(error)
             });

@@ -12,7 +12,6 @@
                 <th>#</th>    
                 <th>First Name</th>
                 <th>Last Name</th>
-                <th>Birth Date</th>
                 <th>Phone Number</th>
                 <th colspan="6">Actions</th>
   
@@ -25,7 +24,6 @@
                 <td>{{cls.cid }}</td>
                 <td>{{cls.first_name }}</td>
                 <td>{{cls.last_name }}</td>
-                <td>{{cls.b_day }}</td>
                 <td>{{cls.phone_number }}</td>
                 <!-- button that routes to clients-org view (shows which clients are related to organizations) -->
                 <td><router-link :to="{name: 'client-orgs', params: { id: cls.cid }}" class="btn btn-secondary ">Organizations</router-link></td>
@@ -63,6 +61,7 @@
             //arrays for holding data
             return{
                 allclients:[],
+                date:'',
                 active: false
 
             }
@@ -73,6 +72,7 @@
             //GET Method is used on the var
             axios.get(apiURL).then(res => {
                 //Used to store ALL data into allclients array
+                this.date =  res.data[0].b_day.slice(0, 10)
                 this.allclients = res.data;
             }).catch(error=>{
                 console.log(error)
