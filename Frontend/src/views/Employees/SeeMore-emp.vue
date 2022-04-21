@@ -68,7 +68,7 @@
           </tr>
           <tr>
             <th>Job Title</th>
-            <td>{{ employees.jdesc }}</td>
+            <td>{{ employees.jDesc }}</td>
           </tr>
           <tr>
             <th>Mobile Number</th>
