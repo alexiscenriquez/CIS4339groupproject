@@ -231,7 +231,8 @@ export default {
         </fieldset>
       </form>
   
-      <form @submit.prevent="addOrg" class="mb-5 col-sm-3 view-form">
+
+      <!-- <form @submit.prevent="addOrg" class="mb-5 col-sm-3 view-form">
         <fieldset class="form-control">
           <legend class="mb-3">Organization</legend>
           <div>
@@ -249,7 +250,7 @@ export default {
             <button class="btn btn-success">Add Organization</button>
           </div>
         </fieldset>
-      </form>
+      </form> -->
 
 </div>
 <h2>Clients</h2>
