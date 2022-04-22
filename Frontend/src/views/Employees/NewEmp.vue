@@ -345,7 +345,7 @@
 
           <div class="col-sm-4">
             <label for="lEmployment" class="form-label">*Organization</label>
-            <select class="form-select" aria-label="Default select example" v-model='two'>
+            <select class="form-select" aria-label="Default select example" v-model='two' required>
               <option value="" selected disabled>Choose an Organization</option>
               <!-- display organizations list, store in array -->
               <option v-for="x in list" :value="[x.org_name,x.orgid]" :key="x.orgid">{{x.orgid}}{{" - "}}{{x.org_name}}</option>
@@ -503,14 +503,14 @@ export default {
 
   methods: {
     handleSubmitForm() {
-
+  this.employees.org_name=this.two[0]
       //Validations before Submission. Check to see if required fields are present and or in their correct format,
       // if not, add the error message for each invalid field to the errors array
       this.errors = [];
 
       if (!this.employees.firstName) 
         this.errors.push("First Name Required"); 
-  
+  if(!this.employees.org_name) this.errors.push("Organization is Required");
       if (!this.employees.lastName) this.errors.push("Last Name is Required"); 
       if (!this.employees.SSN) this.errors.push("SSN is Required"); 
 
@@ -569,6 +569,7 @@ export default {
               state: "",
               county: "",
               zip: "",
+              org_name:"",
               lEmployment: "",
               dept: "",
               jDesc: "",

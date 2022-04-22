@@ -94,7 +94,8 @@ let employeesSchema = new Schema(
       orgid:
       [
         {
-          type:Number
+          type:Number,
+          required:true
         }
       ]
     },

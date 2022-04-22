@@ -338,6 +338,7 @@
               class="form-select"
               aria-label="Default select example"
               v-model="two"
+              required
             >
               <option value="" selected disabled>Choose an Organization</option>
               <!-- display organizations list, store in array -->
@@ -476,8 +477,9 @@ export default {
   methods: {
     handleUpdateForm() { 
       //custom validations before updating employee data
+       this.employees.org_name=this.two[0]
       this.errors = [];
-
+if(!this.employees.org_name) this.errors.push("Organization is Required");
       if (!this.employees.firstName) this.errors.push("First Name Required");
 
       if (!this.employees.lastName) this.errors.push("Last Name is Required");
