@@ -267,6 +267,7 @@
               class="form-control"
               name="ephone1"
               v-model="employees.eContact[0].phone"
+              placeholder="XXX-XXX-XXXX"
             />
           </div>
         </div>
@@ -297,6 +298,7 @@
               class="form-control"
               name="ephone2"
               v-model="employees.eContact[1].phone"
+              placeholder="XXX-XXX-XXXX"
             />
           </div>
         </div>
@@ -488,6 +490,7 @@ if(!this.employees.org_name) this.errors.push("Organization is Required");
 
       if (!this.employees.phone && this.employees.home.length !== 0)
         this.errors.push("Phone is Required");
+
 
       const regex = new RegExp("^\\d{3}-\\d{3}-\\d{4}$");
       const ssnregex = /^(\d{3}-?\d{2}-?\d{4}|XXX-XX-XXXX)$/;

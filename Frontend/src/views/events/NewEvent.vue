@@ -97,7 +97,7 @@
                     <div class='col-sm-4'>
                         <label for="" class='form-label'>*Host(Organization)</label>
                         <!-- organizations dropdown -->
-                        <select class="form-select" aria-label="Default select example" v-model='two'>
+                        <select class="form-select" aria-label="Default select example" v-model='two' required>
                                 <option value="" selected disabled>Choose an Organization</option>
                                 <!-- display organizations list, store in array -->
                                 <option v-for="x in list" :value="[x.org_name,x.orgid]" :key="x.orgid">{{x.orgid}}{{" - "}}{{x.org_name}}</option>
