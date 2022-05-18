@@ -450,7 +450,7 @@ export default {
   },
   //grab employee and organization data before mouting dom
   created() {
-    //get single emp information 
+    //get single emp information
     let apiURL = `http://localhost:8080/employees/find/${this.$route.params.id}`;
 
     axios
@@ -477,11 +477,12 @@ export default {
       });
   },
   methods: {
-    handleUpdateForm() { 
+    handleUpdateForm() {
       //custom validations before updating employee data
-       this.employees.org_name=this.two[0]
+      this.employees.org_name = this.two[0];
       this.errors = [];
-if(!this.employees.org_name) this.errors.push("Organization is Required");
+      if (!this.employees.org_name)
+        this.errors.push("Organization is Required");
       if (!this.employees.firstName) this.errors.push("First Name Required");
 
       if (!this.employees.lastName) this.errors.push("Last Name is Required");
@@ -490,7 +491,6 @@ if(!this.employees.org_name) this.errors.push("Organization is Required");
 
       if (!this.employees.phone && this.employees.home.length !== 0)
         this.errors.push("Phone is Required");
-
 
       const regex = new RegExp("^\\d{3}-\\d{3}-\\d{4}$");
       const ssnregex = /^(\d{3}-?\d{2}-?\d{4}|XXX-XX-XXXX)$/;
@@ -516,13 +516,14 @@ if(!this.employees.org_name) this.errors.push("Organization is Required");
       if (!ssnregex.test(this.employees.SSN))
         this.errors.push("Please enter a valid ssn.");
 
-      if (this.errors.length === 0) { //now able to proceed if all requirements were fulfilled
-        this.employees.birthday = this.date;      //add date to event object
+      if (this.errors.length === 0) {
+        //now able to proceed if all requirements were fulfilled
+        this.employees.birthday = this.date; //add date to event object
         let data = { id: this.$route.params.id }; //add empid to obj
         this.employees.org_name = this.two[0]; //taking the second element as the organization's name
         this.employees.organizations.orgid = parseInt(this.two[1]); //add orgid to event object
 
-//update employee in employees collection 
+        //update employee in employees collection
         let apiURL = `http://localhost:8080/employees/update/${this.$route.params.id}`;
 
         axios
