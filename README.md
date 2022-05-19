@@ -3,15 +3,16 @@
 #### Contents
 - [Overview](#1-overview)
 - [Connecting to the Backend](#2-connecting-to-the-backend)
-- [Resources](#3-resources)
-  - [Volunteers](#31-volunteers)
-  - [Employees](#32-employees)
-  - [Clients](#33-clients)
-  - [Services](#34-services)
-  - [Events](#35-events)
+- [Connecting to the Frontend](#3-connecting-to-the-frontend)
+- [Resources](#4-resources)
+  - [Volunteers](#41-volunteers)
+  - [Employees](#42-employees)
+  - [Clients](#43-clients)
+  - [Services](#44-services)
+  - [Events](#45-events)
   
- - [Testing](#4-testing)
-
+ - [Testing](#5-testing)
+ 
 ## 1. Overview
 Our group's API is JSON-based. All requests are made to endpoints beginning: `http://localhost:3000/` or `http://127.0.0.1:3000/`
 
@@ -29,9 +30,15 @@ Our group's API is JSON-based. All requests are made to endpoints beginning: `ht
 2) Install modules: npm install
 3) Start script: node app.js
 
-## 3. Resources
+## 3. Connecting to the Frontend
 
-### 3.1 Volunteers
+1) Move to directory src in the frontend folder
+2) Install modules: npm install
+3) Run project: npm run dev
+
+## 4. Resources
+
+### 4.1 Volunteers
 
 #### Getting a volunteer's details
 Deals with volunteers collection
@@ -500,7 +507,7 @@ Possible errors:
 | 404 Not Found | The requested resource could not be found buy may be available again in the future. Subsequent requests by the cliEnts are permissible. |
 
 
-### 3.2 Employees
+### 4.2 Employees
 
 #### Retrieving all employee collections
 
@@ -1089,7 +1096,7 @@ Removed event from employee.
 | --------------| ------------------------------|
 | 404 Not Found | The requested resource could not be found buy may be available again in the future. Subsequent requests by the cliEnts are permissible. |
 
-### 3.3 Clients
+### 4.3 Clients
   
  #### Getting client's details
   Deals with clients collection
@@ -1742,7 +1749,7 @@ Removed event from employee.
   | 500 Internal Server Error | The server encountered an unexpected condition that precented it from fullifilling the request.                                         |
 
   
-  ### 3.4 Services
+  ### 4.4 Services
 
   
 Deals with Services collection
@@ -2150,7 +2157,7 @@ Possible errors:
 | --------------| ------------------------------|
 | 404 Not Found | The requested resource could not be found buy may be available again in the future. Subsequent requests by the cleints are permissible. |
 
-### 3.5 Events
+### 4.5 Events
 
 DEALS WITH DATA STORED IN EVENTS COLLECTION
 
@@ -2651,7 +2658,7 @@ Possible errors:
 | 404 Not Found | The requested resource could not be found buy may be available again in the future. Subsequent requests by the cleints are permissible. |
 
 
-## 4. Testing
+## 5. Testing
 
 To test the backend, we use the software Postman. To test, use the request syntax given in the resources section and replace the contents within brackets with IDs from the database if necessary.
 
